@@ -29,3 +29,4 @@ This register controls the settings for the physical interrupt pin INT1.
 Note that to properly change the value of this register, the PC1 bit in CNTL1 register must first be set to “0”.
 
 ![[Pasted image 20230913161907.png]]
+set the polarity of the physical interrupt to active high and configure for latched operation.
