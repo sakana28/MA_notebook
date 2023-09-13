@@ -20,18 +20,6 @@
             }
           },
           {
-            "id": "c8497868af29478d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Vivado warning.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "bf65e4e1e742154e",
             "type": "leaf",
             "state": {
@@ -66,14 +54,6 @@
             }
           },
           {
-            "id": "a341e732e3dd6aeb",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {}
-            }
-          },
-          {
             "id": "0882909fbb5414d5",
             "type": "leaf",
             "state": {
@@ -86,7 +66,7 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -226,16 +206,16 @@
   },
   "active": "0882909fbb5414d5",
   "lastOpenFiles": [
-    "New Folder",
-    "about Zynq.md",
     "about I2C Protocol.md",
+    "KX134 Buffer read.md",
+    "about Zynq.md",
+    "Vivado warning.md",
+    "New Folder",
     "KX134 ODR Register.md",
     "picture/Pasted image 20230825165222.png",
     "picture/Pasted image 20230825164332.png",
     "picture/Pasted image 20230825164237.png",
     "picture/Pasted image 20230807163053.png",
-    "KX134 Buffer read.md",
-    "Vivado warning.md",
     "FPGA based PWM generator.md",
     "Zybo vs Zedboard vs ZC706.md",
     "picture/Pasted image 20230711162712.png",
