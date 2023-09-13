@@ -1,0 +1,12 @@
+{
+  "editor:insert-tag": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "T"
+    }
+  ],
+  "workspace:next-tab": [],
+  "workspace:new-tab": []
+}
