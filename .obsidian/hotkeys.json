@@ -8,5 +8,13 @@
     }
   ],
   "workspace:next-tab": [],
-  "workspace:new-tab": []
+  "workspace:new-tab": [],
+  "obsidian-git:push": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "S"
+    }
+  ]
 }
