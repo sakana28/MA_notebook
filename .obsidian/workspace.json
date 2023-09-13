@@ -59,7 +59,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "about I2C Protocol.md",
+                "file": "about KX134.md",
                 "mode": "source",
                 "source": false
               }
@@ -95,7 +95,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "about",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -120,12 +120,12 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "cabdc51be2d9613d",
@@ -141,7 +141,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about I2C Protocol.md",
+                "file": "about KX134.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -158,7 +158,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about I2C Protocol.md",
+                "file": "about KX134.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -181,7 +181,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "about I2C Protocol.md"
+                "file": "about KX134.md"
               }
             }
           }
@@ -207,6 +207,8 @@
   "active": "0882909fbb5414d5",
   "lastOpenFiles": [
     "about I2C Protocol.md",
+    "Untitled.md",
+    "about KX134.md",
     "KX134 Buffer read.md",
     "about Zynq.md",
     "Vivado warning.md",
@@ -241,7 +243,6 @@
     "zynq-7010下运用I2C总线完成对LSM303D传感器的数据读取.md",
     "matlab_local_commentar.md",
     "ZC706 BIST.md",
-    "np.concatenate.md",
     "picture"
   ]
 }
