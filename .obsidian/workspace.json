@@ -199,7 +199,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -213,18 +214,18 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "233dbe15fe9c6861",
+  "active": "0882909fbb5414d5",
   "lastOpenFiles": [
+    "about Zynq.md",
+    "about KX134.md",
     "picture/Pasted image 20230913163303.png",
     "picture/Pasted image 20230913163207.png",
     "picture/Pasted image 20230913162939.png",
-    "about KX134.md",
     "picture/Pasted image 20230913161907.png",
     "picture/Pasted image 20230913161357.png",
     "about I2C Protocol.md",
     "Untitled.md",
     "KX134 Buffer read.md",
-    "about Zynq.md",
     "Vivado warning.md",
     "New Folder",
     "KX134 ODR Register.md",
@@ -236,7 +237,6 @@
     "Zybo vs Zedboard vs ZC706.md",
     "picture/Pasted image 20230711162712.png",
     "I2C Slave.md",
-    "picture/Pasted image 20230706155339.png",
     "max I2C Speed in Project.md",
     "KX134 Einstellung (email).md",
     "Notiz I2C.md",
