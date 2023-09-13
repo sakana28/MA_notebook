@@ -185,13 +185,21 @@
                 "file": "about KX134.md"
               }
             }
+          },
+          {
+            "id": "233dbe15fe9c6861",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -205,13 +213,16 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "0882909fbb5414d5",
+  "active": "233dbe15fe9c6861",
   "lastOpenFiles": [
+    "picture/Pasted image 20230913163303.png",
+    "picture/Pasted image 20230913163207.png",
+    "picture/Pasted image 20230913162939.png",
+    "about KX134.md",
     "picture/Pasted image 20230913161907.png",
     "picture/Pasted image 20230913161357.png",
     "about I2C Protocol.md",
     "Untitled.md",
-    "about KX134.md",
     "KX134 Buffer read.md",
     "about Zynq.md",
     "Vivado warning.md",
@@ -226,10 +237,7 @@
     "picture/Pasted image 20230711162712.png",
     "I2C Slave.md",
     "picture/Pasted image 20230706155339.png",
-    "picture/Pasted image 20230706155247.png",
     "max I2C Speed in Project.md",
-    "picture/Pasted image 20230706155229.png",
-    "picture/Pasted image 20230704172945.png",
     "KX134 Einstellung (email).md",
     "Notiz I2C.md",
     "Notiz Seminararbeit.md",

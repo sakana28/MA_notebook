@@ -30,3 +30,17 @@ Note that to properly change the value of this register, the PC1 bit in CNTL1 re
 
 ![[Pasted image 20230913161907.png]]
 set the polarity of the physical interrupt to active high and configure for latched operation.
+
+#### BUF_CTNL1
+Read/write control register that controls the buffer sample threshold. This register is On-The-Fly (OTF) register and can be written to while the KX134-1211 is enabled (PC1 bit in CNTL1 register is set to “1”) and the change will be accepted with no interruption in the operation.
+
+![[Pasted image 20230913162939.png]]
+SMP_TH[7:0] Sample Threshold – determines the number of samples that will trigger a watermark interrupt or will be saved prior to a trigger event. When BRES=1, the maximum number of samples is 86; when BRES=0, the maximum number of samples is 171. The minimum number of samples must be greater than or equal to 2. **set a watermark level**
+
+#### BUF_CNTL2
+Read/write control register that controls sample buffer operation. This register is On-The-Fly (OTF) register and can be written to while the KX134-1211 is enabled (PC1 bit in CNTL1 register is set to “1”) and the change will be accepted with no interruption in the operation.
+
+![[Pasted image 20230913163207.png]]
+
+ set the resolution of the acceleration data samples collected to 16-bit resolution (BRES=1) and set the operating mode of the sample buffer to FIFO (BM=0).
+![[Pasted image 20230913163303.png]]
