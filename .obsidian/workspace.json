@@ -125,7 +125,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "cabdc51be2d9613d",
@@ -206,6 +207,8 @@
   },
   "active": "0882909fbb5414d5",
   "lastOpenFiles": [
+    "picture/Pasted image 20230913161907.png",
+    "picture/Pasted image 20230913161357.png",
     "about I2C Protocol.md",
     "Untitled.md",
     "about KX134.md",
@@ -227,7 +230,6 @@
     "max I2C Speed in Project.md",
     "picture/Pasted image 20230706155229.png",
     "picture/Pasted image 20230704172945.png",
-    "picture/Pasted image 20230704172823.png",
     "KX134 Einstellung (email).md",
     "Notiz I2C.md",
     "Notiz Seminararbeit.md",
@@ -242,7 +244,6 @@
     "SDOF Result.md",
     "zynq-7010下运用I2C总线完成对LSM303D传感器的数据读取.md",
     "matlab_local_commentar.md",
-    "ZC706 BIST.md",
     "picture"
   ]
 }
