@@ -168,6 +168,8 @@
   },
   "active": "9915e9e5d9053e22",
   "lastOpenFiles": [
+    "doc/FOUDA_MSE_Master_ thesis.pdf",
+    "doc/未确认 821522.crdownload",
     "about Model.md",
     "about Zynq.md",
     "KX134 Buffer read.md",
@@ -204,7 +206,6 @@
     "test.md",
     "SDOF Result.md",
     "zynq-7010下运用I2C总线完成对LSM303D传感器的数据读取.md",
-    "matlab_local_commentar.md",
     "picture"
   ]
 }
