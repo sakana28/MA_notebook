@@ -1,4 +1,4 @@
-#writing #fundamental#
+#writing #fundamental
 
 The Zynq All Programmable System-on-Chip (APSoC) by Xilinx brings together the adaptability of a standard processor and the customizability of an FPGA (Field-Programmable Gate Array). This combo delivers high performance, flexibility, and the ability to scale. A standout feature of Zynq is its ability to be programmed at the logic level. It contains units for logic processing, signal processing blocks, and memory areas that can be set up to perform specific tasks. This lets developers design specialized circuits, freeing up the processor for other jobs.
 
