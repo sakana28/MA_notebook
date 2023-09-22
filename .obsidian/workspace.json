@@ -166,8 +166,12 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "9915e9e5d9053e22",
+  "active": "fe85e5948ab74939",
   "lastOpenFiles": [
+    "doc/Master_s_Thesis_signed.pdf",
+    "doc/未确认 481460.crdownload",
+    "doc/Masterarbeit___Tuan_Anh_Dang-final.pdf",
+    "doc/未确认 496316.crdownload",
     "doc/thesis_main.pdf",
     "doc/未确认 95733.crdownload",
     "doc/CERN-THESIS-2020-397.pdf",
@@ -209,7 +213,6 @@
     "logic analyzer.md",
     "test.md",
     "SDOF Result.md",
-    "zynq-7010下运用I2C总线完成对LSM303D传感器的数据读取.md",
-    "picture"
+    "zynq-7010下运用I2C总线完成对LSM303D传感器的数据读取.md"
   ]
 }
