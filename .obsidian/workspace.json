@@ -189,6 +189,11 @@
   },
   "active": "8a712edd81f895e5",
   "lastOpenFiles": [
+    "screenshot/Screenshot_2023-09-22_15-55-56.png",
+    "screenshot/Screenshot_2023-09-22_15-55-06.png",
+    "screenshot/Screenshot_2023-09-22_15-54-24.png",
+    "screenshot/Screenshot_2023-09-22_15-52-59.png",
+    "screenshot",
     "introduction.md",
     "about Zynq.md",
     "doc/Master_s_Thesis_signed.pdf",
@@ -200,7 +205,6 @@
     "doc/CERN-THESIS-2020-397.pdf",
     "doc/未确认 755549.crdownload",
     "doc/FOUDA_MSE_Master_ thesis.pdf",
-    "doc/未确认 821522.crdownload",
     "about Model.md",
     "KX134 Buffer read.md",
     "KX134 ODR Register.md",
@@ -215,11 +219,8 @@
     "Vivado warning.md",
     "picture/Pasted image 20230825165222.png",
     "picture/Pasted image 20230825164332.png",
-    "picture/Pasted image 20230825164237.png",
-    "picture/Pasted image 20230807163053.png",
     "FPGA based PWM generator.md",
     "Zybo vs Zedboard vs ZC706.md",
-    "picture/Pasted image 20230711162712.png",
     "I2C Slave.md",
     "max I2C Speed in Project.md",
     "KX134 Einstellung (email).md",
@@ -233,7 +234,6 @@
     "TCA6416A.md",
     "logic analyzer.md",
     "test.md",
-    "SDOF Result.md",
-    "zynq-7010下运用I2C总线完成对LSM303D传感器的数据读取.md"
+    "SDOF Result.md"
   ]
 }
