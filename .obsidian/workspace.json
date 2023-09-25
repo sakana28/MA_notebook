@@ -18,8 +18,29 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "16211440617b13d4",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          },
+          {
+            "id": "8a712edd81f895e5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "introduction.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -94,7 +115,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about Zynq.md",
+                "file": "introduction.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +132,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about Zynq.md",
+                "file": "introduction.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +155,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "about Zynq.md"
+                "file": "introduction.md"
               }
             }
           },
@@ -166,8 +187,10 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "fe85e5948ab74939",
+  "active": "8a712edd81f895e5",
   "lastOpenFiles": [
+    "introduction.md",
+    "about Zynq.md",
     "doc/Master_s_Thesis_signed.pdf",
     "doc/未确认 481460.crdownload",
     "doc/Masterarbeit___Tuan_Anh_Dang-final.pdf",
@@ -179,7 +202,6 @@
     "doc/FOUDA_MSE_Master_ thesis.pdf",
     "doc/未确认 821522.crdownload",
     "about Model.md",
-    "about Zynq.md",
     "KX134 Buffer read.md",
     "KX134 ODR Register.md",
     "about KX134.md",
@@ -191,7 +213,6 @@
     "about I2C Protocol.md",
     "Untitled.md",
     "Vivado warning.md",
-    "New Folder",
     "picture/Pasted image 20230825165222.png",
     "picture/Pasted image 20230825164332.png",
     "picture/Pasted image 20230825164237.png",
