@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "about Model.md",
+                "file": "about KX134.md",
                 "mode": "source",
                 "source": false
               }
@@ -43,7 +43,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -72,7 +73,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "about",
+                "query": "tag:#fundamental",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -190,9 +191,12 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "16211440617b13d4",
+  "active": "8a712edd81f895e5",
   "lastOpenFiles": [
+    "about KX134.md",
+    "about I2C Protocol.md",
     "about Zynq.md",
+    "about Model.md",
     "picture/Pasted image 20230928054544.png",
     "Step by step notiz.md",
     "未命名 2.md",
@@ -202,7 +206,6 @@
     "未命名.md",
     "picture/Pasted image 20230927234113.png",
     "picture/Pasted image 20230927222230.png",
-    "about Model.md",
     "picture/Pasted image 20230927204944.png",
     "picture/Pasted image 20230927204921.png",
     "introduction.md",
@@ -220,9 +223,7 @@
     "doc/thesis_main.pdf",
     "KX134 Buffer read.md",
     "KX134 ODR Register.md",
-    "about KX134.md",
     "picture/Pasted image 20230913163303.png",
-    "about I2C Protocol.md",
     "Untitled.md",
     "Vivado warning.md",
     "FPGA based PWM generator.md",
