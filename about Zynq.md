@@ -20,6 +20,9 @@ TThe Zynq All Programmable System-on-Chip (APSoC) from Xilinx combines the adapt
 
 The platform's structure, depicted in Figure {1.1}, consists of two primary parts: the Processing System (PS) and the Programmable Logic (PL). The FPGA fabric of the PL is based on the Artix®-7 and Kintex®-7 FPGAs and includes not only essential elements such as Configurable Logic Blocks (CLBs) and the switch matrix, but also DSPs and Block RAMs that extend the computational and memory capabilities.
 ![[Pasted image 20230928054544.png]]
+
+（from Zynq 7000 datasheet）
+
 In addition to its customizable logic, the Zynq platform integrates a potent Dual-Core ARM Cortex-A9 processor and associated processing resources, forming an Application Processing Unit (APU). This ensemble includes hardware floating-point units, peripheral interfaces, cache memory, memory interfaces, interconnects, and clock generation circuitry. The PS of Zynq supports various real-time operating systems, including Linux, and boasts a fast connection that facilitates swift and efficient data transfer between the processor and the programmable logic.
 
 Furthermore, Zynq benefits from robust support via the Xilinx Vivado Design Suite, a comprehensive toolset for developing custom system-on-chip (SoC) solutions. This suite encompasses all necessary resources for both hardware and software development, spanning from initial design to final testing. Xilinx provides extensive documentation and training materials to aid developers in harnessing the full potential of Zynq. In my own project, I heavily relied on these official resources as well as contributions from the community.
