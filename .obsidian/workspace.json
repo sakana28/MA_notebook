@@ -38,9 +38,19 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "19a2abc75f7d158f",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.4.14"
+              }
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -187,7 +197,7 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "8a712edd81f895e5",
+  "active": "19a2abc75f7d158f",
   "lastOpenFiles": [
     "introduction.md",
     "doc/vhdl2proc.pdf",
