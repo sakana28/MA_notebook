@@ -8,12 +8,20 @@ In addition to its customizable logic, Zynq comes with a powerful Dual-Core ARM 
 
 Zynq also benefits from support through the Xilinx Vivado Design Suite, a complete set of tools for developing custom system-on-chip (SoC) solutions. This suite provides everything needed for both hardware and software development, from initial design to final testing. Xilinx offers thorough documentation and training resources to help developers make the most of what Zynq has to offer. In my own project, I made heavy use of these official materials as well as community resources.
 
-在PS与PL之间。The AXI-interface (Advanced eXtensible Interface) serves as a standard port for connecting peripheral modules
+为了实现PS与PL之间的高速通信，Zynq提供了多个The AXI-Ports (Advanced eXtensible Interface) 。在工作中涉及到了General Purpose Port和High Performance Ports，将在后续章节中详细阐述。Additionally, interrupt signals enable the programmable logic to trigger events that interrupt the processor's operation. These features collectively make SoC FPGAs an incredibly flexible platform for hardware-software co-designs。
 
-Within the Zynq system, the programmable logic section is known as the PL side, and the processor section is called the PS side. When Zynq starts up, the PS is the first to boot, followed by the PL setup. The PS can run operating systems like Linux and acts like an embedded processor. On the other hand, the PL functions as a specialized FPGA unit within the overall system.
-
-In summary, Zynq offers a strong and adaptable platform for developing embedded systems. Its combination of programmable logic and a dual-core processor allows it to handle a wide range of tasks.
 
 
 
 重要的是，Zynq处理系统不仅包括ARM处理器，还包括一组相关的处理资源，形成一个应用处理单元（APU）Importantly, the Zynq processing system encompasses not just the ARM processor, but a set of associated processing resources forming an Application Processing Unit (APU)
+
+
+TThe Zynq All Programmable System-on-Chip (APSoC) from Xilinx combines the adaptability of a general-purpose processor with the customizability of a field-programmable gate array (FPGA), resulting in a powerful platform that delivers high performance, flexibility, and scalability. One noteworthy feature of the Zynq architecture is its ability to program at the logic level, which includes logic processing units, signal processing blocks, and configurable memory areas tailored to specific tasks. This capability enables developers to create specific circuits, freeing up the processor for additional computational tasks.
+
+The platform's structure, depicted in Figure {1.1}, consists of two primary parts: the Processing System (PS) and the Programmable Logic (PL). The FPGA fabric of the PL is based on the Artix®-7 and Kintex®-7 FPGAs and includes not only essential elements such as Configurable Logic Blocks (CLBs) and the switch matrix, but also DSPs and Block RAMs that extend the computational and memory capabilities.
+![[Pasted image 20230928054544.png]]
+In addition to its customizable logic, the Zynq platform integrates a potent Dual-Core ARM Cortex-A9 processor and associated processing resources, forming an Application Processing Unit (APU). This ensemble includes hardware floating-point units, peripheral interfaces, cache memory, memory interfaces, interconnects, and clock generation circuitry. The PS of Zynq supports various real-time operating systems, including Linux, and boasts a fast connection that facilitates swift and efficient data transfer between the processor and the programmable logic.
+
+Furthermore, Zynq benefits from robust support via the Xilinx Vivado Design Suite, a comprehensive toolset for developing custom system-on-chip (SoC) solutions. This suite encompasses all necessary resources for both hardware and software development, spanning from initial design to final testing. Xilinx provides extensive documentation and training materials to aid developers in harnessing the full potential of Zynq. In my own project, I heavily relied on these official resources as well as contributions from the community.
+
+To enable high-speed communication between the PS and PL, Zynq offers multiple AXI-Ports (Advanced eXtensible Interface), including General Purpose Ports and High-Performance Ports, which will be elaborated upon in subsequent sections. Additionally, interrupt signals empower the programmable logic to trigger events that interrupt processor operations. Collectively, these features establish SoC FPGAs as an exceptionally versatile platform for hardware-software co-designs.
