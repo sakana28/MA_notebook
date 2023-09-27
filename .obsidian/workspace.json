@@ -38,9 +38,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "ba083f8c836f17ed",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Step by step notiz.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -115,7 +127,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about Model.md",
+                "file": "Step by step notiz.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -132,7 +144,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about Model.md",
+                "file": "Step by step notiz.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -155,7 +167,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "about Model.md"
+                "file": "Step by step notiz.md"
               }
             }
           },
@@ -187,8 +199,11 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "8a712edd81f895e5",
+  "active": "ba083f8c836f17ed",
   "lastOpenFiles": [
+    "picture/Pasted image 20230927222230.png",
+    "about Model.md",
+    "Step by step notiz.md",
     "picture/Pasted image 20230927204944.png",
     "picture/Pasted image 20230927204921.png",
     "introduction.md",
@@ -207,7 +222,6 @@
     "doc/thesis_main.pdf",
     "doc/未确认 95733.crdownload",
     "doc/CERN-THESIS-2020-397.pdf",
-    "about Model.md",
     "KX134 Buffer read.md",
     "KX134 ODR Register.md",
     "about KX134.md",
@@ -215,7 +229,6 @@
     "picture/Pasted image 20230913163207.png",
     "picture/Pasted image 20230913162939.png",
     "picture/Pasted image 20230913161907.png",
-    "picture/Pasted image 20230913161357.png",
     "about I2C Protocol.md",
     "Untitled.md",
     "Vivado warning.md",
@@ -233,7 +246,6 @@
     "I2C test result.md",
     "TCA6416A.md",
     "logic analyzer.md",
-    "test.md",
-    "SDOF Result.md"
+    "test.md"
   ]
 }
