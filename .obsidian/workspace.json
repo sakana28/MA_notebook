@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Step by step notiz.md",
+                "file": "introduction.md",
                 "mode": "source",
                 "source": false
               }
@@ -73,7 +73,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#fundamental",
+                "query": "intr",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -103,8 +103,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "cabdc51be2d9613d",
@@ -120,7 +119,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Step by step notiz.md",
+                "file": "introduction.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,7 +136,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Step by step notiz.md",
+                "file": "introduction.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -160,7 +159,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Step by step notiz.md"
+                "file": "introduction.md"
               }
             }
           },
@@ -194,12 +193,14 @@
   },
   "active": "ba083f8c836f17ed",
   "lastOpenFiles": [
-    "about KX134.md",
-    "about Model.md",
-    "about I2C Protocol.md",
     "about Zynq.md",
-    "picture/Pasted image 20230928054544.png",
     "Step by step notiz.md",
+    "about Model.md",
+    "about KX134.md",
+    "picture/Pasted image 20230928085715.png",
+    "picture/Pasted image 20230928085712.png",
+    "about I2C Protocol.md",
+    "picture/Pasted image 20230928054544.png",
     "未命名 2.md",
     "doc/MSTR_3491.pdf",
     "doc/未确认 737824.crdownload",
@@ -215,7 +216,6 @@
     "screenshot/Screenshot_2023-09-22_15-55-56.png",
     "screenshot/Screenshot_2023-09-22_15-55-06.png",
     "screenshot/Screenshot_2023-09-22_15-54-24.png",
-    "screenshot/Screenshot_2023-09-22_15-52-59.png",
     "screenshot",
     "doc/Master_s_Thesis_signed.pdf",
     "doc/未确认 481460.crdownload",
@@ -224,7 +224,6 @@
     "doc/thesis_main.pdf",
     "KX134 Buffer read.md",
     "KX134 ODR Register.md",
-    "picture/Pasted image 20230913163303.png",
     "Untitled.md",
     "Vivado warning.md",
     "FPGA based PWM generator.md",
