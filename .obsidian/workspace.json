@@ -44,7 +44,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -120,7 +120,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about Model.md",
+                "file": "Step by step notiz.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,7 +137,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about Model.md",
+                "file": "Step by step notiz.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -160,7 +160,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "about Model.md"
+                "file": "Step by step notiz.md"
               }
             }
           },
@@ -192,12 +192,12 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "8a712edd81f895e5",
+  "active": "ba083f8c836f17ed",
   "lastOpenFiles": [
     "about KX134.md",
+    "about Model.md",
     "about I2C Protocol.md",
     "about Zynq.md",
-    "about Model.md",
     "picture/Pasted image 20230928054544.png",
     "Step by step notiz.md",
     "未命名 2.md",
