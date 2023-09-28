@@ -7,5 +7,10 @@ This section describes the rolling bearing vibration signal models of interest i
 
 该项目已在Creative Commons许可下开发，并且该项目的愿景是由条件监测研究人员社区接受的一组工具，用于初步验证新诊断技术。读者可以自由并立即使用附录A中的脚本来模拟不同的故障和不同的工作条件。该脚本适用于开源的Octave环境。本文充分详细介绍了振动模型的理论背景和数字实现。展示并评论了模拟故障轴承（局部故障和广义故障）的输出信号示例。
 
-The vibration signal of a localized fault in a rolling element bearing can be reasonably modelled as 
+The vibration signal of a localized fault in a rolling element bearing can be  modelled as :
+  
 ![[Pasted image 20230927204944.png]]
+
+where h(t) is the impulse response to a single impact as measured by the sensor, q(t) takes into account the periodic modulation due to the load distribution, possible bearing unbalance or misalignment, as well as the periodic changes in the impulse response as the fault moves towards and backwards the sensor, T is the inter-arrival time between two consecutive impacts, {taoi} accounts for the uncertainties on the inter-arrival time (jitters) of the ith impact due to the necessary random slip of the rolling elements and n(t) gathers the background noise.
+
+In this expression, h(t) is the impulse response to a single impact, as measured by the sensor. The term q(t) encompasses various factors contributing to the periodic modulation within the signal, which arise from factors such as load distribution, potential bearing unbalance or misalignment, and periodic variations in the impulse response due to the fault's movement in proximity to the sensor. The parameter �T signifies the inter-arrival time between successive impacts, and {��}{τi​} accounts for the uncertainties in the inter-arrival times (\textit{jitters}) of each impact, which are inherently influenced by the random slip of the rolling elements. Lastly, �(�)n(t) collects the background noise component within the signal.
