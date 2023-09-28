@@ -8,15 +8,11 @@
         "type": "tabs",
         "children": [
           {
-            "id": "0bf1a1933e9e6eb9",
+            "id": "a5017aab2670fda9",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "about KX134.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -86,7 +82,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about KX134.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +98,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about KX134.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,9 +119,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "about KX134.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -149,8 +141,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "0bf1a1933e9e6eb9",
+  "active": "a5017aab2670fda9",
   "lastOpenFiles": [
+    "about KX134.md",
     "code/SW/watermark_just_for_ip/src/SDoperation.h",
     "code/SW/watermark_just_for_ip/src/SDoperation.c",
     "code/SW/watermark_just_for_ip/src/main.c",
@@ -161,7 +154,6 @@
     "code/SW/watermark_just_for_ip/src/platform.h",
     "code/SW/watermark_just_for_ip/src",
     "code/SW/watermark_just_for_ip",
-    "code/SW/watermark_for_kx134_and_ip/src/SDoperation.h",
     "about Zynq.md",
     "conflict-files-obsidian-git.md",
     "introduction.md"
