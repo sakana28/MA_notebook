@@ -1,4 +1,4 @@
-#writing #fundamental 
+#writing #hw_implementation
 ## from specification
 The KX134-1211 is a tri-axis accelerometer designed to measure motion in multiple directions, with sensitivity options ranging from ±8g to ±64g. This device uses silicon-based technology and features a customizable three-part data handling system, known as the Advanced Data Path (ADP). The ADP includes a filter to remove noise, a second filter that can serve two purposes—either additional noise removal or emphasizing certain frequencies—and a calculation engine for averaging the signal.
 
