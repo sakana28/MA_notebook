@@ -1,64 +1,35 @@
 {
   "main": {
-    "id": "139392753f56a12d",
+    "id": "8573a318015448c5",
     "type": "split",
     "children": [
       {
-        "id": "e307ea6c32a54b35",
+        "id": "a17ed76c30e6df59",
         "type": "tabs",
         "children": [
           {
-            "id": "16211440617b13d4",
+            "id": "a5017aab2670fda9",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "about KX134.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "8a712edd81f895e5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "about Model.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "ba083f8c836f17ed",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "introduction.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "67087e855ad3e24e",
+    "id": "0454d3433702ff08",
     "type": "split",
     "children": [
       {
-        "id": "1ea90fbbf788719c",
+        "id": "b84e582e2c470215",
         "type": "tabs",
         "children": [
           {
-            "id": "20e78b9131fff795",
+            "id": "10a77385a4e0cdf9",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -68,12 +39,12 @@
             }
           },
           {
-            "id": "fe85e5948ab74939",
+            "id": "fa032fe20be38ea7",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "intr",
+                "query": "WRITING",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -83,15 +54,7 @@
             }
           },
           {
-            "id": "d7bdead2148f4147",
-            "type": "leaf",
-            "state": {
-              "type": "starred",
-              "state": {}
-            }
-          },
-          {
-            "id": "a4fc48c64e3d25f0",
+            "id": "5b4f6d3f8dc75b7b",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -106,20 +69,19 @@
     "width": 300
   },
   "right": {
-    "id": "cabdc51be2d9613d",
+    "id": "9d190cd52aa04925",
     "type": "split",
     "children": [
       {
-        "id": "814844bd2c8156fa",
+        "id": "da47360c4d827e33",
         "type": "tabs",
         "children": [
           {
-            "id": "0814d0a373e32aa1",
+            "id": "4d780ae33b2a456d",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "introduction.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -131,19 +93,18 @@
             }
           },
           {
-            "id": "48215061dfdace0d",
+            "id": "523bf36dc0e95056",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "introduction.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "7658f94af86ead78",
+            "id": "6b35666e5cea63ee",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -154,25 +115,14 @@
             }
           },
           {
-            "id": "951c449bcea806e4",
+            "id": "b4f0bee7db876e06",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "introduction.md"
-              }
-            }
-          },
-          {
-            "id": "233dbe15fe9c6861",
-            "type": "leaf",
-            "state": {
-              "type": "advanced-tables-toolbar",
               "state": {}
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
@@ -181,62 +131,31 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": false,
-      "command-palette:打开命令面板": false,
       "obsidian42-brat:BRAT": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
     }
   },
-  "active": "ba083f8c836f17ed",
+  "active": "a5017aab2670fda9",
   "lastOpenFiles": [
-    "about Zynq.md",
-    "Step by step notiz.md",
-    "about Model.md",
     "about KX134.md",
-    "picture/Pasted image 20230928085715.png",
-    "picture/Pasted image 20230928085712.png",
-    "about I2C Protocol.md",
-    "picture/Pasted image 20230928054544.png",
-    "未命名 2.md",
-    "doc/MSTR_3491.pdf",
-    "doc/未确认 737824.crdownload",
-    "未命名 1.md",
-    "未命名.md",
-    "picture/Pasted image 20230927234113.png",
-    "picture/Pasted image 20230927222230.png",
-    "picture/Pasted image 20230927204944.png",
-    "picture/Pasted image 20230927204921.png",
-    "introduction.md",
-    "doc/vhdl2proc.pdf",
-    "doc/未确认 573610.crdownload",
-    "screenshot/Screenshot_2023-09-22_15-55-56.png",
-    "screenshot/Screenshot_2023-09-22_15-55-06.png",
-    "screenshot/Screenshot_2023-09-22_15-54-24.png",
-    "screenshot",
-    "doc/Master_s_Thesis_signed.pdf",
-    "doc/未确认 481460.crdownload",
-    "doc/Masterarbeit___Tuan_Anh_Dang-final.pdf",
-    "doc/未确认 496316.crdownload",
-    "doc/thesis_main.pdf",
-    "KX134 Buffer read.md",
-    "KX134 ODR Register.md",
-    "Untitled.md",
-    "Vivado warning.md",
-    "FPGA based PWM generator.md",
-    "Zybo vs Zedboard vs ZC706.md",
-    "I2C Slave.md",
-    "max I2C Speed in Project.md",
-    "KX134 Einstellung (email).md",
-    "Notiz I2C.md",
-    "Notiz Seminararbeit.md",
-    "KX134 Verlauf.md",
-    "1VPP -> TTL.md",
-    "KX134 Pin.md",
-    "KX134 Verbindungshinweisung.md",
-    "I2C test result.md"
+    "code/SW/watermark_just_for_ip/src/SDoperation.h",
+    "code/SW/watermark_just_for_ip/src/SDoperation.c",
+    "code/SW/watermark_just_for_ip/src/main.c",
+    "code/SW/watermark_just_for_ip/src/lscript.ld",
+    "code/SW/watermark_just_for_ip/src/Xilinx.spec",
+    "code/SW/watermark_just_for_ip/src/platform_config.h",
+    "code/SW/watermark_just_for_ip/src/platform.c",
+    "code/SW/watermark_just_for_ip/src/platform.h",
+    "code/SW/watermark_just_for_ip/src",
+    "code/SW/watermark_just_for_ip",
+    "about Zynq.md",
+    "conflict-files-obsidian-git.md",
+    "introduction.md"
   ]
 }
