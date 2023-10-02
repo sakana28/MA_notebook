@@ -18,3 +18,7 @@ And the vibration signal of a distributed fault can be modelled as:
 ![[Pasted image 20230928085715.png]]
 where p(t) accounts for the periodic component such as shaft and stiffness variation periodicities and B(t) for the purely cyclostationary content with E{B(t)} = 0. [step by step]
 
+
+Cyclostationarity encompasses a subclass of non-stationary signals which exhibit some cyclical behaviour. A typical example of a cyclostationary signal is a random noise that is amplitude modulated by a periodic function. A more versatile example is where different periodic modulations envelope each frequency component of the random noise. Cyclostationarity has been shown to ideally fit the property of many rotating and reciprocating machine vibrations, due to the inherent periodic modulations that these sustain during operation [5]. The recognition that a vibration signal is cyclostationary affords much more information than the usual and simplistic assumption of stationarity, since it provides the tools to simultaneously analyse the content of a signal (e.g. spectral content) along with the characterisation of how this content evolves periodically in time (e.g. within the machine cycle).
+
+[[what is non-stationary]]

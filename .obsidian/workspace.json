@@ -37,14 +37,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "introduction.md",
+                "file": "about Model.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "021432e6805af7d2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "what is non-stationary.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -73,7 +85,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "about",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -119,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "introduction.md",
+                "file": "what is non-stationary.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,7 +148,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "introduction.md",
+                "file": "what is non-stationary.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -159,7 +171,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "introduction.md"
+                "file": "what is non-stationary.md"
               }
             }
           },
@@ -191,8 +203,11 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "ba083f8c836f17ed",
+  "active": "021432e6805af7d2",
   "lastOpenFiles": [
+    "about Model.md",
+    "what is non-stationary.md",
+    "introduction.md",
     "doc/Kionix_kx_134/Seminararbeit_Implementierung_eines_Echtzeit_Demonstrators.pdf",
     "doc/Kionix_kx_134/KX134-1211-Technical-Reference-Manual-Rev-3.0.pdf",
     "doc/Kionix_kx_134/KX134-1211-Specifications-Rev-1.0-1659717.pdf",
@@ -203,10 +218,8 @@
     "code/SW/watermark_just_for_ip/src/SDoperation.h",
     "code/SW/watermark_just_for_ip/src/SDoperation.c",
     "code/SW/watermark_just_for_ip/src/platform_config.h",
-    "code/SW/watermark_just_for_ip/src/platform.h",
     "about Zynq.md",
     "Step by step notiz.md",
-    "about Model.md",
     "about KX134.md",
     "picture/Pasted image 20230928085715.png",
     "picture/Pasted image 20230928085712.png",
@@ -219,7 +232,6 @@
     "picture/Pasted image 20230927222230.png",
     "picture/Pasted image 20230927204944.png",
     "picture/Pasted image 20230927204921.png",
-    "introduction.md",
     "screenshot/Screenshot_2023-09-22_15-55-56.png",
     "screenshot/Screenshot_2023-09-22_15-55-06.png",
     "screenshot/Screenshot_2023-09-22_15-54-24.png",
