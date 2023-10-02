@@ -205,6 +205,8 @@
   },
   "active": "021432e6805af7d2",
   "lastOpenFiles": [
+    "doc/gao2006.pdf",
+    "doc/未确认 8687.crdownload",
     "about Model.md",
     "what is non-stationary.md",
     "introduction.md",
@@ -217,7 +219,6 @@
     "code/SW/watermark_just_for_ip/src/Xilinx.spec",
     "code/SW/watermark_just_for_ip/src/SDoperation.h",
     "code/SW/watermark_just_for_ip/src/SDoperation.c",
-    "code/SW/watermark_just_for_ip/src/platform_config.h",
     "about Zynq.md",
     "Step by step notiz.md",
     "about KX134.md",
@@ -249,7 +250,6 @@
     "KX134 Verlauf.md",
     "1VPP -> TTL.md",
     "KX134 Pin.md",
-    "KX134 Verbindungshinweisung.md",
-    "I2C test result.md"
+    "KX134 Verbindungshinweisung.md"
   ]
 }
