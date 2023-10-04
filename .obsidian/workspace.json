@@ -217,12 +217,14 @@
   },
   "active": "6ae171ba96013c3c",
   "lastOpenFiles": [
-    "fundemental.md",
+    "picture/Pasted image 20231005065448.png",
     "about Model draft.md",
-    "about Zynq.md",
-    "about Model.md",
-    "introduction.md",
     "about KX134.md",
+    "about Model.md",
+    "picture/Pasted image 20231005065439.png",
+    "fundemental.md",
+    "about Zynq.md",
+    "introduction.md",
     "未命名 1.md",
     "what is non-stationary.md",
     "doc/gao2006.pdf",
@@ -248,7 +250,6 @@
     "picture/Pasted image 20230927204921.png",
     "screenshot/Screenshot_2023-09-22_15-55-56.png",
     "screenshot/Screenshot_2023-09-22_15-55-06.png",
-    "screenshot/Screenshot_2023-09-22_15-54-24.png",
     "KX134 Buffer read.md",
     "KX134 ODR Register.md",
     "Untitled.md",
@@ -261,7 +262,6 @@
     "Notiz I2C.md",
     "Notiz Seminararbeit.md",
     "KX134 Verlauf.md",
-    "1VPP -> TTL.md",
-    "KX134 Pin.md"
+    "1VPP -> TTL.md"
   ]
 }
