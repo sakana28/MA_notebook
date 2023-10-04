@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "about Model.md",
+                "file": "about Zynq.md",
                 "mode": "source",
                 "source": false
               }
@@ -56,7 +56,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +85,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "evalu",
+                "query": "zynq",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -131,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "introduction.md",
+                "file": "about Model.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -148,7 +148,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "introduction.md",
+                "file": "about Model.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -171,7 +171,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "introduction.md"
+                "file": "about Model.md"
               }
             }
           },
@@ -203,14 +203,16 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "021432e6805af7d2",
+  "active": "8a712edd81f895e5",
   "lastOpenFiles": [
+    "about Zynq.md",
+    "about Model.md",
+    "未命名 1.md",
+    "introduction.md",
     "what is non-stationary.md",
     "about KX134.md",
-    "about Model.md",
     "doc/gao2006.pdf",
     "doc/未确认 8687.crdownload",
-    "introduction.md",
     "doc/Kionix_kx_134/Seminararbeit_Implementierung_eines_Echtzeit_Demonstrators.pdf",
     "doc/Kionix_kx_134/KX134-1211-Technical-Reference-Manual-Rev-3.0.pdf",
     "doc/Kionix_kx_134/KX134-1211-Specifications-Rev-1.0-1659717.pdf",
@@ -219,14 +221,12 @@
     "doc/Kionix_kx_134",
     "code/SW/watermark_just_for_ip/src/Xilinx.spec",
     "code/SW/watermark_just_for_ip/src/SDoperation.h",
-    "about Zynq.md",
     "Step by step notiz.md",
     "picture/Pasted image 20230928085715.png",
     "picture/Pasted image 20230928085712.png",
     "about I2C Protocol.md",
     "picture/Pasted image 20230928054544.png",
     "未命名 2.md",
-    "未命名 1.md",
     "未命名.md",
     "picture/Pasted image 20230927234113.png",
     "picture/Pasted image 20230927222230.png",
