@@ -41,5 +41,8 @@ Cyclostationarity encompasses a subclass of non-stationary signals which exhibit
 - p(t)：捕捉了周期性成分，如轴和刚度变化的周期性。
 - B(t)：代表了纯粹的周期非平稳内容，其期望值为E{B(t)} = 0。
 
-数值实现： 方程（1）和方程（3）都可以轻松地在Matlab或Python等软件环境中进行数值实现。这些实现使研究人员能够生成模拟信号，模拟不同工况下滚动轴承的振动行为。图片（）和（）分别表示了获取模拟信号的流程：
+（Step-by-step）提出了数值实现这两个模型的算法以及根据该算法的Octave script code。图片（）和（）分别表示了获取局部与分布故障产生的振动信号的模拟信号的流程：
+
+
+根据这一算法可以获得不同工况下滚动轴承的振动信号。用户可以调整rolling bearing的几何尺寸，fault的位置，the stage of the fault， cyclostationarity of the signal, random contributions等features。
 
