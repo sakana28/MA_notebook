@@ -25,19 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "about Model.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "375248cddc946caf",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "fundemental.md",
+                "file": "about Model draft.md",
                 "mode": "source",
                 "source": false
               }
@@ -61,14 +49,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "introduction.md",
+                "file": "fundemental.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "6ae171ba96013c3c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "about Model.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -97,7 +97,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "zynq",
+                "query": "fund",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -143,7 +143,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "fundemental.md",
+                "file": "about Model.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -160,7 +160,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "fundemental.md",
+                "file": "about Model.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -183,7 +183,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "fundemental.md"
+                "file": "about Model.md"
               }
             }
           },
@@ -215,15 +215,16 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "375248cddc946caf",
+  "active": "6ae171ba96013c3c",
   "lastOpenFiles": [
-    "about Model.md",
     "fundemental.md",
+    "about Model draft.md",
     "about Zynq.md",
-    "未命名 1.md",
+    "about Model.md",
     "introduction.md",
-    "what is non-stationary.md",
     "about KX134.md",
+    "未命名 1.md",
+    "what is non-stationary.md",
     "doc/gao2006.pdf",
     "doc/未确认 8687.crdownload",
     "doc/Kionix_kx_134/Seminararbeit_Implementierung_eines_Echtzeit_Demonstrators.pdf",
@@ -261,7 +262,6 @@
     "Notiz Seminararbeit.md",
     "KX134 Verlauf.md",
     "1VPP -> TTL.md",
-    "KX134 Pin.md",
-    "KX134 Verbindungshinweisung.md"
+    "KX134 Pin.md"
   ]
 }
