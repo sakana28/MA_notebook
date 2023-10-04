@@ -49,7 +49,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "what is non-stationary.md",
+                "file": "introduction.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "about",
+                "query": "evalu",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -131,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "what is non-stationary.md",
+                "file": "introduction.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -148,7 +148,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "what is non-stationary.md",
+                "file": "introduction.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -171,7 +171,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "what is non-stationary.md"
+                "file": "introduction.md"
               }
             }
           },
@@ -205,10 +205,11 @@
   },
   "active": "021432e6805af7d2",
   "lastOpenFiles": [
+    "what is non-stationary.md",
+    "about KX134.md",
+    "about Model.md",
     "doc/gao2006.pdf",
     "doc/未确认 8687.crdownload",
-    "about Model.md",
-    "what is non-stationary.md",
     "introduction.md",
     "doc/Kionix_kx_134/Seminararbeit_Implementierung_eines_Echtzeit_Demonstrators.pdf",
     "doc/Kionix_kx_134/KX134-1211-Technical-Reference-Manual-Rev-3.0.pdf",
@@ -218,10 +219,8 @@
     "doc/Kionix_kx_134",
     "code/SW/watermark_just_for_ip/src/Xilinx.spec",
     "code/SW/watermark_just_for_ip/src/SDoperation.h",
-    "code/SW/watermark_just_for_ip/src/SDoperation.c",
     "about Zynq.md",
     "Step by step notiz.md",
-    "about KX134.md",
     "picture/Pasted image 20230928085715.png",
     "picture/Pasted image 20230928085712.png",
     "about I2C Protocol.md",
