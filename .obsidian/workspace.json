@@ -32,7 +32,7 @@
             }
           },
           {
-            "id": "ba083f8c836f17ed",
+            "id": "7bd5e372a11ae7a8",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -42,9 +42,33 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "d6c73b83407abc4a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "about Zynq.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "55b7a0e0228d22d5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Draft.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -73,7 +97,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "abou",
+                "query": "dra",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -119,7 +143,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about Model.md",
+                "file": "Draft.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,7 +160,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about Model.md",
+                "file": "Draft.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -159,7 +183,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "about Model.md"
+                "file": "Draft.md"
               }
             }
           },
@@ -191,21 +215,22 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "8a712edd81f895e5",
+  "active": "55b7a0e0228d22d5",
   "lastOpenFiles": [
-    "fundemental.md",
-    "about Model draft.md",
-    "about ZC706.md",
-    "about KX134.md",
     "about Model.md",
     "about Zynq.md",
+    "about ZC706.md",
+    "introduction.md",
+    "Draft.md",
+    "picture/Pasted image 20231006055255.png",
+    "about KX134.md",
+    "about Model draft.md",
     "Zybo vs Zedboard vs ZC706.md",
     "picture/Pasted image 20231005065627.png",
     "picture/Pasted image 20231005065557.png",
     "picture/Pasted image 20231005065536.png",
     "picture/Pasted image 20231005065448.png",
     "picture/Pasted image 20231005065439.png",
-    "introduction.md",
     "未命名 1.md",
     "what is non-stationary.md",
     "doc/gao2006.pdf",
@@ -226,7 +251,6 @@
     "未命名 2.md",
     "未命名.md",
     "picture/Pasted image 20230927234113.png",
-    "picture/Pasted image 20230927222230.png",
     "KX134 Buffer read.md",
     "KX134 ODR Register.md",
     "Untitled.md",
@@ -237,7 +261,6 @@
     "KX134 Einstellung (email).md",
     "Notiz I2C.md",
     "Notiz Seminararbeit.md",
-    "KX134 Verlauf.md",
-    "1VPP -> TTL.md"
+    "KX134 Verlauf.md"
   ]
 }
