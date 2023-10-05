@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "about ZC706.md",
+                "file": "Zybo vs Zedboard vs ZC706.md",
                 "mode": "source",
                 "source": false
               }
@@ -80,7 +80,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -109,7 +109,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "fund",
+                "query": "zedboard",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -155,7 +155,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about ZC706.md",
+                "file": "fundemental.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -172,7 +172,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about ZC706.md",
+                "file": "fundemental.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -195,7 +195,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "about ZC706.md"
+                "file": "fundemental.md"
               }
             }
           },
@@ -227,11 +227,12 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "2bec5727df10df2a",
+  "active": "021432e6805af7d2",
   "lastOpenFiles": [
-    "fundemental.md",
-    "about ZC706.md",
     "about Model.md",
+    "Zybo vs Zedboard vs ZC706.md",
+    "about ZC706.md",
+    "fundemental.md",
     "picture/Pasted image 20231005065627.png",
     "picture/Pasted image 20231005065557.png",
     "picture/Pasted image 20231005065536.png",
@@ -267,7 +268,6 @@
     "Untitled.md",
     "Vivado warning.md",
     "FPGA based PWM generator.md",
-    "Zybo vs Zedboard vs ZC706.md",
     "I2C Slave.md",
     "max I2C Speed in Project.md",
     "KX134 Einstellung (email).md",
