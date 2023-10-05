@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "about Model draft.md",
+                "file": "about Model.md",
                 "mode": "source",
                 "source": false
               }
@@ -42,33 +42,9 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "2bec5727df10df2a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Zybo vs Zedboard vs ZC706.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "6ae171ba96013c3c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "about Model.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -143,7 +119,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about ZC706.md",
+                "file": "about Model.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -160,7 +136,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about ZC706.md",
+                "file": "about Model.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -183,7 +159,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "about ZC706.md"
+                "file": "about Model.md"
               }
             }
           },
@@ -215,19 +191,19 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "ba083f8c836f17ed",
+  "active": "8a712edd81f895e5",
   "lastOpenFiles": [
+    "fundemental.md",
+    "about Model draft.md",
+    "about ZC706.md",
+    "about KX134.md",
+    "about Model.md",
     "about Zynq.md",
     "Zybo vs Zedboard vs ZC706.md",
-    "about Model.md",
-    "fundemental.md",
-    "about ZC706.md",
     "picture/Pasted image 20231005065627.png",
     "picture/Pasted image 20231005065557.png",
     "picture/Pasted image 20231005065536.png",
     "picture/Pasted image 20231005065448.png",
-    "about Model draft.md",
-    "about KX134.md",
     "picture/Pasted image 20231005065439.png",
     "introduction.md",
     "未命名 1.md",
