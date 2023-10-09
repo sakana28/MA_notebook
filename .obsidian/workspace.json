@@ -13,6 +13,18 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "about KX134(material).md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "8bf6624b1792e825",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "about KX134.md",
                 "mode": "source",
                 "source": false
@@ -55,8 +67,7 @@
               }
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -131,7 +142,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Draft.md",
+                "file": "about KX134(material).md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -148,7 +159,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Draft.md",
+                "file": "about KX134(material).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -171,7 +182,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Draft.md"
+                "file": "about KX134(material).md"
               }
             }
           },
@@ -203,17 +214,18 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "d6c73b83407abc4a",
+  "active": "16211440617b13d4",
   "lastOpenFiles": [
-    "about Zynq.md",
+    "about KX134.md",
+    "about KX134(material).md",
     "Draft.md",
+    "about Zynq.md",
     "picture/Pasted image 20231006065127.png",
     "picture/PXL_20230922_142634240.jpg",
     "about Model.md",
     "about ZC706.md",
     "introduction.md",
     "picture/Pasted image 20231006055255.png",
-    "about KX134.md",
     "about Model draft.md",
     "Zybo vs Zedboard vs ZC706.md",
     "picture/Pasted image 20231005065627.png",
