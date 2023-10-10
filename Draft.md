@@ -36,7 +36,7 @@ Equation (2) models the vibration signal from a distributed fault in a bearing:
 
 The two terms in the equation are: 
 - p(t): the periodic components like shaft and stiffness variations
-- B(t): the pure cyclostationary content with E{B(t)} = 0
+- B(t): the pure cyclostationary component, which means cyclostationary component with an expected value of 0. [Estimation of Cyclic Cumulants of Machinery Vibration Signals in Non-stationary Operation]
 
 Based on these models, algorithms and Octave script code for numerical implementation of simulated vibration signals have been proposed in the work of G. D'Elia.  (Step-by-step) Figure ( ) demonstrates the procedure for generating vibration signals from localized faults, while Figure ( ) depicts the same process for distributed faults, according to the proposed algorithms.
 ![[Pasted image 20231005065627.png]]
