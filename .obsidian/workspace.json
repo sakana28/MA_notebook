@@ -109,7 +109,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "draf",
+                "query": "tag:#implementation",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -229,6 +229,8 @@
   },
   "active": "c4f9e9afa8580457",
   "lastOpenFiles": [
+    "picture/pladitor_diagram (1) 1.svg",
+    "picture/pladitor_diagram (1).svg",
     "picture/Pasted image 20231010072037.png",
     "picture/Pasted image 20231010072032.png",
     "picture/Pasted image 20231010072011.png",
@@ -247,9 +249,7 @@
     "picture/Pasted image 20231010054814.png",
     "about Zynq.md",
     "picture/Pasted image 20231006065127.png",
-    "picture/PXL_20230922_142634240.jpg",
     "introduction.md",
-    "picture/Pasted image 20231006055255.png",
     "about Model draft.md",
     "Zybo vs Zedboard vs ZC706.md",
     "未命名 1.md",
