@@ -1,7 +1,6 @@
 #writing #draft #implementation
 
 
-![[pladitor_diagram.svg]]
 
 ![[pladitor_diagram (1) 1.svg]]
 ![[Pasted image 20231010072011.png]]

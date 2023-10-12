@@ -80,7 +80,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -156,7 +156,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Draft.md",
+                "file": "custom I2C slave.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -173,7 +173,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Draft.md",
+                "file": "custom I2C slave.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -196,7 +196,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Draft.md"
+                "file": "custom I2C slave.md"
               }
             }
           },
@@ -228,8 +228,10 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "d6c73b83407abc4a",
+  "active": "c4f9e9afa8580457",
   "lastOpenFiles": [
+    "Draft.md",
+    "about ZC706.md",
     "picture/Pasted image 20231011052234.png",
     "about KX134(material).md",
     "custom I2C slave.md",
@@ -244,11 +246,8 @@
     "about Model.md",
     "about KX134.md",
     "picture/pladitor_diagram.svg",
-    "about ZC706.md",
-    "Draft.md",
     "picture/Pasted image 20231010060519.png",
     "picture/Pasted image 20231010060409.png",
-    "picture/Pasted image 20231010054814.png",
     "about Zynq.md",
     "introduction.md",
     "about Model draft.md",
