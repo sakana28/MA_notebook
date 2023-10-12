@@ -1,4 +1,7 @@
 #writing #fundamental 
+
+11.10.23 first change in draft  
+
 Cyclostationary signals are stochastic processes with periodic time-varying mean and autocorrelation functions. Earlier modeling works of vibration signals of rolling bearings often assumedto be stationary processes with autocorrelations independent of time, which neglected the inherently non-stationary nature of random slips of the rolling elements.(‘‘Differential Diagnosis of Gear and Bearing Faults,’’ Antoni, J., and Randall). Antoni and Randall (2003) first modeled vibrations produced by localized faults as cyclostationary processes, providing a basis for fault diagnosis.
 
 Building on the initial work of Antoni and Randall (2003), two important model equations have been proposed (Antoni, Facts and fictions, 2006) representing the vibration signals from localized and distributed faults in rolling element bearings. Equation (1) models the vibration signal from a localized fault in a bearing:

@@ -18,9 +18,9 @@ This work is organized as follows: Chapter 2 introduces the rolling bearing vibr
 This chapter presents an overview of cyclostationary signals and introduces a vibration signal model for rolling element bearings. The model is based on the concept of cyclostationary signals and serves as the foundation for subsequent work. Next, the Zynq SoC architecture and the ZC706 development board used in this thesis are also introduced.
 ### Vibration signal model
 [[about Model]]
-Cyclostationary signals are stochastic processes with periodic time-varying mean and autocorrelation functions. Earlier modeling works of vibration signals of rolling bearings often assumedto be stationary processes with autocorrelations independent of time, which neglected the inherently non-stationary nature of random slips of the rolling elements. (‘‘Differential Diagnosis of Gear and Bearing Faults,’’ Antoni, J., and Randall). Antoni and Randall (2003) first modeled vibrations produced by localized faults as cyclostationary processes, providing a basis for fault diagnosis. ![[Pasted image 20231011052234.png]]
+Cyclostationary signals are stochastic processes with periodic time-varying mean and autocorrelation functions. Earlier modeling works of vibration signals of rolling bearings often assumedto be stationary processes with autocorrelations independent of time, which neglected the inherently non-stationary nature of random slips of the rolling elements. (‘‘Differential Diagnosis of Gear and Bearing Faults,’’ Antoni, J., and Randall). *Antoni and Randall (2003) modeled vibrations produced by localized faults as cyclostationary processes, providing a basis for fault diagnosis. *![[Pasted image 20231011052234.png]]
 
-Building on the initial work of Antoni and Randall (2003), two important model equations have been proposed (Antoni, Facts and fictions, 2006) representing the vibration signals from localized and distributed faults in rolling element bearings. Equation (1) models the vibration signal from a localized fault in a bearing:
+*Building on the initial work of Antoni and Randall (2003), two important model equations have been proposed (Antoni, Facts and fictions, 2006) representing the vibration signals from localized and distributed faults in rolling element bearings.* Equation (1) models the vibration signal from a localized fault in a bearing:
 
 Equation (1) contains several important parameters, including:
 ![[Pasted image 20231005065439.png]]
@@ -50,7 +50,7 @@ The Zynq All Programmable System-on-Chip (APSoC) [add quelle]from Xilinx combine
 
 The platform's structure, depicted in Figure {1.1}, consists of two primary parts: the Processing System (PS) and the Programmable Logic (PL). The FPGA fabric of the PL is based on the Artix®-7 and Kintex®-7 FPGAs and includes not only essential elements such as Configurable Logic Blocks (CLBs) and the switch matrix, but also DSPs and Block RAMs that extend the computational and memory capabilities.
 ![[Pasted image 20231006055255.png]]
-（cited from Zynq 7000 datasheet）
+（cited from Zynq 7000 datasheet） **Replace it with a simpler diagram**
 
 The center of the PS consists of a dual-core ARM Cortex-A9 processor and a set of associated processing resources, including hardware floating point units, which together form the Application Processing Unit (APU). Furthermore, the PS includes peripheral interfaces, cache, memory interfaces, interconnect and clock generation circuitry.  (cite zedbook) This integrated system supports multiple real-time operating systems, such as Linux.
 
