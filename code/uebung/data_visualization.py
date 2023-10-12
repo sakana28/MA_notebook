@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Read data from the file
-with open('3x.txt', 'r') as file:
+with open('1x.txt', 'r') as file:
     data = file.readlines()
 
 data = [float(i) for i in data]
