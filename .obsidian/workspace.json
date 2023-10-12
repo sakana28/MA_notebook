@@ -80,7 +80,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -155,7 +155,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about ZC706.md",
+                "file": "Draft.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -172,7 +172,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about ZC706.md",
+                "file": "Draft.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -195,7 +195,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "about ZC706.md"
+                "file": "Draft.md"
               }
             }
           },
@@ -227,10 +227,10 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "7bd5e372a11ae7a8",
+  "active": "d6c73b83407abc4a",
   "lastOpenFiles": [
-    "Draft.md",
     "about ZC706.md",
+    "Draft.md",
     "about Model.md",
     "about I2C Protocol.md",
     "custom I2C slave.md",
