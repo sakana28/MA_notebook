@@ -49,7 +49,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "custom I2C slave.md",
+                "file": "about I2C Protocol.md",
                 "mode": "source",
                 "source": false
               }
@@ -109,7 +109,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#implementation",
+                "query": "i2c",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -139,8 +139,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "cabdc51be2d9613d",
@@ -156,7 +155,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "custom I2C slave.md",
+                "file": "about I2C Protocol.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -173,7 +172,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "custom I2C slave.md",
+                "file": "about I2C Protocol.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -196,7 +195,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "custom I2C slave.md"
+                "file": "about I2C Protocol.md"
               }
             }
           },
@@ -230,13 +229,14 @@
   },
   "active": "c4f9e9afa8580457",
   "lastOpenFiles": [
+    "custom I2C slave.md",
+    "about Model.md",
     "doc/Conley_Jordan_Thesis.pdf",
     "doc/未确认 554753.crdownload",
     "Draft.md",
     "about ZC706.md",
     "picture/Pasted image 20231011052234.png",
     "about KX134(material).md",
-    "custom I2C slave.md",
     "picture/pladitor_diagram (1) 1.svg",
     "picture/pladitor_diagram (1).svg",
     "picture/Pasted image 20231010072037.png",
@@ -245,7 +245,6 @@
     "doc/understanding_i2c_bus.pdf",
     "doc/未确认 250267.crdownload",
     "picture/Pasted image 20231010071819.png",
-    "about Model.md",
     "about KX134.md",
     "picture/pladitor_diagram.svg",
     "picture/Pasted image 20231010060519.png",
@@ -262,7 +261,6 @@
     "doc/Kionix_kx_134/KX134-1211-Technical-Reference-Manual-Rev-3.0.pdf",
     "doc/Kionix_kx_134/KX134-1211-Specifications-Rev-1.0-1659717.pdf",
     "doc/Kionix_kx_134/2021 - AN101 Getting Started.pdf",
-    "doc/Kionix_kx_134/2020 - AN113 Transitioning to KX134-1211 Accelerometer.pdf",
     "Step by step notiz.md",
     "about I2C Protocol.md",
     "未命名 2.md",
