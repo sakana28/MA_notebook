@@ -37,43 +37,19 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "Model修正信息.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "65c84c68c79a659f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "about Model.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "c4f9e9afa8580457",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "about I2C Protocol.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "7bd5e372a11ae7a8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "about ZC706.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "d6c73b83407abc4a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Draft.md",
                 "mode": "source",
                 "source": false
               }
@@ -90,9 +66,17 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "2249ca43d00bd6e7",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
           }
         ],
-        "currentTab": 6
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -146,12 +130,12 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "cabdc51be2d9613d",
@@ -167,7 +151,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Signal generator system.md",
+                "file": "about Model.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -184,7 +168,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Signal generator system.md",
+                "file": "about Model.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -207,7 +191,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Signal generator system.md"
+                "file": "about Model.md"
               }
             }
           },
@@ -219,13 +203,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -239,17 +221,19 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "3a001ef1b59e3eb2",
+  "active": "65c84c68c79a659f",
   "lastOpenFiles": [
-    "Draft.md",
     "Signal generator system.md",
+    "about Model.md",
+    "Draft.md",
+    "Model修正信息.md",
+    "about KX134.md",
+    "about I2C Protocol.md",
+    "about ZC706.md",
     "screenshot/Screenshot_2023-07-18_16-13-31.png",
     "screenshot/Screenshot_2023-10-12_17-22-29.png",
     "screenshot/Screenshot_2023-10-12_17-17-33.png",
     "screenshot/Screenshot_2023-10-12_14-46-18.png",
-    "about ZC706.md",
-    "about Model.md",
-    "about I2C Protocol.md",
     "custom I2C slave.md",
     "doc/Conley_Jordan_Thesis.pdf",
     "doc/未确认 554753.crdownload",
@@ -262,7 +246,6 @@
     "picture/Pasted image 20231010072011.png",
     "doc/understanding_i2c_bus.pdf",
     "doc/未确认 250267.crdownload",
-    "about KX134.md",
     "about Zynq.md",
     "introduction.md",
     "about Model draft.md",
@@ -285,7 +268,6 @@
     "FPGA based PWM generator.md",
     "I2C Slave.md",
     "max I2C Speed in Project.md",
-    "KX134 Einstellung (email).md",
-    "Notiz I2C.md"
+    "KX134 Einstellung (email).md"
   ]
 }
