@@ -20,14 +20,14 @@ Cyclostationary signals are non-stationary signals with periodic time-varying me
 - τi: the inter-arrival time of the ith impact, accounting for randomness due to rolling element slips
 其余的参数与（1）中含义相同。
 
-而当缺陷spread over a large area后，产生的振动信号不再是由impuls引起的，而时间的随机抖动也不再有意义。与故障是局部这产生了一个purely cyclostationary process
-Equation (2) models the vibration signal from a distributed fault in a bearing:  （‘Differential Diagnosis）
+而当缺陷spread over a large area后，产生的振动信号不再是由impulses引起的，而时间的随机抖动也不再有意义。这与局部故障导致的pseudo-cyclostationary 振动信号不同, 引起了一个purely cyclostationary process。
+在这种情况下，vibration signal from a distributed fault in a bearing被表示为:  （‘Differential Diagnosis）
 ![[Pasted image 20231005065448.png]]
 
 The two terms in the equation are: 
 - p(t): the periodic components like shaft and stiffness variations
-- B(t): the pure cyclostationary component, which means cyclostationary component with an expected value of 0. [Estimation of Cyclic Cumulants of Machinery Vibration Signals in Non-stationary Operation]
-
+- B(t): the pure cyclostationary random component with an expected value of 0. [Estimation of Cyclic Cumulants of Machinery Vibration Signals in Non-stationary Operation]
+#### Numerical implementation
 Based on these models, algorithms and Octave script code for numerical implementation of simulated vibration signals have been proposed in the work of G. D'Elia.  (Step-by-step) Figure ( ) demonstrates the procedure for generating vibration signals from localized faults, while Figure ( ) depicts the same process for distributed faults, according to the proposed algorithms.
 ![[Pasted image 20231005065627.png]]
 
