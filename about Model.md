@@ -29,6 +29,10 @@ The two terms in the equation are:
 - B(t): the pure cyclostationary random component with an expected value of 0. [Estimation of Cyclic Cumulants of Machinery Vibration Signals in Non-stationary Operation]
 #### Numerical implementation
 Based on these models, algorithms and Octave script code for numerical implementation of simulated vibration signals have been proposed in the work of G. D'Elia.  (Step-by-step) Figure ( ) demonstrates the procedure for generating vibration signals from localized faults, while Figure ( ) depicts the same process for distributed faults, according to the proposed algorithms.
+
+根据Ho and Randall [6]，model the bearing fault vibrations as a series of impulse responses of a single-degree-of-freedom(SDOF)system, where the timing between the impulses has a random component simulating the slippery effect. 在该数值实现中采用了这一模型。
+
+该数值实现
 ![[Pasted image 20231005065627.png]]
 
 ![[Pasted image 20231005065536.png]]
