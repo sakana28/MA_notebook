@@ -2,7 +2,7 @@
 
 11.10.23 first change in draft  
 
-Cyclostationary signals are non-stationary signals with periodic time-varying mean and autocorrelation functions, for example, a random noise that is amplitude modulated by a periodic function. 这一概念在分析轴承故障信号时意义重大，因为Cyclostationary表明存在故障的迹象，这是由于旋转表面上的故障会导致重复的撞击。
+Cyclostationary signals are non-stationary signals with periodic time-varying mean and autocorrelation functions, for example, a random noise that is amplitude modulated by a periodic function. 这一概念在分析轴承故障信号时意义重大，因为Cyclostationary表明存在故障的迹象，这是由于旋转表面上的故障会导致重复的撞击。尽管vibration signals from localized faults are not exactly quasi-cyclostationary since the random slips are non-stationary in their nature （‘Differential Diagnosis）. However they concluded that the bearing signals could still be treated as pseudocyclostationary as a first approximation.
 #### 振动模型
 当转动的表面接触到局部故障时，会产生一个impulse并激发轴承或振动传感器本身的结构谐振。重复的impulse则会导致的一系列响应。该响应会由于系统的各种结构被amplitude modulated。基于上述理解，在早期的工作中，PRODUCED BY A SINGLE POINT DEFECT 的VIBRATION 被建模如下：
 ![[Pasted image 20231019223859.png]]
@@ -10,9 +10,9 @@ Cyclostationary signals are non-stationary signals with periodic time-varying me
 - q(t): the modulation due to factors like load distribution, bearing imbalance, misalignment, and periodicity of fault movement. It is periodic, i.e q(t)=q(t+T).
 - T: the interval between successive impacts
 - n(t): the background noise
-这个模型通过多种因素导致的amplitude modulation阐明了振动信号的non-stationarity。
+这个模型通过多种因素导致的amplitude modulation阐明了振动信号的non-stationarity。（Differential Diagnosis）
 
-然而，这个模型 neglected the random slips of the rolling elements. (‘‘Differential Diagnosis of Gear and Bearing Faults,’’ Antoni, J., and Randall). *Antoni and Randall (2003) modeled vibrations produced by localized faults as cyclostationary processes, providing a basis for fault diagnosis. *![[Pasted image 20231011052234.png]]
+然而，这个模型 neglected the random slips of the rolling elements. 因此它错误地假设了撞击发生的间隔时间是相同的。其次，magnitude of the impulses 在实际中也可能发生随机波动(‘‘Differential Diagnosis of Gear and Bearing Faults,’’ Antoni, J., and Randall). *Antoni and Randall (2003) modeled vibrations produced by localized faults as cyclostationary processes, providing a basis for fault diagnosis. *![[Pasted image 20231011052234.png]]
 
 *Building on the initial work of Antoni and Randall (2003), two important model equations have been proposed (Antoni, Facts and fictions, 2006) representing the vibration signals from localized and distributed faults in rolling element bearings.* Equation (1) models the vibration signal from a localized fault in a bearing:
 
