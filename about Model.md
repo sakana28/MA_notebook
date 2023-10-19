@@ -12,7 +12,7 @@ Cyclostationary signals are non-stationary signals with periodic time-varying me
 - n(t): the background noise
 这个模型通过多种因素导致的amplitude modulation阐明了振动信号的non-stationarity。（Differential Diagnosis）
 
-然而，这个模型 neglected the random slips of the rolling elements. 因此它错误地假设了撞击发生的间隔时间是相同的。其次，magnitude of the impulses 在实际中也可能发生随机波动。而微小的随机波动也会破坏上述模型的谐波结构。因此，Antoni基于早前多个工作提出了一种更加realistic的模型：（Antoni, Facts and fictions, 2006）
+然而，这个模型 neglected the random slips of the rolling elements. 因此它错误地假设了撞击发生的间隔时间是相同的。而微小的随机波动也会破坏上述模型的谐波结构。因此，Antoni基于早前多个工作提出了一种更加realistic的模型：（Antoni, Facts and fictions, 2006）
 
 
 ![[Pasted image 20231005065439.png]]
