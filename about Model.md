@@ -32,13 +32,21 @@ Based on these models, algorithms and Octave script code for numerical implement
 
 根据Ho and Randall [6]，model the bearing fault vibrations as a series of impulse responses of a single-degree-of-freedom(SDOF)system, where the timing between the impulses has a random component simulating the slippery effect. 在该数值实现中采用了这一模型。
 
-该数值实现有以下可由用户定义的参数：
+该模型的数值实现有以下可由用户定义的参数：
+- stage of the fault：local punctual fault or distributed fault
 - rolling bearing的几何参数: bearing roller diameter , pitch circle diameter , contact angle, number of rolling elements 
 - fault出现的位置：inner, outer or ball 
 - 有关信号离散化的参数 : number of points per revolution与sample frequency of the time vector
 - variance for the generation of the random contribution
-- SDOF系统的stiffness， damping coefficient， natural frequency
+- SDOF系统的stiffness， damping coefficient， natural frequency，length of the SDOF response
+- signal to noise ratio (SNR) of background noise
+- amplitude modulation due to the load
+
 ![[Pasted image 20231005065627.png]]
+在
+- amplitude modulation at the fault frequency
+- amplitude value of the deterministic component related to the stiffness variation
+- amplitude value of the deterministic component related to the bearing rotation
 
 ![[Pasted image 20231005065536.png]]
 The algorithm enables users to freely generate simulated vibration signals from rolling element bearings with different defects and under different operating conditions. Users are able to modify various features, such as bearing geometry, fault location, stage of the fault, cyclostationarity of the signal, and random contributions.
