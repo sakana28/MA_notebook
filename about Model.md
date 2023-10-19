@@ -10,9 +10,9 @@ Cyclostationary signals are non-stationary signals with periodic time-varying me
 - q(t): the modulation due to factors like load distribution, bearing imbalance, misalignment, and periodicity of fault movement. It is periodic, i.e q(t)=q(t+T).
 - T: the interval between successive impacts
 - n(t): the background noise
+这个模型通过多种因素导致的amplitude modulation阐明了振动信号的non-stationarity。
 
-
-Earlier modeling works of vibration signals of rolling bearings often assumed to be stationary processes with autocorrelations independent of time, which neglected the inherently non-stationary nature of random slips of the rolling elements. (‘‘Differential Diagnosis of Gear and Bearing Faults,’’ Antoni, J., and Randall). *Antoni and Randall (2003) modeled vibrations produced by localized faults as cyclostationary processes, providing a basis for fault diagnosis. *![[Pasted image 20231011052234.png]]
+然而，这个模型 neglected the random slips of the rolling elements. (‘‘Differential Diagnosis of Gear and Bearing Faults,’’ Antoni, J., and Randall). *Antoni and Randall (2003) modeled vibrations produced by localized faults as cyclostationary processes, providing a basis for fault diagnosis. *![[Pasted image 20231011052234.png]]
 
 *Building on the initial work of Antoni and Randall (2003), two important model equations have been proposed (Antoni, Facts and fictions, 2006) representing the vibration signals from localized and distributed faults in rolling element bearings.* Equation (1) models the vibration signal from a localized fault in a bearing:
 
