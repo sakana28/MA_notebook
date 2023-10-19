@@ -12,14 +12,13 @@ Cyclostationary signals are non-stationary signals with periodic time-varying me
 - n(t): the background noise
 这个模型通过多种因素导致的amplitude modulation阐明了振动信号的non-stationarity。（Differential Diagnosis）
 
-然而，这个模型 neglected the random slips of the rolling elements. 因此它错误地假设了撞击发生的间隔时间是相同的。其次，magnitude of the impulses 在实际中也可能发生随机波动(‘‘Differential Diagnosis of Gear and Bearing Faults,’’ Antoni, J., and Randall). *Antoni and Randall (2003) modeled vibrations produced by localized faults as cyclostationary processes, providing a basis for fault diagnosis. *![[Pasted image 20231011052234.png]]
+然而，这个模型 neglected the random slips of the rolling elements. 因此它错误地假设了撞击发生的间隔时间是相同的。其次，magnitude of the impulses 在实际中也可能发生随机波动。而微小的随机波动也会破坏上述模型的谐波结构。因此，Antoni提出了一种更加realistic的模型：（Antoni, Facts and fictions, 2006）
 
-*Building on the initial work of Antoni and Randall (2003), two important model equations have been proposed (Antoni, Facts and fictions, 2006) representing the vibration signals from localized and distributed faults in rolling element bearings.* Equation (1) models the vibration signal from a localized fault in a bearing:
 
-Equation (1) contains several important parameters, including:
 ![[Pasted image 20231005065439.png]]
 
 - τi: the inter-arrival time of the ith impact, accounting for randomness due to rolling element slips
+其余的参数与（1）中含义相同。
 
 Equation (2) models the vibration signal from a distributed fault in a bearing:
 ![[Pasted image 20231005065448.png]]
