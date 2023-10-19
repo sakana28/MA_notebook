@@ -76,7 +76,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -151,7 +151,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about Model.md",
+                "file": "Model修正信息.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -168,7 +168,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about Model.md",
+                "file": "Model修正信息.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -191,7 +191,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "about Model.md"
+                "file": "Model修正信息.md"
               }
             }
           },
@@ -207,7 +207,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -221,10 +222,12 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "65c84c68c79a659f",
+  "active": "8a712edd81f895e5",
   "lastOpenFiles": [
-    "Signal generator system.md",
     "about Model.md",
+    "doc/ho2000.pdf",
+    "doc/未确认 750425.crdownload",
+    "Signal generator system.md",
     "Draft.md",
     "Model修正信息.md",
     "about KX134.md",
@@ -256,8 +259,6 @@
     "doc/未确认 8687.crdownload",
     "doc/Kionix_kx_134/Seminararbeit_Implementierung_eines_Echtzeit_Demonstrators.pdf",
     "doc/Kionix_kx_134/KX134-1211-Technical-Reference-Manual-Rev-3.0.pdf",
-    "doc/Kionix_kx_134/KX134-1211-Specifications-Rev-1.0-1659717.pdf",
-    "doc/Kionix_kx_134/2021 - AN101 Getting Started.pdf",
     "Step by step notiz.md",
     "未命名 2.md",
     "未命名.md",
@@ -267,7 +268,6 @@
     "Vivado warning.md",
     "FPGA based PWM generator.md",
     "I2C Slave.md",
-    "max I2C Speed in Project.md",
-    "KX134 Einstellung (email).md"
+    "max I2C Speed in Project.md"
   ]
 }
