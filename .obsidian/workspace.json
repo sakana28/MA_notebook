@@ -78,9 +78,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "3a001ef1b59e3eb2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Signal generator system.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -155,7 +167,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Draft.md",
+                "file": "Signal generator system.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -172,7 +184,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Draft.md",
+                "file": "Signal generator system.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -195,7 +207,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Draft.md"
+                "file": "Signal generator system.md"
               }
             }
           },
@@ -227,14 +239,15 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "d6c73b83407abc4a",
+  "active": "3a001ef1b59e3eb2",
   "lastOpenFiles": [
+    "Draft.md",
+    "Signal generator system.md",
     "screenshot/Screenshot_2023-07-18_16-13-31.png",
     "screenshot/Screenshot_2023-10-12_17-22-29.png",
     "screenshot/Screenshot_2023-10-12_17-17-33.png",
     "screenshot/Screenshot_2023-10-12_14-46-18.png",
     "about ZC706.md",
-    "Draft.md",
     "about Model.md",
     "about I2C Protocol.md",
     "custom I2C slave.md",
@@ -249,7 +262,6 @@
     "picture/Pasted image 20231010072011.png",
     "doc/understanding_i2c_bus.pdf",
     "doc/未确认 250267.crdownload",
-    "picture/Pasted image 20231010071819.png",
     "about KX134.md",
     "about Zynq.md",
     "introduction.md",
