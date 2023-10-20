@@ -10,8 +10,8 @@ The I^2C protocol is a two-wire serial communication bus. Each Device on the bus
 A fundamental contribution of this work is to implement an I^s2C Slave on FPGA. Therefore, the behavior of devices on the I2C bus during data transfer and the logic transition on both lines will be introduced next. 
 
 ### Open-drain and Duplex
-I 2C 是半双工通信，每次只有一个控制器或目标设备在总线上发送数据。
-开漏指的是一种输出类型，它既可以将总线拉低至某一电压（多数情况下为地），也可以 "释放 "总线，让上拉电阻将其拉高。
+I 2C 是半双工通信，即同一根传输线既作接收又作发送，数据可以在两个方向上传送，但通信双方不能同时收发数据。每次只有一个控制器或目标设备在总线上发送数据。
+开漏指的是一种输出类型，它既可以将总线拉低至某一电压（多数情况下为地），也可以 "释放 "总线，让上拉电阻将其拉高。当总线上有多个从机时，如果使用推挽输出，当一个设备试图输出高电平，一个设备试图输出低电平时，就会发生短路。而开漏输出
 ### START and STOPcondition 
 All transactions begin with a START (S) and are terminated by a STOP (P).
 After the master initiates a start condition, all slaves go from idle to active, waiting to receive an address.
