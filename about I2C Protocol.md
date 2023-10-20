@@ -11,7 +11,7 @@ A fundamental contribution of this work is to implement an I^s2C Slave on FPGA. 
 
 ### Open-drain and Duplex
 I 2C 是半双工通信，每次只有一个控制器或目标设备在总线上发送数据。
-
+开漏指的是一种输出类型，它既可以将总线拉低至某一电压（多数情况下为地），也可以 "释放 "总线，让上拉电阻将其拉高。
 ### START and STOPcondition 
 All transactions begin with a START (S) and are terminated by a STOP (P).
 After the master initiates a start condition, all slaves go from idle to active, waiting to receive an address.
