@@ -9,6 +9,8 @@ The I^2C protocol is a two-wire serial communication bus. Each Device on the bus
 
 A fundamental contribution of this work is to implement an I^s2C Slave on FPGA. Therefore, the behavior of devices on the I2C bus during data transfer and the logic transition on both lines will be introduced next. 
 
+### Open Drain and Duplex
+
 ### START and STOPcondition 
 All transactions begin with a START (S) and are terminated by a STOP (P).
 After the master initiates a start condition, all slaves go from idle to active, waiting to receive an address.

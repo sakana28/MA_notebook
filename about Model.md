@@ -2,7 +2,7 @@
 
 11.10.23 first change in draft  
 #### Cyclostationary
-Cyclostationary signals are non-stationary signals with periodic time-varying mean and autocorrelation functions, for example, a random noise that is amplitude modulated by a periodic function. 这一概念在分析轴承故障信号时意义重大，因为Cyclostationary表明存在故障的迹象，这是由于旋转表面上的故障会导致重复的撞击。尽管vibration signals from localized faults are not exactly quasi-cyclostationary since the random slips are non-stationary in their nature （‘Differential Diagnosis）. However they concluded that the bearing signals could still be treated as pseudocyclostationary as a first approximation.
+Cyclostationary signals are non-stationary signals with periodic time-varying mean and autocorrelation functions, for example, a random noise that is amplitude modulated by a periodic function. 这一概念在分析轴承故障信号时意义重大，因为Cyclostationary表明存在故障的迹象，这是由于旋转表面上的故障会导致重复的撞击，使由此产生的振动信号的统计特性具有周期性。尽管vibration signals from localized faults are not exactly quasi-cyclostationary since the random slips are non-stationary in their nature （‘Differential Diagnosis）. However they could still be treated as pseudocyclostationary as a first approximation.
 #### 振动模型
 当转动的表面接触到局部故障时，会产生一个impulse并激发轴承或振动传感器本身的结构谐振。重复的impulse则会导致的一系列响应。该响应会由于系统的各种结构被amplitude modulated。基于上述理解，在早期的工作中，PRODUCED BY A SINGLE POINT DEFECT 的VIBRATION 被建模如下：
 ![[Pasted image 20231019223859.png]]
