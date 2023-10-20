@@ -51,4 +51,4 @@ Distributed fault 的振动信号模型数值实现则额外需要以下参数�
 ![[Pasted image 20231005065536.png]]
 The algorithm enables users to freely generate simulated vibration signals from rolling element bearings with different defects and under different operating conditions. Users are able to modify various features, such as bearing geometry, fault location, stage of the fault, cyclostationarity of the signal, and random contributions.
 
-在本工作中，涉及
+在本工作中，生成符合要求的信号时需要进行二次插值，生成符合指定分布的随机数等操作。且后续工作中没有对生成的信号在系统运作时进行动态配置的需求。因此信号不会在FPGA上被生成，而是先在Python中被生成并被存储为文本文件。该文本文件接下来会通过SD卡接口被Zynq的PS读取，成为信号发生器的信号源。
