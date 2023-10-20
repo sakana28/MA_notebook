@@ -50,3 +50,5 @@ Distributed fault 的振动信号模型数值实现则额外需要以下参数�
 
 ![[Pasted image 20231005065536.png]]
 The algorithm enables users to freely generate simulated vibration signals from rolling element bearings with different defects and under different operating conditions. Users are able to modify various features, such as bearing geometry, fault location, stage of the fault, cyclostationarity of the signal, and random contributions.
+
+在本工作中，涉及
