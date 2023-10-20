@@ -56,16 +56,6 @@
             }
           },
           {
-            "id": "af509da0b19114c0",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.4.16"
-              }
-            }
-          },
-          {
             "id": "3a001ef1b59e3eb2",
             "type": "leaf",
             "state": {
@@ -86,7 +76,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -232,11 +222,11 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "af509da0b19114c0",
+  "active": "65c84c68c79a659f",
   "lastOpenFiles": [
     "Signal generator system.md",
-    "Model修正信息.md",
     "about Model.md",
+    "Model修正信息.md",
     "doc/antoni2003 (1).pdf",
     "picture/Pasted image 20231019223859.png",
     "doc/antoni2002.pdf",
