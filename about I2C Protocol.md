@@ -11,7 +11,7 @@ A fundamental contribution of this work is to implement an I^s2C Slave on FPGA. 
 
 ### Open-drain and Duplex
 I 2C 是半双工通信，即同一根传输线既作接收又作发送，数据可以在两个方向上传送，但通信双方不能同时收发数据。每次只有一个控制器或目标设备在总线上发送数据。
-为了实现当总线上有多个从机时，如果使用推挽输出，当一个设备试图输出高电平，一个设备试图输出低电平时，就会发生短路。而开漏输出
+当总线上有多个从机时，如果使用推挽输出，当一个设备试图输出高电平，一个设备试图输出低电平时，就会发生短路。因此I2C协议规定使用
 开漏指的是一种输出类型，它既可以将总线拉低至某一电压（多数情况下为地），也可以 "释放 "总线，让上拉电阻将其拉高。
 ### START and STOPcondition 
 All transactions begin with a START (S) and are terminated by a STOP (P).
