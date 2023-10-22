@@ -228,6 +228,7 @@
   },
   "active": "2249ca43d00bd6e7",
   "lastOpenFiles": [
+    "picture/Pasted image 20231023023643.png",
     "未命名 3.md",
     "Signal generator system.md",
     "about Model.md",
@@ -272,7 +273,6 @@
     "Untitled.md",
     "Vivado warning.md",
     "FPGA based PWM generator.md",
-    "I2C Slave.md",
-    "max I2C Speed in Project.md"
+    "I2C Slave.md"
   ]
 }

@@ -13,7 +13,9 @@ A fundamental contribution of this work is to implement an I^s2C Slave on FPGA. 
 I 2C 是半双工通信，即同一根传输线既作接收又作发送，数据可以在两个方向上传送，但通信双方不能同时收发数据。每次只有一个控制器或目标设备在总线上发送数据。
 
 为了简洁地实现这种通信，I2C协议规定SDA和SCL都使用开漏线路。开漏指的是一种输出类型，即线路只能被驱动低电平或保持开路。如果没有 I2C 器件将其下拉，上拉电阻会将线路上拉至 Vcc。与开漏相对的是推挽。当总线上有多个从机时，如果使用推挽输出，当一个设备试图输出高电平，一个设备试图输出低电平时，就会发生短路。
-
+![[Pasted image 20231023023643.png]]
+（from A Basic Guide to I2C）
+另一方面，这一
 ### START and STOPcondition 
 All transactions begin with a START (S) and are terminated by a STOP (P).
 After the master initiates a start condition, all slaves go from idle to active, waiting to receive an address.
