@@ -15,7 +15,7 @@ The I2C protocol is a half-duplex bus that facilitates bidirectional communicati
 
 为了简洁地实现这种通信，I2C协议规定SDA和SCL都使用开漏线路。开漏指的是一种输出类型，即线路只能被驱动低电平或保持开路。如果没有 I2C 器件将其下拉，上拉电阻会将线路上拉至 Vcc。与开漏相对的是推挽。当总线上有多个从机时，如果使用推挽输出，当一个设备试图输出高电平，一个设备试图输出低电平时，就会发生短路。
 
-To efficiently facilitate bidirectional communication, the I2C specification dictates that both SDA and SCL lines are open-drain. Open-drain refers to an output type in which the line can be pulled low or released high. When there is no I2C device actively pulling the line low, pull-up resistors will elevate the line to the Vcc level. This contrasts with push-pull arrangements, which can result in short-circuits when devices try to output conflicting high and low levels on the bus.
+To efficiently facilitate bidirectional communication, the I2C specification dictates that both SDA and SCL lines are open-drain. Open-drain refers to an output type in which the line can be pulled low or released high. When there is no I2C device actively pulling the line low, pull-up resistors will elevate the line to the Vcc level. This differs from push-pull outputs, whichcan result in short-circuits when multiple devices attempt to output conflicting high and low levels on the I2C bus at the same time.
 ![[Pasted image 20231023032001.png]]
 ![[Pasted image 20231023023643.png]]
 （from A Basic Guide to I2C）
