@@ -23,7 +23,7 @@ On the other hand, open-drain outputs facilitate the implementation of wired-AND
 
 All transactions begin with a START (S) and are terminated by a STOP (P).
 After the master initiates a start condition, all slaves go from idle to active, waiting to receive an address.
-
+According to the I2C specification, level changes on the SDA should only occur when SCL is low. The only exceptions are the START and STOP conditions.
 
 
 next chapter:
