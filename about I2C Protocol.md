@@ -19,13 +19,13 @@ To efficiently facilitate bidirectional communication, the I2C specification dic
 On the other hand, open-drain outputs facilitate the implementation of wired-AND logic. The truth table for the wired-AND logic is shown in Table 1. A low output from any device connected to the bus will pull the whole bus low. Therefore, both SDA and SCL remain at high level when the bus is idle. The device that first pulls the bus level down gains control over the bus. If multiple masters try to transmit a 0 bit, the bus state will remain low as expected. When multiple masters attempt to initiate transmission, the bus state will remain low as expected if they all transmit low. However, if one master transmits a high while another transmits a low, the low bit will dominate and pull the bus low, indicating a collision. The master transmitting the 1 bit will detect this discrepancy and know that it lost arbitration, so it will stop transmitting. In this way, arbitration between multiple master devices is achieved in I2C.
 ![[Pasted image 20231023025331.png]]
 
-The I2C communication protocol transfers data in 8-bit byte packets
-### START and STOPcondition 
+The I2C communication protocol transfers data in 8-bit byte packets. Communication on the bus consists of read or write operations, which based on several sub-protocols such as START and STOP conditions, acknowledge (ACK) and not acknowledge (NACK) bits.
+### START and STOP
 
-
-All transactions begin with a START (S) and are terminated by a STOP (P).
-After the master initiates a start condition, all slaves go from idle to active, waiting to receive an address.
 According to the I2C specification, level changes on the SDA should only occur when SCL is low. The only exceptions are the START and STOP conditions.
+
+The START condition occurs at the beginning of transmission, which can wake the idle slaves on the bus. After the master initiates a start condition, all slaves go from idle to active, waiting to receive an address.
+
 
 
 next chapter:
