@@ -17,10 +17,10 @@ However, the model neglected the random slips of the rolling elements. It wrongl
 ![[Pasted image 20231005065439.png]]
 
 - τi: the inter-arrival time of the ith impact, accounting for randomness due to rolling element slips
-其余的参数与（1）中含义相同。
+The other parameters in (2) have the same meaning as in (1).
 
-而当缺陷spread over a large area后，产生的振动信号不再是由impulses引起的，而时间的随机抖动也不再有意义。这与局部故障导致的pseudo-cyclostationary 振动信号不同, 引起了一个purely cyclostationary process。
-在这种情况下，vibration signal from a distributed fault in a bearing被表示为:  （‘Differential Diagnosis）
+However, when a defect spreads over a large area, the resulting vibration signal is no longer caused by impulses and the random timing jitter is also meaningless. This differs from the pseudo-cyclostationary vibration signals caused by localized faults, leading to a purely cyclostationary process.
+In this case, the vibration signal from a distributed fault in a bearing is expressed as:（‘Differential Diagnosis）
 ![[Pasted image 20231005065448.png]]
 
 The two terms in the equation are: 
@@ -29,7 +29,7 @@ The two terms in the equation are:
 #### Numerical implementation
 Based on these models, algorithms and Octave script code for numerical implementation of simulated vibration signals have been proposed in the work of G. D'Elia.  (Step-by-step) Figure ( ) demonstrates the procedure for generating vibration signals from localized faults, while Figure ( ) depicts the same process for distributed faults, according to the proposed algorithms.
 
-根据Ho and Randall [6]，model the bearing fault vibrations as a series of impulse responses of a single-degree-of-freedom(SDOF)system, where the timing between the impulses has a random component simulating the slippery effect. 在该数值实现中采用了这一模型。
+As proposed by Ho and Randall [6], the vibration signal from a localized bearing fault can be modeled as a series of impulse responses of a single-degree-of-freedom (SDOF) system. The timing between impulses has a random component to simulate the slippery effect. This model was adopted in G. D'Elia's work.()
 
 Local fault 的振动信号模型数值实现有以下可由用户定义的参数：
 - Speed profile
