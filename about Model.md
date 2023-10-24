@@ -3,7 +3,7 @@
 11.10.23 first change in draft  
 #### Cyclostationary
 Cyclostationary signals are non-stationary signals with periodic time-varying mean and autocorrelation. An example of a cyclostationary signal is random noise that is amplitude modulated by a periodic function. This concept is important in the analysis of bearing fault signals, as cyclostationarity indicates the presence of a fault. This is because defects on a rotating surface produce repetitive impacts, causing the statistical properties of the resulting vibration signal to be periodic. While the slips between the bearing elements add randomness, the overall periodic pattern of impulses persists, rendering the signal pseudocyclostationary. This enables the use of cyclostationary analysis methods for diagnosing bearing defects. ("Differential Diagnosis")
-#### 振动模型
+#### Vibration signal models
 When a rotating surface contacts a localized fault, it generates an impulse that excites the structural resonances of the bearing or the vibration sensor itself. The repetitive impulses lead to a sequence of responses that are amplitude modulated due to the various structural modes of the system. Based on this understanding, in early work, the vibration produced by a single point defect was modeled as follows: (P.D. McFadden, J.D. Smith, Model for the vibration produced by a single point defect in a rolling element bearing)
 ![[Pasted image 20231019223859.png]]
 - h(t): the impulse response of a single impact measured by the sensor
@@ -29,23 +29,23 @@ The two terms in the equation are:
 #### Numerical implementation
 Based on these models, algorithms and Octave script code for numerical implementation of simulated vibration signals have been proposed in the work of G. D'Elia.  (Step-by-step) Figure ( ) demonstrates the procedure for generating vibration signals from localized faults, while Figure ( ) depicts the same process for distributed faults, according to the proposed algorithms.
 
-As proposed by Ho and Randall [6], the vibration signal from a localized bearing fault can be modeled as a series of impulse responses of a single-degree-of-freedom (SDOF) system. The timing between impulses has a random component to simulate the slippery effect. This model was adopted in G. D'Elia's work.()
+As proposed by Ho and Randall (ho2000), the vibration signal from a localized bearing fault can be modeled as a series of impulse responses of a single-degree-of-freedom (SDOF) system. The timing between impulses has a random component to simulate the slippery effect. This model was adopted in G. D'Elia's work.(stepbystep)
 
-Local fault 的振动信号模型数值实现有以下可由用户定义的参数：
+The numerical implementation of the localized fault vibration signal model has the following user-defined parameters:
 - Speed profile
-- rolling bearing的几何参数: bearing roller diameter , pitch circle diameter , contact angle, number of rolling elements 
-- fault出现的位置：inner, outer or ball 
-- 有关信号离散化的参数 : number of points per revolution与sample frequency of the time vector
-- variance for the generation of the random contribution
-- SDOF系统的stiffness， damping coefficient， natural frequency，length of the SDOF response
-- signal to noise ratio (SNR) of background noise
-- amplitude modulation due to the load
+- Bearing geometry parameters: bearing roller diameter , pitch circle diameter , contact angle, number of rolling elements 
+- Fault location：inner, outer or ball 
+- Signal discretization parameters : number of points per revolution与sample frequency of the time vector
+- Variance for the generation of the random contribution
+- SDOF system properties: stiffness， damping coefficient， natural frequency，length of the SDOF response
+- Signal-to-noise ratio (SNR) of background noise
+- Amplitude modulation due to load
 
 ![[Pasted image 20231005065627.png]]
-Distributed fault 的振动信号模型数值实现则额外需要以下参数：
-- amplitude modulation at the fault frequency
-- amplitude value of the deterministic component related to the stiffness variation
-- amplitude value of the deterministic component related to the bearing rotation
+The numerical implementation of the distributed fault vibration signal model requires the following additional parameters:
+- Amplitude modulation at the fault frequency
+- Amplitude value of the deterministic component related to the stiffness variation
+- Amplitude value of the deterministic component related to the bearing rotation
 
 ![[Pasted image 20231005065536.png]]
 The algorithm enables users to freely generate simulated vibration signals from rolling element bearings with different defects and under different operating conditions. Users are able to modify various features, such as bearing geometry, fault location, stage of the fault, cyclostationarity of the signal, and random contributions.

@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "9cc8be9e38dfc6ef",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Draft.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -48,7 +61,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "i2c",
+                "query": "draft",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -78,8 +91,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "cabdc51be2d9613d",
@@ -95,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about Model.md",
+                "file": "Draft.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,7 +124,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about Model.md",
+                "file": "Draft.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +147,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "about Model.md"
+                "file": "Draft.md"
               }
             }
           },
@@ -166,15 +178,16 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "e4da745953b87b25",
+  "active": "9cc8be9e38dfc6ef",
   "lastOpenFiles": [
-    "about Zynq.md",
+    "about Model.md",
     "Draft.md",
+    "未命名 3.md",
+    "about Zynq.md",
     "about I2C Protocol.md",
     "about KX134.md",
     "Signal generator system.md",
     "I2C Slave.md",
-    "about Model.md",
     "Model修正信息.md",
     "about KX134(material).md",
     "picture/Pasted image 20231023032001.png",
@@ -184,7 +197,6 @@
     "picture/Pasted image 20231023031858.png",
     "picture/Pasted image 20231023025331.png",
     "picture/Pasted image 20231023023643.png",
-    "未命名 3.md",
     "doc/antoni2003 (1).pdf",
     "picture/Pasted image 20231019223859.png",
     "doc/antoni2002.pdf",
