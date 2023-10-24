@@ -39,4 +39,9 @@ ZYNQ 的工程设计大体上可以分为 对硬件逻辑系统的设计 和 对
 
 软件编程的目标是通过用户代码控制 PS 的运行，以实现预期的系统功能。这可以在 Vitis 中完成，用于创建、编译和调试在 ARM Cortex-A9 处理器上运行的应用程序。
 
-Vivado 和 Vitis 工具协同工作，生成完整的 Zynq 系统。Vivado 综合并实现 PL 硬件逻辑，该逻辑与 FPGA 位流中的 PS 初始化一起加载。Vitis 将软件编译成可执行文件，并在启动后加载到 PS 运行。 通过制造商提供的board file, automatically configure the Zynq PS IP core with the correct parameters 并正确分配Multipurpose IO (MIO)管脚和板上peripherals的连接关系。 The AXI IIC Bus Interface module provides the transaction interface to the AXI4-Lite interface. This core does not provide explicit electrical connectivity to the IIC bus. 这代表，该IP核与外界通信的信号并不是双向的。用户应该在设计中确保三态门缓冲和上拉电阻的存在，以符合协议要求。
+Vivado 和 Vitis 工具协同工作，生成完整的 Zynq 系统。Vivado 综合并实现 PL 硬件逻辑，该逻辑与 FPGA 位流中的 PS 初始化一起加载。Vitis 将软件编译成可执行文件，并在启动后加载到 PS 运行。 通过制造商提供的board file, automatically configure the Zynq PS IP core with the correct parameters 并正确分配Multipurpose IO (MIO)管脚和板上peripherals的连接关系。 
+
+The AXI IIC Bus Interface module provides the transaction interface to the AXI4-Lite interface. This core does not provide explicit electrical connectivity to the IIC bus. 这代表，该IP核与外界通信的信号并不是双向的。用户应该在设计中确保三态门缓冲和上拉电阻的存在，以符合协议要求。
+
+  
+BSP目录下的xparameters.h，里面列出了各个外设对应的地址、Device_ID、中断号，等等宏定义，被用于对硬件外设进行寻址。
