@@ -43,7 +43,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -119,7 +120,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Draft.md",
+                "file": "about KX134.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,7 +137,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Draft.md",
+                "file": "about KX134.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -159,7 +160,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Draft.md"
+                "file": "about KX134.md"
               }
             }
           },
@@ -190,13 +191,13 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "16211440617b13d4",
+  "active": "8bf6624b1792e825",
   "lastOpenFiles": [
+    "Draft.md",
     "about KX134.md",
     "about I2C Protocol.md",
     "Signal generator system.md",
     "I2C Slave.md",
-    "Draft.md",
     "about Model.md",
     "Model修正信息.md",
     "about KX134(material).md",
