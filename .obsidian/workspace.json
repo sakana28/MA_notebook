@@ -31,8 +31,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -107,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about signal generator.md",
+                "file": "about I2C Protocol.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -124,7 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about signal generator.md",
+                "file": "about I2C Protocol.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -147,7 +146,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "about signal generator.md"
+                "file": "about I2C Protocol.md"
               }
             }
           },
@@ -178,13 +177,13 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "079a04ba3c15b77d",
+  "active": "e4da745953b87b25",
   "lastOpenFiles": [
+    "about signal generator.md",
     "picture/Signal_generator 2.png",
     "picture/Signal_generator 1.png",
     "picture/Signal_generator.png",
     "about I2C Protocol.md",
-    "about signal generator.md",
     "custom I2C slave.md",
     "previous chapter.md",
     "about Model.md",
@@ -204,7 +203,6 @@
     "picture/Pasted image 20231023025331.png",
     "picture/Pasted image 20231023023643.png",
     "doc/antoni2003 (1).pdf",
-    "picture/Pasted image 20231019223859.png",
     "doc/antoni2002.pdf",
     "doc/未确认 508424.crdownload",
     "doc/ho2000.pdf",
