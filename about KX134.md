@@ -27,6 +27,7 @@ As mentioned previously, the KX134 accelerometer communicates with host via I2C 
 
 Notably, the KX134 supports an auto-increment feature for simplified sequential register access. During multiple read or write operations, the register address does not need to be resent as the pointer automatically increments to the next register. However, this feature is disabled when reading from the BUF_READ register (0x63) so that the host can continuously read samples from the buffer. 
 
+next chapter Hardware system design
 在掌握KX134的基本功能和通信方式后，即可搭建signal recorder系统
 
 使用zynq搭建系统的流程 
@@ -45,3 +46,5 @@ The AXI IIC Bus Interface module provides the transaction interface to the AXI4-
 
   
 BSP目录下的xparameters.h，里面列出了各个外设对应的地址、Device_ID、中断号，等等宏定义，被用于对硬件外设进行寻址。
+
+
