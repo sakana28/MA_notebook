@@ -27,13 +27,14 @@ IEA1
 IEL1
 ![[Pasted image 20231026212033.png]]
 ### INC4 
-This register controls routing of an interrupt reporting to physical interrupt pin INT1. 为了实现watermark模式配置了以下位 WMI1 
+This register controls routing of an interrupt to the physical interrupt pin INT1. The following bit is configured for watermark interrupt mode: WMI1.
 ![[Pasted image 20231026213900.png]]
 ### BUF_CNTL1 
-This register controls the buffer sample threshold. 其中的数据是SMP_TH[7:0]，即用户定义的样本数量阈值。当Sample为8位时，the maximum number of samples is 171；当Sample为16位时，the maximum number of samples is 86. 
+This register controls the buffer sample threshold. The data is SMP_TH[7:0], the user-defined number of samples. For 8-bit samples the maximum is 171, for 16-bit samples the maximum is 86.
 ![[Pasted image 20231026213915.png]]
 ### BUF_CNTL2 
 This register controls sample buffer operation.其中以下位在本工作中被配置 BUFE BRES BM[1:0] 
+![[Pasted image 20231026215325.png]]
 ## communication via I2C 
 As mentioned previously, the KX134 accelerometer communicates with host via I2C bus protocol. The 7-bit slave address of the KX134 consists of a 6-bit fixed portion and a 1-bit programmable section based on the logic level of the ADDR pin. Specifically, the accelerometer can be configured for an address of 0x1E when ADDR is grounded or 0x1F when ADDR is connected to VDD. Read and write transactions comply with to the I2C timing diagrams and format described earlier. Furthermore, the sequence shown in Figure 3 must be followed when accessing the KX134's internal registers. 
 
