@@ -11,11 +11,21 @@ The KX134 accelerometer has 128 8-bit registers that are mostly userprogrammable
 ## Registers configuration for watermark Interrupt mode
 The Watermark Interrupt mode is an operating mode of the Accelerometer. samples are first stored in a buffer. Once the number of samples in the buffer reaches a user-defined threshold, a hardware interrupt is generated. In signal recorder, KX134 works in this mode. In signal generator, the behavior of the KX134 in this mode is emulated. Therefore, the registers that require to be configured in this mode will be introduced next. 
 ### CNTL1 
-The CNTL1 control register enables the main features of the KX134. Before configuring other registers, CNTL1 must be used to set the accelerometer to stand-by mode. Once configuration is complete, CNTL1 is used to start data acquisition. 在工作中被配置了的位如下 PC1 RES (highperformence) GSEL 
+The CNTL1 control register controls the main features of KX134. Before configuring other registers, CNTL1 must be used to set the accelerometer to stand-by mode. Once configuration is complete, CNTL1 is used to start data acquisition. The following bits are configured: 
+![[Pasted image 20231026211805.png]]
+PC1 
+RES (highperformence) 
+GSEL 
 ### ODCNTL 
-Output data control register可以配置与acceleration outputs有关的功能与参数。其中最重要的是OSA 3:0，它决定了该accelerometer的采样率 插入OSAODR表格 
+The output data control register configures functionality and parameters related to the acceleration outputs. Most importantly, OSA[3:0] determines the sample rate of the accelerometer. 
+![[Pasted image 20231026211835.png]]
+![[Pasted image 20231026211927.png]]
 ### INC1 
-Interrupt Control寄存器 controls the settings for the physical interrupt pin INT1. 工作中被配置了的位如下 IEN1 IEA1 IEL1 
+The interrupt control register configures the settings for the physical interrupt pin INT1. The following bits are configured: 
+IEN1 
+IEA1 
+IEL1
+![[Pasted image 20231026212033.png]]
 ### INC4 
 This register controls routing of an interrupt reporting to physical interrupt pin INT1. 为了实现watermark模式配置了以下位 WMI1 
 ### BUF_CNTL1 
