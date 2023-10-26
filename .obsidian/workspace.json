@@ -20,19 +20,31 @@
             }
           },
           {
-            "id": "9390b3db684ab697",
+            "id": "6efba61b60250531",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AXI-IIC.md",
+                "file": "MA_Index.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "499eb6983b38d22e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "fundamentals.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -107,7 +119,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AXI-IIC.md",
+                "file": "fundamentals.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -124,7 +136,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "AXI-IIC.md",
+                "file": "fundamentals.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -147,7 +159,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AXI-IIC.md"
+                "file": "fundamentals.md"
               }
             }
           },
@@ -178,10 +190,14 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "9390b3db684ab697",
+  "active": "499eb6983b38d22e",
   "lastOpenFiles": [
+    "about ZC706.md",
+    "fundamentals.md",
+    "MA_Index.md",
+    "introduction.md",
     "about KX134.md",
-    "AXI-IIC.md",
+    "AXI-IIC IP Core.md",
     "picture/Pasted image 20231026223543.png",
     "picture/Pasted image 20231026215325.png",
     "picture/Pasted image 20231026213915.png",
@@ -216,15 +232,11 @@
     "doc/未确认 508424.crdownload",
     "doc/ho2000.pdf",
     "doc/未确认 750425.crdownload",
-    "about ZC706.md",
     "doc/Conley_Jordan_Thesis.pdf",
     "doc/未确认 554753.crdownload",
     "doc/understanding_i2c_bus.pdf",
     "doc/未确认 250267.crdownload",
-    "introduction.md",
     "about Model draft.md",
-    "Zybo vs Zedboard vs ZC706.md",
-    "未命名 1.md",
-    "Step by step notiz.md"
+    "Zybo vs Zedboard vs ZC706.md"
   ]
 }
