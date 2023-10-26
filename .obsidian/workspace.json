@@ -4,23 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "602b94ac8291fc76",
+        "id": "7cc1a1c8b84a36c4",
         "type": "tabs",
         "children": [
           {
-            "id": "ceca17c7e1519c1b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "about KX134.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "6efba61b60250531",
+            "id": "2b2ff988f5f3ac71",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -30,21 +18,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "499eb6983b38d22e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "fundamentals.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -119,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "fundamentals.md",
+                "file": "MA_Index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "fundamentals.md",
+                "file": "MA_Index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -159,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "fundamentals.md"
+                "file": "MA_Index.md"
               }
             }
           },
@@ -190,13 +165,23 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "499eb6983b38d22e",
+  "active": "2b2ff988f5f3ac71",
   "lastOpenFiles": [
-    "about ZC706.md",
-    "fundamentals.md",
+    "Test result.md",
     "MA_Index.md",
-    "introduction.md",
+    "software implementation.md",
+    "hardware implementation.md",
+    "what is non-stationary.md",
+    "Signal generator system.md",
+    "custom I2C slave.md",
+    "about signal generator.md",
+    "about Hardware system design.md",
+    "about Hardware system desing.md",
+    "about KX134(material).md",
     "about KX134.md",
+    "fundamentals.md",
+    "about ZC706.md",
+    "introduction.md",
     "AXI-IIC IP Core.md",
     "picture/Pasted image 20231026223543.png",
     "picture/Pasted image 20231026215325.png",
@@ -209,12 +194,7 @@
     "picture/Pasted image 20231026211831.png",
     "picture/Pasted image 20231026211805.png",
     "picture/Volltext (PDF).pdf",
-    "about KX134(material).md",
     "about I2C Protocol.md",
-    "about Hardware system design.md",
-    "what is non-stationary.md",
-    "Signal generator system.md",
-    "about signal generator.md",
     "draft test.md",
     "about Zynq.md",
     "未命名 6.md",
@@ -222,11 +202,8 @@
     "Draft.md",
     "未命名 4.md",
     "previous chapter.md",
-    "custom I2C slave.md",
     "about Model.md",
     "未命名 3.md",
-    "I2C Slave.md",
-    "Model修正信息.md",
     "doc/antoni2003 (1).pdf",
     "doc/antoni2002.pdf",
     "doc/未确认 508424.crdownload",
@@ -235,8 +212,6 @@
     "doc/Conley_Jordan_Thesis.pdf",
     "doc/未确认 554753.crdownload",
     "doc/understanding_i2c_bus.pdf",
-    "doc/未确认 250267.crdownload",
-    "about Model draft.md",
-    "Zybo vs Zedboard vs ZC706.md"
+    "doc/未确认 250267.crdownload"
   ]
 }
