@@ -20,6 +20,18 @@
             }
           },
           {
+            "id": "4dacec36f52c5cd1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Physic.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
             "id": "fc4559b99a4aa4f9",
             "type": "leaf",
             "state": {
@@ -107,7 +119,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about signal recorder.md",
+                "file": "Physic.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -124,7 +136,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about signal recorder.md",
+                "file": "Physic.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -147,7 +159,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "about signal recorder.md"
+                "file": "Physic.md"
               }
             }
           },
@@ -178,17 +190,18 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "fc4559b99a4aa4f9",
+  "active": "4dacec36f52c5cd1",
   "lastOpenFiles": [
     "hardware implementation.md",
+    "custom I2C slave.md",
+    "AXI-IIC IP Core.md",
     "about signal recorder.md",
     "about signal generator.md",
     "MA_Index.md",
     "Test result.md",
     "software implementation.md",
     "what is non-stationary.md",
-    "Signal generator system.md",
-    "custom I2C slave.md",
+    "Physic.md",
     "about Hardware system design.md",
     "about Hardware system desing.md",
     "about KX134(material).md",
@@ -196,7 +209,6 @@
     "fundamentals.md",
     "about ZC706.md",
     "introduction.md",
-    "AXI-IIC IP Core.md",
     "picture/Pasted image 20231026223543.png",
     "picture/Pasted image 20231026215325.png",
     "picture/Pasted image 20231026213915.png",

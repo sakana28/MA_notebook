@@ -5,5 +5,5 @@
 [[about signal recorder]]
 	[[AXI-IIC IP Core]]
 [[about signal generator]]
-[[custom I2C Slave]]
+	[[custom I2C Slave]]
 [[Signal generator system]]
