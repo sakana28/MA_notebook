@@ -24,8 +24,13 @@ In terms of software workflow, the design process can also be divided into the f
 - Completing hardware designs in Vivado and exporting in the Xilinx support archive (XSA) format containing configuration for the PS and bitstream programming the PL
 - Importing the XSA in Vitis IDE and selecting the operating system to create a new platform.
 - Generating Board Support Package (BSP) for lower level OS like FreeRTOS and Standalone
-- Writing applications based on the BSP and compiling/running them
+- Writing applications based on the BSP and compiling/debugging/running them
 
-### zynq ip CORE 
+The system design and hardware development stages of the flow, as previously outlined, will be elaborated on in detail in this chapter. The process of software development conducted in Vitis IDE will be introduced in chapter 4.
+
+
+
+![[Screenshot_2023-09-22_15-55-56.png]] (replaced later)
+#### zynq ip CORE 
  
  The first step is to add the ZYNQ7 Processing System IP core, which unlike soft processor IPs such as MicroBlaze, serves as an interface to non-FPGA processing system components. The board definition file from the manufacturer automatically configures the Zynq PS IP with appropriate parameters and establishes connections between Multipurpose I/O (MIO) pins and board peripherals. Notably, the PL to PS interrupt required in this project must be manually enabled by the user. ### BSP The BSP is customized for the base system and OS combination, and contains hardware parameters, device drivers, and low-level OS functions. (zynq book)
