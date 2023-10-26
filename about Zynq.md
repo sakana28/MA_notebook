@@ -27,3 +27,5 @@ write response channel (BVALID, BRESP, BREADY).
 
 By separating read and write channels, AXI4 implements full-duplex communication, allowing simultaneous read and write operations between two devices. Each of the five read/write channels contains its own handshake signals, which are fundamental to AXI buses and enable both sender and receiver to control transmission rates. As shown in the figure below, a valid transfer occurs when both READY and VALID signals are high on the rising clock edge. 
 
+### HwSW co design 
+合理分割Generally speaking, software (on the PS) will be used to implement general purpose sequential processing tasks, an operating system, user applications and GUIs, while computationally intensive data flow parts of the design are more suitably realised in the PL. (zynq book)
