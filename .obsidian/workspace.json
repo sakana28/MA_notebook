@@ -8,43 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "2b2ff988f5f3ac71",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "hardware implementation.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "4dacec36f52c5cd1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Physic.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "fc4559b99a4aa4f9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "about signal recorder.md",
+                "file": "about ZC706.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -119,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Physic.md",
+                "file": "about ZC706.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Physic.md",
+                "file": "about ZC706.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -159,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Physic.md"
+                "file": "about ZC706.md"
               }
             }
           },
@@ -190,22 +165,22 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "4dacec36f52c5cd1",
+  "active": "fc4559b99a4aa4f9",
   "lastOpenFiles": [
-    "hardware implementation.md",
-    "custom I2C slave.md",
-    "AXI-IIC IP Core.md",
     "about signal recorder.md",
+    "custom I2C slave.md",
+    "hardware implementation.md",
+    "about KX134.md",
+    "Physic interface.md",
+    "AXI-IIC IP Core.md",
     "about signal generator.md",
     "MA_Index.md",
     "Test result.md",
     "software implementation.md",
     "what is non-stationary.md",
-    "Physic.md",
     "about Hardware system design.md",
     "about Hardware system desing.md",
     "about KX134(material).md",
-    "about KX134.md",
     "fundamentals.md",
     "about ZC706.md",
     "introduction.md",

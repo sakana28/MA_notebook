@@ -6,4 +6,4 @@
 	[[AXI-IIC IP Core]]
 [[about signal generator]]
 	[[custom I2C Slave]]
-[[Signal generator system]]
+	[[Physic interface]]
