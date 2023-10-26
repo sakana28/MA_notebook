@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MA_Index.md",
+                "file": "hardware implementation.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "fc4559b99a4aa4f9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "about signal recorder.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -94,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "MA_Index.md",
+                "file": "about signal recorder.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +124,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "MA_Index.md",
+                "file": "about signal recorder.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +147,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "MA_Index.md"
+                "file": "about signal recorder.md"
               }
             }
           },
@@ -165,16 +178,17 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "2b2ff988f5f3ac71",
+  "active": "fc4559b99a4aa4f9",
   "lastOpenFiles": [
-    "Test result.md",
-    "MA_Index.md",
-    "software implementation.md",
     "hardware implementation.md",
+    "about signal recorder.md",
+    "about signal generator.md",
+    "MA_Index.md",
+    "Test result.md",
+    "software implementation.md",
     "what is non-stationary.md",
     "Signal generator system.md",
     "custom I2C slave.md",
-    "about signal generator.md",
     "about Hardware system design.md",
     "about Hardware system desing.md",
     "about KX134(material).md",
@@ -203,7 +217,6 @@
     "未命名 4.md",
     "previous chapter.md",
     "about Model.md",
-    "未命名 3.md",
     "doc/antoni2003 (1).pdf",
     "doc/antoni2002.pdf",
     "doc/未确认 508424.crdownload",
