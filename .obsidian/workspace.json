@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "未命名 7.md",
+                "file": "AXI-IIC.md",
                 "mode": "source",
                 "source": false
               }
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "未命名 7.md",
+                "file": "AXI-IIC.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -124,7 +124,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "未命名 7.md",
+                "file": "AXI-IIC.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -147,7 +147,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "未命名 7.md"
+                "file": "AXI-IIC.md"
               }
             }
           },
@@ -181,7 +181,7 @@
   "active": "9390b3db684ab697",
   "lastOpenFiles": [
     "about KX134.md",
-    "未命名 7.md",
+    "AXI-IIC.md",
     "picture/Pasted image 20231026223543.png",
     "picture/Pasted image 20231026215325.png",
     "picture/Pasted image 20231026213915.png",
