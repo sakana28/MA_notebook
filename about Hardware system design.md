@@ -12,18 +12,19 @@ The hardware logic design involves creating the required custom hardware environ
 
 The software programming aims to control the operation of the PS through user code, in order to realize the expected system functionality. This can be done in Vitis, which is used to create, compile and debug applications running on the ARM Cortex-A9 processor. 
 
-Methodologically, the hardware-software co-design flow for Zynq involves: 
+Methodologically, the hardware-software co-design flow for Zynq consists of the following stages: 
 - Writing specifications based on requirements 
 - System design following top-down principles 
 - Hardware development and testing using IP blocks 
 - Software development and testing 
 - System integration and testing 
  
- From a software workflow perspective, 设计步骤可以被分为以下几个步骤： 
- - 选择被使用的device并在Vivado中创建工程 
- - 在Vivado中完成hardware designs and exported in the Xilinx support archive (XSA) format which 包含对PS的配置和编程PL的bitstream. 
- - To create a new platform component in the Vitis IDE, the XSA is imported and select the operating system 
- - For lower level OS like FreeRTOS and Standalone, a Board Support Package (BSP) is created. 基于BSP write applications and compile/run them. 
+In terms of software workflow, the design process can also be divided into the following steps:
+- Selecting the target device and creating a project in Vivado
+- Completing hardware designs in Vivado and exporting in the Xilinx support archive (XSA) format containing configuration for the PS and bitstream programming the PL
+- Importing the XSA in Vitis IDE and selecting the operating system to create a new platform.
+- Generating Board Support Package (BSP) for lower level OS like FreeRTOS and Standalone
+- Writing applications based on the BSP and compiling/running them
 
 ### zynq ip CORE 
  
