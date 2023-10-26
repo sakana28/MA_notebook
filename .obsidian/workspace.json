@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "about Hardware system design.md",
+                "file": "about KX134.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "writing",
+                "query": "tag:#writing",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about Hardware system design.md",
+                "file": "about KX134.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about Hardware system design.md",
+                "file": "about KX134.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "about Hardware system design.md"
+                "file": "about KX134.md"
               }
             }
           },
@@ -167,6 +167,10 @@
   },
   "active": "ceca17c7e1519c1b",
   "lastOpenFiles": [
+    "picture/Volltext (PDF).pdf",
+    "about KX134(material).md",
+    "about I2C Protocol.md",
+    "about Hardware system design.md",
     "what is non-stationary.md",
     "about KX134.md",
     "Signal generator system.md",
@@ -175,9 +179,7 @@
     "about Zynq.md",
     "未命名 6.md",
     "未命名 5.md",
-    "about Hardware system design.md",
     "Draft.md",
-    "about I2C Protocol.md",
     "未命名 4.md",
     "previous chapter.md",
     "picture/Signal_generator 2.png",
@@ -188,7 +190,6 @@
     "未命名 3.md",
     "I2C Slave.md",
     "Model修正信息.md",
-    "about KX134(material).md",
     "picture/Pasted image 20231023032001.png",
     "picture/Pasted image 20231023031941.png",
     "picture/Pasted image 20231023031934.png",
@@ -211,7 +212,6 @@
     "Zybo vs Zedboard vs ZC706.md",
     "未命名 1.md",
     "doc/gao2006.pdf",
-    "Step by step notiz.md",
-    "未命名 2.md"
+    "Step by step notiz.md"
   ]
 }
