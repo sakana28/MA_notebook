@@ -13,8 +13,12 @@ The Watermark Interrupt mode is an operating mode of the Accelerometer. samples 
 ### CNTL1 
 The CNTL1 control register controls the main features of KX134. Before configuring other registers, CNTL1 must be used to set the accelerometer to stand-by mode. Once configuration is complete, CNTL1 is used to start data acquisition. The following bits are configured: 
 ![[Pasted image 20231026211805.png]]
-PC1 
-RES (highperformence) 
+- PC1: controls the operating mode.
+	PC1 = 0 – stand-by mode 
+	PC1 = 1 – High-Performance or Low Power mode
+- RES: determines the performance mode of the KX134.
+	RES = 0 – Low Power mode (higher noise, lower current, 16-bit output data) 
+	RES = 1 – High-Performance mode (lower noise, higher current, 16-bit output data)
 GSEL 
 ### ODCNTL 
 The output data control register configures functionality and parameters related to the acceleration outputs. Most importantly, OSA[3:0] determines the sample rate of the accelerometer. 
@@ -30,10 +34,13 @@ IEL1
 This register controls routing of an interrupt to the physical interrupt pin INT1. The following bit is configured for watermark interrupt mode: WMI1.
 ![[Pasted image 20231026213900.png]]
 ### BUF_CNTL1 
-This register controls the buffer sample threshold. The data is SMP_TH[7:0], the user-defined number of samples. For 8-bit samples the maximum is 171, for 16-bit samples the maximum is 86.
+This register contains the buffer sample threshold SMP_TH[7:0]. For 8-bit samples the maximum number of samples is 171, for 16-bit samples the maximum is 86.
 ![[Pasted image 20231026213915.png]]
 ### BUF_CNTL2 
-This register controls sample buffer operation.其中以下位在本工作中被配置 BUFE BRES BM[1:0] 
+This register controls sample buffer operation. The following bits are configured: 
+BUFE 
+BRES
+BM[1:0].
 ![[Pasted image 20231026215325.png]]
 ## communication via I2C 
 As mentioned previously, the KX134 accelerometer communicates with host via I2C bus protocol. The 7-bit slave address of the KX134 consists of a 6-bit fixed portion and a 1-bit programmable section based on the logic level of the ADDR pin. Specifically, the accelerometer can be configured for an address of 0x1E when ADDR is grounded or 0x1F when ADDR is connected to VDD. Read and write transactions comply with to the I2C timing diagrams and format described earlier. Furthermore, the sequence shown in Figure 3 must be followed when accessing the KX134's internal registers. 
