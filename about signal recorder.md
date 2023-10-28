@@ -1,10 +1,5 @@
 #writing 
 
-在本章节，首先需要讨论该Signal recorder系统应有的功能，并对这些功能进行PS-PL实现的划分。 为了与KX134进行通信，首先一定需要I2C接口。通过查询ZC706的User Guide可知，ZC706 evaluation board implements PL-和PS-side 各自一个 I2C port on the Zynq SoC,但它们接入了板上已有的I2C Bus中，用于与固定在板上的I2C器件如EEPROM通信。因此，KX134与Zynq Soc只能通过连接到PL端的GPIO Header实现。
- 
-另一方面，被采集到的信号应当被存储起来，方便进行进一步的分析处理。这一目的可以通过ZC706板子上的SD卡槽实现。因此，被读取的KX134的数据必须进入PS区，以被写入SD卡中。所以应当使用AXI-IIC IP核，同时完成I2C接口实现与数据在PL-PS间传输两项任务。 除此之外，该Signal recorder应可以由用户在程序运行时控制采样的开始。在Zynq PS中，应用程序中的scanf和printf函数都会默认使用PS Uart.因此，通过板上的usb-uart接口和PC中的serial device terminal可以简单地实现PC端对PS上程序的控制。
-
-图（）展示了该Signal recorder设计的block diagramm。KX134的配置信息在运行在PS中的Application中被定义，并通过AXI4总线被传送到AXI-IIC IP核中，再被转换为I2C信号写入KX134中。通过USB-UART接口，用户可以在PC上的 serial device terminal中控制加速度信号采集的开始。而加速度信号被画面最右端的KX134采集，当Buffer中的样本达到阈值是，KX134的INT1 pin上生成一个高电平的interrupt。该Interrupt通过FPGA上的GPIO Pin连接到PS端的IRQ_F2P port。它会激活PS中相对应的interrupt service routine，以对KX134的Buffer中的加速度数据进行读取。读取出的数据会以文本文档的形式存储在SD卡中。 
  
 In this section, the desired functions of the Signal Recorder system are first discussed, followed by dividing the implementation of these functions into the PS- and PL-side. 
 

@@ -31,8 +31,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -107,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about signal recorder.md",
+                "file": "about Hardware system design.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -124,7 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about signal recorder.md",
+                "file": "about Hardware system design.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -147,7 +146,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "about signal recorder.md"
+                "file": "about Hardware system design.md"
               }
             }
           },
@@ -178,11 +177,11 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "8ba9616a20c9a6e4",
+  "active": "fc4559b99a4aa4f9",
   "lastOpenFiles": [
+    "about signal recorder.md",
     "about Hardware system design.md",
     "about ZC706.md",
-    "about signal recorder.md",
     "custom I2C slave.md",
     "hardware implementation.md",
     "about KX134.md",
