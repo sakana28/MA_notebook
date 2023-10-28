@@ -2,7 +2,9 @@
 
 Design flow （zynq book） 
 
-在掌握KX134的基本功能和通信方式后，即可搭建signal recorder系统
+在掌握KX134的基本功能和通信方式后，即可搭建signal recorder系统。
+
+
 
 ### 使用zynq搭建系统的流程 
 
