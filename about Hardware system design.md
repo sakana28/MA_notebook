@@ -2,7 +2,7 @@
 
 Design flow （zynq book） 
 
-With an understanding of the KX134's fundamental features and communication protocols, the signal recorder system can now be constructed on the Zynq platform. This section will present a detailed discussion of the design flow for developing the system on the Zynq, the functionality implemented by the system, and key hardware design components.
+With an understanding of the KX134's fundamental features and communication protocols, the signal recorder system can now be constructed on the Zynq platform. This section will present a detailed introduction of the design flow for developing the system on the Zynq, the implemented functionality , and key hardware design components.
 
 ### 使用zynq搭建系统的流程 
 
