@@ -16,7 +16,23 @@ Chapter 4 explains the software programming of the Zynq Embedded System in Vitis
 
 #### zynq ip CORE 
  
- The first step is to add the ZYNQ7 Processing System IP core, which unlike soft processor IPs such as MicroBlaze, serves as an interface between non-FPGA processing system components and. The board definition file from the manufacturer automatically configures the Zynq PS IP with appropriate parameters and establishes connections between Multipurpose I/O (MIO) pins and board peripherals. Notably, the PL to PS interrupt required in this project must be manually enabled by the user. ### BSP The BSP is customized for the base system and OS combination, and contains hardware parameters, device drivers, and low-level OS functions. (zynq book)
+ The first step is to add the ZYNQ7 Processing System IP core, which unlike soft processor IPs such as MicroBlaze, serves as an interface between non-FPGA processing system components and the FPGA-implemented IPs. 
+ 
+该IP核主要具有以下功能：
+ - Enable/Disable I/O Peripherals (IOP)
+- Enable/Disable AXI I/O ports (AIO)
+- MIO Configuration
+- Extended MULTIPLE USE I/Os (EMIO)
+- DDR Configuration
+- Security and Isolation Configuration  
+- Interconnect Logic for Vivado IP - PS interface
+- PL Clocks and Interrupts
+ 
+ The board definition file from the manufacturer automatically configures the Zynq PS IP with appropriate parameters and establishes connections between Multipurpose I/O (MIO) pins and board peripherals. Notably, the PL to PS interrupt required in this project must be manually enabled by the user. 
+
+#### BSP 
+ 
+The BSP is customized for the base system and OS combination, and contains hardware parameters, device drivers, and low-level OS functions. (zynq book)
  
 PS端的
 fatfs在软件章节 PS PS PS部分除电源引脚外的引脚信息如下图所示。从这里可以看出来，PS部分的引脚除了电源、地、时钟、复位和DDR专用引脚外均为Multiuse I/O(MIO)引脚. 
