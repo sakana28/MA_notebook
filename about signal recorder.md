@@ -38,11 +38,3 @@ PL 可异步向 PS 发出多达 20 个中断信号。其中4个中断属于priva
 The board definition file from the manufacturer automatically configures the Zynq PS IP with appropriate parameters and establishes connections between Multipurpose I/O (MIO) pins and board peripherals. Notably, the PL to PS interrupt required in this project must be manually enabled by the user. 
 
 
-#### BSP 
- 
-The BSP is customized for the base system and OS combination, and contains hardware parameters, device drivers, and low-level OS functions. (zynq book)
- 
-PS端的
-fatfs在软件章节
-
-Vitisprintf
