@@ -29,8 +29,10 @@ Chapter 4 explains the software programming of the Zynq Embedded System in Vitis
 - Interconnect Logic for Vivado IP - PS interface
 - PL Clocks and Interrupts
 
-PS部分的引脚除了电源、地、时钟、复位和DDR专用引脚外均为Multiuse I/O(MIO)引脚. PS最多处最多可提供 54 个 MIO 端口。The wizard allows user to choose the peripheral ports to be connected to MIO ports。如果需要更多MIO，用户还可以开启EMIO，即使PS端使用PL端的管脚
- 
+PS部分的引脚除了电源、地、时钟、复位和DDR专用引脚外均为Multiuse I/O(MIO)引脚. PS最多处最多可提供 54 个 MIO 端口。The wizard allows user to choose the peripheral ports to be connected to MIO ports。如果需要更多MIO，用户还可以开启EMIO，即使PS端使用PL端的管脚与peripheral连接。
+
+PL 可异步向 PS 发出多达 20 个中断信号。其中4个中断属于private peripheral interrupt (PPI) ，该中断只对指定的core有效，其余16 个中断信号是shared peripheral interrupt(SPI),该中断来源于外设并映射到中断控制器，每个中断信号可以被设置优先级，且可以对所有的core有效。
+
 The board definition file from the manufacturer automatically configures the Zynq PS IP with appropriate parameters and establishes connections between Multipurpose I/O (MIO) pins and board peripherals. Notably, the PL to PS interrupt required in this project must be manually enabled by the user. 
 
 
