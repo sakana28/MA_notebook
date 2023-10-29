@@ -31,7 +31,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -106,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about Hardware system design.md",
+                "file": "about signal recorder.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -123,7 +124,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about Hardware system design.md",
+                "file": "about signal recorder.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -146,7 +147,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "about Hardware system design.md"
+                "file": "about signal recorder.md"
               }
             }
           },
@@ -177,11 +178,11 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "fc4559b99a4aa4f9",
+  "active": "8ba9616a20c9a6e4",
   "lastOpenFiles": [
+    "about Hardware system design.md",
     "about signal recorder.md",
     "MA_Index.md",
-    "about Hardware system design.md",
     "software implementation.md",
     "未命名 7.md",
     "picture/Pasted image 20231030021109.png",
