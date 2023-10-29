@@ -17,6 +17,7 @@ Chapter 4 explains the software programming of the Zynq Embedded System in Vitis
 #### zynq ip CORE 
  
  The first step is to add the ZYNQ7 Processing System IP core, which unlike soft processor IPs such as MicroBlaze, serves as an interface between non-FPGA processing system components and the FPGA-implemented IPs. 
+![[Pasted image 20231029205206.png]]
  
 该IP核主要具有以下功能：
  - Enable/Disable I/O Peripherals (IOP)
@@ -27,6 +28,7 @@ Chapter 4 explains the software programming of the Zynq Embedded System in Vitis
 - Security and Isolation Configuration  
 - Interconnect Logic for Vivado IP - PS interface
 - PL Clocks and Interrupts
+
  
  The board definition file from the manufacturer automatically configures the Zynq PS IP with appropriate parameters and establishes connections between Multipurpose I/O (MIO) pins and board peripherals. Notably, the PL to PS interrupt required in this project must be manually enabled by the user. 
 
