@@ -80,7 +80,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -155,7 +155,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "hardware implementation.md",
+                "file": "AXI-IIC IP Core.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -172,7 +172,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "hardware implementation.md",
+                "file": "AXI-IIC IP Core.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -195,7 +195,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "hardware implementation.md"
+                "file": "AXI-IIC IP Core.md"
               }
             }
           },
@@ -226,10 +226,11 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "2e6b53432bf6770a",
+  "active": "6db12fdd81a05a19",
   "lastOpenFiles": [
-    "AXI-IIC IP Core.md",
+    "picture/Pasted image 20231030225503.png",
     "hardware implementation.md",
+    "AXI-IIC IP Core.md",
     "custom I2C slave.md",
     "picture/iobuf.svg",
     "about Hardware system design.md",
