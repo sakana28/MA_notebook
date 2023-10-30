@@ -16,11 +16,11 @@ Chapter 4 explains the software programming of the Zynq Embedded System in Vitis
 
 #### zynq ip CORE 
  
- The first step is to add the ZYNQ7 Processing System IP core, which unlike soft processor IPs such as MicroBlaze, serves as an interface between non-FPGA processing system components and the FPGA-implemented IPs. 
+ The first step is to add the ZYNQ7 Processing System IP core in block design, which serves as an interface between the non-FPGA processing system components and the FPGA-implemented IP blocks, unlike soft processor IPs such as MicroBlaze. 
 ![[Pasted image 20231029205206.png]]
 ![[Pasted image 20231030021109.png]]
 (from internet replace later)
- 该IP核主要具有以下功能：
+The key features of this IP core are:
  - Enable/Disable I/O Peripherals (IOP)
 - Enable/Disable AXI I/O ports (AIO)
 - MIO Configuration
