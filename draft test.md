@@ -229,7 +229,7 @@ Additionally, the signal recorder should allow the user to control sampling init
 
 Figure () shows the system block diagram for this signal recorder design. The configuration of KX134 is determined in the application program running in the PS and transmitted over the AXI4 bus to the AXI-IIC IP core. This IP core converts the configuration data to I2C signals and writes it to the specific registers of KX134. When the user inputs a specific command to the PS via the serial port on the PC, the PS writes a control signal to CNTL1 via the AXI-IIC to activate sampling. Once the number of samples in the Buffer reaches a threshold, the KX134 generates an interrupt on its INT1 pin. This pin is connected to the IRQ_F2P port on PS through a GPIO pin on PL, which will trigger the interrupt service routine in PS to read the acceleration data. Finally, the data is stored as text files in the SD card. 
 
-![[signal_generator.drawio 1.svg]]
+
 ### IP Core
 Chapter 4 will explain the software programming of the Zynq Embedded System in Vitis IDK. Following section focuses on the hardware modules that need to be integrated into Vivado to realize the functionality of the system, and how to configure them properly.
 
@@ -274,8 +274,8 @@ It is important to note that this AXI IIC core does not provide explicit electri
 ![[iobuf.svg]]
 ## Signal Generator
 ### General functions of the system
-![[Signal_generator 2.png]]
 
+![[signal_generator.drawio (1) 1.svg]]
 ### Custom I2C Slave IP Core
 #### FSM of the IP Core
 ![[pladitor_diagram (1) 1.svg]]
