@@ -36,12 +36,16 @@ PL 可异步向 PS 发出多达 20 个中断信号。其中4个中断属于priva
 
 
 
-##### AXI port
+##### AXI-port
 
-在ZYNQ芯片内部用硬件实现了AXI总线协议，包括9个物理接口，分别为4个AXI-GP接口，4个AXI-HP接口和1个AXI-ACP接口。其中AXI-ACP接口专用于硬件加速应用。AXI-HP都是Slave接口，主机在PL端上。主要用于PL访问存储器如PS的On-Chip RAM 或 DDR。而AXI-GP接口本工作中使用了一个AXI-GP Master
+在ZYNQ芯片内部用硬件实现了AXI总线协议，包括9个物理接口，分别为4个AXI-GP接口，个AXI-HP接口和1个AXI-ACP接口。其中AXI-ACP接口专用于硬件加速应用。AXI-HP即High performance都是Slave接口。主要用于PL端的主机（如DMA控制器）访问存储器如PS的On-Chip RAM 或 DDR。而AXI-GP接口则由两个Master接口和两个Slave接口。本工作中使用了一个AXI-GP Master接口，用于由PS端发起对PL端的I2C接口IP核的读写。
 
 
 ##### configuration 
 The board definition file from the manufacturer automatically configures the Zynq PS IP with appropriate parameters and establishes connections between Multipurpose I/O (MIO) pins and board peripherals. Notably, the PL-PS interrupt required in this project must be manually enabled by the user在对应的选项卡中。而本工作中PL使用的时钟是由PS产生并经过分频供给PL使用的PL fabric clocks。它被配置为100 MHz，其远大于最大的SCL频率1MHz。
 
+
+#### AXI-IIC IP Core
+
+The AXI IIC Bus Interface module provides the transaction interface to the AXI4-Lite interface. This core does not provide explicit electrical connectivity to the IIC bus. 这代表，该IP核与外界通信的信号并不是双向的，而是单向的input,output信号和用于控制三态门的信号。用户应该在设计中确保三态门缓冲和上拉电阻的存在，以符合协议要求。
 
