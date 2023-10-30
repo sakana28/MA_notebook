@@ -80,7 +80,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -155,7 +155,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AXI-IIC IP Core.md",
+                "file": "hardware implementation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -172,7 +172,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "AXI-IIC IP Core.md",
+                "file": "hardware implementation.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -195,7 +195,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AXI-IIC IP Core.md"
+                "file": "hardware implementation.md"
               }
             }
           },
@@ -226,11 +226,12 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "6db12fdd81a05a19",
+  "active": "2e6b53432bf6770a",
   "lastOpenFiles": [
-    "custom I2C slave.md",
     "AXI-IIC IP Core.md",
     "hardware implementation.md",
+    "custom I2C slave.md",
+    "picture/iobuf.svg",
     "about Hardware system design.md",
     "MA_Index.md",
     "about signal recorder.md",
@@ -255,7 +256,6 @@
     "picture/Pasted image 20231026213900.png",
     "picture/Pasted image 20231026212033.png",
     "picture/Pasted image 20231026211927.png",
-    "picture/Pasted image 20231026211835.png",
     "picture/Volltext (PDF).pdf",
     "about I2C Protocol.md",
     "draft test.md",
@@ -264,7 +264,6 @@
     "未命名 5.md",
     "Draft.md",
     "未命名 4.md",
-    "previous chapter.md",
     "doc/antoni2003 (1).pdf",
     "doc/antoni2002.pdf",
     "doc/未确认 508424.crdownload",
