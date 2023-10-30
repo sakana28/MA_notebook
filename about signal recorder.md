@@ -20,18 +20,15 @@ Chapter 4 explains the software programming of the Zynq Embedded System in Vitis
 ![[Pasted image 20231029205206.png]]
 ![[Pasted image 20231030021109.png]]
 (from internet replace later)
-The key features of this IP core are:
- - Enable/Disable I/O Peripherals (IOP)
-- Enable/Disable AXI I/O ports (AIO)
-- MIO Configuration
-- Extended MULTIPLE USE I/Os (EMIO)
-- DDR Configuration
-- Security and Isolation Configuration  
-- Interconnect Logic for Vivado IP - PS interface
-- PL Clocks and Interrupts
+- Peripheral and AXI port configuration
+- MIO pin allocation
+- DDR memory and clock configuration
+- Interrupts control configuration
+- Interconnect logic between Vivado IP and PS
 ##### MIO
 PS部分的引脚除了电源、地、时钟、复位和DDR专用引脚外均为Multiuse I/O(MIO)引脚. PS最多可提供 54 个 MIO 端口。The wizard allows user to choose the peripheral ports to be connected to MIO ports。MIO的灵活性给方便了板子的多样设计。如果需要更多MIO，设计者还可以开启EMIO，即为让PS端使用PL端的管脚与peripheral连接。
 ##### Interrupt
+PS IP core enables routing of interrupts from the PL peripherals and custom logic to trigger software handlers in the PS. Both private peripheral interrupts (PPI) and shared peripheral interrupts (SPI) are supported.
 PL 可异步向 PS 发出多达 20 个中断信号。其中4个中断属于private peripheral interrupt (PPI) ，该中断只对指定的core有效，其余16 个中断信号是shared peripheral interrupt(SPI),该中断来源于外设并映射到中断控制器，每个中断信号可以被设置优先级，且可以对所有的core有效。还有一类中断 Software Generated Interrupt（SGI）不来自于PL。软件向PS中的Generic Interrupt Controller(GIC)的指定寄存器中写入信息可以生成这样的中断。GIC确保针对多个CPU的中断一次只能由一个CPU执行，且优先级较高的中断先被执行。The project uses SPI to notify the PS of buffer watermark events 
 
 
@@ -42,7 +39,7 @@ PL 可异步向 PS 发出多达 20 个中断信号。其中4个中断属于priva
 
 
 ##### configuration 
-The board definition file from the manufacturer automatically configures the Zynq PS IP with appropriate parameters and establishes connections between Multipurpose I/O (MIO) pins and board peripherals. Notably, the PL-PS interrupt required in this project must be manually enabled by the user在对应的选项卡中。而本工作中PL使用的时钟是由PS产生并经过分频供给PL使用的PL fabric clocks。它被配置为100 MHz，其远大于最大的SCL频率1MHz。
+The PS configuration streamlines integration but requires configuring key parameters like interrupts, clocks, and AXI ports. The board definition file from the manufacturer  automatically customizes settings like MIO pin multiplexing and DDR configuration to match the base Zynq design for the target board. Notably, the PL-PS interrupt required in this project must be manually enabled by the user在对应的选项卡中。而本工作中PL使用的时钟是由PS产生并经过分频供给PL使用的PL fabric clocks。它被配置为100 MHz，其远大于最大的SCL频率1MHz。
 
 
 #### AXI-IIC IP Core
