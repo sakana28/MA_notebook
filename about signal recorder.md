@@ -34,13 +34,14 @@ PS部分的引脚除了电源、地、时钟、复位和DDR专用引脚外均为
 ##### Interrupt
 PL 可异步向 PS 发出多达 20 个中断信号。其中4个中断属于private peripheral interrupt (PPI) ，该中断只对指定的core有效，其余16 个中断信号是shared peripheral interrupt(SPI),该中断来源于外设并映射到中断控制器，每个中断信号可以被设置优先级，且可以对所有的core有效。还有一类中断 Software Generated Interrupt（SGI）不来自于PL。软件向PS中的Generic Interrupt Controller(GIC)的指定寄存器中写入信息可以生成这样的中断。GIC确保针对多个CPU的中断一次只能由一个CPU执行，且优先级较高的中断先被执行。在signal recorder中被使用的中断是SPI。
 
-##### Clock
-本工作中使用PL fabric clocks，即由PS产生供给PL使用的时钟。
+
 
 ##### AXI port
 
-在ZYNQ芯片内部用硬件实现了AXI总线协议，包括9个物理接口，分别为AXI-GP0~AXI-GP3，AXI-HP0~AXI-HP3，AXI-ACP接口。
+在ZYNQ芯片内部用硬件实现了AXI总线协议，包括9个物理接口，分别为4个AXI-GP接口，4个AXI-HP接口和1个AXI-ACP接口。其中AXI-ACP接口专用于硬件加速应用。AXI-HP都是Slave接口，主机在PL端上。主要用于PL访问存储器如PS的On-Chip RAM 或 DDR。而AXI-GP接口本工作中使用了一个AXI-GP Master
 
-The board definition file from the manufacturer automatically configures the Zynq PS IP with appropriate parameters and establishes connections between Multipurpose I/O (MIO) pins and board peripherals. Notably, the PL-PS interrupt required in this project must be manually enabled by the user 在对应的选项卡中。而使用的PL fabric clocks
+
+##### configuration 
+The board definition file from the manufacturer automatically configures the Zynq PS IP with appropriate parameters and establishes connections between Multipurpose I/O (MIO) pins and board peripherals. Notably, the PL-PS interrupt required in this project must be manually enabled by the user在对应的选项卡中。而本工作中PL使用的时钟是由PS产生并经过分频供给PL使用的PL fabric clocks。它被配置为100 MHz，其远大于最大的SCL频率1MHz。
 
 
