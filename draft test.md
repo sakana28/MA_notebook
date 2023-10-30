@@ -105,7 +105,7 @@ By separating read and write channels, AXI4 implements full-duplex communication
 Figure ( ) shows the development and testing setup with the Xilinx ZC706 Evaluation Kit. The ZC706 evaluation board by Xilinx offers a high-performance and flexible platform for developing a variety of embedded processing systems. The central component of the board is the XC7Z045 FFG900 - 2 SoC, featuring a dual-core ARM Cortex-A9 processor with 7-series programmable logic.  Key hardware specifications of the XC7Z045 comprise 218,600 lookup tables (LUTs), 437,200 flip-flops, 900 digital signal processor (DSP) slices, and 26.5 Mb block RAM, providing sufficient resources for complex digital systems.
 
 The peripheral interfaces and connectivity of the ZC706 are crucial for data acquisition and generation applications. The board provides ample clock resources, diverse mainstream interface connectors, and User I/O. Key features utilized in this work include the Secure Digital (SD) card slot, DDR3 memory interfacing the processing system, serial communication through a USB-UART bridge, general-purpose input/output (GPIO) headers, and a JTAG port for FPGA programming.
-## https://www.nxp.com/docs/en/user-guide/UM10204.pdf 
+## I2C Protocol
 
 The I^2C protocol is a two-wire serial communication bus. Each Device on the bus have a specific address and is assigned as master or slave device. There must be at least one master device on the bus because only master devices can initiate communication. All devices are connected to the same two serial lines, the serial clock line(SCL) and the serial data line (SDA). The master device controls the SCL line while the device currently writing data to the bus controls the SDA line. 
 
@@ -137,53 +137,129 @@ The protocol requires acknowledgements (ACKs) during data transfer. The receiver
 
 When the master sends data, the slave generates the ACK. If SDA remains high when SCL is high during the 9th clock, the master can directly generate a STOP or ReSTART for a new transmission. When the slave sends data, the master generates the ACK. An ACK from the master means more data is expected. Once all desired data is received, the master sends NACK to tell the slave to stop sending data and release the bus and then sends a STOP to terminate the read operation. 
 
-next chapter: [[custom I2C slave]]
+# hardware implementation
 
 The signal generator developed in this work emulates the functionality of the KX134-1211 accelerometer, which is also used for vibration data acquisition in the signal recorder. Therefore, this section provides background information on the basic capabilities and interface of the KX134 that are relevant to reproducing its operation. 
-# KX134 
+## KX134 
+The signal generator developed in this work emulates the functionality of the KX134-1211 accelerometer, which is also used for vibration data acquisition in the signal recorder. Therefore, this section provides background information on the basic capabilities and interface of the KX134 that are relevant to reproducing its operation. 
+
 The KX134 from Kionix is a triaxial accelerometer from Kionix that is capable of measuring acceleration forces along the X, Y, and Z axes. User interaction with the KX134, including configuration and data acquisition, is enabled through either I2C or SPI communication protocols. By writing to specific registers, users can configure various parameters such as sensor range, output data rate, triggering options, and buffer size. 
-## Pin assignments and description 
+### Pin assignments and description 
 The pins of the KX134 accelerometer are shown in Table 1 below. ![[Pasted image 20231010054814.png]] This work uses the KX134-1211-EVK-001 evaluation board to connect the sensor with other development platforms. A ribbon cable connects the sensor evaluation board to the FPGA development board.
-## Embedded Registers 
+### Embedded Registers 
 The KX134 accelerometer has 128 8-bit registers that are mostly userprogrammable. Table 1 lists the available registers and their addresses. ![[Pasted image 20231010060519.png]]The upcoming section will provide a detailed description of the configuration registers associated with this project. 
 
-## Registers configuration for watermark Interrupt mode
+### Registers configuration for watermark Interrupt mode
 The Watermark Interrupt mode is an operating mode of the Accelerometer. samples are first stored in a buffer. Once the number of samples in the buffer reaches a user-defined threshold, a hardware interrupt is generated. In signal recorder, KX134 works in this mode. In signal generator, the behavior of the KX134 in this mode is emulated. Therefore, the registers that require to be configured in this mode will be introduced next. 
-### CNTL1 
-The CNTL1 control register enables the main features of the KX134. Before configuring other registers, CNTL1 must be used to set the accelerometer to stand-by mode. Once configuration is complete, CNTL1 is used to start data acquisition. 在工作中被配置了的位如下 PC1 RES (highperformence) GSEL 
-### ODCNTL 
-Output data control register可以配置与acceleration outputs有关的功能与参数。其中最重要的是OSA 3:0，它决定了该accelerometer的采样率 插入OSAODR表格 
-### INC1 
-Interrupt Control寄存器 controls the settings for the physical interrupt pin INT1. 工作中被配置了的位如下 IEN1 IEA1 IEL1 
-### INC4 
-This register controls routing of an interrupt reporting to physical interrupt pin INT1. 为了实现watermark模式配置了以下位 WMI1 
-### BUF_CNTL1 
-This register controls the buffer sample threshold. 其中的数据是SMP_TH[7:0]，即用户定义的样本数量阈值。当Sample为8位时，the maximum number of samples is 171；当Sample为16位时，the maximum number of samples is 86. 
-### BUF_CNTL2 
-This register controls sample buffer operation.其中以下位在本工作中被配置 BUFE BRES BM[1:0] 
-## communication via I2C 
-As mentioned previously, the KX134 accelerometer communicates with host via I2C bus protocol. The 7-bit slave address of the KX134 consists of a 6-bit fixed portion and a 1-bit programmable section based on the logic level of the ADDR pin. Specifically, the accelerometer can be configured for an address of 0x1E when ADDR is grounded or 0x1F when ADDR is connected to VDD. Read and write transactions comply with to the I2C timing diagrams and format described earlier. Furthermore, the sequence shown in Figure 3 must be followed when accessing the KX134's internal registers. 
+#### CNTL1 
+The CNTL1 control register controls the main features of KX134. Before configuring other registers, CNTL1 must be used to set the accelerometer to stand-by mode. Once configuration is complete, CNTL1 is used to start data acquisition. The following bits are configured: 
+![[Pasted image 20231026211805.png]]
+- PC1: controls the operating mode.
+	PC1 = 0 – stand-by mode 
+	PC1 = 1 – High-Performance or Low Power mode
+- RES: determines the performance mode of the KX134.
+	RES = 0 – Low Power mode (higher noise, lower current, 16-bit output data) 
+	RES = 1 – High-Performance mode (lower noise, higher current, 16-bit output data)
+GSEL 
+#### ODCNTL 
+The output data control register configures functionality and parameters related to the acceleration outputs. Most importantly, OSA[3:0] determines the sample rate of the accelerometer. 
+![[Pasted image 20231026211835.png]]
+![[Pasted image 20231026211927.png]]
+#### INC1 
+The interrupt control register configures the settings for the physical interrupt pin INT1. The following bits are configured: 
+IEN1 
+IEA1 
+IEL1
+![[Pasted image 20231026212033.png]]
+#### INC4 
+This register controls routing of an interrupt to the physical interrupt pin INT1. The following bit is configured for watermark interrupt mode: WMI1.
+![[Pasted image 20231026213900.png]]
+#### BUF_CNTL1 
+This register contains the buffer sample threshold SMP_TH[7:0]. For 8-bit samples the maximum number of samples is 171, for 16-bit samples the maximum is 86.
+![[Pasted image 20231026213915.png]]
+#### BUF_CNTL2 
+This register controls sample buffer operation. The following bits are configured: 
+BUFE 
+BRES
+BM[1:0].
+![[Pasted image 20231026215325.png]]
+### communication via I2C 
+As mentioned previously, the KX134 accelerometer communicates with host via I2C bus protocol. The 7-bit slave address of the KX134 consists of a 6-bit fixed portion and a 1-bit programmable section based on the logic level of the ADDR pin. Specifically, the accelerometer can be configured for an address of 0x1E when ADDR is grounded or 0x1F when ADDR is connected to VDD. Read and write transactions comply with to the I2C timing diagrams and format described earlier. Furthermore, the sequence shown in Figure () must be followed when accessing the KX134's internal registers. 
 
 Notably, the KX134 supports an auto-increment feature for simplified sequential register access. During multiple read or write operations, the register address does not need to be resent as the pointer automatically increments to the next register. However, this feature is disabled when reading from the BUF_READ register (0x63) so that the host can continuously read samples from the buffer. 
+![[Pasted image 20231026223543.png]]
+
+## Hardware System design flow
+
+With an understanding of the KX134's fundamental features and communication protocols, the signal recorder system can now be constructed on the Zynq platform. This section will present a detailed introduction of the design flow for developing the system on the Zynq, the implemented functionality , and key hardware design components.
+
+### workflow
+
+The overall process of building a system using the Zynq SoC can be divided into hardware logic implementation of the PL and software programming of the PS. In general, the software domain is well-suited for implementing sequential processing tasks, an operating system, user applications, and graphical user interfaces. In contrast, computationally intensive data flow elements of the system are more appropriately realized in the PL hardware. (zynq book)
+
+The hardware logic design involves creating the required custom hardware environment in Vivado to meet the system requirements. This includes IP integration, module design, pin assignments, and bitstream programming. 
+
+The software programming aims to control the operation of the PS through user code, in order to realize the expected system functionality. This can be done in Vitis, which is used to create, compile and debug applications running on the ARM Cortex-A9 processor.  
+
+Methodologically, the hardware-software co-design flow for Zynq consists of the following stages: 
+- Writing specifications based on requirements 
+- System design following top-down principles 
+- Hardware development and testing using IP blocks 
+- Software development and testing 
+- System integration and testing 
+ 
+In terms of software workflow, the design process can also be divided into the following steps:
+- Selecting the target device and creating a project in Vivado
+- Completing hardware designs in Vivado and exporting in the Xilinx support archive (XSA) format containing configuration for the PS and bitstream programming the PL
+- Importing the XSA in Vitis IDE and selecting the operating system to create a new platform.
+- Generating Board Support Package (BSP) for lower level OS like FreeRTOS and Standalone
+- Writing applications based on the BSP and compiling/debugging/running them
+
+The system design and hardware development stages of the flow, as previously outlined, will be elaborated on in detail in this chapter. The process of software development conducted in Vitis IDE will be introduced in chapter 4.
+
+## Signal Recorder
+### General functions of the system
+In this section, the desired functions of the signal recorder system are first discussed, followed by dividing the implementation of these functions into the PS- and PL-side. 
+
+Firstly, to communicate with the KX134 accelerometer, an I2C interface is absolutely necessary. The ZC706 evaluation board implements one I2C port on both the PL- and PS-side of the Zynq SoC. However, they are connected to an existing I2C Bus in order to communicate with I2C devices (e.g. EEPROM) that are fixed on the board. Therefore, the KX134 can only connect to the PL-side of Zynq SoC through the GPIO Header. 
+
+On the other hand, the recorded signals need to be stored for further analysis and processing, which can be conveniently done via the SD card slot on the ZC706 board. Thus, the acceleration data must be transferred to the PS-side to be written to the SD card. For this purpose, the AXI-IIC IP core is used for both the I2C interface implementation and the data transfer between PL and PS. 
+
+Additionally, the signal recorder should allow the user to control sampling initiation at runtime. In Zynq embedded system, the scanf and printf functions in applications use the PS Uart by default. So controlling the program running on a PS from a PC is easily realized via the on-board USB-UART interface and a serial device port on the PC. 
+
+Figure () shows the system block diagram for this signal recorder design. The configuration of KX134 is determined in the application program running in the PS and transmitted over the AXI4 bus to the AXI-IIC IP core. This IP core converts the configuration data to I2C signals and writes it to the specific registers of KX134. When the user inputs a specific command to the PS via the serial port on the PC, the PS writes a control signal to CNTL1 via the AXI-IIC to activate sampling. Once the number of samples in the Buffer reaches a threshold, the KX134 generates an interrupt on its INT1 pin. This pin is connected to the IRQ_F2P port on PS through a GPIO pin on PL, which will trigger the interrupt service routine in PS to read the acceleration data. Finally, the data is stored as text files in the SD card. 
+![[Screenshot_2023-09-22_15-55-56.png]]
+(replace later)
+
+### IP Core
+Chapter 4 will explain the software programming of the Zynq Embedded System in Vitis IDK. Following section focuses on the hardware modules that need to be integrated into Vivado to realize the functionality of the system, and how to configure them properly.
+
+#### zynq ip CORE 
+ 
+The first step is to add the ZYNQ7 Processing System IP core in block design, which serves as an interface between the non-FPGA processing system components and the FPGA-implemented IP blocks, unlike soft processor IPs such as MicroBlaze. 
+![[Pasted image 20231029205206.png]]
+![[Pasted image 20231030021109.png]]
+(from internet replace later)
+- Peripheral and AXI port configuration
+- MIO pin allocation
+- DDR memory and clock configuration
+- Interrupts control configuration
+- Interconnect logic between Vivado IP and PS
+##### MIO
+PS部分的引脚除了电源、地、时钟、复位和DDR专用引脚外均为Multiuse I/O(MIO)引脚. PS最多可提供 54 个 MIO 端口。The wizard allows user to choose the peripheral ports to be connected to MIO ports。MIO的灵活性给方便了板子的多样设计。如果需要更多MIO，设计者还可以开启EMIO，即为让PS端使用PL端的管脚与peripheral连接。
+##### Interrupt
+PS IP core enables routing of interrupts from the PL peripherals and custom logic to trigger software handlers in the PS. Both private peripheral interrupts (PPI) and shared peripheral interrupts (SPI) are supported. the Generic Interrupt Controller (GIC) built into the PS manages interrupt handling for both cores. It ensures interrupts are handled sequentially by only one core based on configured priority levels. It also implements interrupt distribution schemes for multi-core coordination. PL peripherals and logic can leverage the GIC via the IRQ_F2P port on Zynq7 PS IP. In this project, SPI is used to notify the PS of buffer watermark events.
 
 
 
-Design flow （zynq book） 
+##### AXI-port
 
-在掌握KX134的基本功能和通信方式后，即可搭建signal recorder系统
-
-使用zynq搭建系统的流程 
-
-ZYNQ 的工程设计大体上可以分为 对硬件逻辑系统的设计 和 对 CPU 软件程序的设计 硬件逻辑系统设计：搭建一个满足用户需求的硬件环境，通过 Vivado 实现 CPU 程序设计：通过用户程序控制 CPU 工作，使整个系统达到预定的效果，该部分通过 Vitis 实现 
-
-使用 Zynq SoC 构建系统的设计流程可分为硬件逻辑实现和处理系统 (PS) 的软件编程。 
-
-硬件逻辑设计包括使用 Vivado 创建所需的定制硬件环境，以满足系统要求。这包括 IP 集成、模块设计、引脚分配和 FPGA 编程。 
-
-软件编程的目标是通过用户代码控制 PS 的运行，以实现预期的系统功能。这可以在 Vitis 中完成，用于创建、编译和调试在 ARM Cortex-A9 处理器上运行的应用程序。
-
-Vivado 和 Vitis 工具协同工作，生成完整的 Zynq 系统。Vivado 综合并实现 PL 硬件逻辑，该逻辑与 FPGA 位流中的 PS 初始化一起加载。Vitis 将软件编译成可执行文件，并在启动后加载到 PS 运行。 通过制造商提供的board file, automatically configure the Zynq PS IP core with the correct parameters 并正确分配Multipurpose IO (MIO)管脚和板上peripherals的连接关系。 
+在ZYNQ芯片内部用硬件实现了AXI总线协议，包括9个物理接口，分别为4个AXI-GP接口，个AXI-HP接口和1个AXI-ACP接口。其中AXI-ACP接口专用于硬件加速应用。AXI-HP即High performance都是Slave接口。主要用于PL端的主机（如DMA控制器）访问存储器如PS的On-Chip RAM 或 DDR。而AXI-GP接口则由两个Master接口和两个Slave接口。本工作中使用了一个AXI-GP Master接口，用于由PS端发起对PL端的I2C接口IP核的读写。
 
 
-### zynq ip CORE 
-The first step is to add the ZYNQ7 Processing System IP core, which unlike soft processor IPs such as MicroBlaze, serves as an interface to non-FPGA processing system components. The board definition file from the manufacturer automatically configures the Zynq PS IP with appropriate parameters and establishes connections between Multipurpose I/O (MIO) pins and board peripherals. Notably, the PL to PS interrupt required in this project must be manually enabled by the user.
+##### configuration 
+The PS configuration streamlines integration but requires configuring key parameters like interrupts, clocks, and AXI ports. The board definition file from the manufacturer  automatically customizes settings like MIO pin multiplexing and DDR configuration to match the base Zynq design for the target board. Notably, key settings like clocks, AXI ports and PL-PS interrupt required in this project must be manually specified. For this project, a 100 MHz clock is supplied to the PL fabric, which is generated by the PS. 
+
+#### AXI-IIC IP Core
+
+The AXI IIC Bus Interface module provides the transaction interface to the AXI4-Lite interface. This core does not provide explicit electrical connectivity to the IIC bus. 这代表，该IP核与外界通信的信号并不是双向的，而是单向的input,output信号和用于控制三态门的信号。用户应该在设计中确保三态门缓冲和上拉电阻的存在，以符合协议要求。
