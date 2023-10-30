@@ -6,11 +6,11 @@ With an understanding of the KX134's fundamental features and communication prot
 
 ### 使用zynq搭建系统的流程 
 
-The overall process of building a system using the Zynq SoC can be divided into hardware logic implementation of the PL and software programming of the PS. 
+The overall process of building a system using the Zynq SoC can be divided into hardware logic implementation of the PL and software programming of the PS. In general, the software domain is well-suited for implementing sequential processing tasks, an operating system, user applications, and graphical user interfaces. In contrast, computationally intensive data flow elements of the system are more appropriately realized in the PL hardware. (zynq book)
 
 The hardware logic design involves creating the required custom hardware environment in Vivado to meet the system requirements. This includes IP integration, module design, pin assignments, and bitstream programming. 
 
-The software programming aims to control the operation of the PS through user code, in order to realize the expected system functionality. This can be done in Vitis, which is used to create, compile and debug applications running on the ARM Cortex-A9 processor. 
+The software programming aims to control the operation of the PS through user code, in order to realize the expected system functionality. This can be done in Vitis, which is used to create, compile and debug applications running on the ARM Cortex-A9 processor.  
 
 Methodologically, the hardware-software co-design flow for Zynq consists of the following stages: 
 - Writing specifications based on requirements 
