@@ -56,6 +56,18 @@
             }
           },
           {
+            "id": "ed29605fe88a2094",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Physic interface.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
             "id": "6db12fdd81a05a19",
             "type": "leaf",
             "state": {
@@ -155,7 +167,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AXI-IIC IP Core.md",
+                "file": "Physic interface.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -172,7 +184,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "AXI-IIC IP Core.md",
+                "file": "Physic interface.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -195,7 +207,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AXI-IIC IP Core.md"
+                "file": "Physic interface.md"
               }
             }
           },
@@ -226,11 +238,11 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "6db12fdd81a05a19",
+  "active": "ed29605fe88a2094",
   "lastOpenFiles": [
-    "picture/Pasted image 20231030225503.png",
     "hardware implementation.md",
     "AXI-IIC IP Core.md",
+    "picture/Pasted image 20231030225503.png",
     "custom I2C slave.md",
     "picture/iobuf.svg",
     "about Hardware system design.md",
@@ -256,7 +268,6 @@
     "picture/Pasted image 20231026213912.png",
     "picture/Pasted image 20231026213900.png",
     "picture/Pasted image 20231026212033.png",
-    "picture/Pasted image 20231026211927.png",
     "picture/Volltext (PDF).pdf",
     "about I2C Protocol.md",
     "draft test.md",
