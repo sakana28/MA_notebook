@@ -10,6 +10,4 @@ After successfully matching the address, the FSM can transition to either “rea
 In parallel, in the “read” state, the slave drives SDA low or release it based on the specified register data during SCL falling edges, ensuring SDA only changes when SCL is low. After processing all bits, the FSM transfers to “read_ack_start”. It then samples SDA on the SCL rising edge and transitions to “read_ack_got_rising”. Based on the acknowledgment received from the master (ACK or NACK), the system can either finish the read in “read_stop” or return to “read” on the next SCL falling edge.
 
 Importantly, a START signal at any time moves the FSM to “get_address_and_cmd”, while a STOP signal transitions it to “idle”, beyond the explicit state transfer diagrammed.
-![[Pasted image 20231010072011.png]]
 
-![[Pasted image 20231010072037.png]]
