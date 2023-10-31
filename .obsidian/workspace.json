@@ -80,7 +80,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -155,7 +155,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "MA_Index.md",
+                "file": "about signal generator.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -172,7 +172,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "MA_Index.md",
+                "file": "about signal generator.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -195,7 +195,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "MA_Index.md"
+                "file": "about signal generator.md"
               }
             }
           },
@@ -226,12 +226,14 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "af6aa6beca41da99",
+  "active": "c67d039de56e2bd7",
   "lastOpenFiles": [
     "draft test.md",
-    "about signal generator.md",
-    "hardware implementation.md",
     "MA_Index.md",
+    "hardware implementation.md",
+    "about signal generator.md",
+    "Physic interface.md",
+    "fundamentals.md",
     "about signal recorder.md",
     "picture/signal_recorder.drawio (1).svg",
     "picture/signal_recorder.drawio.svg",
@@ -241,7 +243,6 @@
     "picture/signal_generator.drawio 2.svg",
     "picture/signal_generator.drawio 1.svg",
     "picture/signal_generator.drawio.svg",
-    "Physic interface.md",
     "custom I2C slave.md",
     "previous chapter.md",
     "AXI-IIC IP Core.md",
@@ -249,7 +250,6 @@
     "about KX134.md",
     "about ZC706.md",
     "about I2C Protocol.md",
-    "fundamentals.md",
     "about Zynq.md",
     "about Model.md",
     "picture/iobuf.drawio.svg",
