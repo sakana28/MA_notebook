@@ -168,7 +168,7 @@ The CNTL1 control register controls the main features of KX134. Before configuri
 - RES: determines the performance mode of the KX134.
 	RES = 0 – Low Power mode (higher noise, lower current, 16-bit output data) 
 	RES = 1 – High-Performance mode (lower noise, higher current, 16-bit output data)
-GSEL 
+- GSEL 
 #### ODCNTL 
 The output data control register configures functionality and parameters related to the acceleration outputs. Most importantly, OSA[3:0] determines the sample rate of the accelerometer. 
 ![[Pasted image 20231026211835.png]]
