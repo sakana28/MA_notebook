@@ -1,9 +1,12 @@
 #writing 
 ![[signal_generator.drawio (1) 1.svg]]
 
-本节首先讨论信号生成器系统的预期功能并对功能的实现进行初步设计。
-该系统在在信号recorder的基础上去掉了KX134 accelerometer。取而代之的是一个自定义的IP核。该IP核应可与KX134一样通过I2C被配置或被读取数据。即，Signal recorder系统中的软件也应可以用于从signal generator获得加速度信息并记录。
-SD卡在该系统中是signal generator的信号源。软件读取SD卡中的文本文件，将其通过AXI4总线传输入PL。Custom IP核将获取到的数据缓存。当IP内缓存的数据数量达到通过I2C配置的threshold时，IP会生成interrupt通知PS读出数据。为了测试，整个系统也集成了signal recorder的一部分。AXI-IIC IP负责通过I2C总线配置或读取Custom IP，并将读取的数据传输回PS并存储在SD卡中。整个系统实现了一个回环。实验结束时，SD卡中应有两个完全一致的文本文件，即加速度信号源与加速度信息采集结果。
-而在该系统中, AXI-DMA被用于做Custom IP与PS间的桥梁。Direct Memory Access（DMA）是一种无需处理器参与，直接从memory中读取数据并将Memory Map数据转化为Stream数据的IP。AXI-Stream协议更便于Custom IP实现，且DMA传输无需处理器参与的特性使PS可以兼顾发送与采集数据两项任务。
+This section first discusses the intended functionality of the signal generator system and provides a preliminary design.
 
-图（）显示了该信号生成器的系统框图。PS 与 PL之间有两条AXI4总线，分别连接了PS的GP与HP port。而AXI-IIC IP核与 Custom IP核的port都map到了与GPIO Header连接的pin上，并用jumper wire连接实现I2C总线。AXI-DMA和Custom IP核都会产生Interrupt，在PS中active对应的处理程序。
+The system removes the KX134 accelerometer used in the signal recorder, replacing it with a custom IP core. This IP core can be configured and read via I2C like the KX134, allowing reuse of the signal recorder software to acquire and log acceleration data from the signal generator.
+
+The SD card serves as the signal source for the generator. Software reads a text file from the SD card and transfers it to the PL over the AXI4 bus. The custom IP core buffers the acquired data. When the buffered data reaches a threshold configured via I2C, the IP asserts an interrupt to notify the PS to read out the samples. For testing, the system also integrates part of the signal recorder. The AXI-IIC IP handles I2C communication to configure and read the custom IP, sending the data back to the PS for storage on the SD card. This realizes a loopback between the acceleration signal source and the recorded data. After the experiment, there should be two identical text files on the SD card.
+
+The AXI-DMA module bridges data transfer between the custom IP and PS. Direct memory access (DMA) moves data between memory and the custom IP without processor involvement. The AXI-Stream protocol is efficient for the custom IP. And DMA offloads the PS so PS can deal with signal transmission and acquisition at the same time.
+
+Figure ()  shows a block diagram of the signal generator system. Two AXI4 buses connect the PS GP and HP ports to the PL. The AXI-IIC and custom IPs are mapped to pins connected to the GPIO header and joined by jumper wires to create the I2C bus. Both the AXI-DMA and custom IP generate interrupts to activate handlers in the PS.

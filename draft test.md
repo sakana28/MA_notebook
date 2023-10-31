@@ -277,13 +277,13 @@ It is important to note that this AXI IIC core does not provide explicit electri
 
 ![[signal_generator.drawio (1) 1.svg]]
 
-在所展示的框图中，我们概述了基于 ZC706 评估板的高级信号处理系统的架构和设计流程。主要目标是确保各组件之间的无缝通信和数据传输，同时满足系统需要执行的不同功能。
+The system removes the KX134 accelerometer used in the signal recorder, replacing it with a custom IP core. This IP core can be configured and read via I2C like the KX134, allowing reuse of the signal recorder software to acquire and log acceleration data from the signal generator.
 
-从基础方面开始，Zynq PS（处理系统）作为中央处理单元，协调不同外设之间的交互。通过 SDIO 直接连接到 Zynq PS 的 SD 卡插槽为数据记录提供了可访问的存储解决方案，确保捕获的信号能够保留下来供后续分析使用。
+The SD card serves as the signal source for the generator. Software reads a text file from the SD card and transfers it to the PL over the AXI4 bus. The custom IP core buffers the acquired data. When the buffered data reaches a threshold configured via I2C, the IP asserts an interrupt to notify the PS to read out the samples. For testing, the system also integrates part of the signal recorder. The AXI-IIC IP handles I2C communication to configure and read the custom IP, sending the data back to the PS for storage on the SD card. This realizes a loopback between the acceleration signal source and the recorded data. After the experiment, there should be two identical text files on the SD card.
 
-设计的一个关键方面是 I2C 通信协议。如图所示，AXI-IIC 是一个重要的 IP 核，可确保 Zynq PS 与定制 I2C 从属 IP 之间的双向数据流。这种通信非常重要，尤其是在需要与外部设备连接时。通过 SDA 和 SCL 线路连接的 GPIO Header 使 Zynq 平台能够与外部传感器和设备连接，进一步扩展了其多功能性。
+The AXI-DMA module bridges data transfer between the custom IP and PS. Direct memory access (DMA) moves data between memory and the custom IP without processor involvement. The AXI-Stream protocol is efficient for the custom IP. And DMA offloads the PS so PS can deal with signal transmission and acquisition at the same time.
 
-在数据管理方面，AXI-DMA（直接内存访问）起着至关重要的作用。它不仅能处理 PS 和 PL（可编程逻辑）域之间的数据传输，还能确保在最少 CPU 干预的情况下实现高效的数据移动，这对实时应用至关重要。
+Figure ()  shows a block diagram of the signal generator system. Two AXI4 buses connect the PS GP and HP ports to the PL. The AXI-IIC and custom IPs are mapped to pins connected to the GPIO header and joined by jumper wires to create the I2C bus. Both the AXI-DMA and custom IP generate interrupts to activate handlers in the PS.
 
 ### Custom I2C Slave IP Core
 #### FSM of the IP Core

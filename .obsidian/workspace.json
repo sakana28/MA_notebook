@@ -79,8 +79,7 @@
               }
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -155,7 +154,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about signal generator.md",
+                "file": "draft test.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -172,7 +171,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about signal generator.md",
+                "file": "draft test.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -195,7 +194,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "about signal generator.md"
+                "file": "draft test.md"
               }
             }
           },
@@ -226,14 +225,14 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "c67d039de56e2bd7",
+  "active": "fc4559b99a4aa4f9",
   "lastOpenFiles": [
+    "MA_Index.md",
+    "draft test.md",
+    "about signal generator.md",
     "hardware implementation.md",
     "AXI-IIC IP Core.md",
     "Physic interface.md",
-    "about signal generator.md",
-    "draft test.md",
-    "MA_Index.md",
     "fundamentals.md",
     "about signal recorder.md",
     "picture/signal_recorder.drawio (1).svg",
