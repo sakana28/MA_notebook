@@ -299,19 +299,22 @@ Figure ()  shows a block diagram of the signal generator system. Two AXI4 buses 
 
 ![[Pasted image 20231031194805.png]]
 （replace later）
-上图展示了Custom I2C IP内部的结构框图。该IP核有以下ports与外界连接：
-- AXI-Stream接口： axis_data [31:0],axis_valid,axis_ready
-- 系统信号: reset与clock
-- I2C接口：scl_i,scl_o,scl_t,sda_i,sda_o,sda_t
-- interrupt
+The figure above shows the internal block diagram of the Custom I2C IP. The IP core has the following ports connected to the external interfaces:
 
-该IP主要有以下components:
-- signal generator
-- clock divider
-- signal debounce
+- AXI-Stream interface: axis_data [31:0], axis_valid, axis_ready
+- System signals: reset and clock
+- I2C interface: scl_i, scl_o, scl_t, sda_i, sda_o, sda_t
+- Interrupt
+
+The IP mainly contains the following components:
+
+- Signal generator
+- Clock divider
+- Signal debounce
 - I2C slave
-- sample buffer
-这些部件将在下面的章节被详细介绍
+- Sample buffer
+
+These components will be introduced in detail in the following sections.
 
 #### signal generator
 IP的AXI-Stream接口连接在signal generator module上。因此需要首先详细介绍AXI-Stream总线。AXI-Stream数据传输时不需要地址，在主从设备之间直接连续读写数据。它的核心是 VALID和READY信号，在clock的上升沿时两个信号都为高则代表数据成功传输，可以更新下一组数据。对于signal generator模块这一从设备，正确生成ready非常重要。在IP模块仍然处于standby模式时，ready信号用于通知上游信号源停止传输；本系统中AXI-Stream的时钟远远快于采样时钟，ready用于调节两种不同的时钟间的传输速率。
