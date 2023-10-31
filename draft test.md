@@ -103,7 +103,8 @@ read data channel (RVALID, RDATA, RREADY, RRESP);
 write data channel (WVALID, WDATA, WSTRB, WREADY); 
 write response channel (BVALID, BRESP, BREADY).
 
-By separating read and write channels, AXI4 implements full-duplex communication, allowing simultaneous read and write operations between two devices. Each of the five read/write channels contains its own handshake signals, which are fundamental to AXI buses and enable both sender and receiver to control transmission rates. As shown in the figure below, a valid transfer occurs when both READY and VALID signals are high on the rising clock edge. 
+By separating read and write channels, AXI4 implements full-duplex communication, allowing simultaneous read and write operations between two devices. Each of the five read/write channels contains its own handshake signals, which are fundamental to AXI buses and enable both sender and receiver to control transmission rates. As shown in the figure below, a valid transfer occurs at T3 when both READY and VALID signals are high on the rising clock edge. (AMBA AXI and ACE Protocol Specification)
+![[Pasted image 20231031231242.png]]
 ## ZC706 evaluation board
 [[about ZC706]]
 ![[Pasted image 20231006065127.png]]

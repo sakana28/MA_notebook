@@ -133,8 +133,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -227,6 +226,7 @@
   },
   "active": "fc4559b99a4aa4f9",
   "lastOpenFiles": [
+    "picture/Pasted image 20231031231242.png",
     "hardware implementation.md",
     "MA_Index.md",
     "draft test.md",
