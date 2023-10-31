@@ -86,6 +86,8 @@ The center of the PS consists of a dual-core ARM Cortex-A9 processor and a set o
 To facilitate high-speed communication between the PS and PL, Zynq provides several Advanced eXtensible Interface (AXI) ports, including General Purpose Ports and High-Performance Ports, which will be discussed in the following chapters. Furthermore, interrupt signals facilitate PL to activate events that interrupt the operation of the processor, which enables flexible interaction between hardware and software.
 
 ### AXI4 
+
+上文中提到的AXI总线是ARM AMBA® 3.0 open standard的一部分。它最初developed by ARM
 The Zynq contains three types of AXI buses:
 (1) AXI4-FULL targets high-performance address-mapped transaction，支持突发传输 
 (2) AXI4-LITE provides a lightweight address-mapped single transaction interface that occupies minimal logic 
