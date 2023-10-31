@@ -133,8 +133,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -227,8 +226,9 @@
   },
   "active": "af6aa6beca41da99",
   "lastOpenFiles": [
-    "about KX134.md",
+    "picture/signal_recorder.drawio (1).svg",
     "draft test.md",
+    "about KX134.md",
     "hardware implementation.md",
     "picture/Pasted image 20231101014816.png",
     "MA_Index.md",
@@ -240,7 +240,6 @@
     "picture/Pasted image 20231031194805.png",
     "AXI-IIC IP Core.md",
     "about signal recorder.md",
-    "picture/signal_recorder.drawio (1).svg",
     "picture/signal_recorder.drawio.svg",
     "picture/signal_generator.drawio (1) 1.svg",
     "picture/signal_generator.drawio (1).svg",
