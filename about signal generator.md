@@ -2,7 +2,7 @@
 ![[Signal_generator 2.png]]
 
 本节首先讨论信号生成器系统的预期功能并对功能的实现进行初步设计。
-该系统在在信号recorder的基础上去掉了KX134 accelerometer。取而代之的是一个自定义的IP核。该IP核应可与KX134一样通过I2C被配置或被读取数据。ZC706 评估板在 Zynq SoC 的 PL 端和 PS 端都实现了一个 I2C 端口。不过，它们连接到现有的 I2C 总线，以便与固定在板上的 I2C 设备（如 EEPROM）通信。因此，KX134 只能通过 GPIO 接口连接到 Zynq SoC 的 PL 端。
+该系统在在信号recorder的基础上去掉了KX134 accelerometer。取而代之的是一个自定义的IP核。该IP核应可与KX134一样通过I2C被配置或被读取数据。
 
 另一方面，记录的信号需要存储起来以便进一步分析和处理，这可以通过 ZC706 板上的 SD 卡插槽方便地完成。因此，加速度数据必须传输到 PS 端才能写入 SD 卡。为此，AXI-IIC IP 核用于 I2C 接口实现以及 PL 和 PS 之间的数据传输。
 

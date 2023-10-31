@@ -80,7 +80,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -155,7 +155,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about signal generator.md",
+                "file": "MA_Index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -172,7 +172,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about signal generator.md",
+                "file": "MA_Index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -195,7 +195,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "about signal generator.md"
+                "file": "MA_Index.md"
               }
             }
           },
@@ -226,11 +226,12 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "c67d039de56e2bd7",
+  "active": "af6aa6beca41da99",
   "lastOpenFiles": [
+    "draft test.md",
+    "about signal generator.md",
     "hardware implementation.md",
     "MA_Index.md",
-    "draft test.md",
     "about signal recorder.md",
     "picture/signal_recorder.drawio (1).svg",
     "picture/signal_recorder.drawio.svg",
@@ -243,7 +244,6 @@
     "Physic interface.md",
     "custom I2C slave.md",
     "previous chapter.md",
-    "about signal generator.md",
     "AXI-IIC IP Core.md",
     "about Hardware system design.md",
     "about KX134.md",
