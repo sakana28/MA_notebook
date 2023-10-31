@@ -87,12 +87,13 @@ To facilitate high-speed communication between the PS and PL, Zynq provides seve
 
 ### AXI4 
 
-上文中提到的AXI总线是ARM AMBA® 3.0 open standard的一部分。它最初developed by ARM
+上文中提到的AXI总线是ARM AMBA® 3.0 open standard的一部分。它最初developed by ARM并被用于microcontroller。现在它是一种常用于SoC的通信标准。这一总线在Xilinx的开发环境中被充分支持。Vivado提供了大量具备AXI接口的IP核以及用于仲裁的interconnection控制器IP。
+
 The Zynq contains three types of AXI buses:
 (1) AXI4-FULL targets high-performance address-mapped transaction，支持突发传输 
 (2) AXI4-LITE provides a lightweight address-mapped single transaction interface that occupies minimal logic 
 (3) AXI4-Stream enables high-speed streaming data transfers without address information, allowing unlimited burst transmissions 
-
+上文中提到的address-mapped或者说memory-mapped指的是Master发起一个读写任务时必须指定一个系统内存空间中的地址。而burst传输指的是Master只需要指定传输的第一个data word的地址和突发长度
 Both AXI4 and AXI4-LITE buses have identical components consisting of five channels: 
 read address channel (ARVALID, ARADDR, ARREADY); 
 write address channel (AWVALID, AWADDR, AWREADY); 
