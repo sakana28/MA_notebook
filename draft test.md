@@ -39,6 +39,7 @@ However, the model neglected the random slips of the rolling elements. It wrongl
 ![[Pasted image 20231005065439.png]]
 
 - τi: the inter-arrival time of the ith impact, accounting for randomness due to rolling element slips
+（latex:  \item $\tau_i$: the inter-arrival time of the $i$th impact, accounting for randomness due to rolling element slips）
 The other parameters in (2) have the same meaning as in (1).
 
 However, when a defect spreads over a large area, the resulting vibration signal is no longer caused by impulses and the random timing jitter is also meaningless. This differs from the pseudo-cyclostationary vibration signals caused by localized faults, leading to a purely cyclostationary process.
