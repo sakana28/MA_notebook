@@ -340,31 +340,16 @@ signal_gen : process (data_reg, sampling_en, sample_clk_rising)
     end process signal_gen;
 ```
 
-如上代码段所示，当IP模块被配置到工作模式时(sampling_en = '1')且检测到采样时钟的上升沿(sample_clk_rising = '1') ，无论valid为何值，ready信号都会为高一个时钟周期。而在满足上述条件的情况下，当valid为高时(axis_valid = '1')，axis接口的数据才会被写入模块内的寄存器中。且此时给下游Sample Buffer模块的信号wr_en也会为高。值得注意的是ready信号的值不能与valid信号的值有逻辑关联，否则可能会导致死锁。
+如上代码段所示，当IP模块被配置到工作模式时(sampling_en = '1')且检测到采样时钟的上升沿(sample_clk_rising = '1') ，无论valid为何值，ready信号都会为高一个时钟周期。而在满足上述条件的情况下，当valid为高时(axis_valid = '1')，axis接口的数据才会被写入模块内的寄存器中。值得注意的是ready信号的值不能与valid信号的值有逻辑关联，否则可能会导致死锁。
 
+另一方面，由于系统时钟远远快于clock devider生成的采样时钟，因此可以用检测采样时钟上升沿的方式简化Sample Buffer异步读写的实现。Signal generator模块通过上文中生成的wr_en信号控制下游Sample buffer的写入频率。该上升沿检测逻辑由寄存器延时实现。这种边沿检测在之后介绍的模块中还会被多次使用。
+``` VHDL
 
-``` V
-edge_detect : process (clk, rstn) is
+         sample_clk_rising <= (not sample_clk_dly) and (sample_clk);
 
-    begin
-
-        if rising_edge(clk) then
-
-            if (rstn = '0') then
-
-                sample_clk_rising <= '0';
-
-            else
-
-                sample_clk_rising <= (not sample_clk_dly) and (sample_clk);
-
-            end if;
-
-        end if;
-
-    end process;
 ```
 
+#### clock divider
 #### FSM of the IP Core
 ![[pladitor_diagram (1) 1.svg]]
 This finite state machine (FSM) illustrates the operation of an I2C slave peripheral. The FSM begins in the “idle” state, waiting for the start of a communication cycle. Upon receiving a “START” signal, it transitions to the “get_address_and_cmd” state, where it acquires the address and command for the impending transaction. If the address does not match the predefined slave address of the custom IP, the FSM reverts to “idle”. Additionally, if the IP is instructed to perform a read operation without being assigned a target register address, the FSM also returns to “idle”.
