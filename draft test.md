@@ -305,6 +305,66 @@ Figure ()  shows a block diagram of the signal generator system. Two AXI4 buses 
 这些部件将在下面的章节被详细介绍
 
 #### signal generator
+IP的AXI-Stream接口连接在signal generator module上。因此需要首先详细介绍AXI-Stream总线。AXI-Stream数据传输时不需要地址，在主从设备之间直接连续读写数据。它的核心是 VALID和READY信号，在clock的上升沿时两个信号都为高则代表数据成功传输，可以更新下一组数据。对于signal generator模块这一从设备，正确生成ready非常重要。在IP模块仍然处于standby模式时，ready信号用于通知上游信号源停止传输；本系统中AXI-Stream的时钟远远快于采样时钟，ready用于调节两种不同的时钟间的传输速率。
+
+ 
+``` VHDL
+signal_gen : process (data_reg, sampling_en, sample_clk_rising)
+
+    begin
+
+        data_reg_nxt <= data_reg;
+
+        wr_en_nxt <= '0';
+
+        axis_ready <= '0';
+
+        if (sampling_en = '1') then
+
+            if (sample_clk_rising = '1') then
+
+                axis_ready <= '1';
+
+                if (axis_valid = '1') then
+
+                    data_reg_nxt <= axis_data (7 downto 0);
+
+                    wr_en_nxt <= '1';
+
+                end if;
+
+            end if;
+
+        end if;
+
+    end process signal_gen;
+```
+
+如上代码段所示，当IP模块被配置到工作模式时(sampling_en = '1')且检测到采样时钟的上升沿(sample_clk_rising = '1') ，无论valid为何值，ready信号都会为高一个时钟周期。而在满足上述条件的情况下，当valid为高时(axis_valid = '1')，axis接口的数据才会被写入模块内的寄存器中。且此时给下游Sample Buffer模块的信号wr_en也会为高。值得注意的是ready信号的值不能与valid信号的值有逻辑关联，否则可能会导致死锁。
+
+
+``` V
+edge_detect : process (clk, rstn) is
+
+    begin
+
+        if rising_edge(clk) then
+
+            if (rstn = '0') then
+
+                sample_clk_rising <= '0';
+
+            else
+
+                sample_clk_rising <= (not sample_clk_dly) and (sample_clk);
+
+            end if;
+
+        end if;
+
+    end process;
+```
+
 #### FSM of the IP Core
 ![[pladitor_diagram (1) 1.svg]]
 This finite state machine (FSM) illustrates the operation of an I2C slave peripheral. The FSM begins in the “idle” state, waiting for the start of a communication cycle. Upon receiving a “START” signal, it transitions to the “get_address_and_cmd” state, where it acquires the address and command for the impending transaction. If the address does not match the predefined slave address of the custom IP, the FSM reverts to “idle”. Additionally, if the IP is instructed to perform a read operation without being assigned a target register address, the FSM also returns to “idle”.
