@@ -286,6 +286,25 @@ The AXI-DMA module bridges data transfer between the custom IP and PS. Direct me
 Figure ()  shows a block diagram of the signal generator system. Two AXI4 buses connect the PS GP and HP ports to the PL. The AXI-IIC and custom IPs are mapped to pins connected to the GPIO header and joined by jumper wires to create the I2C bus. Both the AXI-DMA and custom IP generate interrupts to activate handlers in the PS.
 
 ### Custom I2C Slave IP Core
+#### Block diagramm
+
+![[Pasted image 20231031194805.png]]
+（replace later）
+上图展示了Custom I2C IP内部的结构框图。该IP核有以下ports与外界连接：
+- AXI-Stream接口： axis_data [31:0],axis_valid,axis_ready
+- 系统信号: reset与clock
+- I2C接口：scl_i,scl_o,scl_t,sda_i,sda_o,sda_t
+- interrupt
+
+该IP主要有以下components:
+- signal generator
+- clock divider
+- signal debounce
+- I2C slave
+- sample buffer
+这些部件将在下面的章节被详细介绍
+
+#### signal generator
 #### FSM of the IP Core
 ![[pladitor_diagram (1) 1.svg]]
 This finite state machine (FSM) illustrates the operation of an I2C slave peripheral. The FSM begins in the “idle” state, waiting for the start of a communication cycle. Upon receiving a “START” signal, it transitions to the “get_address_and_cmd” state, where it acquires the address and command for the impending transaction. If the address does not match the predefined slave address of the custom IP, the FSM reverts to “idle”. Additionally, if the IP is instructed to perform a read operation without being assigned a target register address, the FSM also returns to “idle”.
