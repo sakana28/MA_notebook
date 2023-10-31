@@ -146,7 +146,7 @@ When the master sends data, the slave generates the ACK. If SDA remains high whe
 
 # hardware implementation
 
-The signal generator developed in this work emulates the functionality of the KX134-1211 accelerometer, which is also used for vibration data acquisition in the signal recorder. Therefore, this section provides background information on the basic capabilities and interface of the KX134 that are relevant to reproducing its operation. 
+The signal generator mimics the key features of the KX134 accelerometer to generate artificial vibration data. As the KX134 is also utilized in the signal recorder for real vibration data acquisition, it is necessary to first discuss the specifications and interface of the actual sensor. After covering the KX134 background, this chapter will describe in detail the Zynq hardware realizations of both the signal recorder and signal generator systems implemented on the Zynq SoC. The individual hardware blocks and interconnect will be elaborated separately for each system.
 ## KX134 
 The signal generator developed in this work emulates the functionality of the KX134-1211 accelerometer, which is also used for vibration data acquisition in the signal recorder. Therefore, this section provides background information on the basic capabilities and interface of the KX134 that are relevant to reproducing its operation. 
 
