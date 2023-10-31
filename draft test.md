@@ -192,9 +192,11 @@ BRES
 BM[1:0].
 ![[Pasted image 20231026215325.png]]
 ### communication via I2C 
+
 As mentioned previously, the KX134 accelerometer communicates with host via I2C bus protocol. The 7-bit slave address of the KX134 consists of a 6-bit fixed portion and a 1-bit programmable section based on the logic level of the ADDR pin. Specifically, the accelerometer can be configured for an address of 0x1E when ADDR is grounded or 0x1F when ADDR is connected to VDD. Read and write transactions comply with to the I2C timing diagrams and format described earlier. Furthermore, the sequence shown in Figure () must be followed when accessing the KX134's internal registers. 
 
 Notably, the KX134 supports an auto-increment feature for simplified sequential register access. During multiple read or write operations, the register address does not need to be resent as the pointer automatically increments to the next register. However, this feature is disabled when reading from the BUF_READ register (0x63) so that the host can continuously read samples from the buffer. 
+ 
 ![[Pasted image 20231026223543.png]]
 
 ## Hardware System design flow
