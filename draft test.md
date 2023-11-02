@@ -382,7 +382,7 @@ In parallel, in the “read” state, the slave drives SDA low or release it bas
 
 Importantly, a START signal at any time moves the FSM to “get_address_and_cmd”, while a STOP signal transitions it to “idle”, beyond the explicit state transfer diagrammed.
 #### Sample Buffer
-这个模块模仿了KX134中的sample buffer。在采样过程中，上游模块将加速度数据以采样时钟写入它；当custom slave IP被master读取时，它将数据以系统时钟写给下游I2C模块。由于它涉及了两个不同时钟域之间的读写，一种直接的思路是用异步FIFO实现。然而，跨时钟域FIFO的reset逻辑相对复杂。由于该工作中系统时钟远远快于clock devider生成的采样时钟，因此可以用检测采样时钟上升沿的方式简化Sample Buffer异步读写的实现。Sample Buffer基于一个带读写使能信号的同步FIFO。该FIFO的时钟是系统时钟。段落x中介绍的Signal generator模块通过生成的wr_en信号控制到Sample buffer的flow。该上升沿检测逻辑由寄存器延时实现。这种边沿检测在之后介绍的模块中还会被多次使用。
+这个模块模仿了KX134中的sample buffer。在采样过程中，上游模块将加速度数据以采样时钟写入它；当custom slave IP被master读取时，它将数据以系统时钟写给下游I2C模块。由于它涉及了两个不同时钟域之间的读写，一种直接的思路是用异步FIFO实现。然而，跨时钟域FIFO的reset逻辑相对复杂。由于该工作中系统时钟远远快于clock devider生成的采样时钟，因此可以用检测采样时钟上升沿的方式简化Sample Buffer异步读写的实现。Sample Buffer基于一个带读写使能信号的同步FIFO。该FIFO的时钟是系统时钟。 段落x中介绍的Signal generator模块通过生成的wr_en信号控制到Sample buffer的flow。该上升沿检测逻辑由寄存器延时实现。这种边沿检测在之后介绍的模块中还会被多次使用。
 
 ### Physical Interface
 It is necessary to connect the custom I2C IP core and AXI IIC IP core via jumper wires on the development board instead of directly in the block design. As mentioned previously, the AXI-IIC IP core does not provide explicit electrical connectivity to the I2C bus. Additionally, FPGAs lack internal tristate components. However, the Input/Output Blocks (IOBs), located at each FPGA pin, contain tristate circuitry.
