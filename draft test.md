@@ -317,8 +317,12 @@ The IP mainly contains the following components:
 These components will be introduced in detail in the following sections.
 
 #### signal generator
-IP的AXI-Stream接口连接在signal generator module上。因此需要首先详细介绍AXI-Stream总线。AXI-Stream数据传输时不需要地址，在主从设备之间直接连续读写数据。它的核心是 VALID和READY信号，在clock的上升沿时两个信号都为高则代表数据成功传输，可以更新下一组数据。对于signal generator模块这一从设备，正确生成ready非常重要。在IP模块仍然处于standby模式时，ready信号用于通知上游信号源停止传输；本系统中AXI-Stream的时钟远远快于采样时钟，ready用于调节两种不同的时钟间的传输速率。
+IThe AXI-Stream interface of the IP is connected to the signal generator module. Therefore, the AXI-Stream bus needs to be introduced first. 
+AXI-Stream performs data transfers between master and slave devices without addresses. It relies on the VALID and READY handshake signals. A valid transfer occurs when both signals are high on the rising edge of the clock, allowing the data to be updated for the next cycle. 
 
+For the signal generator module as a slave device, correctly generating the READY signal is crucial. When the IP is still in standby mode, the READY signal notifies the upstream master to stop transmission. In this system, the AXI-Stream clock is much faster than the sampling clock, so READY is used to regulate data transfer rates between the two different clock domains. 
+(add code)
+As shown in the code snippet , when the IP is configured to operating mode (sampling\_en = '1') and a rising edge on the sampling clock is detected (sample\_clk\_rising = '1'), the ready signal will be set high for one clock cycle regardless of the valid value. With the aforementioned conditions satisfied, the AXI data will only be written into the IP's internal registers when valid is high (axis\_valid = '1'). Notably, the ready value must not have logical dependence on valid, otherwise deadlock may occur.
  
 ``` VHDL
 signal_gen : process (data_reg, sampling_en, sample_clk_rising)
@@ -352,9 +356,6 @@ signal_gen : process (data_reg, sampling_en, sample_clk_rising)
     end process signal_gen;
 ```
 
-如上代码段所示，当IP模块被配置到工作模式时(sampling_en = '1')且检测到采样时钟的上升沿(sample_clk_rising = '1') ，无论valid为何值，ready信号都会为高一个时钟周期。而在满足上述条件的情况下，当valid为高时(axis_valid = '1')，axis接口的数据才会被写入模块内的寄存器中。值得注意的是ready信号的值不能与valid信号的值有逻辑关联，否则可能会导致死锁。
-
-另一方面，由于系统时钟远远快于clock devider生成的采样时钟，因此可以用检测采样时钟上升沿的方式简化Sample Buffer异步读写的实现。Signal generator模块通过上文中生成的wr_en信号控制下游Sample buffer的写入频率。该上升沿检测逻辑由寄存器延时实现。这种边沿检测在之后介绍的模块中还会被多次使用。
 ``` VHDL
 
          sample_clk_rising <= (not sample_clk_dly) and (sample_clk);
@@ -362,7 +363,12 @@ signal_gen : process (data_reg, sampling_en, sample_clk_rising)
 ```
 
 #### clock divider
+
+#### debouncer
+The debouncer module is based on a small-scale FSM. This FSM contains only two states - idle and check\_input\_stable. When a change in the input signal is detected compared to the value stored in the module's internal register, the FSM enters the check\_input\_stable state. If the signal remains stable for a user-defined number of cycles in this state, the register value is updated and the FSM returns to idle. Otherwise, the signal transition is considered a bounce and the register value is not updated before going back to idle.
+尽管在段落x中介绍过的Xilinx的AXI-IIC模块可以作为主机或从机工作，然而它只提供了将通过I2C被写入IP内寄存器的数据到PS的信号通路，而无法让被存储的信息作为控制信号进入PL的其他模块中。也不支持对指定地址的寄存器进行读写的功能。且被开发的信号发生器的核心部分应保留一定的可移植性。因此，与AXI-IIC连接的模块
 #### FSM of the IP Core
+
 ![[pladitor_diagram (1) 1.svg]]
 This finite state machine (FSM) illustrates the operation of an I2C slave peripheral. The FSM begins in the “idle” state, waiting for the start of a communication cycle. Upon receiving a “START” signal, it transitions to the “get_address_and_cmd” state, where it acquires the address and command for the impending transaction. If the address does not match the predefined slave address of the custom IP, the FSM reverts to “idle”. Additionally, if the IP is instructed to perform a read operation without being assigned a target register address, the FSM also returns to “idle”.
 
@@ -371,7 +377,9 @@ After successfully matching the address, the FSM can transition to either “rea
 In parallel, in the “read” state, the slave drives SDA low or release it based on the specified register data during SCL falling edges, ensuring SDA only changes when SCL is low. After processing all bits, the FSM transfers to “read_ack_start”. It then samples SDA on the SCL rising edge and transitions to “read_ack_got_rising”. Based on the acknowledgment received from the master (ACK or NACK), the system can either finish the read in “read_stop” or return to “read” on the next SCL falling edge.
 
 Importantly, a START signal at any time moves the FSM to “get_address_and_cmd”, while a STOP signal transitions it to “idle”, beyond the explicit state transfer diagrammed.
+#### Sample Buffer
 
+另一方面，由于系统时钟远远快于clock devider生成的采样时钟，因此可以用检测采样时钟上升沿的方式简化Sample Buffer异步读写的实现。Signal generator模块通过上文中生成的wr_en信号控制下游Sample buffer的写入频率。该上升沿检测逻辑由寄存器延时实现。这种边沿检测在之后介绍的模块中还会被多次使用。
 ### Physical Interface
 It is necessary to connect the custom I2C IP core and AXI IIC IP core via jumper wires on the development board instead of directly in the block design. As mentioned previously, the AXI-IIC IP core does not provide explicit electrical connectivity to the I2C bus. Additionally, FPGAs lack internal tristate components. However, the Input/Output Blocks (IOBs), located at each FPGA pin, contain tristate circuitry.
 
