@@ -32,7 +32,7 @@ When a rotating surface contacts a localized fault, it generates an impulse that
 - q(t): the modulation due to factors like load distribution, bearing imbalance, misalignment, and periodicity of fault movement. It is periodic, i.e q(t)=q(t+T).
 - T: the interval between successive impacts
 - n(t): the background noise
-This model explains the non-stationarity of the vibration signal by amplitude modulation due to different factors (differential diagnosis). The interval T between impacts is determined by both the type of fault and the bearing geometry. To calculate this period, Table 1 shows typical fault frequencies (P.D. McFadden, J.D. Smith, Model for the vibration produced by a single point defect in a rolling element bearing). 
+This model explains the non-stationarity of the vibration signal by amplitude modulation due to different factors (differential diagnosis). The interval T between impacts is determined by both the type of fault and the bearing geometry. To calculate this period, Table 1 shows typical fault frequencies。表格中d是Bearing roller diameter ，D是Pitch circle diameter，n_r是Number of rolling elements，beta是Contact angle(P.D. McFadden, J.D. Smith, Model for the vibration produced by a single point defect in a rolling element bearing). 
 
 However, the model neglected the random slips of the rolling elements. It wrongly assumed that the impact intervals were identical. In fact, even small random fluctuations would disrupt the harmonic structure of the above model. Therefore, based on earlier work, Antoni proposed a more realistic model (Antoni, Facts and fictions, 2006):
 
