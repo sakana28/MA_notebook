@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "hardware implementation.md",
+                "file": "software implementation.md",
                 "mode": "source",
                 "source": false
               }
@@ -79,7 +79,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -153,7 +154,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "draft test.md",
+                "file": "software implementation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -170,7 +171,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "draft test.md",
+                "file": "software implementation.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -193,7 +194,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "draft test.md"
+                "file": "software implementation.md"
               }
             }
           },
@@ -224,14 +225,19 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "af6aa6beca41da99",
+  "active": "554457f334cbcda2",
   "lastOpenFiles": [
-    "picture/signal_recorder.drawio (1).svg",
-    "draft test.md",
+    "about interrupt on zynq.md",
+    "software implementation.md",
+    "file structure.md",
+    "about SD card WR (FATFS).md",
     "about KX134.md",
-    "hardware implementation.md",
-    "picture/Pasted image 20231101014816.png",
     "MA_Index.md",
+    "hardware implementation.md",
+    "未命名 8.md",
+    "draft test.md",
+    "picture/signal_recorder.drawio (1).svg",
+    "picture/Pasted image 20231101014816.png",
     "about signal generator.md",
     "picture/Pasted image 20231023023643.png",
     "picture/Pasted image 20231031231242.png",
@@ -252,16 +258,12 @@
     "about I2C Protocol.md",
     "about Zynq.md",
     "about Model.md",
-    "software implementation.md",
     "未命名 7.md",
     "Test result.md",
     "what is non-stationary.md",
     "about Hardware system desing.md",
     "about KX134(material).md",
-    "introduction.md",
     "picture/Volltext (PDF).pdf",
-    "未命名 6.md",
-    "未命名 5.md",
     "doc/antoni2003 (1).pdf",
     "doc/antoni2002.pdf",
     "doc/未确认 508424.crdownload",

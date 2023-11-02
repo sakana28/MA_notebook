@@ -369,6 +369,10 @@ signal_gen : process (data_reg, sampling_en, sample_clk_rising)
 The debouncer module is based on a small-scale FSM. This FSM contains only two states - idle and check\_input\_stable. When a change in the input signal is detected compared to the value stored in the module's internal register, the FSM enters the check\_input\_stable state. If the signal remains stable for a user-defined number of cycles in this state, the register value is updated and the FSM returns to idle. Otherwise, the signal transition is considered a bounce and the register value is not updated before going back to idle.
 
 #### FSM of the IP Core
+#### 可综合的代码
+synthesizable
+尽管VHDL的The std_logic type中包含high-impedance ('Z') logic，但它仅用于modelling和simulation，它在座位FPGA内部的信号时是synthesizable的。因此在本工作中，IP核内部std_logic type的信号
+
 While Xilinx provides the AXI-IIC IP for I$^2$C communication,which is introduced in \ref{sec:axiiic}, it lacks the key features necessary for this work. It only provides a path for data written to the registers inside the IP via I$^2$C to be sent to the PS. It is not possible to send I$^2$C data as control signals to other PL modules. In addition, addressing specific registers is not supported. In order to implement custom reads and writes over I$^2$C and pass these control signals within the FPGA fabric, a custom I$^2$C slave IP must be developed in VHDL.
 
 While Xilinx provides the AXI-IIC IP for I2C communication, introduced in ref X, it lacks the key features necessary for this work. It only provides a path for data written to the registers inside the IP via I2C to be sent to the PS. It is not possible to send I2C data as control signals to other PL modules. In addition, addressing specific registers is not supported. In order to implement custom reads and writes over I2C and pass these control signals within the FPGA fabric, a custom I2C slave IP must be developed in VHDL.
