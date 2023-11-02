@@ -317,7 +317,7 @@ The IP mainly contains the following components:
 These components will be introduced in detail in the following sections.
 
 #### signal generator
-IThe AXI-Stream interface of the IP is connected to the signal generator module. Therefore, the AXI-Stream bus needs to be introduced first. 
+这个模块的功能是接收通过 AXI-Stream传输来的加速度数据，并模仿实际采样加速度数据的过程，按照用户配置的采样时钟将数据写入Sample buffer模块中。因为该模块上具有AXI-Stream接口，因此 the AXI-Stream bus needs to be introduced first. 
 AXI-Stream performs data transfers between master and slave devices without addresses. It relies on the VALID and READY handshake signals. A valid transfer occurs when both signals are high on the rising edge of the clock, allowing the data to be updated for the next cycle. 
 
 For the signal generator module as a slave device, correctly generating the READY signal is crucial. When the IP is still in standby mode, the READY signal notifies the upstream master to stop transmission. In this system, the AXI-Stream clock is much faster than the sampling clock, so READY is used to regulate data transfer rates between the two different clock domains. 
@@ -363,6 +363,7 @@ signal_gen : process (data_reg, sampling_en, sample_clk_rising)
 ```
 
 #### clock divider
+该模块基于计数器，通过
 
 #### debouncer
 The debouncer module is based on a small-scale FSM. This FSM contains only two states - idle and check\_input\_stable. When a change in the input signal is detected compared to the value stored in the module's internal register, the FSM enters the check\_input\_stable state. If the signal remains stable for a user-defined number of cycles in this state, the register value is updated and the FSM returns to idle. Otherwise, the signal transition is considered a bounce and the register value is not updated before going back to idle.
