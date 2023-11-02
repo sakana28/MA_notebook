@@ -32,18 +32,6 @@
             }
           },
           {
-            "id": "d4f0cae7db5826cf",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "file structure.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "3c14b09a6f15e525",
             "type": "leaf",
             "state": {
@@ -91,8 +79,7 @@
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -167,7 +154,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "file structure.md",
+                "file": "draft test.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -184,7 +171,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "file structure.md",
+                "file": "draft test.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -207,7 +194,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "file structure.md"
+                "file": "draft test.md"
               }
             }
           },
@@ -238,12 +225,12 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "d4f0cae7db5826cf",
+  "active": "af6aa6beca41da99",
   "lastOpenFiles": [
-    "picture/sw_structure.drawio.png",
-    "software implementation.md",
-    "draft test.md",
     "file structure.md",
+    "software implementation.md",
+    "picture/sw_structure.drawio.png",
+    "draft test.md",
     "about KX134.md",
     "about signal generator.md",
     "about AXI-DMA sw.md",
@@ -265,7 +252,6 @@
     "picture/signal_recorder.drawio.svg",
     "picture/signal_generator.drawio (1) 1.svg",
     "picture/signal_generator.drawio (1).svg",
-    "picture/signal_generator.drawio 3.svg",
     "custom I2C slave.md",
     "previous chapter.md",
     "about Hardware system design.md",
