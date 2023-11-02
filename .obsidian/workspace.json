@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "af6aa6beca41da99",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "draft test.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "554457f334cbcda2",
             "type": "leaf",
             "state": {
@@ -154,7 +142,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "draft test.md",
+                "file": "software implementation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -171,7 +159,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "draft test.md",
+                "file": "software implementation.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -194,7 +182,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "draft test.md"
+                "file": "software implementation.md"
               }
             }
           },
@@ -225,13 +213,15 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "af6aa6beca41da99",
+  "active": "554457f334cbcda2",
   "lastOpenFiles": [
     "file structure.md",
-    "software implementation.md",
-    "picture/sw_structure.drawio.png",
-    "draft test.md",
+    "fundamentals.md",
+    "Physic interface.md",
     "about KX134.md",
+    "software implementation.md",
+    "draft test.md",
+    "picture/sw_structure.drawio.png",
     "about signal generator.md",
     "about AXI-DMA sw.md",
     "code/SW/watermark_for_kx134_and_ip/src/sw_structure.drawio.png",
@@ -244,8 +234,6 @@
     "picture/Pasted image 20231101014816.png",
     "picture/Pasted image 20231023023643.png",
     "picture/Pasted image 20231031231242.png",
-    "fundamentals.md",
-    "Physic interface.md",
     "picture/Pasted image 20231031194805.png",
     "AXI-IIC IP Core.md",
     "about signal recorder.md",

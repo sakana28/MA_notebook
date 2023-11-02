@@ -27,5 +27,8 @@ The BSP is tuned to the hardware base system, allowing an OS to operate efficien
 PS端的
 
 编程时主要使用Xilinx Hardware Abstraction Layer
+#   
+Getting Started with Vivado and Vitis for Baremetal Software Projects
+https://digilent.com/reference/programmable-logic/guides/getting-started-with-ipi
 ### fatfs
 Xilffs is a generic FAT file system that is primarily added for use with SD/eMMC driver. The file system is open source and a glue layer is implemented to link it to the SD/eMMC driver. A link to the source of file system is provided in the PDF where the file system description can be found.
