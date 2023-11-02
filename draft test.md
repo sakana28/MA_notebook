@@ -363,7 +363,7 @@ signal_gen : process (data_reg, sampling_en, sample_clk_rising)
 ```
 
 #### clock divider
-该模块基于计数器，通过
+
 
 #### debouncer
 The debouncer module is based on a small-scale FSM. This FSM contains only two states - idle and check\_input\_stable. When a change in the input signal is detected compared to the value stored in the module's internal register, the FSM enters the check\_input\_stable state. If the signal remains stable for a user-defined number of cycles in this state, the register value is updated and the FSM returns to idle. Otherwise, the signal transition is considered a bounce and the register value is not updated before going back to idle.
@@ -382,7 +382,8 @@ In parallel, in the “read” state, the slave drives SDA low or release it bas
 
 Importantly, a START signal at any time moves the FSM to “get_address_and_cmd”, while a STOP signal transitions it to “idle”, beyond the explicit state transfer diagrammed.
 #### Sample Buffer
-
+这个模块模仿了KX134中的sample buffer。在采样过程中，上游模块将加速度数据写入它；当custom slave IP被master读取时，它将数据写给下游I2C
+flow control.
 另一方面，由于系统时钟远远快于clock devider生成的采样时钟，因此可以用检测采样时钟上升沿的方式简化Sample Buffer异步读写的实现。Signal generator模块通过上文中生成的wr_en信号控制下游Sample buffer的写入频率。该上升沿检测逻辑由寄存器延时实现。这种边沿检测在之后介绍的模块中还会被多次使用。
 ### Physical Interface
 It is necessary to connect the custom I2C IP core and AXI IIC IP core via jumper wires on the development board instead of directly in the block design. As mentioned previously, the AXI-IIC IP core does not provide explicit electrical connectivity to the I2C bus. Additionally, FPGAs lack internal tristate components. However, the Input/Output Blocks (IOBs), located at each FPGA pin, contain tristate circuitry.
