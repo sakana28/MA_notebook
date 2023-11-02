@@ -3,6 +3,7 @@
 [[file structure]]
 [[about SD card WR (FATFS)]]
 [[about interrupt on zynq]]
+about AXI-DMA sw
 
 #### BSP 
  
