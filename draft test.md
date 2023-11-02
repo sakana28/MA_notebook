@@ -366,8 +366,11 @@ signal_gen : process (data_reg, sampling_en, sample_clk_rising)
 
 #### debouncer
 The debouncer module is based on a small-scale FSM. This FSM contains only two states - idle and check\_input\_stable. When a change in the input signal is detected compared to the value stored in the module's internal register, the FSM enters the check\_input\_stable state. If the signal remains stable for a user-defined number of cycles in this state, the register value is updated and the FSM returns to idle. Otherwise, the signal transition is considered a bounce and the register value is not updated before going back to idle.
-尽管在段落x中介绍过的Xilinx的AXI-IIC模块可以作为主机或从机工作，然而它只提供了将通过I2C被写入IP内寄存器的数据到PS的信号通路，而无法让被存储的信息作为控制信号进入PL的其他模块中。也不支持对指定地址的寄存器进行读写的功能。且被开发的信号发生器的核心部分应保留一定的可移植性。因此，与AXI-IIC连接的模块
+
 #### FSM of the IP Core
+尽管在段落x中介绍过的Xilinx的AXI-IIC模块可以作为主机或从机工作，然而它只提供了将通过I2C被写入IP内寄存器的数据到PS的信号通路，而无法让被存储的信息作为控制信号进入PL的其他模块中。也不支持对指定地址的寄存器进行读写的功能。且该信号发生器的核心部分应有一定的可移植性。因此，与AXI-IIC在I2C总线上连接的模块不是另一个AXI-IIC，而是VHDL实现的自定义IP。
+
+While Xilinx provides the AXI-IIC IP for I2C communication, introduced in ref X, it lacks the key features necessary for this work. It only provides a path for data written to the registers inside the IP via I2C to be sent to the PS. It is not possible to send I2C data as control signals to other PL modules. In addition, addressing specific registers is not supported. In order to implement custom reads and writes over I2C and pass these control signals within the FPGA fabric, a custom I2C slave IP must be developed in VHDL.
 
 ![[pladitor_diagram (1) 1.svg]]
 This finite state machine (FSM) illustrates the operation of an I2C slave peripheral. The FSM begins in the “idle” state, waiting for the start of a communication cycle. Upon receiving a “START” signal, it transitions to the “get_address_and_cmd” state, where it acquires the address and command for the impending transaction. If the address does not match the predefined slave address of the custom IP, the FSM reverts to “idle”. Additionally, if the IP is instructed to perform a read operation without being assigned a target register address, the FSM also returns to “idle”.
