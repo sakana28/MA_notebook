@@ -15,12 +15,17 @@ The Standalone platform is a single-threaded, simple operating system (OS) platf
 
 Standalone BSP contains boot code, cache, exception handling, file and memory management, configuration, time and processor-specific include functions.
 
+Hardware Abstraction Layer API.
+
 [8] Xilinx, Inc, “OS and Libraries Document Collection”, UG643
 需要注意的是
 #### BSP 
  
 The BSP is customized for the base system and OS combination, and contains hardware parameters, device drivers, and low-level OS functions. (zynq book)
+The BSP is tuned to the hardware base system, allowing an OS to operate efficiently on the given hardware. The BSP is customised to the combination of base system and operating system, and includes hardware parameters, device drivers, and low-level OS functions. Therefore, in terms of Vivado / SDK development, the BSP should be refreshed if changes are made to the hardware base system. SDK provides the environment for creating BSPs, and developing and testing software for deployment in the upper layers. It also supports the creation of BSPs for use in third party development tools such as ARM Development Studio 5 (DS-5), which may be used in place of Xilinx SDK if desired [33],
  
 PS端的
+
+编程时主要使用Xilinx Hardware Abstraction Layer
 ### fatfs
 Xilffs is a generic FAT file system that is primarily added for use with SD/eMMC driver. The file system is open source and a glue layer is implemented to link it to the SD/eMMC driver. A link to the source of file system is provided in the PDF where the file system description can be found.

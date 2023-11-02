@@ -32,6 +32,18 @@
             }
           },
           {
+            "id": "d4f0cae7db5826cf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "file structure.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
             "id": "3c14b09a6f15e525",
             "type": "leaf",
             "state": {
@@ -80,7 +92,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -155,7 +167,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "software implementation.md",
+                "file": "file structure.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -172,7 +184,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "software implementation.md",
+                "file": "file structure.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -195,7 +207,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "software implementation.md"
+                "file": "file structure.md"
               }
             }
           },
@@ -226,13 +238,14 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "554457f334cbcda2",
+  "active": "d4f0cae7db5826cf",
   "lastOpenFiles": [
+    "picture/sw_structure.drawio.png",
+    "software implementation.md",
+    "draft test.md",
     "file structure.md",
     "about KX134.md",
     "about signal generator.md",
-    "draft test.md",
-    "software implementation.md",
     "about AXI-DMA sw.md",
     "code/SW/watermark_for_kx134_and_ip/src/sw_structure.drawio.png",
     "about interrupt on zynq.md",
@@ -263,7 +276,6 @@
     "未命名 7.md",
     "Test result.md",
     "what is non-stationary.md",
-    "about Hardware system desing.md",
     "picture/Volltext (PDF).pdf",
     "doc/antoni2003 (1).pdf",
     "doc/antoni2002.pdf",
