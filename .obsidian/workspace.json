@@ -79,7 +79,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -154,7 +155,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "software implementation.md",
+                "file": "draft test.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -171,7 +172,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "software implementation.md",
+                "file": "draft test.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -194,7 +195,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "software implementation.md"
+                "file": "draft test.md"
               }
             }
           },
@@ -225,13 +226,13 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "554457f334cbcda2",
+  "active": "45a79e2a546224e7",
   "lastOpenFiles": [
+    "software implementation.md",
     "fundamentals.md",
     "Physic interface.md",
     "about KX134.md",
     "file structure.md",
-    "software implementation.md",
     "draft test.md",
     "picture/sw_structure.drawio.png",
     "about signal generator.md",
