@@ -294,6 +294,9 @@ The AXI-DMA module bridges data transfer between the custom IP and PS. Direct me
 
 Figure ()  shows a block diagram of the signal generator system. Two AXI4 buses connect the PS GP and HP ports to the PL. The AXI-IIC and custom IPs are mapped to pins connected to the GPIO header and joined by jumper wires to create the I2C bus. Both the AXI-DMA and custom IP generate interrupts to activate handlers in the PS.
 ### AXI-DMA
+
+ AXI DMA provides high-bandwidth direct memory access between memory and AXI4-Stream target peripherals.AXI DMA 在存储器和 AXI4-Stream 目标外设之间提供高带宽直接存储器访问。系统内存和数据流目标之间的主要高速 DMA 数据移动是通过 AXI4 读主接口到 AXI4 内存映射到数据流 (MM2S) 主接口，以及 AXI 数据流到内存映射 (S2MM) 从接口到 AXI4 写主接口实现的。AXI DMA 还能在分散/收集模式下，在 MM2S 和 S2MM 通路上实现多达 16 个多通道的数据移动。
+ AXI-DMA控制器在存储器和AXI4-Stream外设之间提供高带宽直接存储器访问。数据
 ### Custom I2C Slave IP Core
 #### Block diagramm
 
