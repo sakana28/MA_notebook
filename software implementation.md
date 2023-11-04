@@ -1,12 +1,33 @@
 #writing 
-本章节展示了
+
+
 [[file structure]]
 [[about SD card WR (FATFS)]]
 [[about interrupt on zynq]]
 [[about AXI-DMA sw]]
 
-PS上运行的应用主要需要完成以下任务：初始化peripherals，读取或写入SD卡中的文本文件，将文本文件中的小数转换为16位二进制数或者反之亦然，处理中断信号。
+This section introduces the software programs running on the processing system (PS) for both the Signal Recorder and Signal Generator systems.
+This chapter introduces the software programs running on the PS-site in this work. As the hardware is designed to emulate the functionality of the KX134 accelerometer, the signal generator software completely covers the functionality of the signal recorder software.The code used for sensor configuration and reading acceleration data from the sample buffer in watermark interrupt mode is identical between the two design. Therefore, following sections focus only on the structure and implementation of the signal generator software.
 
+The software's major tasks in this system include initializing the peripherals, reading/writing text files from the SD card, converting fractions in the text to 16-bit binary (and vice versa), and handling interrupt signals. Additionally, as stated in section X, the system needs to provide some user interaction capabilities for flexible configuration of signal sources and runtime control, which can be accomplished through serial port communication.
+## HW 加入 AXI-DMA
+
+The AXI-DMA IP block can read from DDR RAM independently and on its own after instruction to do so. It then streams the data out the AXI-Stream port.
+The AXI Streaming FIFO IP block has internal memory that you can fill up under processor control and it then also streams the data out the AXI-Stream port. 
+
+Design of a high-speed lightning signal acquisition system based on ZYNQ
+
+
+要将存储器中的数据传输到PL，作为数据流被处理，有两种IP可以实现这一功能。选用AXI-DMA的理由将在章节X中具体阐述。
+AXI Streaming FIFO需要先XLlFifo_TxPutWord软件检查FIFO中还可以写入多少数据 再XLlFifo_TxPutWord 将word写入fifo中。需要写入的数据已经写入FIFO后。再用XLlFifo_iTxSetLen，输出数据流，接下来主机通过主动查询控制寄存器或者等待interrupt的方式确定本次传输结束。由于AXI Streaming FIFO在最大深度下也不足以容纳下所有振动数据，这代表一个完整的时间周期内的振动信号必须被分成若干部分，分批发送给PL。且FIFO的interrupt和Custom IP的watermark interrupt会在同一时间段内频繁发生，则代表CPU必须交错完成向PL发送数据和读取的任务，使中断处理更加繁琐。
+
+与此相对，AXI DMA读取数据只需要处理器向DMA控制器发出一条包含源地址和传输长度的指令。处理器无需将数据装填入IP核，DMA控制器会自行从存储器中读取数据，将其转化为流数据并且计数传输的数据。当传输数据量达到指定的传输长度时，控制器产生中断以通知处理器。本工作中使用Direct Register模式。在配置IP核width of buffer length register时要注意，长度决定了传输长度的上限。
+
+使用AXI DMA可以方便地实现以下预想的功能：应用程序读取用户指定的文本文件，并将文本文件中的数据写在存储器缓冲区中；将缓冲区地址和数据长度发送给DMA，而DMA何时将AXI Stream写入Custom IP、写入的速率则完全由Custom IP 的AXI-Stream接口的ready信号控制。PS只需要处理Custom IP生成的watermark Interrupt。当整个文本文件被发送完毕后，应用程序会再次询问用户指定的文本文件的名字。
+
+
+
+一些IP核需要由驱动程序进行初始化和控制。驱动程序基本上是一组接口协议，帮助与IP核通信。从Vivado导出的硬件平台时最基础的层级。在此之上，软件系统被视为一堆或一组需要建立在硬件基础系统之上的层。位于硬件基础系统之上的第一层是板支持包（BSP）层。板支持包（BSP）是一组低级驱动程序和函数。接下来的层，即操作系统，使用这些驱动程序和函数与IP核进行通信。最高级别的抽象是需要在操作系统上运行的软件应用程序。
 
 这一应用运行在Standalone（又名baremetal）操作系统下。
 A standalone OS, also known as a bare metal OS, is a simple OS that aims to provides a very low-level of software modules that the system can use to access processor-specific functions. Regarding the Zynq platform specifically, Xilinx provides a standalone OS platform that provides functions such as configuring caches, setting up interrupts and exceptions and other hardware related functions. The standalone platform sits directly below the OS layer and is used whenever an application requires to access processor features directly [8]. A standalone OS enables close control over code execution but is fairly limited in terms of functionality. It should only be used for applications where the software functions are straightforward and repetitive. The number of tasks being carried out by a standalone OS should be relatively small, as adding further tasks can increase the task management required by the standalone rapidly.
@@ -18,13 +39,13 @@ Standalone BSP contains boot code, cache, exception handling, file and memory ma
 Hardware Abstraction Layer API.
 
 [8] Xilinx, Inc, “OS and Libraries Document Collection”, UG643
+Xilinx Standalone Library Documentation: BSP and Libraries Document Collection UG643
 需要注意的是
 #### BSP 
  
 The BSP is customized for the base system and OS combination, and contains hardware parameters, device drivers, and low-level OS functions. (zynq book)
 The BSP is tuned to the hardware base system, allowing an OS to operate efficiently on the given hardware. The BSP is customised to the combination of base system and operating system, and includes hardware parameters, device drivers, and low-level OS functions. Therefore, in terms of Vivado / SDK development, the BSP should be refreshed if changes are made to the hardware base system. SDK provides the environment for creating BSPs, and developing and testing software for deployment in the upper layers. It also supports the creation of BSPs for use in third party development tools such as ARM Development Studio 5 (DS-5), which may be used in place of Xilinx SDK if desired [33],
- 
-PS端的
+
 
 编程时主要使用Xilinx Hardware Abstraction Layer
 #   
@@ -32,3 +53,43 @@ Getting Started with Vivado and Vitis for Baremetal Software Projects
 https://digilent.com/reference/programmable-logic/guides/getting-started-with-ipi
 ### fatfs
 Xilffs is a generic FAT file system that is primarily added for use with SD/eMMC driver. The file system is open source and a glue layer is implemented to link it to the SD/eMMC driver. A link to the source of file system is provided in the PDF where the file system description can be found.
+对于文件读写操作，Xilinx提供了Xilffs这一generic FAT file system。它充当了应用和存储器控制中间的桥梁。在SD/eMMC driver提供了更高一层的抽象。编写程序时，Application should make use of APIs provided in ff.h.
+FatFs is a generic FAT/exFAT filesystem module for small embedded systems. FatFs provides various filesystem functions for the applications 
+The Xilinx fat file system (FFS) library consists of a file system and a glue layer. This FAT file system can be used with an interface supported in the glue layer. The file system code is open source and is used as it is. Currently, the Glue layer implementation supports the SD/eMMC interface and a RAM based file system. Application should make use of APIs provided in ff.h. These file system APIs access the driver functions through the glue layer.
+
+
+
+SCUGIC
+
+Interrupts between the PS and PL are controlled by the Generic Interrupt Controller 
+(GIC), which supports 64 interrupt lines. Six interrupts are driven from within the APU, 
+including the L1 parity fail, L2 interrupt and Performance Monitor Unit (PMU) interrupt (zynq book)
+
+查找相应配置并初始化GIC，配置两个Interrupt,此处两个都设置为 Rising edge sensitive 。而watermark interrupt具有更高的优先级。
+XScuGic_Connect 用于Makes the connection between the Int_Id of the interrupt source and the associated handler that is to run when the interrupt is recognized.
+
+The argument provided in this call as the Callbackref is used as the argument for the handler when it is called.
+
+硬件补充
+SCL尽管是I2C总线时钟信号，在该系统中不被当时钟使用。系统时钟远快于SCL，对SCL的上升下降沿进行检测，获得与系统时钟同步的上升下降沿信号。
+消抖后检测上升下降沿 检测开始结束 状态机 
+register map有另一个状态机 idle getdata writedata
+在模块已经被写入一个有效的地址后
+如果收到读请求 getdata  收到valid信号 writedata 并寄存当前的data_from_master_reg
+getdata中检测当前地址是普通register还是BUF。是BUF的话将fifo_din的值给data_to_master_reg,否则从register map中取出对应值。
+writedata中将被寄存的数值写进地址对应的寄存器中
+
+
+red req生成在get_address_and_cmd状态，只高一个时钟周期
+data valid生成在读取最后一位的时钟周期，只高一个时钟周期 否则会多次激活读写operation。为保证数据的可靠性，应该在valid有效时寄存其值。
+
+
+SD Operation
+
+
+文本文件中，python生成的振动信号x以浮点数的形式存在于文本文件中，每个数占一行。 read_sd函数逐行读取并近似与g相关的整数并转换为16位二进制数，再将二进制数分别存放在两个32bit的存储单元中。Memory Map Data Width：AXI MM2S存储映射读取数据总线的数据位宽。有效值为32,64,128,256,512和1024。此处保持默认值32。
+
+若f_gets报错如下：undefined reference to "f_gets",即表示f_gets未定义，
+出现这个错误的原因是，在xiffls中我们没有使能字符串函数功能。use_strfunc
+
+write_sd_txt程序则是反过程，将放在三个float类型buffer中的x,y,z三轴加速度数据写入文本文件中。
