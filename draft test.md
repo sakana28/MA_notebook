@@ -293,7 +293,7 @@ The SD card serves as the signal source for the generator. Software reads a text
 The AXI-DMA module bridges data transfer between the custom IP and PS. Direct memory access (DMA) moves data between memory and the custom IP without processor involvement. The AXI-Stream protocol is efficient for the custom IP. And DMA offloads the PS so PS can deal with signal transmission and acquisition at the same time.
 
 Figure ()  shows a block diagram of the signal generator system. Two AXI4 buses connect the PS GP and HP ports to the PL. The AXI-IIC and custom IPs are mapped to pins connected to the GPIO header and joined by jumper wires to create the I2C bus. Both the AXI-DMA and custom IP generate interrupts to activate handlers in the PS.
-
+### AXI-DMA
 ### Custom I2C Slave IP Core
 #### Block diagramm
 
