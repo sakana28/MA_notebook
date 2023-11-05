@@ -54,14 +54,12 @@ Xilinx Standalone Library Documentation: BSP and Libraries Document Collection U
 #### Layers of software on zynq
 在上一章节中介绍了在Vivado中进行硬件设计的流程。Vivado中的工程文件被synthesis并打包导出后，即为hardware base system’ or ‘hardware platform’。而软件系统则可被看做图x中所示的一组层级。
 而软件层中最底层的是Board Support Package（BSP）。它是 a set o hardware parameters, low-level drivers and functions that are used by the next layer up (the Operating System) to communicate with the hardware. 由于它是 customized for the base system的。在设计时，更新了硬件设计后，必须重新导入hardware platform并再次生成BSP。
+在BSP层之上的是Operating Systems层。在Zynq上可以运行的操作系统包括fully-fledged OS such as Linux or Android; an embedded OS; a Real-Time Operating System (RTOS) for deterministic, time-critical applications; or Standalone, a ‘light’ OS. 本系统中的应用运行在Standalone（又名baremetal）操作系统下。
+A standalone OS, also known as a bare metal OS, is a simple OS that aims to provides a very low-level of software modules that the system can use to access processor-specific functions. 在zynq平台上，Xilinx provides a standalone OS platform that provides functions such as configuring caches, setting up interrupts and exceptions and other hardware related functions. A standalone OS enables close control over code execution but is fairly limited in terms of functionality. It should only be used for applications where the software functions are straightforward and repetitive. The number of tasks being carried out by a standalone OS should be relatively small, as adding further tasks can increase the task management required by the standalone rapidly.
 
-在BSP层至上的OS，Operating Systems
+
 ![[Pasted image 20231105220852.png]]
  
-The BSP is customized for the base system and OS combination, and contains hardware parameters, device drivers, and low-level OS functions. (zynq book)
-The BSP is tuned to the hardware base system, allowing an OS to operate efficiently on the given hardware. The BSP is customised to the combination of base system and operating system, and includes hardware parameters, device drivers, and low-level OS functions. Therefore, in terms of Vivado / SDK development, the BSP should be refreshed if changes are made to the hardware base system. SDK provides the environment for creating BSPs, and developing and testing software for deployment in the upper layers. It also supports the creation of BSPs for use in third party development tools such as ARM Development Studio 5 (DS-5), which may be used in place of Xilinx SDK if desired [33],
-
-
 
 
 编程时主要使用Xilinx Hardware Abstraction Layer
