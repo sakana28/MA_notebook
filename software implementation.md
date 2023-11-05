@@ -10,7 +10,7 @@ This chapter introduces the software programs running on the PS-site in this wor
 
 The software's major tasks in this system include initializing the peripherals, reading/writing text files from the SD card, converting fractions in the text to 16-bit binary (and vice versa), and handling interrupt signals. Additionally, as stated in section X, the system needs to provide some user interaction capabilities for flexible configuration of signal sources and runtime control, which can be accomplished through serial port communication.
 
-#### Layers of software on zynq
+### Layers of software on zynq
 ![[Pasted image 20231105220852.png]]
 Chapter 3 introduces the Vivado design flow for hardware development. The synthesized hardware design exported from Vivado is referred to as the "hardware base system" or "hardware platform". As shown in Figure X, the software system consists of layered components built upon this foundation.
 
@@ -20,20 +20,10 @@ The Operating System layer is positioned above the BSP. For Zynq platform, Xilin
 
 Standalone provides basic software modules to access processor-specific functions. For Zynq devices, Xilinx provides a Standalone platform that includes cache configuration, interrupt/exception handling, and other hardware-related functions. While Standalone allows for close control over code execution , it has limited capabilities suitable only for simple, repetitive software tasks. The application in this work fits these requirements and therefore is operated on the Standalone OS.
 
-### SD card operation
+[8] Xilinx, Inc, “OS and Libraries Document Collection”, UG643
+Xilinx Standalone Library Documentation: BSP and Libraries Document Collection UG643
 
 
-文本文件中，python生成的振动信号x以小数的形式存在于文本文件中，每个数占一行。 read_sd函数逐行读取并近似与g相关的整数并转换为16位二进制数，再将二进制数分别存放在两个32bit的存储单元中。Memory Map Data Width：AXI MM2S存储映射读取数据总线的数据位宽。有效值为32,64,128,256,512和1024。此处保持默认值32。
-
-若f_gets报错如下：undefined reference to "f_gets",即表示f_gets未定义，
-出现这个错误的原因是，在xiffls中我们没有使能字符串函数功能。use_strfunc
-
-write_sd_txt程序则是反过程，将放在三个float类型buffer中的x,y,z三轴加速度数据写入文本文件中。
-#### fatfs
-Xilffs is a generic FAT file system that is primarily added for use with SD/eMMC driver. The file system is open source and a glue layer is implemented to link it to the SD/eMMC driver. A link to the source of file system is provided in the PDF where the file system description can be found.
-对于文件读写操作，Xilinx提供了Xilffs这一generic FAT file system。它充当了应用和存储器控制中间的桥梁。在SD/eMMC driver提供了更高一层的抽象。编写程序时，Application should make use of APIs provided in ff.h.
-FatFs is a generic FAT/exFAT filesystem module for small embedded systems. FatFs provides various filesystem functions for the applications 
-The Xilinx fat file system (FFS) library consists of a file system and a glue layer. This FAT file system can be used with an interface supported in the glue layer. The file system code is open source and is used as it is. Currently, the Glue layer implementation supports the SD/eMMC interface and a RAM based file system. Application should make use of APIs provided in ff.h. These file system APIs access the driver functions through the glue layer. 
 
 ### comparison between AXI-DMA and AXI-Stream FIFO
 
@@ -48,13 +38,6 @@ Using AXI DMA, it is straightforward to implement the following functionality: T
 
 
 
-一些IP核需要由驱动程序进行初始化和控制。驱动程序基本上是一组接口协议，帮助与IP核通信。从Vivado导出的硬件平台时最基础的层级。在此之上，软件系统被视为一堆或一组需要建立在硬件基础系统之上的层。位于硬件基础系统之上的第一层是板支持包（BSP）层。板支持包（BSP）是一组低级驱动程序和函数。接下来的层，即操作系统，使用这些驱动程序和函数与IP核进行通信。最高级别的抽象是需要在操作系统上运行的软件应用程序。
-
-
-
-
-[8] Xilinx, Inc, “OS and Libraries Document Collection”, UG643
-Xilinx Standalone Library Documentation: BSP and Libraries Document Collection UG643
 
 
 
