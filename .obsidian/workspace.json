@@ -20,6 +20,18 @@
             }
           },
           {
+            "id": "bb7d45b236be22f1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "file structure.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
             "id": "45a79e2a546224e7",
             "type": "leaf",
             "state": {
@@ -67,7 +79,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -142,7 +155,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "software implementation.md",
+                "file": "file structure.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -159,7 +172,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "software implementation.md",
+                "file": "file structure.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -182,7 +195,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "software implementation.md"
+                "file": "file structure.md"
               }
             }
           },
@@ -213,11 +226,11 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "554457f334cbcda2",
+  "active": "bb7d45b236be22f1",
   "lastOpenFiles": [
+    "software implementation.md",
     "picture/Pasted image 20231105220852.png",
     "draft test.md",
-    "software implementation.md",
     "Physic interface.md",
     "about KX134.md",
     "file structure.md",
@@ -240,7 +253,6 @@
     "about signal recorder.md",
     "picture/signal_recorder.drawio.svg",
     "picture/signal_generator.drawio (1) 1.svg",
-    "picture/signal_generator.drawio (1).svg",
     "custom I2C slave.md",
     "previous chapter.md",
     "about Hardware system design.md",
