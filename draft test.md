@@ -301,6 +301,8 @@ This IP core supports two modes: Scatter/Gather and Direct Register.
 
 In Direct Register mode, a single configuration of the control registers allows access to only one contiguous physical memory block. In Scatter/Gather mode, basic transfer parameters (e.g., start address, length, packet information, etc.) are stored in memory as buffer description words (BDs). The DMA controller loads BDs via a dedicated M_AXI_SG port, and the BDs are chained in a linked list. Based on the information in the BDs, the DMA is able to access multiple non-contiguous memory space in a single task, generating only one interrupt at the end. This process effectively offloads data movement tasks from the CPU.
 
+In this work, the DMA controller works in Direct Register mode since the data from text files is stored in a contiguous memory block.
+
 在配置IP核width of buffer length register时要注意，长度决定了传输长度的上限。
 
 ### Custom I2C Slave IP Core
