@@ -15,20 +15,11 @@ The software's major tasks in this system include initializing the peripherals, 
 The AXI-DMA IP block can read from DDR RAM independently and on its own after instruction to do so. It then streams the data out the AXI-Stream port.
 The AXI Streaming FIFO IP block has internal memory that you can fill up under processor control and it then also streams the data out the AXI-Stream port. 
 
-Design of a high-speed lightning signal acquisition system based on ZYNQ
-
-
-AXI Streaming FIFO需要先XLlFifo_TxPutWord软件检查FIFO中还可以写入多少数据，再用XLlFifo_TxPutWord 将word写入fifo中。需要写入的数据已经写入FIFO后。再用XLlFifo_iTxSetLen，输出用户指定长度的数据流，接下来主机通过主动查询控制寄存器或者等待interrupt的方式确定本次传输结束。由于AXI Streaming FIFO在最大深度下也不足以容纳下所有振动数据，这代表一个完整的时间周期内的振动信号必须被分成若干部分，分批发送给PL。且FIFO的interrupt和Custom IP的watermark interrupt会在同一时间段内频繁发生，则代表CPU必须交错完成向PL发送数据和读取的任务，使中断处理更加繁琐。 
-
-与此相对，AXI DMA读取数据只需要处理器向DMA控制器发出一条包含源地址和传输长度的指令。处理器无需将数据装填入IP核，DMA控制器会自行从存储器中读取数据，将其转化为流数据并且计数传输的数据。当传输数据量达到指定的传输长度时，控制器产生中断以通知处理器。
-
-使用AXI DMA可以方便地实现以下预想的功能：应用程序读取用户指定的文本文件，并将文本文件中的数据写在存储器缓冲区中；将缓冲区地址和数据长度发送给DMA，而DMA何时将AXI Stream写入Custom IP、写入的速率则完全由Custom IP 的AXI-Stream接口的ready信号控制。PS只需要处理Custom IP生成的watermark Interrupt。当整个文本文件被发送完毕后，应用程序会再次询问用户指定的文本文件的名字。
-
 The process of transferring data from the PS to the PL using AXI Streaming FIFO consists of the following steps: Firstly, check available space using XLlFifo_TxPutWord. Next, write words one by one into the FIFO using XLlFifo_TxPutWord. Once all the data has been written, stream out the AXI-Stream data of a user-specified length byXLlFifo_iTxSetLen. Since the maximum depth of the FIFO buffer is not enough to hold all the vibration data, a complete vibration signal period consisting of 30000 samples needs to be divided into multiple batches for transmission. Moreover, frequent concurrent interrupts from the FIFO and custom IP's require interleaved data sending and reading, complicating the interrupt handling.
 
-In contrast, the AXI DMA solely necessitates the processor to issue one instruction that specifies the source address and transmission length. Data is automatically fetched  from memory and transmitted without the involvement of the processor. The IP's internal counter tracks the actual transfer length and generates a completion interrupt to notify the PS when the amount of data transferred has reached the configured length.
+In contrast, AXI-DMA controller requires the processor to issue only one instruction that specifies the source address and transmission length. Data is automatically fetched  from memory and transmitted without the involvement of the processor. The IP's internal counter tracks the actual transfer length and generates a completion interrupt to notify the PS when the amount of data transferred has reached the configured length.
 
-Using AXI DMA, it is straightforward to implement the following functionality: The application program reads a text file specified by the user, writes the data into the storage, then passes the first address of this storage block and length of the block to the DMA controller. The DMA controller independently streams data to the custom IP while the timing of transmission is also controlled by the READY signal of the custom IP as a AXI-Stream slave. Interrupts from the custom IP's watermark are solely handled by the PS. After the entire text file is sent, the application requests another filename from the user.
+Using AXI DMA, it is straightforward to implement the following functionality: The application program reads a text file specified by the user, writes the data into the storage, then passes the first address of this storage block and length of the block to the DMA controller. The DMA controller independently streams data to the custom IP while the timing of transmission is also controlled by the READY signal of the custom IP as a AXI-Stream slave. The PS only need to handle the buffer watermark threshold interrupt from the custom IP. After the entire text file is sent, the application requests another filename from the user.
 
 
 
