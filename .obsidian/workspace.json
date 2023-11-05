@@ -66,21 +66,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "b9973b2693770a7f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "fundamentals.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -155,7 +142,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "draft test.md",
+                "file": "software implementation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -172,7 +159,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "draft test.md",
+                "file": "software implementation.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -195,7 +182,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "draft test.md"
+                "file": "software implementation.md"
               }
             }
           },
@@ -226,12 +213,12 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "45a79e2a546224e7",
+  "active": "554457f334cbcda2",
   "lastOpenFiles": [
-    "software implementation.md",
-    "draft test.md",
-    "fundamentals.md",
     "Physic interface.md",
+    "fundamentals.md",
+    "draft test.md",
+    "software implementation.md",
     "about KX134.md",
     "file structure.md",
     "picture/sw_structure.drawio.png",
