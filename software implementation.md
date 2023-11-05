@@ -10,7 +10,7 @@ This section introduces the software programs running on the processing system (
 This chapter introduces the software programs running on the PS-site in this work. As the hardware is designed to emulate the functionality of the KX134 accelerometer, the signal generator software completely covers the functionality of the signal recorder software.The code used for sensor configuration and reading acceleration data from the sample buffer in watermark interrupt mode is identical between the two design. Therefore, following sections focus only on the structure and implementation of the signal generator software.
 
 The software's major tasks in this system include initializing the peripherals, reading/writing text files from the SD card, converting fractions in the text to 16-bit binary (and vice versa), and handling interrupt signals. Additionally, as stated in section X, the system needs to provide some user interaction capabilities for flexible configuration of signal sources and runtime control, which can be accomplished through serial port communication.
-## HW 加入 AXI-DMA
+## comparison between AXI-DMA and AXI-Stream FIFO
 
 The AXI-DMA IP block can read from DDR RAM independently and on its own after instruction to do so. It then streams the data out the AXI-Stream port.
 The AXI Streaming FIFO IP block has internal memory that you can fill up under processor control and it then also streams the data out the AXI-Stream port. 
@@ -18,7 +18,6 @@ The AXI Streaming FIFO IP block has internal memory that you can fill up under p
 Design of a high-speed lightning signal acquisition system based on ZYNQ
 
 
-要将存储器中的数据传输到PL，作为数据流被处理，有两种IP可以实现这一功能。选用AXI-DMA的理由将在章节X中具体阐述。
 AXI Streaming FIFO需要先XLlFifo_TxPutWord软件检查FIFO中还可以写入多少数据 再XLlFifo_TxPutWord 将word写入fifo中。需要写入的数据已经写入FIFO后。再用XLlFifo_iTxSetLen，输出数据流，接下来主机通过主动查询控制寄存器或者等待interrupt的方式确定本次传输结束。由于AXI Streaming FIFO在最大深度下也不足以容纳下所有振动数据，这代表一个完整的时间周期内的振动信号必须被分成若干部分，分批发送给PL。且FIFO的interrupt和Custom IP的watermark interrupt会在同一时间段内频繁发生，则代表CPU必须交错完成向PL发送数据和读取的任务，使中断处理更加繁琐。
 
 与此相对，AXI DMA读取数据只需要处理器向DMA控制器发出一条包含源地址和传输长度的指令。处理器无需将数据装填入IP核，DMA控制器会自行从存储器中读取数据，将其转化为流数据并且计数传输的数据。当传输数据量达到指定的传输长度时，控制器产生中断以通知处理器。

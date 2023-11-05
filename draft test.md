@@ -295,6 +295,9 @@ The AXI-DMA module bridges data transfer between the custom IP and PS. Direct me
 Figure ()  shows a block diagram of the signal generator system. Two AXI4 buses connect the PS GP and HP ports to the PL. The AXI-IIC and custom IPs are mapped to pins connected to the GPIO header and joined by jumper wires to create the I2C bus. Both the AXI-DMA and custom IP generate interrupts to activate handlers in the PS.
 ### AXI-DMA
 
+
+To transfer memory-mapped data from PS to the PL as AXI-stream data, there are two IP cores that can fulfill this purpose – AXI Direct Memory Access (DMA) and AXI-Stream FIFO. AXI-DMA is chosen over AXI-Stream FIFO due to reasons related to the software design, which will be elaborated in Chapter 10.
+
 The AXI Direct Memory Access (DMA) controller offers fast and direct access to memory from AXI4-Stream peripherals. It transfers data between PL and PS, without the processor manually writing to and reading from memory, and acts as a master on the bus when communicating with the PS.
 
 This IP core supports two modes: Scatter/Gather and Direct Register.
@@ -304,6 +307,8 @@ In Direct Register mode, a single configuration of the control registers allows 
 In this system, the DMA controller works in Direct Register mode since the data from text files is stored in a contiguous memory block.
 
 The AXI DMA IP's configuration wizard is displayed in figure X. The maximum transfer size per task is determined by the "width of buffer length register" parameter. In this work, vibration signals on one axis consist of 10,000 samples. Therefore, three 16-bit samples in three directions result in a transfer length of 60,000 bytes. Hence, the parameter is set to at least 16 bits to allow a maximum transfer size of 2$^16$ = 65,536 bytes.
+
+
 
 
 ### Custom I2C Slave IP Core
