@@ -390,7 +390,7 @@ The debouncer module is based on a small-scale FSM. This FSM contains only two s
 synthesizable
 尽管VHDL的The std_logic type中包含high-impedance ('Z') logic，但它仅用于modelling和simulation，它在座位FPGA内部的信号时是synthesizable的。因此在本工作中，IP核内部std_logic type的信号
 
-While Xilinx provides the AXI-IIC IP for I$^2$C communication,which is introduced in \ref{sec:axiiic}, it lacks the key features necessary for this work. It only provides a path for data written to the registers inside the IP via I$^2$C to be sent to the PS. It is not possible to send I$^2$C data as control signals to other PL modules. In addition, addressing specific registers is not supported. In order to implement custom reads and writes over I$^2$C and pass these control signals within the FPGA fabric, a custom I$^2$C slave IP must be developed in VHDL.
+
 
 While Xilinx provides the AXI-IIC IP for I2C communication, introduced in ref X, it lacks the key features necessary for this work. It only provides a path for data written to the registers inside the IP via I2C to be sent to the PS. It is not possible to send I2C data as control signals to other PL modules. In addition, addressing specific registers is not supported. In order to implement custom reads and writes over I2C and pass these control signals within the FPGA fabric, a custom I2C slave IP must be developed in VHDL.
 
@@ -412,3 +412,36 @@ It is necessary to connect the custom I2C IP core and AXI IIC IP core via jumper
 Thus, the signals that the custom I2C module reads or drives are scli, sclo, sclt, sdai, sdao and sdat. During synthesis, Vivado recognizes that the top-level I2C interface requires bidirectional signaling and automatically infers the tri-state buffer IOBUF. 
 
 ![[iobuf.drawio.svg]]
+
+# SW_Implementation
+
+This chapter introduces the software programs running on the PS-site in this work. As the hardware is designed to emulate the functionality of the KX134 accelerometer, the signal generator software completely covers the functionality of the signal recorder software.The code used for sensor configuration and reading acceleration data from the sample buffer in watermark interrupt mode is identical between the two design. Therefore, following sections focus only on the structure and implementation of the signal generator software.
+
+The software's major tasks in this system include initializing the peripherals, reading/writing text files from the SD card, converting fractions in the text to 16-bit binary (and vice versa), and handling interrupt signals. Additionally, as stated in section X, the system needs to provide some user interaction capabilities for flexible configuration of signal sources and runtime control, which can be accomplished through serial port communication.
+
+### Layers of software on zynq
+![[Pasted image 20231105220852.png]]
+Chapter 3 introduces the Vivado design flow for hardware development. The synthesized hardware design exported from Vivado is referred to as the "hardware base system" or "hardware platform". As shown in Figure X, the software system consists of layered components built upon this foundation.
+
+The lowest software layer is the Board Support Package (BSP), which contains hardware parameters, low-level drivers, and functions used by the operating system on the higher layer to communicate with the hardware.  Since the BSP is customized for a specific base system, any hardware design changes require re-importing the new design and regenerating the BSP in SDK.
+
+The Operating System layer is positioned above the BSP. For Zynq platform, Xilinx supports various OS choices depending on application requirements, including fully-fledged options like Linux, real-time operating systems (RTOS) for time-critical application, or Xilinx Standalone – a lightweight “bare-metal” OS.
+
+Standalone provides basic software modules to access processor-specific functions. For Zynq devices, Xilinx provides a Standalone platform that includes cache configuration, interrupt/exception handling, and other hardware-related functions. While Standalone allows for close control over code execution , it has limited capabilities suitable only for simple, repetitive software tasks. The application in this work fits these requirements and therefore is operated on the Standalone OS.
+
+[8] Xilinx, Inc, “OS and Libraries Document Collection”, UG643
+Xilinx Standalone Library Documentation: BSP and Libraries Document Collection UG643
+
+
+
+### comparison between AXI-DMA and AXI-Stream FIFO
+
+The AXI-DMA IP block can read from DDR RAM independently and on its own after instruction to do so. It then streams the data out the AXI-Stream port.
+The AXI Streaming FIFO IP block has internal memory that you can fill up under processor control and it then also streams the data out the AXI-Stream port. 
+
+The process of transferring data from the PS to the PL using AXI Streaming FIFO consists of the following steps: Firstly, check available space using XLlFifo_TxPutWord. Next, write words one by one into the FIFO using XLlFifo_TxPutWord. Once all the data has been written, stream out the AXI-Stream data of a user-specified length byXLlFifo_iTxSetLen. Since the maximum depth of the FIFO buffer is not enough to hold all the vibration data, a complete vibration signal period consisting of 30000 samples needs to be divided into multiple batches for transmission. Moreover, frequent concurrent interrupts from the FIFO and custom IP's require interleaved data sending and reading, complicating the interrupt handling.
+
+In contrast, AXI-DMA controller requires the processor to issue only one instruction that specifies the source address and transmission length. Data is automatically fetched  from memory and transmitted without the involvement of the processor. The IP's internal counter tracks the actual transfer length and generates a completion interrupt to notify the PS when the amount of data transferred has reached the configured length.
+
+Using AXI DMA, it is straightforward to implement the following functionality: The application program reads a text file specified by the user, writes the data into the storage, then passes the first address of this storage block and length of the block to the DMA controller. The DMA controller independently streams data to the custom IP while the timing of transmission is also controlled by the READY signal of the custom IP as a AXI-Stream slave. The PS only need to handle the buffer watermark threshold interrupt from the custom IP. After the entire text file is sent, the application requests another filename from the user.
+
