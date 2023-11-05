@@ -39,30 +39,28 @@ Using AXI DMA, it is straightforward to implement the following functionality: T
 
 一些IP核需要由驱动程序进行初始化和控制。驱动程序基本上是一组接口协议，帮助与IP核通信。从Vivado导出的硬件平台时最基础的层级。在此之上，软件系统被视为一堆或一组需要建立在硬件基础系统之上的层。位于硬件基础系统之上的第一层是板支持包（BSP）层。板支持包（BSP）是一组低级驱动程序和函数。接下来的层，即操作系统，使用这些驱动程序和函数与IP核进行通信。最高级别的抽象是需要在操作系统上运行的软件应用程序。
 
-这一应用运行在Standalone（又名baremetal）操作系统下。
-A standalone OS, also known as a bare metal OS, is a simple OS that aims to provides a very low-level of software modules that the system can use to access processor-specific functions. Regarding the Zynq platform specifically, Xilinx provides a standalone OS platform that provides functions such as configuring caches, setting up interrupts and exceptions and other hardware related functions. The standalone platform sits directly below the OS layer and is used whenever an application requires to access processor features directly [8]. A standalone OS enables close control over code execution but is fairly limited in terms of functionality. It should only be used for applications where the software functions are straightforward and repetitive. The number of tasks being carried out by a standalone OS should be relatively small, as adding further tasks can increase the task management required by the standalone rapidly.
 
-The Standalone platform is a single-threaded, simple operating system (OS) platform that provides the lowest layer of software modules used to access processor-specific functions. Some typical functions offered by the Standalone platform include setting up the interrupts and exceptions systems, configuring caches, and other hardware specific functions. The Hardware Abstraction Layer (HAL) is described in this document
 
-Standalone BSP contains boot code, cache, exception handling, file and memory management, configuration, time and processor-specific include functions.
-
-Hardware Abstraction Layer API.
 
 [8] Xilinx, Inc, “OS and Libraries Document Collection”, UG643
 Xilinx Standalone Library Documentation: BSP and Libraries Document Collection UG643
-需要注意的是
+
 #### Layers of software on zynq
-在上一章节中介绍了在Vivado中进行硬件设计的流程。Vivado中的工程文件被synthesis并打包导出后，即为hardware base system’ or ‘hardware platform’。而软件系统则可被看做图x中所示的一组层级。
+在章节3中介绍了在Vivado中进行硬件设计的流程。Vivado中的工程文件被synthesis并打包导出后，即为hardware base system’ or ‘hardware platform’。而软件系统则可被看做图x中所示的一组层级。
 而软件层中最底层的是Board Support Package（BSP）。它是 a set o hardware parameters, low-level drivers and functions that are used by the next layer up (the Operating System) to communicate with the hardware. 由于它是 customized for the base system的。在设计时，更新了硬件设计后，必须重新导入hardware platform并再次生成BSP。
-在BSP层之上的是Operating Systems层。在Zynq上可以运行的操作系统包括fully-fledged OS such as Linux or Android; an embedded OS; a Real-Time Operating System (RTOS) for deterministic, time-critical applications; or Standalone, a ‘light’ OS. 本系统中的应用运行在Standalone（又名baremetal）操作系统下。
-A standalone OS, also known as a bare metal OS, is a simple OS that aims to provides a very low-level of software modules that the system can use to access processor-specific functions. 在zynq平台上，Xilinx provides a standalone OS platform that provides functions such as configuring caches, setting up interrupts and exceptions and other hardware related functions. A standalone OS enables close control over code execution but is fairly limited in terms of functionality. It should only be used for applications where the software functions are straightforward and repetitive. The number of tasks being carried out by a standalone OS should be relatively small, as adding further tasks can increase the task management required by the standalone rapidly.
+在BSP层之上的是Operating Systems层。在Zynq上根据应用的需求，有多种操作系统包括fully-fledged OS such as Linux or Android; an embedded OS; a Real-Time Operating System (RTOS) for deterministic, time-critical applications; or Standalone, a ‘light’ OS. 
+A standalone OS, also known as a bare metal OS, is a simple OS that aims to provides a very low-level of software modules that the system can use to access processor-specific functions. 在zynq平台上，Xilinx provides a standalone OS platform that provides functions such as configuring caches, setting up interrupts and exceptions and other hardware related functions. A standalone OS enables close control over code execution but is fairly limited in terms of functionality. It should only be used for applications where the software functions are straightforward and repetitive. The number of tasks being carried out by a standalone OS should be relatively small, as adding further tasks can increase the task management required by the standalone rapidly.  本系统中的应用符合上述的需求，因此运行在Standalone（又名baremetal）操作系统下。
+
+第 3 章介绍了用于硬件开发的 Vivado 设计流程。从 Vivado 合成后导出的硬件平台被称为hardware base system’ or ‘hardware platform’。而软件系统可视为在此基础上的分层组件，如图X所示。
+最底层的软件层是电路板支持包（BSP），它是 a set o hardware parameters, low-level drivers and functions that are used by the next layer up (the Operating System) to communicate with the hardware.  由于 BSP 是为特定基础系统定制的，因此硬件设计变更时必须将新设计重新导入，并在 SDK 中重新生成 BSP。
+BSP 以上是操作系统层。Zynq 支持多种操作系统选择，具体取决于应用需求，包括 Linux/Android 等成熟操作系统、用于时间关键型操作的实时操作系统 (RTOS)，或 Xilinx Standalone - 一种轻量级 "裸机 "操作系统。
+Standalone 为处理器特定功能访问提供最小的软件模块。对于 Zynq，赛灵思提供的 Standalone 平台具有高速缓存配置、中断/异常设置和其他硬件相关实用程序。虽然 Standalone 可以实现严密的执行控制，但其功能有限且，仅适用于简单、重复性的软件任务。本作品中的应用符合这些要求，因此选择了 Standalone 操作系统。
 
 
 ![[Pasted image 20231105220852.png]]
  
 
 
-编程时主要使用Xilinx Hardware Abstraction Layer
 #   
 Getting Started with Vivado and Vitis for Baremetal Software Projects
 https://digilent.com/reference/programmable-logic/guides/getting-started-with-ipi
