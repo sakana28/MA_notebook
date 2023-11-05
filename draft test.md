@@ -296,7 +296,11 @@ Figure ()  shows a block diagram of the signal generator system. Two AXI4 buses 
 ### AXI-DMA
 
  AXI DMA provides high-bandwidth direct memory access between memory and AXI4-Stream target peripherals.AXI DMA 在存储器和 AXI4-Stream 目标外设之间提供高带宽直接存储器访问。系统内存和数据流目标之间的主要高速 DMA 数据移动是通过 AXI4 读主接口到 AXI4 内存映射到数据流 (MM2S) 主接口，以及 AXI 数据流到内存映射 (S2MM) 从接口到 AXI4 写主接口实现的。AXI DMA 还能在分散/收集模式下，在 MM2S 和 S2MM 通路上实现多达 16 个多通道的数据移动。
- AXI-DMA控制器在存储器和AXI4-Stream外设之间提供高带宽直接存储器访问。它无需处理器将数据写入或读出以实现数据在PL和PS之间的移动，而是从存储器中搬运数据。控制器上提供了 AXI4 读主接口到 AXI4 内存映射到数据流 (MM2S) 主接口和 AXI 数据流到内存映射 (S2MM) 从接口到 AXI4 写主接口
+ AXI-DMA控制器在存储器和AXI4-Stream外设之间提供高带宽直接存储器访问。它无需处理器将数据写入或读出以实现数据在PL和PS之间的移动，而是从存储器中搬运数据，也就是说，它在与PS通信时是总线上的主器件。
+ 该IP核支持 Scatter/Gather  
+ Scatter/Gather Block Descriptor在配置IP核width of buffer length register时要注意，长度决定了传输长度的上限。将进一步从CPU从数据搬移任务中解放
+ 本工作中使用Direct Register模式。
+
 ### Custom I2C Slave IP Core
 #### Block diagramm
 
