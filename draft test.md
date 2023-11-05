@@ -295,12 +295,13 @@ The AXI-DMA module bridges data transfer between the custom IP and PS. Direct me
 Figure ()  shows a block diagram of the signal generator system. Two AXI4 buses connect the PS GP and HP ports to the PL. The AXI-IIC and custom IPs are mapped to pins connected to the GPIO header and joined by jumper wires to create the I2C bus. Both the AXI-DMA and custom IP generate interrupts to activate handlers in the PS.
 ### AXI-DMA
 
- AXI DMA provides high-bandwidth direct memory access between memory and AXI4-Stream target peripherals.AXI DMA 在存储器和 AXI4-Stream 目标外设之间提供高带宽直接存储器访问。系统内存和数据流目标之间的主要高速 DMA 数据移动是通过 AXI4 读主接口到 AXI4 内存映射到数据流 (MM2S) 主接口，以及 AXI 数据流到内存映射 (S2MM) 从接口到 AXI4 写主接口实现的。AXI DMA 还能在分散/收集模式下，在 MM2S 和 S2MM 通路上实现多达 16 个多通道的数据移动。
- AXI-DMA控制器在存储器和AXI4-Stream外设之间提供高带宽直接存储器访问。它无需处理器将数据写入或读出以实现数据在PL和PS之间的移动，而是从存储器中搬运数据，也就是说，它在与PS通信时是总线上的主器件。
- 该IP核支持 Scatter/Gather 模式和 Direct Register模式。
- Direct Register模式下，配置一次控制寄存器只能对物理地址连续的一块存储进行读写。而 Scatter/Gather 模式下，关于传输的基本参数（比如起始地址、传输长度、包信息等）存储在存储器中，并称之为Buffer Descriptor（BD）。DMA控制器从专用M_AXI_SG接口加载BD，而BD连接成一个链表。根据BD里的信息，DMA控制器可以对多个不连续的存储空间进行读写，任务过程中只在最后生成一个中断。这种工作模式进一步将从CPU从数据搬移任务中解放。
- 本工作中文本文件中的数据被存放在连续的存储空间中，因此使用较为简单的Direct Register模式。
- 在配置IP核width of buffer length register时要注意，长度决定了传输长度的上限。
+The AXI Direct Memory Access (DMA) controller offers fast and direct access to memory from AXI4-Stream peripherals. It transfers data between PL and PS, without the processor manually writing to and reading from memory, and acts as a master on the bus when communicating with the PS.
+
+This IP core supports two modes: Scatter/Gather and Direct Register.
+
+In Direct Register mode, a single configuration of the control registers allows access to only one contiguous physical memory block. In Scatter/Gather mode, basic transfer parameters (e.g., start address, length, packet information, etc.) are stored in memory as buffer description words (BDs). The DMA controller loads BDs via a dedicated M_AXI_SG port, and the BDs are chained in a linked list. Based on the information in the BDs, the DMA is able to access multiple non-contiguous memory space in a single task, generating only one interrupt at the end. This process effectively offloads data movement tasks from the CPU.
+
+在配置IP核width of buffer length register时要注意，长度决定了传输长度的上限。
 
 ### Custom I2C Slave IP Core
 #### Block diagramm
