@@ -9,6 +9,17 @@
 This chapter introduces the software programs running on the PS-site in this work. As the hardware is designed to emulate the functionality of the KX134 accelerometer, the signal generator software completely covers the functionality of the signal recorder software.The code used for sensor configuration and reading acceleration data from the sample buffer in watermark interrupt mode is identical between the two design. Therefore, following sections focus only on the structure and implementation of the signal generator software.
 
 The software's major tasks in this system include initializing the peripherals, reading/writing text files from the SD card, converting fractions in the text to 16-bit binary (and vice versa), and handling interrupt signals. Additionally, as stated in section X, the system needs to provide some user interaction capabilities for flexible configuration of signal sources and runtime control, which can be accomplished through serial port communication.
+
+#### Layers of software on zynq
+![[Pasted image 20231105220852.png]]
+Chapter 3 introduces the Vivado design flow for hardware development. The synthesized hardware design exported from Vivado is referred to as the "hardware base system" or "hardware platform". As shown in Figure X, the software system consists of layered components built upon this foundation.
+
+The lowest software layer is the Board Support Package (BSP), which contains hardware parameters, low-level drivers, and functions used by the operating system on the higher layer to communicate with the hardware.  Since the BSP is customized for a specific base system, any hardware design changes require re-importing the new design and regenerating the BSP in SDK.
+
+The Operating System layer is positioned above the BSP. For Zynq platform, Xilinx supports various OS choices depending on application requirements, including fully-fledged options like Linux, real-time operating systems (RTOS) for time-critical application, or Xilinx Standalone – a lightweight “bare-metal” OS.
+
+Standalone provides basic software modules to access processor-specific functions. For Zynq devices, Xilinx provides a Standalone platform that includes cache configuration, interrupt/exception handling, and other hardware-related functions. While Standalone allows for close control over code execution , it has limited capabilities suitable only for simple, repetitive software tasks. The application in this work fits these requirements and therefore is operated on the Standalone OS.
+
 ### SD card operation
 
 
@@ -45,19 +56,10 @@ Using AXI DMA, it is straightforward to implement the following functionality: T
 [8] Xilinx, Inc, “OS and Libraries Document Collection”, UG643
 Xilinx Standalone Library Documentation: BSP and Libraries Document Collection UG643
 
-#### Layers of software on zynq
-在章节3中介绍了在Vivado中进行硬件设计的流程。Vivado中的工程文件被synthesis并打包导出后，即为hardware base system’ or ‘hardware platform’。而软件系统则可被看做图x中所示的一组层级。
-而软件层中最底层的是Board Support Package（BSP）。它是 a set o hardware parameters, low-level drivers and functions that are used by the next layer up (the Operating System) to communicate with the hardware. 由于它是 customized for the base system的。在设计时，更新了硬件设计后，必须重新导入hardware platform并再次生成BSP。
-在BSP层之上的是Operating Systems层。在Zynq上根据应用的需求，有多种操作系统包括fully-fledged OS such as Linux or Android; an embedded OS; a Real-Time Operating System (RTOS) for deterministic, time-critical applications; or Standalone, a ‘light’ OS. 
-A standalone OS, also known as a bare metal OS, is a simple OS that aims to provides a very low-level of software modules that the system can use to access processor-specific functions. 在zynq平台上，Xilinx provides a standalone OS platform that provides functions such as configuring caches, setting up interrupts and exceptions and other hardware related functions. A standalone OS enables close control over code execution but is fairly limited in terms of functionality. It should only be used for applications where the software functions are straightforward and repetitive. The number of tasks being carried out by a standalone OS should be relatively small, as adding further tasks can increase the task management required by the standalone rapidly.  本系统中的应用符合上述的需求，因此运行在Standalone（又名baremetal）操作系统下。
-
-第 3 章介绍了用于硬件开发的 Vivado 设计流程。从 Vivado 合成后导出的硬件平台被称为hardware base system’ or ‘hardware platform’。而软件系统可视为在此基础上的分层组件，如图X所示。
-最底层的软件层是电路板支持包（BSP），它是 a set o hardware parameters, low-level drivers and functions that are used by the next layer up (the Operating System) to communicate with the hardware.  由于 BSP 是为特定基础系统定制的，因此硬件设计变更时必须将新设计重新导入，并在 SDK 中重新生成 BSP。
-BSP 以上是操作系统层。Zynq 支持多种操作系统选择，具体取决于应用需求，包括 Linux/Android 等成熟操作系统、用于时间关键型操作的实时操作系统 (RTOS)，或 Xilinx Standalone - 一种轻量级 "裸机 "操作系统。
-Standalone 为处理器特定功能访问提供最小的软件模块。对于 Zynq，赛灵思提供的 Standalone 平台具有高速缓存配置、中断/异常设置和其他硬件相关实用程序。虽然 Standalone 可以实现严密的执行控制，但其功能有限且，仅适用于简单、重复性的软件任务。本作品中的应用符合这些要求，因此选择了 Standalone 操作系统。
 
 
-![[Pasted image 20231105220852.png]]
+
+
  
 
 
