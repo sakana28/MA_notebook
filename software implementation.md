@@ -52,7 +52,10 @@ Hardware Abstraction Layer API.
 Xilinx Standalone Library Documentation: BSP and Libraries Document Collection UG643
 需要注意的是
 #### BSP 
+在上一章节中介绍了在Vivado中进行硬件设计的流程。Vivado中的工程文件被synthesis并打包导出后，即为hardware base system’ or ‘hardware platform’.
 
+
+作为一种
 ![[Pasted image 20231105220852.png]]
  
 The BSP is customized for the base system and OS combination, and contains hardware parameters, device drivers, and low-level OS functions. (zynq book)
