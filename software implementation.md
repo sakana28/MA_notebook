@@ -18,11 +18,19 @@ The AXI Streaming FIFO IP block has internal memory that you can fill up under p
 Design of a high-speed lightning signal acquisition system based on ZYNQ
 
 
-AXI Streaming FIFO需要先XLlFifo_TxPutWord软件检查FIFO中还可以写入多少数据 再XLlFifo_TxPutWord 将word写入fifo中。需要写入的数据已经写入FIFO后。再用XLlFifo_iTxSetLen，输出数据流，接下来主机通过主动查询控制寄存器或者等待interrupt的方式确定本次传输结束。由于AXI Streaming FIFO在最大深度下也不足以容纳下所有振动数据，这代表一个完整的时间周期内的振动信号必须被分成若干部分，分批发送给PL。且FIFO的interrupt和Custom IP的watermark interrupt会在同一时间段内频繁发生，则代表CPU必须交错完成向PL发送数据和读取的任务，使中断处理更加繁琐。
+AXI Streaming FIFO需要先XLlFifo_TxPutWord软件检查FIFO中还可以写入多少数据，再用XLlFifo_TxPutWord 将word写入fifo中。需要写入的数据已经写入FIFO后。再用XLlFifo_iTxSetLen，输出用户指定长度的数据流，接下来主机通过主动查询控制寄存器或者等待interrupt的方式确定本次传输结束。由于AXI Streaming FIFO在最大深度下也不足以容纳下所有振动数据，这代表一个完整的时间周期内的振动信号必须被分成若干部分，分批发送给PL。且FIFO的interrupt和Custom IP的watermark interrupt会在同一时间段内频繁发生，则代表CPU必须交错完成向PL发送数据和读取的任务，使中断处理更加繁琐。 
 
 与此相对，AXI DMA读取数据只需要处理器向DMA控制器发出一条包含源地址和传输长度的指令。处理器无需将数据装填入IP核，DMA控制器会自行从存储器中读取数据，将其转化为流数据并且计数传输的数据。当传输数据量达到指定的传输长度时，控制器产生中断以通知处理器。
 
 使用AXI DMA可以方便地实现以下预想的功能：应用程序读取用户指定的文本文件，并将文本文件中的数据写在存储器缓冲区中；将缓冲区地址和数据长度发送给DMA，而DMA何时将AXI Stream写入Custom IP、写入的速率则完全由Custom IP 的AXI-Stream接口的ready信号控制。PS只需要处理Custom IP生成的watermark Interrupt。当整个文本文件被发送完毕后，应用程序会再次询问用户指定的文本文件的名字。
+
+用AXI Streaming FIFO要求首先使用 XLlFifo_TxPutWord 检查可用空间，然后再使用 XLlFifo_TxPutWord 将字写入 FIFO。写入所有数据后，XLlFifo_iTxSetLen 用于在主机通过轮询控制寄存器或等待中断确定传输完成之前流出指定长度。由于最大 FIFO 深度不足以容纳所有振动数据，因此必须将一个完整周期的振动信号分成多个批次传输到 PL。此外，来自 FIFO 和定制 IP 水印的频繁并发中断需要交错发送和读取数据，从而使中断处理复杂化。
+
+相比之下，AXI DMA 只需要处理器发出一条命令，指定源地址和长度。数据会自动从内存中读取并流式传输，无需处理器参与，并由内部计数器跟踪进度。一旦传输的数据量达到配置长度，就会发出传输完成的中断信号。
+
+使用 AXI DMA 可以轻松实现所需的功能： 应用程序读取用户指定的文本文件，将数据写入内存缓冲区，然后将缓冲区地址和长度传递给 DMA。DMA 独立地将数据流传输到定制 IP，时序完全由 AXI-Stream 接口的就绪信号控制。PS 只处理定制 IP 的水印中断。整个文本文件发送完毕后，应用程序重复向用户请求文件名。
+
+总之，与 AXI 流 FIFO 相比，AXI DMA 通过在初始配置后卸载数据传输，简化了软件控制。这避免了不必要的振动数据碎片和中断交错。有了 AXI DMA，处理器就不必主动管理数据流。
 
 
 
