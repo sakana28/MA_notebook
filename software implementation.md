@@ -38,6 +38,8 @@ Hardware Abstraction Layer API.
 Xilinx Standalone Library Documentation: BSP and Libraries Document Collection UG643
 需要注意的是
 #### BSP 
+
+![[Pasted image 20231105220852.png]]
  
 The BSP is customized for the base system and OS combination, and contains hardware parameters, device drivers, and low-level OS functions. (zynq book)
 The BSP is tuned to the hardware base system, allowing an OS to operate efficiently on the given hardware. The BSP is customised to the combination of base system and operating system, and includes hardware parameters, device drivers, and low-level OS functions. Therefore, in terms of Vivado / SDK development, the BSP should be refreshed if changes are made to the hardware base system. SDK provides the environment for creating BSPs, and developing and testing software for deployment in the upper layers. It also supports the creation of BSPs for use in third party development tools such as ARM Development Studio 5 (DS-5), which may be used in place of Xilinx SDK if desired [33],
