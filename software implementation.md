@@ -10,7 +10,22 @@ This section introduces the software programs running on the processing system (
 This chapter introduces the software programs running on the PS-site in this work. As the hardware is designed to emulate the functionality of the KX134 accelerometer, the signal generator software completely covers the functionality of the signal recorder software.The code used for sensor configuration and reading acceleration data from the sample buffer in watermark interrupt mode is identical between the two design. Therefore, following sections focus only on the structure and implementation of the signal generator software.
 
 The software's major tasks in this system include initializing the peripherals, reading/writing text files from the SD card, converting fractions in the text to 16-bit binary (and vice versa), and handling interrupt signals. Additionally, as stated in section X, the system needs to provide some user interaction capabilities for flexible configuration of signal sources and runtime control, which can be accomplished through serial port communication.
-## comparison between AXI-DMA and AXI-Stream FIFO
+### SD card operation
+
+
+文本文件中，python生成的振动信号x以浮点数的形式存在于文本文件中，每个数占一行。 read_sd函数逐行读取并近似与g相关的整数并转换为16位二进制数，再将二进制数分别存放在两个32bit的存储单元中。Memory Map Data Width：AXI MM2S存储映射读取数据总线的数据位宽。有效值为32,64,128,256,512和1024。此处保持默认值32。
+
+若f_gets报错如下：undefined reference to "f_gets",即表示f_gets未定义，
+出现这个错误的原因是，在xiffls中我们没有使能字符串函数功能。use_strfunc
+
+write_sd_txt程序则是反过程，将放在三个float类型buffer中的x,y,z三轴加速度数据写入文本文件中。
+#### fatfs
+Xilffs is a generic FAT file system that is primarily added for use with SD/eMMC driver. The file system is open source and a glue layer is implemented to link it to the SD/eMMC driver. A link to the source of file system is provided in the PDF where the file system description can be found.
+对于文件读写操作，Xilinx提供了Xilffs这一generic FAT file system。它充当了应用和存储器控制中间的桥梁。在SD/eMMC driver提供了更高一层的抽象。编写程序时，Application should make use of APIs provided in ff.h.
+FatFs is a generic FAT/exFAT filesystem module for small embedded systems. FatFs provides various filesystem functions for the applications 
+The Xilinx fat file system (FFS) library consists of a file system and a glue layer. This FAT file system can be used with an interface supported in the glue layer. The file system code is open source and is used as it is. Currently, the Glue layer implementation supports the SD/eMMC interface and a RAM based file system. Application should make use of APIs provided in ff.h. These file system APIs access the driver functions through the glue layer.
+
+### comparison between AXI-DMA and AXI-Stream FIFO
 
 The AXI-DMA IP block can read from DDR RAM independently and on its own after instruction to do so. It then streams the data out the AXI-Stream port.
 The AXI Streaming FIFO IP block has internal memory that you can fill up under processor control and it then also streams the data out the AXI-Stream port. 
@@ -49,11 +64,6 @@ The BSP is tuned to the hardware base system, allowing an OS to operate efficien
 #   
 Getting Started with Vivado and Vitis for Baremetal Software Projects
 https://digilent.com/reference/programmable-logic/guides/getting-started-with-ipi
-### fatfs
-Xilffs is a generic FAT file system that is primarily added for use with SD/eMMC driver. The file system is open source and a glue layer is implemented to link it to the SD/eMMC driver. A link to the source of file system is provided in the PDF where the file system description can be found.
-对于文件读写操作，Xilinx提供了Xilffs这一generic FAT file system。它充当了应用和存储器控制中间的桥梁。在SD/eMMC driver提供了更高一层的抽象。编写程序时，Application should make use of APIs provided in ff.h.
-FatFs is a generic FAT/exFAT filesystem module for small embedded systems. FatFs provides various filesystem functions for the applications 
-The Xilinx fat file system (FFS) library consists of a file system and a glue layer. This FAT file system can be used with an interface supported in the glue layer. The file system code is open source and is used as it is. Currently, the Glue layer implementation supports the SD/eMMC interface and a RAM based file system. Application should make use of APIs provided in ff.h. These file system APIs access the driver functions through the glue layer.
 
 
 
@@ -82,12 +92,4 @@ red req生成在get_address_and_cmd状态，只高一个时钟周期
 data valid生成在读取最后一位的时钟周期，只高一个时钟周期 否则会多次激活读写operation。为保证数据的可靠性，应该在valid有效时寄存其值。
 
 
-SD Operation
 
-
-文本文件中，python生成的振动信号x以浮点数的形式存在于文本文件中，每个数占一行。 read_sd函数逐行读取并近似与g相关的整数并转换为16位二进制数，再将二进制数分别存放在两个32bit的存储单元中。Memory Map Data Width：AXI MM2S存储映射读取数据总线的数据位宽。有效值为32,64,128,256,512和1024。此处保持默认值32。
-
-若f_gets报错如下：undefined reference to "f_gets",即表示f_gets未定义，
-出现这个错误的原因是，在xiffls中我们没有使能字符串函数功能。use_strfunc
-
-write_sd_txt程序则是反过程，将放在三个float类型buffer中的x,y,z三轴加速度数据写入文本文件中。
