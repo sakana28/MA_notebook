@@ -54,6 +54,8 @@ Xilinx Standalone Library Documentation: BSP and Libraries Document Collection U
 #### Layers of software on zynq
 在上一章节中介绍了在Vivado中进行硬件设计的流程。Vivado中的工程文件被synthesis并打包导出后，即为hardware base system’ or ‘hardware platform’。而软件系统则可被看做图x中所示的一组层级。
 而软件层中最底层的是Board Support Package（BSP）。它是 a set o hardware parameters, low-level drivers and functions that are used by the next layer up (the Operating System) to communicate with the hardware. 由于它是 customized for the base system的。在设计时，更新了硬件设计后，必须重新导入hardware platform并再次生成BSP。
+
+在BSP层至上的OS，Operating Systems
 ![[Pasted image 20231105220852.png]]
  
 The BSP is customized for the base system and OS combination, and contains hardware parameters, device drivers, and low-level OS functions. (zynq book)
