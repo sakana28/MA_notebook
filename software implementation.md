@@ -6,14 +6,13 @@
 [[about interrupt on zynq]]
 [[about AXI-DMA sw]]
 
-This section introduces the software programs running on the processing system (PS) for both the Signal Recorder and Signal Generator systems.
 This chapter introduces the software programs running on the PS-site in this work. As the hardware is designed to emulate the functionality of the KX134 accelerometer, the signal generator software completely covers the functionality of the signal recorder software.The code used for sensor configuration and reading acceleration data from the sample buffer in watermark interrupt mode is identical between the two design. Therefore, following sections focus only on the structure and implementation of the signal generator software.
 
 The software's major tasks in this system include initializing the peripherals, reading/writing text files from the SD card, converting fractions in the text to 16-bit binary (and vice versa), and handling interrupt signals. Additionally, as stated in section X, the system needs to provide some user interaction capabilities for flexible configuration of signal sources and runtime control, which can be accomplished through serial port communication.
 ### SD card operation
 
 
-文本文件中，python生成的振动信号x以浮点数的形式存在于文本文件中，每个数占一行。 read_sd函数逐行读取并近似与g相关的整数并转换为16位二进制数，再将二进制数分别存放在两个32bit的存储单元中。Memory Map Data Width：AXI MM2S存储映射读取数据总线的数据位宽。有效值为32,64,128,256,512和1024。此处保持默认值32。
+文本文件中，python生成的振动信号x以小数的形式存在于文本文件中，每个数占一行。 read_sd函数逐行读取并近似与g相关的整数并转换为16位二进制数，再将二进制数分别存放在两个32bit的存储单元中。Memory Map Data Width：AXI MM2S存储映射读取数据总线的数据位宽。有效值为32,64,128,256,512和1024。此处保持默认值32。
 
 若f_gets报错如下：undefined reference to "f_gets",即表示f_gets未定义，
 出现这个错误的原因是，在xiffls中我们没有使能字符串函数功能。use_strfunc
