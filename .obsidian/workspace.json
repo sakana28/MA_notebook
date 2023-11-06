@@ -79,7 +79,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -154,7 +155,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "software implementation.md",
+                "file": "draft test.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -171,7 +172,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "software implementation.md",
+                "file": "draft test.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -194,7 +195,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "software implementation.md"
+                "file": "draft test.md"
               }
             }
           },
@@ -225,11 +226,11 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "554457f334cbcda2",
+  "active": "45a79e2a546224e7",
   "lastOpenFiles": [
-    "draft test.md",
     "file structure.md",
     "software implementation.md",
+    "draft test.md",
     "about KX134.md",
     "about SD card WR (FATFS).md",
     "picture/Pasted image 20231105220852.png",
