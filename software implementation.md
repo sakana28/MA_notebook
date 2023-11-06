@@ -25,6 +25,13 @@ Xilinx Standalone Library Documentation: BSP and Libraries Document Collection U
 
 
 ## AXI-I2C的使用
+XIic_Send XIic_Recv
+This function sends the data using polled I/O and blocks until the data has been sent. It only supports 7 bit addressing mode of operation. This function returns zero if bus is busy.  
+此函数使用轮询的 I/O 和块发送数据，直到发送数据为止。它仅支持 7 位寻址操作模式。如果总线繁忙，则此函数返回零。Send data as a master on the IIC bus.
+
+This function sends the data using polled I/O and blocks until the data has been sent. It only supports 7 bit addressing mode of operation. This function returns zero if bus is busy.
+
+这是一组较为简单的api。由于本项目中总线上只有一个主机一个从机
 ## AXI-DMA的使用
 （Vitis Drivers API Documentation）
 Simple DMA allows the application to define a single transaction between DMA and Device. It has two channels: one from the DMA to Device and the other from Device to DMA. Application has to set the buffer address and length fields to initiate the transfer in respective channel.
