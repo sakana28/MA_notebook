@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "about SD card WR (FATFS).md",
+                "file": "software implementation.md",
                 "mode": "source",
                 "source": false
               }
@@ -31,7 +31,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -106,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about SD card WR (FATFS).md",
+                "file": "about KX134.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -123,7 +124,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about SD card WR (FATFS).md",
+                "file": "about KX134.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -146,7 +147,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "about SD card WR (FATFS).md"
+                "file": "about KX134.md"
               }
             }
           },
@@ -176,16 +177,17 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "45a79e2a546224e7",
+  "active": "5a778319b1747f69",
   "lastOpenFiles": [
     "software implementation.md",
+    "about SD card WR (FATFS).md",
+    "about KX134.md",
+    "picture/Pasted image 20231107074230.png",
     "about AXI-DMA sw.md",
     "about interrupt on zynq.md",
     "draft test.md",
     "file structure.md",
-    "about KX134.md",
     "Physic interface.md",
-    "about SD card WR (FATFS).md",
     "picture/Pasted image 20231105220852.png",
     "fundamentals.md",
     "picture/sw_structure.drawio.png",
@@ -202,7 +204,6 @@
     "AXI-IIC IP Core.md",
     "about signal recorder.md",
     "picture/signal_recorder.drawio.svg",
-    "picture/signal_generator.drawio (1) 1.svg",
     "custom I2C slave.md",
     "previous chapter.md",
     "about Hardware system design.md",
