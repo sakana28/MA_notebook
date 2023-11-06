@@ -24,7 +24,11 @@ Standalone provides basic software modules to access processor-specific function
 Xilinx Standalone Library Documentation: BSP and Libraries Document Collection UG643
 
 
-
+## AXI-I2C的使用
+## AXI-DMA的使用
+## SD读写
+### Fatfs
+## Interrupt
 ### comparison between AXI-DMA and AXI-Stream FIFO
 
 The AXI-DMA IP block can read from DDR RAM independently and on its own after instruction to do so. It then streams the data out the AXI-Stream port.
