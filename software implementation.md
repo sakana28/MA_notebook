@@ -33,6 +33,19 @@ This function sends the data using polled I/O and blocks until the data has been
 
 这是一组较为简单的api。由于本项目中总线上只有一个主机一个从机
 ## AXI-DMA的使用
+### comparison between AXI-DMA and AXI-Stream FIFO
+
+The AXI-DMA IP block can read from DDR RAM independently and on its own after instruction to do so. It then streams the data out the AXI-Stream port.
+The AXI Streaming FIFO IP block has internal memory that you can fill up under processor control and it then also streams the data out the AXI-Stream port. 
+
+The process of transferring data from the PS to the PL using AXI Streaming FIFO consists of the following steps: Firstly, check available space using XLlFifo_TxPutWord. Next, write words one by one into the FIFO using XLlFifo_TxPutWord. Once all the data has been written, stream out the AXI-Stream data of a user-specified length byXLlFifo_iTxSetLen. Since the maximum depth of the FIFO buffer is not enough to hold all the vibration data, a complete vibration signal period consisting of 30000 samples needs to be divided into multiple batches for transmission. Moreover, frequent concurrent interrupts from the FIFO and custom IP's require interleaved data sending and reading, complicating the interrupt handling.
+
+In contrast, AXI-DMA controller requires the processor to issue only one instruction that specifies the source address and transmission length. Data is automatically fetched  from memory and transmitted without the involvement of the processor. The IP's internal counter tracks the actual transfer length and generates a completion interrupt to notify the PS when the amount of data transferred has reached the configured length.
+
+Using AXI DMA, it is straightforward to implement the following functionality: The application program reads a text file specified by the user, writes the data into the storage, then passes the first address of this storage block and length of the block to the DMA controller. The DMA controller independently streams data to the custom IP while the timing of transmission is also controlled by the READY signal of the custom IP as a AXI-Stream slave. The PS only need to handle the buffer watermark threshold interrupt from the custom IP. After the entire text file is sent, the application requests another filename from the user.
+
+
+
 （Vitis Drivers API Documentation）
 Simple DMA allows the application to define a single transaction between DMA and Device. It has two channels: one from the DMA to Device and the other from Device to DMA. Application has to set the buffer address and length fields to initiate the transfer in respective channel.
 在应用中，驱动AXI-DMA控制器使用了以下API:
@@ -46,17 +59,16 @@ XAxiDma_SimpleTransfer busy的时候会传输失败。因此需要interrupt确�
 ## SD读写
 ### Fatfs
 ## Interrupt
-### comparison between AXI-DMA and AXI-Stream FIFO
+SCUGIC
 
-The AXI-DMA IP block can read from DDR RAM independently and on its own after instruction to do so. It then streams the data out the AXI-Stream port.
-The AXI Streaming FIFO IP block has internal memory that you can fill up under processor control and it then also streams the data out the AXI-Stream port. 
+Interrupts between the PS and PL are controlled by the Generic Interrupt Controller 
+(GIC), which supports 64 interrupt lines. Six interrupts are driven from within the APU, 
+including the L1 parity fail, L2 interrupt and Performance Monitor Unit (PMU) interrupt (zynq book)
 
-The process of transferring data from the PS to the PL using AXI Streaming FIFO consists of the following steps: Firstly, check available space using XLlFifo_TxPutWord. Next, write words one by one into the FIFO using XLlFifo_TxPutWord. Once all the data has been written, stream out the AXI-Stream data of a user-specified length byXLlFifo_iTxSetLen. Since the maximum depth of the FIFO buffer is not enough to hold all the vibration data, a complete vibration signal period consisting of 30000 samples needs to be divided into multiple batches for transmission. Moreover, frequent concurrent interrupts from the FIFO and custom IP's require interleaved data sending and reading, complicating the interrupt handling.
+查找相应配置并初始化GIC，配置两个Interrupt,此处两个都设置为 Rising edge sensitive 。而watermark interrupt具有更高的优先级。
+XScuGic_Connect 用于Makes the connection between the Int_Id of the interrupt source and the associated handler that is to run when the interrupt is recognized.
 
-In contrast, AXI-DMA controller requires the processor to issue only one instruction that specifies the source address and transmission length. Data is automatically fetched  from memory and transmitted without the involvement of the processor. The IP's internal counter tracks the actual transfer length and generates a completion interrupt to notify the PS when the amount of data transferred has reached the configured length.
-
-Using AXI DMA, it is straightforward to implement the following functionality: The application program reads a text file specified by the user, writes the data into the storage, then passes the first address of this storage block and length of the block to the DMA controller. The DMA controller independently streams data to the custom IP while the timing of transmission is also controlled by the READY signal of the custom IP as a AXI-Stream slave. The PS only need to handle the buffer watermark threshold interrupt from the custom IP. After the entire text file is sent, the application requests another filename from the user.
-
+The argument provided in this call as the Callbackref is used as the argument for the handler when it is called.
 
 
 
@@ -73,16 +85,6 @@ https://digilent.com/reference/programmable-logic/guides/getting-started-with-ip
 
 
 
-SCUGIC
-
-Interrupts between the PS and PL are controlled by the Generic Interrupt Controller 
-(GIC), which supports 64 interrupt lines. Six interrupts are driven from within the APU, 
-including the L1 parity fail, L2 interrupt and Performance Monitor Unit (PMU) interrupt (zynq book)
-
-查找相应配置并初始化GIC，配置两个Interrupt,此处两个都设置为 Rising edge sensitive 。而watermark interrupt具有更高的优先级。
-XScuGic_Connect 用于Makes the connection between the Int_Id of the interrupt source and the associated handler that is to run when the interrupt is recognized.
-
-The argument provided in this call as the Callbackref is used as the argument for the handler when it is called.
 
 硬件补充
 SCL尽管是I2C总线时钟信号，在该系统中不被当时钟使用。系统时钟远快于SCL，对SCL的上升下降沿进行检测，获得与系统时钟同步的上升下降沿信号。
