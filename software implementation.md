@@ -26,6 +26,7 @@ Xilinx Standalone Library Documentation: BSP and Libraries Document Collection U
 
 ## AXI-I2C的使用
 ## AXI-DMA的使用
+在应用中，驱动AXI-DMA控制器要经过
 ## SD读写
 ### Fatfs
 ## Interrupt
