@@ -26,8 +26,10 @@ Xilinx Standalone Library Documentation: BSP and Libraries Document Collection U
 
 ## AXI-I2C的使用
 ## AXI-DMA的使用
+（Vitis Drivers API Documentation）
 Simple DMA allows the application to define a single transaction between DMA and Device. It has two channels: one from the DMA to Device and the other from Device to DMA. Application has to set the buffer address and length fields to initiate the transfer in respective channel.
 在应用中，驱动AXI-DMA控制器使用了以下API:
+XAxiDma_LookupConfig 根据device ID, Look up the hardware configuration for a device instance. 在有复数个DMA控制器的系统中非常重要。
 XAxiDma_CfgInitialize() 
 This function must be called prior to using a DMA engine. Initializing a engine includes setting up the register base address, setting up the instance data, and ensuring the hardware is in a quiescent state.
 
