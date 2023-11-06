@@ -30,10 +30,10 @@ Simple DMA allows the application to define a single transaction between DMA and
 在应用中，驱动AXI-DMA控制器使用了以下API:
 XAxiDma_CfgInitialize() 
 This function must be called prior to using a DMA engine. Initializing a engine includes setting up the register base address, setting up the instance data, and ensuring the hardware is in a quiescent state.
-XAxiDma_IntrDisable
+
 XAxiDma_IntrEnable
 
-XAxiDma_SimpleTransfer busy的时候无法传输
+XAxiDma_SimpleTransfer busy的时候会传输失败。因此需要interrupt确定传输结束 才能向用户询问下一个文件源
 ## SD读写
 ### Fatfs
 ## Interrupt
