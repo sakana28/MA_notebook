@@ -80,6 +80,21 @@ Using AXI DMA, it is straightforward to implement the following functionality: T
 ## SD读写
 ### Fatfs
 ## Interrupt
+如第 \ref{sec:recorder ips} 节所述，Zynq PS 端有一个基于 ARM 通用中断控制器架构 v1.0 的硬件实现的通用中断控制器 (GIC)。Vitis 提供了用于在独立操作系统下操作 GIC 的 scugic 驱动程序。
+
+本应用程序使用了 Xparameters 中的以下参数：
+
+XPAR_FABRIC_IRQ_F2P_0_INTR：自定义 IP 的中断 ID。
+
+XPAR_FABRIC_AXI_DMA_0_MM2S_INTROUT_INTR：AXI-DMA MM2S 通道的中断 ID。
+
+XPAR_SCUGIC_SINGLE_DEVICE_ID：GIC 的设备 ID。
+
+包括 XScuGic_CfgInitialize、XScuGic_SetPriorityTriggerType、XScuGic_Connect 和 XScuGic_Enable 在内的 API 用于配置 GIC 和启用中断。
+
+接收到中断后，首先屏蔽中断并设置相应的标志。然后发出命令，从采样缓冲器中读取阈值数量的加速度数据。回调函数参数 CallBackRef 指向用于存储读取数据的缓冲区地址。
+
+
 如章节\label{sec:recorder ips}中介绍过的一样，zynq的PS侧有硬件实现的general interrupt controller ,which is based on the non-vectored ARM General Interrupt Controller Architecture v1.0. Vitis中提供了Standalone OS下操作GIC的驱动scugic. 
 Xparameter中的以下参数在本应用中会被用到 
 XPAR_FABRIC_IRQ_F2P_0_INTR  Custom IP发出的中断的编号
