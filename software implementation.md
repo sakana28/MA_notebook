@@ -33,6 +33,36 @@ This function sends the data using polled I/O and blocks until the data has been
 
 这是一组较为简单的api。由于本项目中总线上只有一个主机一个从机
 ## AXI-DMA的使用
+### 应用中使用的驱动API
+
+本应用程序中使用了如下用于操作AXI-DMA控制器的驱动函数：
+XAxiDma_LookupConfig： 根据设备 ID 查找设备实例的硬件配置。这在具有多个 DMA 控制器的系统中至关重要。
+AxiDma_CfgInitialize()：用通过XAxiDma_LookupConfig获得的配置参数初始化DMA控制器。在使用 DMA 引擎前必须调用该函数。初始化包括设置寄存器基地址、实例数据，并确保硬件处于静态。
+XAxiDma_IntrEnable： 为 DMA 引擎启用中断。
+XAxiDma_SimpleTransfer： 在 DMA 和设备之间发起Direct Register Mode下的传输事务。有从从 DMA 到设备和从设备到 DMA两个通道。设置缓冲区地址和传输字节长度即可启动传输。在上一次传输完成之前再次调用该函数将导致传输失败。因此，在询问用户下一个文件源之前，需要中断或轮询来确定传输已经完成。
+
+
+
+
+
+
+
+
+
+
+XAxiDma_SimpleTransfer 函数为简单的一次性传输配置 DMA。它需要几个参数，包括发送和接收通道的缓冲区地址和长度。必须启用中断，以防止传输失败时过早重新调用该函数。
+
+
+（Vitis Drivers API Documentation）
+Simple DMA allows the application to define a single transaction between DMA and Device. It has two channels: one from the DMA to Device and the other from Device to DMA. Application has to set the buffer address and length fields to initiate the transfer in respective channel.
+在应用中，驱动AXI-DMA控制器使用了以下API:
+XAxiDma_LookupConfig 根据device ID, Look up the hardware configuration for a device instance. 在有复数个DMA控制器的系统中非常重要。
+XAxiDma_CfgInitialize() 
+This function must be called prior to using a DMA engine. Initializing a engine includes setting up the register base address, setting up the instance data, and ensuring the hardware is in a quiescent state.
+
+XAxiDma_IntrEnable
+
+XAxiDma_SimpleTransfer 当上一次传输尚未结束时，再次调用会使传输失败。因此需要interrupt确定传输结束 才能向用户询问下一个文件源
 ### comparison between AXI-DMA and AXI-Stream FIFO
 
 The AXI-DMA IP block can read from DDR RAM independently and on its own after instruction to do so. It then streams the data out the AXI-Stream port.
@@ -46,20 +76,70 @@ Using AXI DMA, it is straightforward to implement the following functionality: T
 
 
 
-（Vitis Drivers API Documentation）
-Simple DMA allows the application to define a single transaction between DMA and Device. It has two channels: one from the DMA to Device and the other from Device to DMA. Application has to set the buffer address and length fields to initiate the transfer in respective channel.
-在应用中，驱动AXI-DMA控制器使用了以下API:
-XAxiDma_LookupConfig 根据device ID, Look up the hardware configuration for a device instance. 在有复数个DMA控制器的系统中非常重要。
-XAxiDma_CfgInitialize() 
-This function must be called prior to using a DMA engine. Initializing a engine includes setting up the register base address, setting up the instance data, and ensuring the hardware is in a quiescent state.
 
-XAxiDma_IntrEnable
-
-XAxiDma_SimpleTransfer busy的时候会传输失败。因此需要interrupt确定传输结束 才能向用户询问下一个文件源
 ## SD读写
 ### Fatfs
 ## Interrupt
+如章节\label{sec:recorder ips}中介绍过的一样，zynq的PS侧有硬件实现的general interrupt controller ,which is based on the non-vectored ARM General Interrupt Controller Architecture v1.0. Vitis中提供了Standalone OS下操作GIC的驱动scugic. 
+Xparameter中的以下参数在本应用中会被用到 
+XPAR_FABRIC_IRQ_F2P_0_INTR  Custom IP发出的中断的编号
+XPAR_FABRIC_AXI_DMA_0_MM2S_INTROUT_INTR AXI-DMA的MM2S通道发出的中断的编号
+XPAR_SCUGIC_SINGLE_DEVICE_ID GIC的器件编号
+
+XScuGic_CfgInitialize
+XScuGic_SetPriorityTriggerType
+XScuGic_Connect
+XScuGic_Enable
+
+
+收到interrupt后先屏蔽，设置对应flag。并发出指令，从Sample Buffer中读出Threshold数量的加速度数据。处理程序中被使用的CallBackRef是存储区中接收读出的数据的缓冲区地址。
+static void KX134_IntrHandler(void *CallBackRef) {
+  u8 *Dataout_addr = (u8 *)CallBackRef;
+  XScuGic_Disable(&Intc, KX134_INTR_ID);
+  Watermark_flag = 1;
+  xil_printf("GET KX134 INTR\r\n");
+  XIic_Send(IIC_BASE_ADDRESS, TEST_DEVICE_ADDRESS, &BUF_READ_ADD, 1,
+            XIIC_REPEATED_START);
+  XIic_Recv(IIC_BASE_ADDRESS, TEST_DEVICE_ADDRESS, Dataout_addr, 360,
+            XIIC_STOP);
+
+  XScuGic_Enable(&Intc, KX134_INTR_ID);
+}
+
+DMA中interrupt原因更复杂，收到interrupt后通过读对应IRQ寄存器确定Interrupt类型，如果是传输完成则清除interrupt，否则报错
+static void DMA_IntrHandler(void *CallBackRef) {
+	u32 IrqStatus;
+		XAxiDma *AxiDmaInst = (XAxiDma *) CallBackRef;
+		xil_printf("GET MM2S INTR\r\n");
+		/* Read pending interrupts */
+		IrqStatus = XAxiDma_IntrGetIrq(AxiDmaInst, XAXIDMA_DMA_TO_DEVICE);
+		/* Acknowledge pending interrupts */
+		XAxiDma_IntrAckIrq(AxiDmaInst, IrqStatus, XAXIDMA_DMA_TO_DEVICE);
+		if ((IrqStatus & XAXIDMA_IRQ_IOC_MASK)) {
+			xil_printf("send done\n");
+			XScuGic_Disable(&Intc, DMA_INTR_ID);
+		}
+		else {
+			xil_printf("Error in DMA RX \r\n");
+		}
+}
+
+
 SCUGIC
+The general interrupt controller is based on the non-vectored ARM General Interrupt 
+Controller Architecture v1.0.
+The controller manages interrupts that are sent to the CPUs from the PS and the PL. It is 
+a centralised resource, and is capable of enabling, disabling, masking and prioritising 
+interrupt sources, sending them to the appropriate CPU(s) in a programmed manner as the 
+next interrupt is accepted by the CPU interface [5]. The controller also supports security 
+extension for the implementation of a security-aware system [5].
+GIC registers are accessed via the CPU private bus which ensures fast read/write 
+response times by avoiding bottlenecks and temporary blockages in the interconnect [5]. 
+All interrupt sources are centralised by the interrupt distributor before the one with the 
+highest priority is dispatched to the individual CPUs. The GIC also ensures that an interrupt that targets more than one CPU can only be taken by a single CPU at a time. A 
+unique interrupt ID number identifies each interrupt source, and have their own configurable priority and list of targeted CPUs [5]. 
+Further information on the GIC can be obtained from the ARM Generic Interrupt 
+Controller Architecture Specification [1]
 
 Interrupts between the PS and PL are controlled by the Generic Interrupt Controller 
 (GIC), which supports 64 interrupt lines. Six interrupts are driven from within the APU, 
@@ -72,18 +152,9 @@ The argument provided in this call as the Callbackref is used as the argument fo
 
 
 
-
-
-
-
- 
-
-
 #   
 Getting Started with Vivado and Vitis for Baremetal Software Projects
 https://digilent.com/reference/programmable-logic/guides/getting-started-with-ipi
-
-
 
 
 硬件补充
