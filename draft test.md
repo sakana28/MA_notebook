@@ -381,7 +381,7 @@ signal_gen : process (data_reg, sampling_en, sample_clk_rising)
 
 #### clock divider
 
-
+The clock divider is implemented based on a counter to generate the configurable sample clock from the 50MHz system clock. The OSA[3:0] signal (bits [3:0] of register 0x21) is used as the input to the clock divider module. It specifies the output data rate by controlling the counter maximum limit.
 #### debouncer
 The debouncer module is based on a small-scale FSM. This FSM contains only two states - idle and check\_input\_stable. When a change in the input signal is detected compared to the value stored in the module's internal register, the FSM enters the check\_input\_stable state. If the signal remains stable for a user-defined number of cycles in this state, the register value is updated and the FSM returns to idle. Otherwise, the signal transition is considered a bounce and the register value is not updated before going back to idle.
 
@@ -432,8 +432,9 @@ Standalone provides basic software modules to access processor-specific function
 [8] Xilinx, Inc, “OS and Libraries Document Collection”, UG643
 Xilinx Standalone Library Documentation: BSP and Libraries Document Collection UG643
 
-
-
+## Software Organization
+The main program of the application relies on the following header files: • ff.h: Includes all the FAT file system APIs. • xparameters.h: Contains hardware parameters such as interrupt IDs and address maps, as well as peripheral configurations for the system. This file is generated from the Vivado hardware platform. • SDoperation.h: Contains custom functions related to SD card read/write operations. • stdio.h: C standard library. Used here for standard input/output. • xscugic.h: Includes drivers for the ARM Generic Interrupt Controller under Standalone OS.
+## AXI-DMA
 ### comparison between AXI-DMA and AXI-Stream FIFO
 
 The AXI-DMA IP block can read from DDR RAM independently and on its own after instruction to do so. It then streams the data out the AXI-Stream port.
@@ -444,4 +445,34 @@ The process of transferring data from the PS to the PL using AXI Streaming FIFO 
 In contrast, AXI-DMA controller requires the processor to issue only one instruction that specifies the source address and transmission length. Data is automatically fetched  from memory and transmitted without the involvement of the processor. The IP's internal counter tracks the actual transfer length and generates a completion interrupt to notify the PS when the amount of data transferred has reached the configured length.
 
 Using AXI DMA, it is straightforward to implement the following functionality: The application program reads a text file specified by the user, writes the data into the storage, then passes the first address of this storage block and length of the block to the DMA controller. The DMA controller independently streams data to the custom IP while the timing of transmission is also controlled by the READY signal of the custom IP as a AXI-Stream slave. The PS only need to handle the buffer watermark threshold interrupt from the custom IP. After the entire text file is sent, the application requests another filename from the user.
+### AXI-DMA Driver API 
+ The following driver functions are used in this application program for operating the AXI-DMA controller:
+ 
+  • XAxiDma_LookupConfig: Looks up the hardware configuration for a device instance based on the device ID. This is crucial in systems with multiple DMA controllers. 
+  
+  • XAxiDma_CfgInitialize: Initializes the DMA controller using the configuration parameters obtained from XAxiDma_LookupConfig. This function must be called before using the DMA engine. Initialization includes setting up the register base address, instance data, and ensuring the hardware is in a static state. 
+  
+  • XAxiDma_IntrEnable: Enables interrupts for the DMA engine. 
+  
+  • XAxiDma_SimpleTransfer: Initiates a transfer transaction between the DMA and device in Direct Register Mode. There are two channels: one from DMA to device, and one from device to DMA. Setting the buffer address and number of bytes to transfer starts the transmission. Calling this function again before the previous transaction is complete will cause transfer failure. Therefore, interrupts or polling are needed to determine the transfer is complete before asking the user for the next file source.
 
+## SD card operations
+In this application program, SD card operations utilize three custom functions: mount_sd, read_sd, and write_sd_txt. void 
+
+mount_sd() The mount_sd function associates the SD card with the file system. It uses the FatFS standard API function f_mount, which provides a work area for the FatFs module. Before executing any file or directory operations, a filesystem object needs to be registered with the f_mount function for the logical drive. If a FAT volume does not exist on the target SD card, this function will format it using f_mkfs. 
+
+void read_sd(int32_t *buffer, int len,char * filename) 
+
+The read_sd function reads the text file containing the vibration signal x generated by Python in decimal format line-by-line. Each number occupies one line. This function reads each line of the text file, divides it by the acc_factor related to g to approximate integers, then converts it to a 16-bit binary number. The 16-bit binary number is split into high 8 bits and low 8 bits. Although the data width is 8 bits in the custom IP core, the minimum memory map data width of the DMA Controller is 32 bits. Therefore, the two 8-bit data are stored in two separate 32-bit storage units. The line-by-line reading uses the FatFS standard function f_gets, which stores a string until it reads "\n". The string is then converted to decimal using the C string library function atof. It should be noted that f_gets is a string function, so the option Using string functions (use_strfunc) needs to be enabled when adding the xilffs library, otherwise compilation errors will occur. 
+
+void write_sd_txt(int iterations, float *data_x, float *data_y, float *data_z, int data_number)
+
+The write_sd_txt function sequentially writes the x, y, z three-axis acceleration data stored in three float type buffers to a text file on the SD card. First, the data is converted to a line of string with newline using the sprintf string function, then written to the file using the FatFS standard function f_write.
+
+### Xilinx FAT File System
+Xilinx provides the Xilinx FAT File System (XilFFS) as a generic FAT file system implementation for file I/O operations on Zynq platform. It integrates the open source FatFs FAT/exFAT file system module customized for embedded systems. XilFFS serves as a bridge between applications and underlying storage controllers, providing a higher level of abstraction above the drivers of devices such as SD/eMMC controllers. Applications should use the APIs in ff.h for file access. The file contains file system functions for the user and glue functions that link the driver with the file system. This layered architecture separates the file system module from the specific interface drivers. Code built on the open standard APIs in the FatFs file system can remain unchanged when running on different platforms. This system also simplifies software development by abstracting the underlying storage operations.
+
+## Interrupts 
+
+As explained in section 3.3.2, the Zynq PS side contains a hardware-implemented general interrupt controller (GIC) based on the ARM Generic Interrupt Controller Architecture v1.0. Vitis provides the scugic driver to operate the GIC under a standalone OS. This application uses the following scugic functions: • XScuGic_LookupConfig: Returns the XScuGic_Config structure containing configuration information for the GIC device specified by its ID. • XScuGic_CfgInitialize: Initializes a specific GIC instance, including initializing the XScuGic structure fields, setting up the vector table with stub functions, and disabling all interrupt sources.
+• XScuGic_SetPriorityTriggerType: Sets priority and trigger type for an IRQ source. Here both interrupts use rising edge triggering. The custom IP/KX134 watermark threshold interrupt has a higher priority than AXI-DMA since delayed trigger handling can cause the sample buffer to overflow. • XScuGic_Connect: Connects the interrupt from an specific interrupt source to the corresponding handler function. The callback reference(Callbackref) argument passed here is used as argument for the handler function. • XScuGic_Enable: Enables the given interrupt from source Int_Id. Listing X and Y show the interrupt handlers for the two interrupt sources in this application - the custom IP/KX134 and the DMA engine, respectively. The custom IP/KX134 handler performs several tasks upon receiving an interrupt. First, it masks the interrupt to prevent re-entry. Then it issues AXI-IIC commands to read the threshold number of acceleration data from the sample buffer into the provided buffer pointed to by CallBackRef. Finally, it sets the Watermark_flag to 1, signaling new data for the main program to process. The DMA engine interrupt handling is more complex due to the multiple potential causes. The handler first reads the appropriate IRQ status register to determine the interrupt type. If the cause is transfer completion, it will acknowledge the pending interrupt. Otherwise it reports an error.
