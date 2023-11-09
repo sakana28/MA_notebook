@@ -175,7 +175,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -192,8 +192,8 @@
   "active": "122ce4701b2cd095",
   "lastOpenFiles": [
     "software implementation.md",
-    "draft test.md",
     "MA_Index.md",
+    "draft test.md",
     "about KX134.md",
     "about SD card WR (FATFS).md",
     "picture/Pasted image 20231107074230.png",
