@@ -496,13 +496,4 @@ The software components use libraries generated from the hardware design in Viti
 
 Simulation validates that the custom I2C slave IP responds correctly to master transactions. The registers are accessible according to the accelerometer protocol. Emulation of synthesized system successfully verify that the data path is complete and the software operation is correct. Text data from the SD card and outputs written to the SD card are identical, along with proper I2C master-slave communication captured on the logic analyzer.
 
-本论文介绍了使用 Xilinx Zynq SoC 平台设计和实施滚动轴承振动信号发生器和记录器系统的情况。该系统的目的是为振动信号的处理和故障分析提供可定制的与硬件集成的数据，对于未来的预测性维护解决方案的开发有重要的作用。该系统的论文首先分析了对滚动轴承振动信号建模的背景以及数值实现，并分析了该建模在Zynq上部署的可行性。
-该系统的核心包括用于模拟信号生成的 Python 脚本、用于配置和控制的 C 软件以及实现硬件数据路径和逻辑的 VHDL 模块。信号发生器模拟加速度计，输出从文本文件中获取的人工振动数据。信号记录器通过与板卡连接的加速度计获取真实的振动测量值。两个子系统被连接起来形成一个回环，以便于验证系统功能。
-这项工作的一个主要贡献是在Vivado中用 VHDL 开发了一个定制的 I2C 从属外设。它在信号发生器数据路径中模拟了加速度计功能。定制的从 IP 能够被配置采样参数，并使用I2C主机从其中读取数据。其有限状态机精确地遵循了 I2C 协议规范。通过时钟分频和缓冲器配置，定制内核可以和加速度计一样，生成可由用户配置的中断信号。
-软件组件利用Vitis IDE根据硬件设计生成的库文件，包括独立操作系统、scugic 中断控制器、用于高速数据传输的 axi_dma，以及用于 SD 卡访问的 FatFs 文件系统等低级驱动，实现了硬件控制和数据移动。
-通过仿真验证了定制I2C从机IP核可以对主机发起的事务进行响应，且主机可以按照加速度计的协议对从机中的内置寄存器进行读写。综合实验成功验证了数据路径完整，软件操作正确。来自 SD 卡的文本数据与写入SD卡的输出数据相匹配。且通过逻辑分析仪也可以采集到I2C总线上主从机的正确通信。
 
-
-
-
-本论文介绍了一种用于阶次分析的滤波系统的设计空间探索。论文分析了滤波器系统的功能和数学背景。为基于 Xtensa ISA 的六个 ASIP 配置创建了该滤波器系统的实现。为了节省硬件成本并提高执行速度，这些实现代码中省略了浮点数，而使用定点数。这些处理器配置具有不同的硬件并行能力、寄存器位宽、内核大小和功耗要求。这种实现方式的特点是为定点格式定制算术，允许在编译时更改格式。编译器内在函数和优化的信号处理函数用于访问不同架构的特定硬件指令，并利用所提供的 SIMD 功能。通过这一过程，基本实现适应了每种架构，并利用其特定功能提高了整体性能。使用提供的数据集对实现进行了测试、优化和评估，以评估每种配置的优缺点。评估从性能和成本两方面对不同配置进行了比较。突出强调了硬件并行性、定点格式和其他实施差异的影响，并将其与硬件功能和实施细节联系起来。所有接受评估的架构都能实时运行滤波系统。Fusion G3 和 HiFi 3 的速度明显高于 LX7+MUL16 架构，Fusion G3 的速度最高可达 9.8，HiFi 3 的速度最高可达 8.6。这两种架构的不同之处在于，Fusion G3 在实现这一速度提升的同时，还为所有采样保留了完整的 32 位，因此相对误差约为 HiFi 3 的一半。另一方面，HiFi 3 只需要 Fusion G3 31.6% 的内核大小和 35.6% 的功率。HiFi mini 在每个周期进行两次 24 × 24 位乘法运算时也显示出良好的性能。在协处理器架构中，HiFi mini 的内核尺寸和功耗要求最低，功耗要求是 LX7 基本配置的 1.49 倍。每种架构都有特定的定点格式，其处理速度比其他架构更快。据观察，输出的总体精度会随着小数位数的增加而提高，但当输入值不再适合格式而无需事先缩放时，精度也会达到饱和。HiFi 3 的评估结果还表明，如果同时使用多种定点格式，精度会受到小数位数最少的格式的限制。评估突出显示了架构之间的差异及其对滤波系统性能的影响。评估还显示了滤波器系统的哪些部分可以作为进一步优化的起点。从设计空间探索中获得的信息表明，使用专用 ASIP 的滤波器系统可以达到哪种结果。
