@@ -485,6 +485,17 @@ Two low-level I2C APIs: XIic_Send and XIic_Recv, are used in this application fo
 XIic_Recv receives data from the specified slave into a buffer. XIic_Send transfers the data buffer to the destination slave address. For KX134 register reads, as introduced in sec X, XIic_Send transfers the register address first, then XIic_Recv reads the register contents.XIic_Send uses REPEATED START between write and read transactions.
 
 ## Conclusion
+
+This thesis presents the design and implementation of a vibration signal generator and recorder system for rolling element bearings using the Xilinx Zynq SoC platform. The system is aimed at providing customizable integrated hardware datasets to facilitate the processing and diagnosis of vibration signals, which will play an important role in the development of future predictive maintenance solutions. The thesis first analyzes the background and numerical implementation of modeling rolling element bearing vibrations and evaluates the feasibility of deploying this model on the Zynq.
+
+The core of the system consists of Python scripts for vibration signal generation, embedded-C software for configuration and control, and VHDL modules for ifor implementation of the hardware data path and logic. The signal generator emulates an accelerometer and outputs generated vibration data from text files on an SD card. The signal recorder acquires real acceleration measurements from an accelerometer connected to the board. The two subsystems are linked to form a loopback to validate system functionality.
+
+A key contribution of this work is to implement in Vivado a custom I2C slave IP in VHDL for the signal generator system to mimic the accelerometer behavior. The custom slave IP can be configured and read from an I2C host. Its FSM closely follows the I2C protocol specification. Through clock division and sample buffering, the custom core can generate user-configurable interrupts similar to the accelerometer.
+
+The software components use libraries generated from the hardware design in Vitis IDE, including a standalone OS,  low-level drivers for generic interrupt controller, AXI-DMA controller and other peripherals, and a FAT file system for SD card access.
+
+Simulation validates that the custom I2C slave IP responds correctly to master transactions. The registers are accessible according to the accelerometer protocol. Emulation of synthesized system successfully verify that the data path is complete and the software operation is correct. Text data from the SD card and outputs written to the SD card are identical, along with proper I2C master-slave communication captured on the logic analyzer.
+
 本论文介绍了使用 Xilinx Zynq SoC 平台设计和实施滚动轴承振动信号发生器和记录器系统的情况。该系统的目的是为振动信号的处理和故障分析提供可定制的与硬件集成的数据，对于未来的预测性维护解决方案的开发有重要的作用。该系统的论文首先分析了对滚动轴承振动信号建模的背景以及数值实现，并分析了该建模在Zynq上部署的可行性。
 该系统的核心包括用于模拟信号生成的 Python 脚本、用于配置和控制的 C 软件以及实现硬件数据路径和逻辑的 VHDL 模块。信号发生器模拟加速度计，输出从文本文件中获取的人工振动数据。信号记录器通过与板卡连接的加速度计获取真实的振动测量值。两个子系统被连接起来形成一个回环，以便于验证系统功能。
 这项工作的一个主要贡献是在Vivado中用 VHDL 开发了一个定制的 I2C 从属外设。它在信号发生器数据路径中模拟了加速度计功能。定制的从 IP 能够被配置采样参数，并使用I2C主机从其中读取数据。其有限状态机精确地遵循了 I2C 协议规范。通过时钟分频和缓冲器配置，定制内核可以和加速度计一样，生成可由用户配置的中断信号。
