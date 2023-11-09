@@ -25,13 +25,13 @@ Xilinx Standalone Library Documentation: BSP and Libraries Document Collection U
 
 
 ## AXI-I2C的使用
-XIic_Send XIic_Recv
+
 This function sends the data using polled I/O and blocks until the data has been sent. It only supports 7 bit addressing mode of operation. This function returns zero if bus is busy.  
 此函数使用轮询的 I/O 和块发送数据，直到发送数据为止。它仅支持 7 位寻址操作模式。如果总线繁忙，则此函数返回零。Send data as a master on the IIC bus.
 
 This function sends the data using polled I/O and blocks until the data has been sent. It only supports 7 bit addressing mode of operation. This function returns zero if bus is busy.
 
-这是一组较为简单的api。由于本项目中总线上只有一个主机一个从机
+ 本应用中使用了XIic_Send和XIic_Recv来对传感器进行配置或者读出数据。这是一组较低级别的api。These functions sends or recives the data using polled I/O and blocks until the data has been sent or got. It only supports 7 bit addressing mode of operation. This function returns 0 if bus is busy.  XIic_Send中还可指定发送完数据后主机发出STOP信号还是START REPEAT信号。在读出KX134/Custom IP的寄存器数据时，如sec介绍，必须先用写操作发送寄存器地址，再用读操作读出寄存器中的数据，两次事务间用START REPEAT隔开。
 ## AXI-DMA的使用
 ### 应用中使用的驱动API
 
