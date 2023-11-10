@@ -1,7 +1,7 @@
 #writing  #hw_implementation #implementation 
 
 
-
+2023 11 11 2nd change
 # Introduction
 Rolling bearings, also known as rolling element bearings, are critical mechanical components used in various engineering systems and industries. They facilitate the relative motion between components while reducing friction to ensure machinery functions optimally. Nevertheless, constant internal component movement can cause wear and tear leading to failures in the long haul. Thus, ensuring effectiveness in monitoring and detecting faults is essential for sustained reliability and longevity.
 
