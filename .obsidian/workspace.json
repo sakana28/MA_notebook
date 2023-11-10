@@ -4,83 +4,71 @@
     "type": "split",
     "children": [
       {
-        "id": "e307ea6c32a54b35",
+        "id": "7cc1a1c8b84a36c4",
         "type": "tabs",
         "children": [
           {
-            "id": "16211440617b13d4",
+            "id": "45a79e2a546224e7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "about KX134(material).md",
+                "file": "MA_Index.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "8bf6624b1792e825",
+            "id": "81a5c490ab8fd880",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "about KX134.md",
+                "file": "software implementation.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "8a712edd81f895e5",
+            "id": "3a178ff93a6450b8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "about Model.md",
+                "file": "Test result.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "c4f9e9afa8580457",
+            "id": "122ce4701b2cd095",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "about I2C Protocol.md",
+                "file": "draft test.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "7bd5e372a11ae7a8",
+            "id": "86f9e3aa1271e938",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "about ZC706.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "d6c73b83407abc4a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Draft.md",
+                "file": "software implementation.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -109,7 +97,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "i2c",
+                "query": "draft",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -155,7 +143,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Draft.md",
+                "file": "Test result.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -172,7 +160,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Draft.md",
+                "file": "Test result.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -195,7 +183,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Draft.md"
+                "file": "Test result.md"
               }
             }
           },
@@ -207,73 +195,71 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
       "obsidian42-brat:BRAT": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "d6c73b83407abc4a",
+  "active": "3a178ff93a6450b8",
   "lastOpenFiles": [
-    "screenshot/Screenshot_2023-07-18_16-13-31.png",
-    "screenshot/Screenshot_2023-10-12_17-22-29.png",
-    "screenshot/Screenshot_2023-10-12_17-17-33.png",
-    "screenshot/Screenshot_2023-10-12_14-46-18.png",
-    "about ZC706.md",
-    "Draft.md",
-    "about Model.md",
+    "software implementation.md",
+    "Test result.md",
+    "draft test.md",
+    "MA_Index.md",
+    "hardware implementation.md",
+    "about signal recorder.md",
     "about I2C Protocol.md",
+    "about Hardware system design.md",
+    "未命名 9.md",
+    "about KX134.md",
+    "about SD card WR (FATFS).md",
+    "picture/Pasted image 20231107074230.png",
+    "about AXI-DMA sw.md",
+    "about interrupt on zynq.md",
+    "file structure.md",
+    "Physic interface.md",
+    "picture/Pasted image 20231105220852.png",
+    "fundamentals.md",
+    "picture/sw_structure.drawio.png",
+    "about signal generator.md",
+    "code/SW/watermark_for_kx134_and_ip/src/sw_structure.drawio.png",
+    "未命名 8.md",
+    "picture/signal_recorder.drawio (1).svg",
+    "picture/Pasted image 20231101014816.png",
+    "picture/Pasted image 20231023023643.png",
+    "picture/Pasted image 20231031231242.png",
+    "picture/Pasted image 20231031194805.png",
+    "AXI-IIC IP Core.md",
+    "picture/signal_recorder.drawio.svg",
     "custom I2C slave.md",
+    "previous chapter.md",
+    "about ZC706.md",
+    "about Zynq.md",
+    "about Model.md",
+    "未命名 7.md",
+    "what is non-stationary.md",
+    "picture/Volltext (PDF).pdf",
+    "doc/antoni2003 (1).pdf",
+    "doc/antoni2002.pdf",
+    "doc/未确认 508424.crdownload",
+    "doc/ho2000.pdf",
+    "doc/未确认 750425.crdownload",
     "doc/Conley_Jordan_Thesis.pdf",
     "doc/未确认 554753.crdownload",
-    "picture/Pasted image 20231011052234.png",
-    "about KX134(material).md",
-    "picture/pladitor_diagram (1) 1.svg",
-    "picture/pladitor_diagram (1).svg",
-    "picture/Pasted image 20231010072037.png",
-    "picture/Pasted image 20231010072032.png",
-    "picture/Pasted image 20231010072011.png",
     "doc/understanding_i2c_bus.pdf",
-    "doc/未确认 250267.crdownload",
-    "picture/Pasted image 20231010071819.png",
-    "about KX134.md",
-    "about Zynq.md",
-    "introduction.md",
-    "about Model draft.md",
-    "Zybo vs Zedboard vs ZC706.md",
-    "未命名 1.md",
-    "what is non-stationary.md",
-    "doc/gao2006.pdf",
-    "doc/未确认 8687.crdownload",
-    "doc/Kionix_kx_134/Seminararbeit_Implementierung_eines_Echtzeit_Demonstrators.pdf",
-    "doc/Kionix_kx_134/KX134-1211-Technical-Reference-Manual-Rev-3.0.pdf",
-    "doc/Kionix_kx_134/KX134-1211-Specifications-Rev-1.0-1659717.pdf",
-    "doc/Kionix_kx_134/2021 - AN101 Getting Started.pdf",
-    "Step by step notiz.md",
-    "未命名 2.md",
-    "未命名.md",
-    "KX134 Buffer read.md",
-    "KX134 ODR Register.md",
-    "Untitled.md",
-    "Vivado warning.md",
-    "FPGA based PWM generator.md",
-    "I2C Slave.md",
-    "max I2C Speed in Project.md",
-    "KX134 Einstellung (email).md",
-    "Notiz I2C.md"
+    "doc/未确认 250267.crdownload"
   ]
 }
