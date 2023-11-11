@@ -149,7 +149,6 @@ In real-world use cases, rolling bearing vibration signals are collected by an a
 
 This chapter provides detailed design and hardware-level implementation of a Zynq-based signal recorder and signal generator system meeting the aforementioned requirements. First, the features and functions of the KX134-1211 accelerometer used for data acquisition in this system are introduced. After covering the KX134 background, this chapter will describe in detail the Zynq hardware realizations of both the signal recorder and signal generator systems implemented on the Zynq SoC. The individual hardware blocks and interconnect will be elaborated separately for each system.
 ## KX134 
-The KX134 is utilized in the signal recorder for real vibration data acquisition。并且signal recorder应该使用和该加速度计一样的方式，将用户定义的数据集输出到下一级平台。因此it is necessary to first discuss the specifications and interface of the actual sensor.  
 
 The signal generator developed in this work emulates the functionality of the KX134-1211 accelerometer, which is also used for vibration data acquisition in the signal recorder. Therefore, this section provides background information on the basic capabilities and interface of the KX134 that are relevant to reproducing its operation. 
 
