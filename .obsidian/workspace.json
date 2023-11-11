@@ -80,7 +80,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -155,7 +155,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Implementation 插入部分.md",
+                "file": "draft test.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -172,7 +172,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Implementation 插入部分.md",
+                "file": "draft test.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -195,7 +195,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Implementation 插入部分.md"
+                "file": "draft test.md"
               }
             }
           },
@@ -225,10 +225,12 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "e60e9641d572208c",
+  "active": "122ce4701b2cd095",
   "lastOpenFiles": [
-    "draft test.md",
+    "software implementation.md",
+    "Test result.md",
     "Implementation 插入部分.md",
+    "draft test.md",
     "screenshot/local/variance015_local.png",
     "screenshot/local/sdof_fn3e3.png",
     "screenshot/local/outer.png",
@@ -241,8 +243,6 @@
     "screenshot/dist/qstiff1.png",
     "screenshot/dist/qrotation1.png",
     "screenshot/dist",
-    "Test result.md",
-    "software implementation.md",
     "MA_Index.md",
     "hardware implementation.md",
     "about signal recorder.md",
