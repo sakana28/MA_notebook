@@ -15,3 +15,8 @@ Sigrok 开源的logic analyzer framework Lecroy
 
 由于连接后信号出现波动导致logic analyzer显示错误的I2C协议信息，因此另外引出两个Pin用于显示消抖后的信号，用于测试分析。
 
+![[Screenshot_2023-09-22_15-52-59.png]]![[Screenshot_2023-09-22_15-54-24.png]]![[Screenshot_2023-09-22_15-55-06.png]]![[Screenshot_2023-10-12_17-22-29.png]]![[Screenshot_2023-11-09_15-13-36.png]]
+
+![[Pasted image 20231112073327.png]]
+![[Pasted image 20231112073418.png]]
+![[Pasted image 20231112073611.png]]
