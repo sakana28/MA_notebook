@@ -56,6 +56,18 @@
             }
           },
           {
+            "id": "e60e9641d572208c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Implementation 插入部分.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
             "id": "86f9e3aa1271e938",
             "type": "leaf",
             "state": {
@@ -68,7 +80,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -143,7 +155,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "draft test.md",
+                "file": "Implementation 插入部分.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -160,7 +172,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "draft test.md",
+                "file": "Implementation 插入部分.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -183,7 +195,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "draft test.md"
+                "file": "Implementation 插入部分.md"
               }
             }
           },
@@ -213,8 +225,10 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "122ce4701b2cd095",
+  "active": "e60e9641d572208c",
   "lastOpenFiles": [
+    "draft test.md",
+    "Implementation 插入部分.md",
     "screenshot/local/variance015_local.png",
     "screenshot/local/sdof_fn3e3.png",
     "screenshot/local/outer.png",
@@ -226,11 +240,9 @@
     "screenshot/local",
     "screenshot/dist/qstiff1.png",
     "screenshot/dist/qrotation1.png",
-    "screenshot/dist/qfault2.png",
     "screenshot/dist",
     "Test result.md",
     "software implementation.md",
-    "draft test.md",
     "MA_Index.md",
     "hardware implementation.md",
     "about signal recorder.md",
