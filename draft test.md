@@ -147,6 +147,8 @@ When the master sends data, the slave generates the ACK. If SDA remains high whe
 # hardware implementation
 在实际场景中，滚动轴承的振动信号会被accelerometer采集，之后信号会被实时处理并分析，以实现实时诊断故障的需求。为了便于开发信号实时处理与分析系统，首先需要开发一个测试平台，该测试平台可以发送符合开发者要求的由第一节介绍过的模型生成的振动信号，且处理平台从测试平台上采集信号的方式应该与实际应用场景中一致。此外，该系统也应具有采集并储存实际振动信号的能力，使开发者可以选择用真实信号或者simulated signal对处理平台进行测试。
 本章节中，基于Zynq平台的符合上述要求的信号recorder和信号generator的设计与硬件层面的实现会被详细介绍。首先介绍了用于采集加速度信号的accelerometer KX134-1211的功能与特性。After covering the KX134 background, this chapter will describe in detail the Zynq hardware realizations of both the signal recorder and signal generator systems implemented on the Zynq SoC. The individual hardware blocks and interconnect will be elaborated separately for each system.
+
+In real-world use cases, rolling bearing vibration signals are collected by an accelerometer and then processed and analyzed in real-time for online diagnostics and fault detection. 
 ## KX134 
 The KX134 is utilized in the signal recorder for real vibration data acquisition。并且signal recorder应该使用和该加速度计一样的方式，将用户定义的数据集输出到下一级平台。因此it is necessary to first discuss the specifications and interface of the actual sensor.  
 
