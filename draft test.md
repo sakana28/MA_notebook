@@ -145,9 +145,11 @@ The protocol requires acknowledgements (ACKs) during data transfer. The receiver
 When the master sends data, the slave generates the ACK. If SDA remains high when SCL is high during the 9th clock, the master can directly generate a STOP or ReSTART for a new transmission. When the slave sends data, the master generates the ACK. An ACK from the master means more data is expected. Once all desired data is received, the master sends NACK to tell the slave to stop sending data and release the bus and then sends a STOP to terminate the read operation. 
 
 # hardware implementation
-
-The signal generator mimics the key features of the KX134 accelerometer to generate artificial vibration data. As the KX134 is also utilized in the signal recorder for real vibration data acquisition, it is necessary to first discuss the specifications and interface of the actual sensor. After covering the KX134 background, this chapter will describe in detail the Zynq hardware realizations of both the signal recorder and signal generator systems implemented on the Zynq SoC. The individual hardware blocks and interconnect will be elaborated separately for each system.
+为了开发一种在实际场景中
+After covering the KX134 background, this chapter will describe in detail the Zynq hardware realizations of both the signal recorder and signal generator systems implemented on the Zynq SoC. The individual hardware blocks and interconnect will be elaborated separately for each system.
 ## KX134 
+The signal generator mimics the key features of the KX134 accelerometer to generate artificial vibration data. As the KX134 is also utilized in the signal recorder for real vibration data acquisition, it is necessary to first discuss the specifications and interface of the actual sensor.  
+
 The signal generator developed in this work emulates the functionality of the KX134-1211 accelerometer, which is also used for vibration data acquisition in the signal recorder. Therefore, this section provides background information on the basic capabilities and interface of the KX134 that are relevant to reproducing its operation. 
 
 The KX134 from Kionix is a triaxial accelerometer from Kionix that is capable of measuring acceleration forces along the X, Y, and Z axes. User interaction with the KX134, including configuration and data acquisition, is enabled through either I2C or SPI communication protocols. By writing to specific registers, users can configure various parameters such as sensor range, output data rate, triggering options, and buffer size. 
