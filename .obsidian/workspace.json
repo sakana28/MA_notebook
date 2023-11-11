@@ -211,7 +211,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 206.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -227,11 +227,11 @@
   },
   "active": "122ce4701b2cd095",
   "lastOpenFiles": [
+    "Implementation 插入部分.md",
     "software implementation.md",
+    "draft test.md",
     "MA_Index.md",
     "Test result.md",
-    "draft test.md",
-    "Implementation 插入部分.md",
     "screenshot/local/variance015_local.png",
     "screenshot/local/sdof_fn3e3.png",
     "screenshot/local/outer.png",
