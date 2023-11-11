@@ -145,7 +145,7 @@ The protocol requires acknowledgements (ACKs) during data transfer. The receiver
 When the master sends data, the slave generates the ACK. If SDA remains high when SCL is high during the 9th clock, the master can directly generate a STOP or ReSTART for a new transmission. When the slave sends data, the master generates the ACK. An ACK from the master means more data is expected. Once all desired data is received, the master sends NACK to tell the slave to stop sending data and release the bus and then sends a STOP to terminate the read operation. 
 
 # hardware implementation
-为了开发一种在实际场景中
+在实际场景中，振动信号会被accelerometer采集，之后信号会被传送到实时处理平台
 After covering the KX134 background, this chapter will describe in detail the Zynq hardware realizations of both the signal recorder and signal generator systems implemented on the Zynq SoC. The individual hardware blocks and interconnect will be elaborated separately for each system.
 ## KX134 
 The signal generator mimics the key features of the KX134 accelerometer to generate artificial vibration data. As the KX134 is also utilized in the signal recorder for real vibration data acquisition, it is necessary to first discuss the specifications and interface of the actual sensor.  
