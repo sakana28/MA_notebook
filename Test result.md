@@ -14,7 +14,10 @@ This chapter presents the various tests performed during system development and 
 在该系统的设计过程中，针对不同功能和应用场景进行了模块化的测试。
 
 硬件系统的开发包括设计要在 PL 中实现的外设模块和其他逻辑，在这些模块和 PS 之间建立适当的连接，并对 PS 进行适当的配置。例如，硬件系统可能包括 CAN 总线接口、用于调试的 UART 接口和 GPIO 接口，以及支持在 ARM 上运行软件的硬件协处理器。图 3.3 展示了该系统。硬件系统的开发在 Xilinx Vivado IDE 开发套件中进行。设计人员可以利用源自 IP 库的模块勾勒出所需系统的草图，对模块进行参数化，并设计适当的内部连接和外部端口。这一过程使用 Vivado 的 IP Integrator 组件完成，本书稍后将在第 18 章详细介绍该组件。
-在设计过程中遵循了Top-Down-design与bottom-up-testing的原则每个自定义模块在被集成入系统前都先通过testbench对其功能进行了验证。
+在本系统的设计过程中，Top-Down-design与bottom-up-testing的原则被遵守。每个自定义模块在被集成入系统前都先通过testbench对其功能进行了验证。之后根据应用场景的不同，进行了三个测试，以验证对整个软硬件co-design的功能。具体的测试内容和测试结果将在下面的sections中被详细描述。
+在所有三个测试中，一个文本文件中含有10000组样本。这一样本数可由用户通过修改参数化的嵌入式C程序自定义。
+测试一：使用KX134采集并存储真实加速度数据
+这个测试是对signal recorder的整体测试。在这个实验中，KX134会被轻微摇晃，系统将采集
 Sigrok 开源的logic analyzer framework Lecroy
 
 由于连接后信号出现波动导致logic analyzer显示错误的I2C协议信息，因此另外引出两个Pin用于显示消抖后的信号，用于测试分析。
