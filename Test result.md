@@ -32,6 +32,8 @@ T_readout < T_acquisition
 
 where k is the sample buffer threshold. To achieve the above goal, the time to read out k samples must be less than the time to acquire k samples. This inequality ignores the time required for the START, START REPEAT, and STOP signals and assumes no gap between transactions. By calculation, if the ODR is 12800 Hz, k only needs to be greater than 1 to meet the requirement. When the ODR is 25600 Hz, there is no integer k that satisfies the condition. Therefore, the maximum sampling frequency of this system is 12800 Hz. The threshold can be set to any integer greater than 2. Here it is set to 60, which is slightly more than half the buffer capacity.
 
+With the aforementioned requirements fulfilled, the system can continue to capture vibration signals for a certain period of time, which is only limited by the capacity of the SD card used. Since the accelerations sensed by the KX134 in this test are relatively small, data from a longer sampling period better demonstrates the motion of the sensor in the visualization.
+
 
 测试一：使用KX134采集并存储真实加速度数据
 This test provided an overall validation of the signal recorder system. First, KX134 was configured to watermark interrupt mode, then lightly shaken and set to operating mode. The device stored the three axis accelerations in the sample buffer and sent them to the PS master via I2C bus when an interruption was triggered. As soon as enough samples were gathered, the KX134 was set to standby mode and the samples were written to text files.
