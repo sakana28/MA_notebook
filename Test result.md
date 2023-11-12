@@ -74,7 +74,11 @@ The logic analyzer captured waveforms that matched the expected results. Figure 
 ##  Signal Generator with External Signal Source
 该实验对signal generator预期中的全部功能进行了验证。在实验2的基础上，系统中被添加了AXI-DMA IP核，Custom IP上被添加了AXI-Stream port。信号不再通过内部计数器生成，而是从IP核外部被传输进来。
 
-从下图的log可以看到，直到signal recorder受到最后一次来自Custom 
+
+
+该实验中，logic analyzer捕捉到的信号与实验2中完全一致，此处略去。
+图X的log展示了配置custom IP时软件部分打印的信息。其中的数字代表通过AXI-IIC成功传输的实际字节数。在软件向用户要求信号源的文件名时，用户可以在串口terminal输入。本实验中的信号源文件名是source.txt，用户无需输入后缀名。
+从下图的log可以看到，直到PS最后一次收到来自custom IP的中断前， 它才收到了DMA传输完毕的中断提示。在传输过程中，CPU无需主动控制传输速率，握手协议使AXI-DMA与Custom IP间的数据传输始终以sample clock为周期，并且只在custom IP被配置为工作模式时发生。在整个传输过程中，打印了16次GET KX134 INTR信息，与预期一致。试验后查看SD卡，卡内出现了1.txt文本文件，其内容与source.txt完全一致。这验证了该系统内数据的传输与转换正确。
 
 ![[Pasted image 20231112073611.png]]
 ![[Pasted image 20231112073418.png]]
