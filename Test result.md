@@ -72,8 +72,13 @@ The logic analyzer captured waveforms that matched the expected results. Figure 
 
 
 ##  Signal Generator with External Signal Source
-该实验对signal generator预期中的全部功能进行了验证。在实验2的基础上，系统中被添加了AXI-DMA IP核，Custom IP上被添加了AXI-Stream port。信号不再通过内部计数器生成，而是从IP核外部被传输进来。
+This experiment thoroughly validates all expected functionalities of the signal generator. Building on the foundations of Experiment 2, the system has been extended to include the AXI-DMA IP core, and the AXI stream port has been added to the custom IP. The data stored in the buffer is no longer from the internal counter, but from the external SD card.
 
+The logic analyzer signals recorded in this experiment were identical to the signals in Experiment 2, so they are not shown here.
+
+Figure X shows the serial terminal log during the configuration of the custom IP. The numbers represent the actual number of bytes successfully transmitted over AXI-IIC. When the program requests the signal source file name, the user should enter it in the serial terminal without the file name extension. The file used in this test is named source.txt.
+
+The log in Figure y shows that the DMA transmission completion interrupt is asserted just before the last custom IP interrupt is received, as expected. During the transfer, the CPU does not need to actively control the rate because the AXI-DMA/custom IP handshake ensures the data transfer according to the sample clock and only occurs when the IP is configured to work mode. This log contains 16 "GET KX134 INTR" messages, which is also as expected. After the test, a text file 1.txt can be found on the SD card, which is identical to source.txt. This verifies correct system data transfer and conversion.
 
 
 该实验中，logic analyzer捕捉到的信号与实验2中完全一致，此处略去。
