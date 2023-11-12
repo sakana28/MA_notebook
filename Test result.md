@@ -19,9 +19,11 @@ The system development process followed the principles of top-down design and bo
 
 
 
-在采集真实加速度数据的实验中，一个文本文件中含有10000组样本。因为该实验中
+满足了上述的要求后，系统可以收集在一段时间内的连续振动信号。该时间只受到使用的SD容量的限制。而本工作中，在采集真实加速度数据的实验1中，一个iteration中会采集10000组样本。因为该实验中KX134采集到的加速度较小，因此采样时间应该较长，使实验结果的可视化能体现出传感器的往复运动。 在使用文本文件作为信号源的实验中，一个文本文件中含有的样本集较小，为960组。在该实验中，每次Master收到 Interrupt提示都会打印出对应的提示信息。一个iteration中应当打印16次来自Custom IP的中断提示信息，一次来自AXI-DMA的中断提示。通过串口的log可以体现出数据的传输方式。这一参数可由用户通过修改参数化的嵌入式C程序自定义。
 
-这一样本数可由用户通过修改参数化的嵌入式C程序自定义。而三个实验中，sample buffer都被配置为60。预想中的功能是sample buffer持续缓存新数据，不会overflow。下面的不等式展示了为实现这一目的应该如何选择sample buffer的阈值。
+
+
+而三个实验中，sample buffer都被配置为60。预想中的功能是sample buffer持续缓存新数据，不会overflow。下面的不等式展示了为实现这一目的应该如何选择sample buffer的阈值。
 其中k是sample buffer的阈值。为实现上述目的，读出k组样本的时间必须小于采集k组样本的时间。该不等式忽略了START与START REPEAT, STOP信号需要的时间，并假设每次传输事务之间没有时间间隔。通过计算可以得出，当ODR为12800 Hz时，k只需大于1，即可满足要求。当ODR为25600 Hz时，自然数范围内没有满足条件的k值。因此该系统最高采样频率为12800 Hz。而阈值可以设为高于2的任意数字。此处设为60这一略高于buffer一半容量的数字。
 
 In all three experiments, the sample buffer was configured to 60. The desired functionality is for the sample buffer to continuously cache new data without overflowing. The following inequality shows how the sample buffer threshold k should be chosen to achieve this:
