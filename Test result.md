@@ -89,3 +89,4 @@ The log in Figure y shows that the DMA transmission completion interrupt is asse
 在该系统中，性能并不是重点。如章节x中所述，该系统收到I2C总线最高时钟频率的限制，数据最快以12800Hz的频率被生成。但是Resource Utilization和Power Consumption对于系统的实用性和长期运行的可能性有重要意义。该系统将从这两个方面被评估。
 
 在xilinx的FPGA/zynq开发工具vivado中,在_Implement后_，可以看到所有器件的资源与估计的功耗，并且还提示预计结温（Junction Temperature）
+![[Screenshot_2023-09-22_15-52-59.png]]![[Screenshot_2023-09-22_15-54-24.png]]![[Screenshot_2023-09-22_15-55-06.png]]
