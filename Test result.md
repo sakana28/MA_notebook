@@ -59,6 +59,7 @@ The text file generated in this experiment is used as a signal source in the nex
 
 在实验中，J58 Pmod GPIO Header被如下图所示连接。SCL与SDA信号如章节x中所述，必须通过物理连接才能实现双向通信。而Interrupt信号则可以直接在block design中连接。此处将Interrupt信号映射到header上是为了方便通过Logic analyzer捕捉这一信号，验证中断处理系统是否如预期工作。而debounced SCL和debounced SCL 也是仅在测试中需要的信号。由于在于custom IP通信时，信号出现了明显的抖动，导致logic analyzer显示了错误的I2C信息。因此另外引出两个Pin用于显示消抖后的信号，用于测试分析。在实际应用中，该实现只需要使用4个GPIO。
 ![[pinonboard.drawio 1.png]]
+在logic analyzer上得到了与预期结果相同的
 
 ![[Screenshot_2023-09-22_15-52-59.png]]![[Screenshot_2023-09-22_15-54-24.png]]![[Screenshot_2023-09-22_15-55-06.png]]![[Screenshot_2023-10-12_17-22-29.png]]![[Screenshot_2023-11-09_15-13-36.png]]
 
