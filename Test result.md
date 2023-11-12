@@ -20,9 +20,17 @@ This chapter presents the various tests performed during system development and 
 在所有三个测试中，一个文本文件中含有10000组样本。这一样本数可由用户通过修改参数化的嵌入式C程序自定义。而三个实验中，sample buffer都被配置为60。预想中的功能是sample buffer持续缓存新数据，不会overflow。下面的不等式展示了为实现这一目的应该如何选择sample buffer的阈值。
 其中k是sample buffer的阈值。为实现上述目的，读出k组样本的时间必须小于采集k组样本的时间。该不等式忽略了START与START REPEAT, STOP信号需要的时间，并假设每次传输事务之间没有时间间隔。通过计算可以得出，当ODR为12800 Hz时，k只需大于1，即可满足要求。当ODR为25600 Hz时，自然数范围内没有满足条件的k值。因此该系统最高采样频率为12800 Hz。而阈值可以设为高于2的任意数字。此处设为60这一略高于buffer一半容量的数字。
 
+In all three experiments, the sample buffer was configured to 60. The desired functionality is for the sample buffer to continuously cache new data without overflowing. The following inequality shows how the sample buffer threshold k should be chosen to achieve this:
+
+T_readout < T_acquisition
+
+where k is the sample buffer threshold. To achieve the above goal, the time to read out k samples must be less than the time to acquire k samples. This inequality ignores the time required for the START, START REPEAT, and STOP signals and assumes no gap between transactions. By calculation, if the ODR is 12800 Hz, k only needs to be greater than 1 to meet the requirement. When the ODR is 25600 Hz, there is no integer k that satisfies the condition. Therefore, the maximum sampling frequency of this system is 12800 Hz. The threshold can be set to any integer greater than 2. Here it is set to 60, which is slightly more than half the buffer capacity.
+
+
 测试一：使用KX134采集并存储真实加速度数据
 这个测试是对signal recorder的整体测试。在这个实验中，KX134会先被配置到watermark interrupt模式，然后被轻微摇晃并进入工作模式。它在三个方向上的加速度会被存储入sample buffer中并通过interrupt通知PS主机取走数据。当程序计算已经取够足量的样本后，会将KX134再次配置到standby模式，并将样本写入文本文件中。
-本实验中三轴加速度数据会被分开存放，最终生成三个名称分别为“iteration+axis”(如 3x.txt 1y.txt)
+本实验中三轴加速度数据会被分开存放，一次采样后会生成三个名称分别为“iteration+axis.txt”(如 3x.txt)的文件。方便对每个轴上的加速度进行可视化处理。
+下图展示了对单轴加速度原始数据和FFT结果进行可视化处理的结果。可以看到，频域上的加速度数据在6Hz左右有一个峰值，与实际情况相符。
 ![[Screenshot_2023-07-18_16-13-31.png]]
 Sigrok 开源的logic analyzer framework Lecroy
 
