@@ -42,7 +42,7 @@ In this test, the three-axis acceleration data was stored separately and three f
 
 The results of visualization of raw acceleration data and FFT results for a single axis are shown in the figure below. A peak can be seen in the frequency domain acceleration data around 6Hz, which is corresponding to the actual conditions.
 
-这个实验验证了
+通过这个实验，验证了数据经由KX134被读入AXI-IIC再存入SD卡的数据通路的完整准确和程序控制AXI-IIC配置KX134的控制通路的完整准确
 
 ![[Screenshot_2023-07-18_16-13-31.png]]
 Sigrok 开源的logic analyzer framework Lecroy
