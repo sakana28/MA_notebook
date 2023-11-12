@@ -11,7 +11,7 @@ This chapter presents the various tests performed during system development and 
 ![[pinonboard.drawio 1.png]]
 在本系统中，系统的吞吐率没有特殊的要求。I2C的最大时钟1M ODR最大12800。但该系统应保证数据传输过程中的准确性。
 
-在设计的过程中
+在设计的过程中，针对设计过程中的问题
 
 Sigrok 开源的logic analyzer framework Lecroy
 
