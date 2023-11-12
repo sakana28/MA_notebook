@@ -42,12 +42,13 @@ In this test, the three-axis acceleration data was stored separately and three f
 
 The results of visualization of raw acceleration data and FFT results for a single axis are shown in the figure below. A peak can be seen in the frequency domain acceleration data around 6Hz, which is corresponding to the actual conditions.
 
-通过这个实验，验证了数据经由KX134被读入AXI-IIC再存入SD卡的数据通路的完整准确和程序控制AXI-IIC配置KX134的控制通路的完整准确
+This experiment successfully validated the entire data path of the signal recorder, including the acquisition of data from the KX134, its transfer through the AXI-IIC interface, and its subsequent storage on the SD card. This validation also extends to the programmatic control of the AXI-IIC configuration process, confirming its accuracy.
 
 ![[Screenshot_2023-07-18_16-13-31.png]]
 Sigrok 开源的logic analyzer framework Lecroy
-实验二： 用
+实验二： Signal Generator without Signal source
 由于连接后信号出现波动导致logic analyzer显示错误的I2C协议信息，因此另外引出两个Pin用于显示消抖后的信号，用于测试分析。
+在这项实验中，
 
 ![[Screenshot_2023-09-22_15-52-59.png]]![[Screenshot_2023-09-22_15-54-24.png]]![[Screenshot_2023-09-22_15-55-06.png]]![[Screenshot_2023-10-12_17-22-29.png]]![[Screenshot_2023-11-09_15-13-36.png]]
 
