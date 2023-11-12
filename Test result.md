@@ -66,8 +66,10 @@ The logic analyzer captured waveforms that matched the expected results. Figure 
 
 而图Y展示了当interrupt升高时，数据被读取的过程。Logic analyzer的D0展示了SCL,D1是SDA，D2是interrupt。Interrupt升高后，主机先像从机写入BUF_READ的register 地址0x63，再用START REPEAT信号使从机重新进入等待地址和命令的状态，并发起读事务。在图中可以看出，递增的数据信号在总线上被传输。
 
-![[Screenshot_2023-09-22_15-52-59.png]]![[Screenshot_2023-09-22_15-54-24.png]]![[Screenshot_2023-09-22_15-55-06.png]]![[Screenshot_2023-10-12_17-22-29.png]]![[Screenshot_2023-11-09_15-13-36.png]]
+![[Screenshot_2023-09-22_15-52-59.png]]![[Screenshot_2023-09-22_15-54-24.png]]![[Screenshot_2023-09-22_15-55-06.png]]![[Screenshot_2023-10-12_17-22-29.png]]
 
 ![[Pasted image 20231112073327.png]]
 ![[Pasted image 20231112073418.png]]
 ![[Pasted image 20231112073611.png]]
+##  Signal Generator with External Signal Source
+该实验对signal generator预期中的全部功能进行了验证。
