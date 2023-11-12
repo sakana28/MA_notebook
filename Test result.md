@@ -8,7 +8,7 @@
 This chapter presents the various tests performed during system development and their results, followed by an overall evaluation of the system. Firstly, the signal recorder was tested to configure the KX134 and capture real acceleration data. Secondly, the custom IP was tested without the AXI-DMA connection. A counter in the PL outputted its count results as data to the sample buffer. The data was read to PS and stored on the SD card. The last test was a loopback test. In this test, data from a text file was read as acceleration data from the SD card, transferred over I2C, and written back to the SD. All three tests achieved the expected results, confirming full system connectivity. After this, the system is evaluated in terms of FPGA resource utilization, power consumption, and suitability for real-world applications.
 
 
-![[pinonboard.drawio 1.png]]
+
 在本系统中，系统的吞吐率没有特殊的要求。I2C的最大时钟1M ODR最大12800。但该系统应保证数据传输过程中的准确性。
 
 在该系统的设计过程中，针对不同功能和应用场景进行了模块化的测试。
@@ -50,8 +50,12 @@ Sigrok 开源的logic analyzer framework Lecroy
 
 ## 实验二： Signal Generator without Signal source
 由于连接后信号出现波动导致logic analyzer显示错误的I2C协议信息，因此另外引出两个Pin用于显示消抖后的信号，用于测试分析。
-这项实验进行于custom IP的develop过程中。该IP核还未添加AXI-Stream接口。在涉及另一条数据通路前，应当先验证自定义的I2C从接口的功能，以减少排查错误的难度。该测试系统中，custom IP内部的结构如下图所示。图中略去了reset信号。Signal Generator输出到buffer的数据来自其内置的counter。在每一个sample clock的上升沿，该counter都会记一次数。这样一来，一个递增的数列会被存入Buffer中并被Master读出。
-![[test2.drawio 1.png]]
+这项实验进行于custom IP的develop过程中。该IP核还未添加AXI-Stream接口。在涉及另一条数据通路前，应当先验证自定义的I2C从接口的功能，以降低潜在问题发生的风险。该测试系统中，custom IP内部的结构如下图所示。图中略去了reset信号。Signal Generator输出到buffer的数据来自其内置的counter。在每一个sample clock的上升沿，该counter都会记一次数。这样一来，一个递增的数列会被存入Buffer中并被读出。
+该实验中生成的txt文件会在下一个实验中被作为信号源使用。因为使用该信号源时，I2C总线上传输的数据应当是一个逐一递增的数列。这方便了验证系统传输准确性与排查错误原因。
+![[generator_count.drawio.png]]
+
+在实验中，J58 Pmod GPIO Header被如下图所示连接。
+![[pinonboard.drawio 1.png]]
 
 ![[Screenshot_2023-09-22_15-52-59.png]]![[Screenshot_2023-09-22_15-54-24.png]]![[Screenshot_2023-09-22_15-55-06.png]]![[Screenshot_2023-10-12_17-22-29.png]]![[Screenshot_2023-11-09_15-13-36.png]]
 
