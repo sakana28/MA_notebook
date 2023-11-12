@@ -51,7 +51,10 @@ Sigrok 开源的logic analyzer framework Lecroy
 ## 实验二： Signal Generator without Signal source
 
 这项实验进行于custom IP的develop过程中。该IP核还未添加AXI-Stream接口。在涉及另一条数据通路前，应当先验证自定义的I2C从接口的功能，以降低潜在问题发生的风险。该测试系统中，custom IP内部的结构如下图所示。图中略去了reset信号。Signal Generator输出到buffer的数据来自其内置的counter。在每一个sample clock的上升沿，该counter都会记一次数。这样一来，一个递增的数列会被存入Buffer中并被读出。
+
+This experiment was performed during the development of the custom IP core, before the AXI-Stream interface was added. Verifying the custom I2C slave functionality before adding another data path reduced the risk of potential problems. The internal structure of the custom IP under test is shown in Figure x, with reset signals omitted. The signal generator outputs counter data to the buffer. On each rising edge of the sample clock, the counter is incremented. Thus, an incrementing sequence is stored in the buffer and read out.
 该实验中生成的txt文件会在下一个实验中被作为信号源使用。因为使用该信号源时，I2C总线上传输的数据应当是一个逐一递增的数列。这方便了验证系统传输准确性与排查错误原因。
+The text file generated in this experiment is used as a signal source in the next experiment. Using this source, an incrementing data sequence should be transmitted on the I2C bus. This facilitates the verification of the transmission accuracy and the debugging.
 ![[generator_count.drawio.png]]
 
 在实验中，J58 Pmod GPIO Header被如下图所示连接。SCL与SDA信号如章节x中所述，必须通过物理连接才能实现双向通信。而Interrupt信号则可以直接在block design中连接。此处将Interrupt信号映射到header上是为了方便通过Logic analyzer捕捉这一信号，验证中断处理系统是否如预期工作。而debounced SCL和debounced SCL 也是仅在测试中需要的信号。由于在于custom IP通信时，信号出现了明显的抖动，导致logic analyzer显示了错误的I2C信息。因此另外引出两个Pin用于显示消抖后的信号，用于测试分析。在实际应用中，该实现只需要使用4个GPIO。
