@@ -81,9 +81,11 @@ Figure X shows the serial terminal log during the configuration of the custom IP
 The log in Figure y shows that the DMA transmission completion interrupt is asserted just before the last custom IP interrupt is received, as expected. During the transfer, the CPU does not need to actively control the rate because the AXI-DMA/custom IP handshake ensures the data transfer according to the sample clock and only occurs when the IP is configured to work mode. This log contains 16 "GET KX134 INTR" messages, which is also as expected. After the test, a text file 1.txt can be found on the SD card, which is identical to source.txt. This verifies correct system data transfer and conversion.
 
 
-该实验中，logic analyzer捕捉到的信号与实验2中完全一致，此处略去。
-图X的log展示了配置custom IP时软件部分打印的信息。其中的数字代表通过AXI-IIC成功传输的实际字节数。在软件向用户要求信号源的文件名时，用户可以在串口terminal输入。本实验中的信号源文件名是source.txt，用户无需输入后缀名。
-从下图的log可以看到，直到PS最后一次收到来自custom IP的中断前， 它才收到了DMA传输完毕的中断提示。在传输过程中，CPU无需主动控制传输速率，握手协议使AXI-DMA与Custom IP间的数据传输始终以sample clock为周期，并且只在custom IP被配置为工作模式时发生。在整个传输过程中，打印了16次GET KX134 INTR信息，与预期一致。试验后查看SD卡，卡内出现了1.txt文本文件，其内容与source.txt完全一致。这验证了该系统内数据的传输与转换正确。
 
 ![[Pasted image 20231112073611.png]]
 ![[Pasted image 20231112073418.png]]
+
+## Evaluation
+在该系统中，性能并不是重点。如章节x中所述，该系统收到I2C总线最高时钟频率的限制，数据最快以12800Hz的频率被生成。但是Resource Utilization和Power Consumption对于系统的实用性和长期运行的可能性有重要意义。该系统将从这两个方面被评估。
+
+在xilinx的FPGA/zynq开发工具vivado中,在_Implement后_，可以看到所有器件的资源与估计的功耗，并且还提示预计结温（Junction Temperature）
