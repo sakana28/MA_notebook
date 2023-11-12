@@ -60,7 +60,11 @@ The text file generated in this experiment is used as a signal source in the nex
 在实验中，J58 Pmod GPIO Header被如下图所示连接。SCL与SDA信号如章节x中所述，必须通过物理连接才能实现双向通信。而Interrupt信号则可以直接在block design中连接。此处将Interrupt信号映射到header上是为了方便通过Logic analyzer捕捉这一信号，验证中断处理系统是否如预期工作。而debounced SCL和debounced SCL 也是仅在测试中需要的信号。由于在于custom IP通信时，信号出现了明显的抖动，导致logic analyzer显示了错误的I2C信息。因此另外引出两个Pin用于显示消抖后的信号，用于测试分析。在实际应用中，该实现只需要使用4个GPIO。
 ![[pinonboard.drawio 1.png]]
 在logic analyzer上捕捉到了了与预期结果相同的波形。图X展示了Master对CNTL1（0x1B）和ODCNTL（0x21）进行配置的过程。本工作中，KX134的ADDR引脚被连接到VDD，即其从机地址的可编程部分为1，地址为0x1F。而Custom IP的从机地址也与此一致。从波形中可以看到，从机拉低了SDA，对主机发送的数据进行了正确的回应。
-而图Y展示了当interrupt升高时，数据被读取的过程。Logic analyzer的D0展示了SCL,D1是SDA，D2是interrupt。Interrupt升高后，主机先像从机写入BUF_READ的register 地址0x63，再用一次START REPEAT隔开，发起读事务。在图中可以看出，递增的数据信号在总线上被传输，如
+
+The logic analyzer captured waveforms that matched the expected results. Figure X shows the sequence of the master configuring the CNTL1 (0x1B) and ODCNTL (0x21) registers. In this work, the KX134 ADDR pin is connected to VDD, making the programmable part of its slave address 1 with a full address of 0x1F. The custom IP has the same slave address.  So the master first sends the slave address 0x1F with a write command, followed by the two data bytes that are the destination register address and value to be written. The waveform shows that the slave responds correctly to the command of the master by pulling SDA low to acknowledge the data. 
+
+
+而图Y展示了当interrupt升高时，数据被读取的过程。Logic analyzer的D0展示了SCL,D1是SDA，D2是interrupt。Interrupt升高后，主机先像从机写入BUF_READ的register 地址0x63，再用START REPEAT信号使从机重新进入等待地址和命令的状态，并发起读事务。在图中可以看出，递增的数据信号在总线上被传输。
 
 ![[Screenshot_2023-09-22_15-52-59.png]]![[Screenshot_2023-09-22_15-54-24.png]]![[Screenshot_2023-09-22_15-55-06.png]]![[Screenshot_2023-10-12_17-22-29.png]]![[Screenshot_2023-11-09_15-13-36.png]]
 
