@@ -69,7 +69,12 @@ The logic analyzer captured waveforms that matched the expected results. Figure 
 ![[Screenshot_2023-09-22_15-52-59.png]]![[Screenshot_2023-09-22_15-54-24.png]]![[Screenshot_2023-09-22_15-55-06.png]]![[Screenshot_2023-10-12_17-22-29.png]]
 
 ![[Pasted image 20231112073327.png]]
-![[Pasted image 20231112073418.png]]
-![[Pasted image 20231112073611.png]]
+
+
 ##  Signal Generator with External Signal Source
-该实验对signal generator预期中的全部功能进行了验证。
+该实验对signal generator预期中的全部功能进行了验证。在实验2的基础上，系统中被添加了AXI-DMA IP核，Custom IP上被添加了AXI-Stream port。信号不再通过内部计数器生成，而是从IP核外部被传输进来。
+
+从下图的log可以看到，直到signal recorder受到最后一次来自Custom 
+
+![[Pasted image 20231112073611.png]]
+![[Pasted image 20231112073418.png]]
