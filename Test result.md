@@ -35,7 +35,7 @@ where k is the sample buffer threshold. To achieve the above goal, the time to r
 With the aforementioned requirements fulfilled, the system can continue to capture vibration signals for a certain period of time, which is only limited by the capacity of the SD card used. Since the accelerations sensed by the KX134 in this test are relatively small, data from a longer sampling period better demonstrates the motion of the sensor in the visualization.
 
 
-测试一：使用KX134采集并存储真实加速度数据
+## 测试一：使用KX134采集并存储真实加速度数据
 This test provided an overall validation of the signal recorder system. First, KX134 was configured to watermark interrupt mode, then lightly shaken and set to operating mode. The device stored the three axis accelerations in the sample buffer and sent them to the PS master via I2C bus when an interruption was triggered. As soon as enough samples were gathered, the KX134 was set to standby mode and the samples were written to text files.
 
 In this test, the three-axis acceleration data was stored separately and three files named "iteration+axis.txt" (e.g., 3x.txt) were generated after each sampling for visualization of the accelerations on each axis.
@@ -46,9 +46,12 @@ This experiment successfully validated the entire data path of the signal record
 
 ![[Screenshot_2023-07-18_16-13-31.png]]
 Sigrok 开源的logic analyzer framework Lecroy
-实验二： Signal Generator without Signal source
+
+
+## 实验二： Signal Generator without Signal source
 由于连接后信号出现波动导致logic analyzer显示错误的I2C协议信息，因此另外引出两个Pin用于显示消抖后的信号，用于测试分析。
-在这项实验中，
+这项实验进行于custom IP的develop过程中。该IP核还未添加AXI-Stream接口。在涉及另一条数据通路前，应当先验证自定义的I2C从接口的功能，以减少排查错误的难度。该测试系统中，custom IP内部的结构如下图所示。图中略去了reset信号。
+![[test2.drawio 1.png]]
 
 ![[Screenshot_2023-09-22_15-52-59.png]]![[Screenshot_2023-09-22_15-54-24.png]]![[Screenshot_2023-09-22_15-55-06.png]]![[Screenshot_2023-10-12_17-22-29.png]]![[Screenshot_2023-11-09_15-13-36.png]]
 
