@@ -28,9 +28,12 @@ where k is the sample buffer threshold. To achieve the above goal, the time to r
 
 
 测试一：使用KX134采集并存储真实加速度数据
-这个测试是对signal recorder的整体测试。在这个实验中，KX134会先被配置到watermark interrupt模式，然后被轻微摇晃并进入工作模式。它在三个方向上的加速度会被存储入sample buffer中并通过interrupt通知PS主机取走数据。当程序计算已经取够足量的样本后，会将KX134再次配置到standby模式，并将样本写入文本文件中。
-本实验中三轴加速度数据会被分开存放，一次采样后会生成三个名称分别为“iteration+axis.txt”(如 3x.txt)的文件。方便对每个轴上的加速度进行可视化处理。
-下图展示了对单轴加速度原始数据和FFT结果进行可视化处理的结果。可以看到，频域上的加速度数据在6Hz左右有一个峰值，与实际情况相符。
+This test provided an overall validation of the signal recorder system. First, KX134 was configured to watermark interrupt mode, then lightly shaken and set to operating mode. The device stored the three axis accelerations in the sample buffer and sent them to the PS master via I2C bus when an interruption was triggered. As soon as enough samples were gathered, the KX134 was set to standby mode and the samples were written to text files.
+
+In this test, the three-axis acceleration data was stored separately and three files named "iteration+axis.txt" (e.g., 3x.txt) were generated after each sampling for visualization of the accelerations on each axis.
+
+The results of visualization of raw acceleration data and FFT results for a single axis are shown in the figure below. A peak can be seen in the frequency domain acceleration data around 6Hz, which is corresponding to the actual conditions.
+
 ![[Screenshot_2023-07-18_16-13-31.png]]
 Sigrok 开源的logic analyzer framework Lecroy
 
