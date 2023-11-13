@@ -8,6 +8,8 @@
 
 This chapter introduces the software programs running on the PS-site in this work. As the hardware is designed to emulate the functionality of the KX134 accelerometer, the signal generator software completely covers the functionality of the signal recorder software.The code used for sensor configuration and reading acceleration data from the sample buffer in watermark interrupt mode is identical between the two design. Therefore, following sections focus only on the structure and implementation of the signal generator software.
 
+在本章节中，首先会该软件实现的预期中的功能和算法的概览。之后会介绍Zynq上嵌入式软件的层次及在vitis中编写软件的流程。最后根据控制的硬件的不同，对软件进行了划分并详细介绍了各个部分的功能及使用的驱动APIs。
+
 The software's major tasks in this system include initializing the peripherals, reading/writing text files from the SD card, converting fractions in the text to 16-bit binary (and vice versa), and handling interrupt signals. Additionally, as stated in section X, the system needs to provide some user interaction capabilities for flexible configuration of signal sources and runtime control, which can be accomplished through serial port communication.
 
 ### Layers of software on zynq
