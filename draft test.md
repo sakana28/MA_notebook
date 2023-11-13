@@ -18,6 +18,7 @@ The goal of this work is to implement and evaluate a  Zynq-based signal generato
 This work is organized as follows: Chapter 2 introduces the rolling bearing vibration signal model and provides basic insight into the Zynq architecture. Chapter 3 provides a brief overview of the functionality and operation of the evaluated KX134 accelerometer. This chapter also describes in detail the hardware components of the system developed to emulate the functionality of the KX134, including both IP cores provided by Xilinx and custom IP cores. Chapter 4 outlines the software development process for the system and explains its interaction with the hardware modules.In Chapter 5, a evaluation of the system is performed, taking into account factors such as power consumption, FPGA resource utilization, and overall performance. The final chapter provides the conclusion of this paper. 
 # Fundamentals
 This chapter presents an overview of cyclostationary signals and introduces a vibration signal model for rolling element bearings. The model is based on the concept of cyclostationary signals and serves as the foundation for subsequent work. Next, the Zynq SoC architecture and the ZC706 development board used in this thesis are also introduced.
+
 ## Vibration signal model
 [[about Model]]
 #writing #fundamental 
@@ -53,6 +54,10 @@ Based on these models, algorithms and Octave script code for numerical implement
 
 As proposed by Ho and Randall (ho2000), the vibration signal from a localized bearing fault can be modeled as a series of impulse responses of a single-degree-of-freedom (SDOF) system. The timing between impulses has a random component to simulate the slippery effect. This model was adopted in G. D'Elia's work.(stepbystep)
 
+该数值实现中，首先要定义Speed profile,即为 rotation angle of a bearing moving race theta(t)与轴承的shaft speed之间的关系。A generic speed profile can be constructed as: equation 4
+其中fc是carrier component，fd是Frequency deviation，fm是Modulation frequency。接下来如section x所述，通过表格x中的typical fault frequencies 可以如下式计算出the angle between two consecutive impulses。1/f_typical fr 2pi = theta imp 例如fault在inner race上时，theta imp = eqution 5
+求得的这个角度差值属于一种理想中的情况，在此所有impact在角位置上均匀分布。上文中已经介绍了，bearing element的slippery effect会导致该值有random contribution。因此，在此算法中，应该以此值为均值，结合由用户输入的variance
+
 The numerical implementation of the localized fault vibration signal model has the following user-defined parameters:
 - Speed profile
 - Bearing geometry parameters: bearing roller diameter , pitch circle diameter , contact angle, number of rolling elements 
@@ -62,6 +67,7 @@ The numerical implementation of the localized fault vibration signal model has t
 - SDOF system properties: stiffness， damping coefficient， natural frequency，length of the SDOF response
 - Signal-to-noise ratio (SNR) of background noise
 - Amplitude modulation due to load
+
 
 ![[Pasted image 20231005065627.png]]
 The numerical implementation of the distributed fault vibration signal model requires the following additional parameters:
