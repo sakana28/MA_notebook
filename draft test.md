@@ -59,6 +59,11 @@ As proposed by Ho and Randall (ho2000), the vibration signal from a localized be
 求得的这个角度差值属于一种理想中的情况，在此所有impact在角位置上均匀分布。上文中已经介绍了，bearing element的slippery effect会导致该值有random contribution。因此，在此算法中，应该以此值为均值，结合用户输入指定的variance_factor，生成一个随机序列。即获得了更现实的impact之间的间隔角度。
 间隔角度除以shaft角速度，即为impact之间的间隔时间。得到了间隔时间，就是得到了 the beginning of each impulse response h(t iT ⌧i) in the time domain。之后在开发环境中生成一个vector，其长度为最后一次撞击出现的时间/fs。该vector每一个元素代表了时间轴上一点的撞击情况。只有在时间轴上有inpuls时，即一点的index是impuls发生的时间乘以fs时，一个元素的值才为1，其余值为0。实际情况中每一次撞击的幅度也不是一样的，因此，对该序列要进行amplitude modulation。对应了方程x中的q(iT)。以该vector为输入，求该序列在SDOF系统中引起的二阶response，即得到符合上述模型的时域的振动信号。
 
+该实现也包含了计算distributed fault vibration signal的算法。如equation x所述，vibration signal model is a mixture of two terms, one deterministic and one purely cyclostationary.
+其中deterministic part可作为theta的函数被如下描述：
+其中qrot and qstiff 是由用户定义的 amplitude value of the deterministic component related to the stiffness variation and to the the bearing rotation. tau_stiff是一个由轴承的几何参数决定的常数。
+
+在开发环境中将该theta的常数通过插值变换成t的函数，即获得了时域的
 
 The numerical implementation of the localized fault vibration signal model has the following user-defined parameters:
 - Speed profile
