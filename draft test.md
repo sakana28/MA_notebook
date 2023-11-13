@@ -63,7 +63,13 @@ As proposed by Ho and Randall (ho2000), the vibration signal from a localized be
 其中deterministic part可作为theta的函数被如下描述：
 其中qrot and qstiff 是由用户定义的 amplitude value of the deterministic component related to the stiffness variation and to the the bearing rotation. tau_stiff是一个由轴承的几何参数决定的常数。
 
-在开发环境中将该theta的常数通过插值变换成t的函数，即获得了时域的
+在开发环境中将该theta的常数通过插值变换成t的函数，即获得了时域的 deterministic part of the vibration signal. 
+
+The purely cyclostationary component (B(t)) is a random modulated noise，in which the modulation frequency is the  typical fault frequencies. 该modulation function应如下计算：
+
+其中tau_fault是一个 geometrical parameter。它的值即为表格x中的typical frequencies 除以fr。将该方程通过差值也转换到时域，再乘以一个服从标准正态分布的noise序列，即求得The purely cyclostationary component。将两个部分相加，就是distributed fault 引起的vibration signals.
+
+qFault = amplitude modulation at the fault frequency
 
 The numerical implementation of the localized fault vibration signal model has the following user-defined parameters:
 - Speed profile
