@@ -90,3 +90,5 @@ The log in Figure y shows that the DMA transmission completion interrupt is asse
 
 在xilinx的FPGA/zynq开发工具vivado中,在_Implement后_，可以看到所有器件的资源与估计的功耗，并且还提示预计结温（Junction Temperature）
 ![[Screenshot_2023-09-22_15-52-59.png]]![[Screenshot_2023-09-22_15-54-24.png]]![[Screenshot_2023-09-22_15-55-06.png]]
+
+下图是实验3中被使用的source.txt文件和1.txt文件。它们的内容完全一致。原始数据0x12,0x34以此类推在正负32g的采样范围下被转换为小数。当前的设计中，signal generator生成的文本文件中，三轴的加速度数据以x轴、y轴、z轴的顺序交错存放在同一个文件。然而也可以通过简单修改write_sd_txt程序将其分开存放。由于一个加速度数据的整数部分的符号和位数不固定，因此无法准确计算数据占用的空间。通过包含960组数据的文本文件占用了32021 bytes，可以估计一组数据平均需要33.36 bytes。本实验中使用的SD卡的可用存储空间为7.4Gb

@@ -92,7 +92,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -167,7 +167,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "draft test.md",
+                "file": "Test result.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -184,7 +184,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "draft test.md",
+                "file": "Test result.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -207,7 +207,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "draft test.md"
+                "file": "Test result.md"
               }
             }
           },
@@ -237,11 +237,13 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "122ce4701b2cd095",
+  "active": "3a178ff93a6450b8",
   "lastOpenFiles": [
-    "note on overleaf.md",
-    "software implementation.md",
     "draft test.md",
+    "Implementation 插入部分.md",
+    "software implementation.md",
+    "note on overleaf.md",
+    "about SD card WR (FATFS).md",
     "Test result.md",
     "screenshot/utilization_summray.png",
     "screenshot/resource.png",
@@ -255,7 +257,6 @@
     "MA_Index.md",
     "picture/pinonboard.drawio 1.png",
     "screenshot/~creenshot_2023-11-09_15-13-36.tmp",
-    "Implementation 插入部分.md",
     "screenshot/local",
     "screenshot/dist",
     "hardware implementation.md",
@@ -264,7 +265,6 @@
     "about Hardware system design.md",
     "未命名 9.md",
     "about KX134.md",
-    "about SD card WR (FATFS).md",
     "about AXI-DMA sw.md",
     "about interrupt on zynq.md",
     "file structure.md",
