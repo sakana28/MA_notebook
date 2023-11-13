@@ -98,3 +98,5 @@ The x figure shows the contents of source.txt and 1.txt, which are identical. Th
 由于一个加速度数据的整数部分的符号和位数不固定，因此无法准确计算数据占用的空间。通过包含960组数据的文本文件占用了32021 bytes，可以估计一组数据平均需要33.36 bytes。本实验中使用的SD卡的可用存储空间为7.4 Gibibyte，即约为7945689497.6 bytes，则该SD卡可以存储238180140组数据。系统中使用的ODR为12800 Hz，这代表一张SD卡可以连续生成或者存储18607秒，即310分钟的振动信号。
 
 Since the integer part of the acceleration data does not have a fixed sign and length, the exact space occupied cannot be calculated. Therefore, based on 1.txt with 960 data sets that occupies  32021 bytes, each data set is estimated to occupy on average 33.36 bytes. The available space on the SD card used in this experiment is 7.4 Gibibytes, i.e. 7945689497.6 bytes. This means that the SD card can store 238180140 data groups. With the ODR of 12800 Hz used in this work, an SD card can continuously generate or store vibration signals for 18607 seconds, which is 310 minutes.
+
+本section中将基于vivado 的power report 估计并分析系统功耗。如下图所示，power report 展示了该系统重
