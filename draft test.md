@@ -56,7 +56,9 @@ As proposed by Ho and Randall (ho2000), the vibration signal from a localized be
 
 该数值实现中，首先要定义Speed profile,即为 rotation angle of a bearing moving race theta(t)与轴承的shaft speed之间的关系。A generic speed profile can be constructed as: equation 4
 其中fc是carrier component，fd是Frequency deviation，fm是Modulation frequency。接下来如section x所述，通过表格x中的typical fault frequencies 可以如下式计算出the angle between two consecutive impulses。1/f_typical fr 2pi = theta imp 例如fault在inner race上时，theta imp = eqution 5
-求得的这个角度差值属于一种理想中的情况，在此所有impact在角位置上均匀分布。上文中已经介绍了，bearing element的slippery effect会导致该值有random contribution。因此，在此算法中，应该以此值为均值，结合由用户输入的variance
+求得的这个角度差值属于一种理想中的情况，在此所有impact在角位置上均匀分布。上文中已经介绍了，bearing element的slippery effect会导致该值有random contribution。因此，在此算法中，应该以此值为均值，结合用户输入指定的variance_factor，生成一个随机序列。即获得了更现实的impact之间的间隔角度。
+间隔角度除以shaft角速度，即为impact之间的间隔时间：
+由于shaft speed使用rotation angel theta定义的，因此该间隔时间也是theta的函数。在开发环境中定义一个vector，使其内容是
 
 The numerical implementation of the localized fault vibration signal model has the following user-defined parameters:
 - Speed profile
