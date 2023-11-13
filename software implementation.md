@@ -10,7 +10,13 @@ This chapter introduces the software programs running on the PS-site in this wor
 
 在本章节中，首先会该软件实现的预期中的功能和算法的概览。之后会介绍Zynq上嵌入式软件的层次及在vitis中编写软件的流程。最后根据控制的硬件的不同，对软件进行了划分并详细介绍了各个部分的功能及使用的驱动APIs。
 
+In this chapter, firstly, an overview of the expected functionalities and algorithms implemented in the software is provided. Next, the hierarchical structure of the embedded software on the Zynq platform is discussed, along with an exploration of the software development process within the Vitis environment. Finally, the software is segmented according to the hardware it controls, and a detailed description of the functions of each part and the driver APIs used is presented.
+
+
+### main function and flowchart
 The software's major tasks in this system include initializing the peripherals, reading/writing text files from the SD card, converting fractions in the text to 16-bit binary (and vice versa), and handling interrupt signals. Additionally, as stated in section X, the system needs to provide some user interaction capabilities for flexible configuration of signal sources and runtime control, which can be accomplished through serial port communication.
+![[sw_flowchart.png]]
+图x展示了该软件的flowchart。它实现了这样一种功能：用户将可执行软件下载到系统上后，KX134/Custom IP会被自动配置，使其buffer和interrupt被使能，其余重要参数被配置到本工作中的默认值，即，ODR为12800Hz，样本resolution为16bits，acceleration range 为 正负32g，
 
 ### Layers of software on zynq
 ![[Pasted image 20231105220852.png]]
