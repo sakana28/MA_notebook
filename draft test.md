@@ -57,7 +57,7 @@ As proposed by Ho and Randall (ho2000), the vibration signal from a localized be
 该数值实现中，首先要定义Speed profile,即为 rotation angle of a bearing moving race theta(t)与轴承的shaft speed之间的关系。A generic speed profile can be constructed as: equation 4
 其中fc是carrier component，fd是Frequency deviation，fm是Modulation frequency。接下来如section x所述，通过表格x中的typical fault frequencies 可以如下式计算出the angle between two consecutive impulses。1/f_typical fr 2pi = theta imp 例如fault在inner race上时，theta imp = eqution 5
 求得的这个角度差值属于一种理想中的情况，在此所有impact在角位置上均匀分布。上文中已经介绍了，bearing element的slippery effect会导致该值有random contribution。因此，在此算法中，应该以此值为均值，结合用户输入指定的variance_factor，生成一个随机序列。即获得了更现实的impact之间的间隔角度。
-间隔角度除以shaft角速度，即为impact之间的间隔时间。得到了间隔时间，就是得到了 the beginning of each impulse response h(t iT ⌧i) in the time domain。之后在开发环境中生成一个vector，其长度为最后一次撞击出现的时间/fs。该vector每一个元素代表了时间轴上一点的撞击情况。只有在index为
+间隔角度除以shaft角速度，即为impact之间的间隔时间。得到了间隔时间，就是得到了 the beginning of each impulse response h(t iT ⌧i) in the time domain。之后在开发环境中生成一个vector，其长度为最后一次撞击出现的时间/fs。该vector每一个元素代表了时间轴上一点的撞击情况。只有在时间轴上有inpuls时，即一点的index是impuls发生的时间乘以fs时，一个元素的值才为1，其余值为0。实际情况中每一次撞击的幅度也不是一样的，因此，对该序列要进行amplitude modulation。对应了方程x中的q(iT)。以该vector为输入，求该序列在SDOF系统中引起的二阶response，即得到符合上述模型的时域的振动信号。
 
 
 The numerical implementation of the localized fault vibration signal model has the following user-defined parameters:
