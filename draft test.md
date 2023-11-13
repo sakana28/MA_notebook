@@ -518,3 +518,4 @@ The software components use libraries generated from the hardware design in Viti
 Simulation validates that the custom I2C slave IP responds correctly to master transactions. The registers are accessible according to the accelerometer protocol. Emulation of synthesized system successfully verify that the data path is complete and the software operation is correct. Text data from the SD card and outputs written to the SD card are identical, along with proper I2C master-slave communication captured on the logic analyzer.
 
 
+由于
