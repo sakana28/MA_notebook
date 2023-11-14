@@ -106,3 +106,6 @@ Since the integer part of the acceleration data does not have a fixed sign and l
 从图y的系统每个部件的资源使用报告中可以看到，Custom IP是使用了最多的LUT和Registers的模块。在设计中，Custom IP的资源使用量具有优化空间。在KX134中，有部分registers是reseverd，并无实际功能，且有大量 register在本设计中并未被使用。在该系统后续的改进中，如果减少Custom IP中registers的数量，增加地址译码模块，可以有效节省资源。
 
 从上表中可以看到，AXI-DMA被配置为仅提供简单模式下MM2S传输和AXI Stream Fifo被配置为仅支持Transit stream data的模式时，二者需要的FPGA resource。在使用AXI-DMA的方案中，系统中还必须添加处理PS的Slave HP与DMA 的Master MM2S接口间的通信的AXI MEM Interconnection模块。因此，LUT和Registers使用量几乎是使用AXI-Stream FIFO的两倍。然而为了简化输出过程，需要将尽量多的数据存入模块内，再一次性启动stream传输，使得使用AXI-Stream FIFO的解决方案需要更多的Block RAM。
+
+
+根据公式x， SCL的cycle period 在本工作中均为1/1MHz= 1000 ns，if the ODR is 12800 Hz, 计算得到符合条件的K值 needs to be greater than 1.1  to meet the requirement. 而当When the ODR is 25600 Hz, 计算得到的k值需要小于-1.8，而k必须是自然数 。这代表，当ODR为25600 Hz时，sample buffer一定会在某个时刻被写满，导致新数据无法进入，采集到的信号不连贯。that satisfies the condition. Therefore, the maximum sampling frequency of this system is 12800 Hz. The threshold can be set to any integer greater than 2. Here it is set to 60, which is slightly more than half the buffer capacity.
