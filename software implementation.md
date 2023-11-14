@@ -206,8 +206,12 @@ The custom IP/KX134 handler performs several tasks upon receiving an interrupt. 
 
 对 DMA engine interrupt handling的标准流程 is more complex due to the multiple potential causes of an interrupt. 在进行MM2S传输时，有DMA Internal Error，DMA Slave Error，DMA Decode Error和transfer Complete四种中断原因。通过读取MM2S_STATUS，可以确定导致中断发生的event，然后需要通过把对应的位数置为0以deassert该中断。在完成上述任务并确定导致中断的原因是transfer Complete后，程序会打印一条信息以通知用户. Otherwise 它打印一条信息以 reports an error. （PG021）
 
+### section{Data Processing and Software Control}
+在对PL端的模块和PS自身的硬件进行配置与控制的基础上，软件还要完成用户交互、复杂的控制和难以在FPGA上实现的运算。这些内容将在本section中被介绍。
 The previous section introduces how the software sets up the interrupt system, configures interrupts correctly, and connects them to the corresponding handlers. The following section focuses on the handling of these interrupts within the system, in particular the operations within the handlers.
 
 The IP/KX134 custom interrupt handler performs a number of tasks when an interrupt is received. First, it temporarily masks the interrupt to prevent multiple triggering of the interrupt handler. It then communicates with the slave address 0x1F through the AXI-IIC driver, writing 0x63 to the slave device as a register address and then reading 6 bytes * THRESHOLD data from this address after a START REPEAT signal. Then it sets the watermark flag to 1, notifying the main program that new data is available for processing. Finally, it re-enables the interrupt. During the u8 to float conversion described before, the watermark_flag is reset to 0 within the main program. 该handler中的Callbackref是用于接受从AXI-IIC中读到的 6 bytes * THRESHOLD个数据的buffer的地址。
 
 The standard procedure for handling DMA engine interrupt is more complicated due to the different possible causes of an interrupt. During MM2S transfers, there are four possible interrupt sources: DMA Internal Error, DMA Slave Error, DMA Decode Error, and Transfer Complete. By reading the MM2S_STATUS register, the event causing the interrupt can be identified and the corresponding bit must be cleared by writing the corresponding bit to 0 to de-assert the interrupt. Once these tasks are completed and it is determined that the cause of the interrupt is a Transfer Complete event, the program prints an informational message to notify the user. Otherwise, it prints an error message (PG021). 该handler中的Callbackref是主程序中AXI-DMA Instance结构体的指针。
+
+user interaction
