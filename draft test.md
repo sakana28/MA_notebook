@@ -93,7 +93,7 @@ The algorithm enables users to freely generate simulated vibration signals from 
 
 ### simulated vibration signal
 本section中展示了在python中实现上述算法后模拟产生的部分信号。上述参数的预设值如下表所示：
-通过
+在预设的基础上，对部分参数进行修改，得到了以下仿真结果：
 
 
 ## Zynq soc
