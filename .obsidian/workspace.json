@@ -68,18 +68,6 @@
             }
           },
           {
-            "id": "86f9e3aa1271e938",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "software implementation.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "9d4d1829eded3dba",
             "type": "leaf",
             "state": {
@@ -92,7 +80,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -168,7 +156,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Test result.md",
+                "file": "note on overleaf.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -185,7 +173,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Test result.md",
+                "file": "note on overleaf.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -208,7 +196,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Test result.md"
+                "file": "note on overleaf.md"
               }
             }
           },
@@ -239,14 +227,14 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "3a178ff93a6450b8",
+  "active": "9d4d1829eded3dba",
   "lastOpenFiles": [
-    "draft test.md",
     "Implementation 插入部分.md",
+    "draft test.md",
+    "Test result.md",
     "software implementation.md",
     "note on overleaf.md",
     "about SD card WR (FATFS).md",
-    "Test result.md",
     "screenshot/utilization_summray.png",
     "screenshot/resource.png",
     "screenshot/power.png",
