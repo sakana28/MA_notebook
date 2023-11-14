@@ -202,6 +202,6 @@ XOUT = (DATAOUT[1 + 6 * j] << 8) + DATAOUT[0 + 6 * j];
 其中rounded是来自c语言标准library中的mathematical function，能将小数四舍五入为整数。而atof可将字符串转换为double类型的小数。通过移位和位逻辑运算，使两个buffer数组中两个相邻的元素的最低八位分别为数据的高八位和低八位。
 
 上文中介绍了在软件如何setups the interrupt system，正确配置interrupt并将其与对应的handler连接。接下来，系统中两个中断发生后，软件要在handler中如何处理它们会被介绍。
-The custom IP/KX134 handler performs several tasks upon receiving an interrupt. 首先，该中断会被暂时masked，避免多次触发中断处理程序。Then it issues AXI-IIC commands to read the threshold number of acceleration data from the sample buffer into the provided buffer pointed to by CallBackRef. Finally, it sets the Watermark\_flag to 1, signaling new data for the main program to process。在前文所述的u8 to float conversion开始后，该Watermark\_flag会在主程序内被回置为0。
+The custom IP/KX134 handler performs several tasks upon receiving an interrupt. 首先，该中断会被暂时masked，避免多次触发中断处理程序。Then 它通过 AXI-IIC的驱动向从机地址0X1F写入0x63，在START REPEAT后再从该地址读出6 bytes*THRESHOLD个数据，然后it sets the Watermark\_flag to 1,以通知主程序有 new data avaliable for process,最后重新使能该中断。在前文所述的u8 to float conversion开始后，watermark_flag会在主程序内被回置为0。
 
-The DMA engine interrupt handling is more complex due to the multiple potential causes of an interrupt. The handler first reads the appropriate IRQ status register to determine the interrupt type. If the cause is transfer completion, it will acknowledge the pending interrupt. Otherwise it reports an error. 
+对 DMA engine interrupt handling的标准流程 is more complex due to the multiple potential causes of an interrupt. The handler first reads the appropriate IRQ status register to determine the interrupt type. If the cause is transfer completion, it will acknowledge the pending interrupt. Otherwise it reports an error. 
