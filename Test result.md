@@ -104,3 +104,5 @@ Since the integer part of the acceleration data does not have a fixed sign and l
 本section中基于vivado 的resource utilization对系统进行了评估。图x中可以看到，该系统整体而言使用的FPGA资源量非常少。这利于该对系统未来进行拓展或者直接集成入振动信号处理系统，或者在一些应用场合中在一块开发板上例化多个相同设计，使其同时作为多个下游系统的信号源。
 
 从图y的系统每个部件的资源使用报告中可以看到，Custom IP是使用了最多的LUT和Registers的模块。在设计中，Custom IP的资源使用量具有优化空间。在KX134中，有部分registers是reseverd，并无实际功能，且有大量 register在本设计中并未被使用。在该系统后续的改进中，如果减少Custom IP中registers的数量，增加地址译码模块，可以有效节省资源。
+
+从上表中可以看到，AXI-DMA被配置为仅提供简单模式下MM2S传输和AXI Stream Fifo被配置为仅支持Transit stream data的模式时，二者需要的FPGA resource。在使用AXI-DMA的方案中，系统中还必须添加处理PS的Slave HP与DMA 的Master MM2S接口间的通信的AXI MEM Interconnection模块。因此，LUT和Registers使用量几乎是使用AXI-Stream FIFO的两倍。然而为了简化输出过程，需要将尽量多的数据存入模块内，再一次性启动stream传输，使得使用AXI-Stream FIFO的解决方案需要更多的Block RAM。
