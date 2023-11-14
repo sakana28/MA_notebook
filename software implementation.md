@@ -35,7 +35,7 @@ Xilinx Standalone Library Documentation: BSP and Libraries Document Collection U
 
 
 ### file structure
-本文中最终完成的软件设计具有以下文件结构：
+
 ## AXI-I2C的使用
 XIic_Send XIic_Recv
 This function sends the data using polled I/O and blocks until the data has been sent. It only supports 7 bit addressing mode of operation. This function returns zero if bus is busy.  
@@ -185,6 +185,9 @@ writedata中将被寄存的数值写进地址对应的寄存器中
 red req生成在get_address_and_cmd状态，只高一个时钟周期
 data valid生成在读取最后一位的时钟周期，只高一个时钟周期 否则会多次激活读写operation。为保证数据的可靠性，应该在valid有效时寄存其值。
 
+
+## conversion
+如章节所述，本工作中的acceleration data 的范围被设置为正负32g。而Python中生成的此处将g取值为9.8
 
 
 
