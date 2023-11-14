@@ -196,32 +196,12 @@ XOUT = (DATAOUT[1 + 6 * j] << 8) + DATAOUT[0 + 6 * j];
 
         YOUT = (DATAOUT[3 + 6 * j] << 8) + DATAOUT[2 + 6 * j];
 
-        ZOUT = (DATAOUT[5 + 6 * j] << 8) + DATAOUT[4 + 6 * j];
-
-        xout_f = XOUT;
-
-        yout_f = YOUT;
-
-        zout_f = ZOUT;
-
-        x_Buffer[i] = xout_f * acc_factor;
-
-        y_Buffer[i] = yout_f * acc_factor;
-
-        z_Buffer[i] = zout_f * acc_factor;
 需要注意的是，XOUT,YOUT,ZOUT的类型是int16_t，即signed 16bits数据。而在将原始数据转化为两个8位的数据并装入与AXI-DMA线宽一致的32bit存储空间时，则要进行以下操作：          
-     f_gets(line, sizeof(line), &filsrc);
 
-            tmp=(float)atof(line);
-
-            rounded = (int16_t)round(tmp/acc_factor);
-
-  
-
-                buffer[2*i] = 0x0000 | (rounded& 0x00FF);
-
-                buffer[2*i+1] = 0x0000 |( (rounded& 0xFF00)>>8)
-
-            }
 
 其中rounded是来自c语言标准library中的mathematical function，能将小数四舍五入为整数。而atof可将字符串转换为double类型的小数。通过移位和位逻辑运算，使两个buffer数组中两个相邻的元素的最低八位分别为数据的高八位和低八位。
+
+上文中介绍了在软件如何setups the interrupt system，正确配置interrupt并将其与对应的handler连接。接下来，系统中两个中断发生后，软件要在handler中如何处理它们会被介绍。
+The custom IP/KX134 handler performs several tasks upon receiving an interrupt. 首先，该中断会被暂时masked，避免多次触发中断处理程序。Then it issues AXI-IIC commands to read the threshold number of acceleration data from the sample buffer into the provided buffer pointed to by CallBackRef. Finally, it sets the Watermark\_flag to 1, signaling new data for the main program to process。在前文所述的u8 to float conversion开始后，该Watermark\_flag会在主程序内被回置为0。
+
+The DMA engine interrupt handling is more complex due to the multiple potential causes of an interrupt. The handler first reads the appropriate IRQ status register to determine the interrupt type. If the cause is transfer completion, it will acknowledge the pending interrupt. Otherwise it reports an error. 
