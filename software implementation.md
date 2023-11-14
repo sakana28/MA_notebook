@@ -34,6 +34,8 @@ Standalone provides basic software modules to access processor-specific function
 Xilinx Standalone Library Documentation: BSP and Libraries Document Collection UG643
 
 
+### file structure
+本文中最终完成的软件设计具有以下文件结构：
 ## AXI-I2C的使用
 XIic_Send XIic_Recv
 This function sends the data using polled I/O and blocks until the data has been sent. It only supports 7 bit addressing mode of operation. This function returns zero if bus is busy.  
