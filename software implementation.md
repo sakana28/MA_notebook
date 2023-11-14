@@ -187,7 +187,41 @@ data valid生成在读取最后一位的时钟周期，只高一个时钟周期 
 
 
 ## conversion
-如章节所述，本工作中的acceleration data 的范围被设置为正负32g。KX134生成的数据而Python中生成的振动信号是 此处g的取值为9.8
+如章节x所述，本工作中的acceleration data 的范围被设置为正负32g， 此处g的取值为9.81。而Python中生成的振动信号是与g无关的，以m/s^2为单位的加速度。因此，无论是采集真实加速度数据，还是模仿KX134，将Python生成的振动信号最终输出到I2C总线上，都必须完成原始加速度数据和16bit数据之间的相互转换：
 
+KX134中的16bits数据与原始加速度的关系在Range为32时是：
 
+在本程序中，定义了一个 acc_factor = (1.0f / 32767.0f) * 32.0f * 9.81f; 通过AXI-IIC读取到u8（8bit unsigned）类型的数据后，对其进行如下处理：
+XOUT = (DATAOUT[1 + 6 * j] << 8) + DATAOUT[0 + 6 * j];
 
+        YOUT = (DATAOUT[3 + 6 * j] << 8) + DATAOUT[2 + 6 * j];
+
+        ZOUT = (DATAOUT[5 + 6 * j] << 8) + DATAOUT[4 + 6 * j];
+
+        xout_f = XOUT;
+
+        yout_f = YOUT;
+
+        zout_f = ZOUT;
+
+        x_Buffer[i] = xout_f * acc_factor;
+
+        y_Buffer[i] = yout_f * acc_factor;
+
+        z_Buffer[i] = zout_f * acc_factor;
+需要注意的是，XOUT,YOUT,ZOUT的类型是int16_t，即signed 16bits数据。而在将原始数据转化为两个8位的数据并装入与AXI-DMA线宽一致的32bit存储空间时，则要进行以下操作：          
+     f_gets(line, sizeof(line), &filsrc);
+
+            tmp=(float)atof(line);
+
+            rounded = (int16_t)round(tmp/acc_factor);
+
+  
+
+                buffer[2*i] = 0x0000 | (rounded& 0x00FF);
+
+                buffer[2*i+1] = 0x0000 |( (rounded& 0xFF00)>>8)
+
+            }
+
+其中rounded是来自c语言标准library中的mathematical function，能将小数四舍五入为整数。而atof可将字符串转换为double类型的小数。通过移位和位逻辑运算，使两个buffer数组中两个相邻的元素的最低八位分别为数据的高八位和低八位。
