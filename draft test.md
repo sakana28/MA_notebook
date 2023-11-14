@@ -91,7 +91,8 @@ The numerical implementation of the distributed fault vibration signal model req
 ![[Pasted image 20231005065536.png]]
 The algorithm enables users to freely generate simulated vibration signals from rolling element bearings with different defects and under different operating conditions. Users are able to modify various features, such as bearing geometry, fault location, stage of the fault, cyclostationarity of the signal, and random contributions.
 
-
+### simulated vibration signal
+本section中展示了在python中实现上述算法后模拟产生的部分信号。上述参数的预设值如下表所示：
 
 
 ## Zynq soc

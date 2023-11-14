@@ -80,7 +80,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -156,7 +156,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "note on overleaf.md",
+                "file": "draft test.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -173,7 +173,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "note on overleaf.md",
+                "file": "draft test.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -196,7 +196,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "note on overleaf.md"
+                "file": "draft test.md"
               }
             }
           },
@@ -227,13 +227,14 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "9d4d1829eded3dba",
+  "active": "122ce4701b2cd095",
   "lastOpenFiles": [
-    "Implementation 插入部分.md",
-    "draft test.md",
+    "MA_Index.md",
     "Test result.md",
     "software implementation.md",
     "note on overleaf.md",
+    "Implementation 插入部分.md",
+    "draft test.md",
     "about SD card WR (FATFS).md",
     "screenshot/utilization_summray.png",
     "screenshot/resource.png",
@@ -244,7 +245,6 @@
     "picture/generator_count.drawio.png",
     "picture/test2.drawio 1.png",
     "picture/test2.drawio.png",
-    "MA_Index.md",
     "picture/pinonboard.drawio 1.png",
     "screenshot/~creenshot_2023-11-09_15-13-36.tmp",
     "screenshot/local",
