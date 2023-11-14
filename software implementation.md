@@ -187,7 +187,7 @@ data valid生成在读取最后一位的时钟周期，只高一个时钟周期 
 
 
 ## conversion
-如章节所述，本工作中的acceleration data 的范围被设置为正负32g。而Python中生成的 此处将g取值为9.8
+如章节所述，本工作中的acceleration data 的范围被设置为正负32g。KX134生成的数据而Python中生成的振动信号是 此处g的取值为9.8
 
 
 
