@@ -21,4 +21,6 @@ FPGA Part XC7Z020-1CLG484C
 ![[Pasted image 20230510171355.png]]
 
 
-14.1 LUT 9.9 FF
+结合表格x中的信息，估计当前设计在表格中最廉价的zybo上的资源使用率，得到 LUT 使用率为14.1% Filp-Flop使用率为 9.9% ，BRAM使用率为3.4% 。仍然是一个规模较小的设计。
+
+为验证系统传输的准确性，需要对作为信号源的文件source.txt和系统记录获得的信号的文件1.txt进行比对，通过读入一行字符串并将其转为小数的方式，根据following公式计算Mean Squared Error()
