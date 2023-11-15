@@ -19,3 +19,6 @@ FPGA Part XC7Z020-1CLG484C
 ![[Pasted image 20230510172652.png]]
 # ZC706
 ![[Pasted image 20230510171355.png]]
+
+
+14.1 LUT 9.9 FF
