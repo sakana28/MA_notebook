@@ -532,5 +532,4 @@ Simulation validates that the custom I2C slave IP responds correctly to master t
 
 仿真验证了自定义I2C从设备IP对主机事务的正确响应。寄存器可以根据加速度计协议进行访问。综合后的系统的仿真验证成功证明了数据路径的完整性和软件操作的正确性。通过逻辑分析仪，可以验证系统中的Xilinx AXI-IIC IP与custom IP进行了正确的I2C主从通信。
 
-基于Vivado 开发环境提供的project report，该系统功耗在优化后仅为1.755W，各种FPGA资源的使用率都在2.5%以下。且从SD卡读取的文本数据和写入SD卡的输出数据相同。证明了该实现低功耗，小规模
-
+基于Vivado 开发环境提供的project report，该系统功耗在优化后仅为1.755W，各种FPGA资源的使用率都在2.5%以下。且从SD卡读取的文本数据和写入SD卡的输出数据相同。证明了该implementation 在数据传输与处理准确的前提下低功耗，小规模。
