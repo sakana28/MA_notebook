@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "software implementation.md",
+                "file": "Test result.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "draft",
+                "query": "result",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -127,8 +127,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "cabdc51be2d9613d",
@@ -144,7 +143,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "software implementation.md",
+                "file": "Test result.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -161,7 +160,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "software implementation.md",
+                "file": "Test result.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -184,7 +183,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "software implementation.md"
+                "file": "Test result.md"
               }
             }
           },
@@ -217,9 +216,9 @@
   },
   "active": "81a5c490ab8fd880",
   "lastOpenFiles": [
-    "Test result.md",
     "software implementation.md",
     "draft test.md",
+    "Test result.md",
     "MA_Index.md",
     "note on overleaf.md",
     "Implementation 插入部分.md",
