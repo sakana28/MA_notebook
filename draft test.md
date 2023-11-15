@@ -522,4 +522,15 @@ The software components use libraries generated from the hardware design in Viti
 Simulation validates that the custom I2C slave IP responds correctly to master transactions. The registers are accessible according to the accelerometer protocol. Emulation of synthesized system successfully verify that the data path is complete and the software operation is correct. Text data from the SD card and outputs written to the SD card are identical, along with proper I2C master-slave communication captured on the logic analyzer.
 
 
-由于
+本论文介绍了使用Xilinx Zynq SoC平台设计和实现的滚动轴承振动信号生成器和记录系统。该系统旨在提供可定制的集成硬件数据集，以促进振动信号的处理和诊断，这将在未来预测性维护解决方案的开发中发挥重要作用。论文首先分析了建模滚动轴承振动的背景和数值实现，并评估了将该模型部署到Zynq上的可行性。
+
+首先，一个信号recorder系统被开发，该系统完全基于Xilinx提供的IP核。通过客制化并连接IP核，编写其嵌入式c软件，并将开发板与加速度计KX134连接，实现了采集并记录真实加速度数据的功能。在该系统的基础上，一个signal generator系统被实现。该系统的核心包括用于振动信号生成的Python脚本、用于配置和控制的嵌入式C软件以及用于硬件数据路径和逻辑实现的VHDL模块。系统中的VHDL模块模仿了KX134的行为，以SD卡内存储的文本文件作为信号源，将数据根据I2C协议发送给接收方。当接收方是本文中提出的signal recorder去除accelerometer的部分时，形成了一个回环，可以验证系统功能。
+
+这项工作的一个关键贡献是在Vivado中使用VHDL实现了自定义I2C从设备IP，用于信号生成系统以模仿加速度计的行为。自定义从设备IP可以从I2C主机进行配置和读取。其状态机紧密遵循I2C协议规范。通过时钟分频和采样缓冲，自定义核心可以生成类似于加速度计的用户可配置中断。
+
+软件组件使用从硬件设计在Vitis IDE中生成的库，包括独立操作系统、用于通用中断控制器、AXI-DMA控制器和其他外设的低级驱动程序，以及用于SD卡访问的FAT文件系统。
+
+仿真验证了自定义I2C从设备IP对主机事务的正确响应。寄存器可以根据加速度计协议进行访问。综合后的系统的仿真验证成功证明了数据路径的完整性和软件操作的正确性。通过逻辑分析仪，可以验证系统中的Xilinx AXI-IIC IP与custom IP进行了正确的I2C主从通信。
+
+基于Vivado 开发环境提供的project report，该系统功耗在优化后仅为1.755W，各种FPGA资源的使用率都在2.5%以下。且从SD卡读取的文本数据和写入SD卡的输出数据相同。证明了该实现低功耗，小规模
+
