@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Test result.md",
+                "file": "Zybo vs Zedboard vs ZC706.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "result",
+                "query": "zc706",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -143,7 +143,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Test result.md",
+                "file": "Zybo vs Zedboard vs ZC706.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -160,7 +160,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Test result.md",
+                "file": "Zybo vs Zedboard vs ZC706.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -183,7 +183,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Test result.md"
+                "file": "Zybo vs Zedboard vs ZC706.md"
               }
             }
           },
@@ -216,9 +216,9 @@
   },
   "active": "81a5c490ab8fd880",
   "lastOpenFiles": [
+    "Test result.md",
     "software implementation.md",
     "draft test.md",
-    "Test result.md",
     "MA_Index.md",
     "note on overleaf.md",
     "Implementation 插入部分.md",
