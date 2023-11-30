@@ -1,21 +1,17 @@
-
-1. Connect the Pmod GPIO to the pins of the KX134-EVAL as shown in the figure below. Insert the SD card into the slot.
+## Use case 1 : Signal Recorder
+1. Connect the Pmod GPIO J58 on ZC706 to the pins of the KX134-1211-EVB110 as shown in the figure below. Insert the SD card into the slot.![[recorder_pin.png]]
 2. Open the serial port corresponding to USB-JTAG in a serial terminal program such as Cutecom. Configure with the default baud rate of 115200, 8 bits data, no parity and 1 stop bit. 
 3. In Vitis, select "run as-launch hardware" to download the compiled software and bitstream.
+4. In the serial terminal program, enter any character to trigger the KX134 to begin sampling. (Only one character should be entered, because this functionality is implemented through getchar( ), which reads a single character from the standard input stream. When the input buffer is empty, it blocks the program and waits for user input. Sending a string will cause characters to remain in the buffer after this iteration, so on the next loop, the program will not wait for user input, and will continue directly)
+5. After the predefined number of samples have been processed in the program, the program sends a command to stop KX134 sampling and write the collected data to the SD card. The first run will generate three files named 1x.txt, 1y.txt, and 1z.txt, and so on.
 
-1. Use case: Signall Recorder
-ZC706 Connection  
-This project utilizes the JTAG interface to configure the FPGA on the ZC706. Switches SW4 and SW11 must be set to the positions shown in the diagram JTAG. 通过microUSB-USB线连接 usb-JTAG用于下载比特流和elf文件，usb-uart线用于与host pc通信。  
-Use Case 1: Signal Recorder  
-如下图所示，将Pmod GPIO与KX134-EVAL的pin连接。将 SD卡插入 into the slot.  
-In Cutecom or other serial terminal programs 打开usbjtag对应的串口。配置使用默认Baud rate 115200,8 bits数据，no parity,1 stop bit.在vitis中对编译过的应用选择 run as-launch hardware。  
-In Cutecom or other serial terminal programs, press any key to trigger the KX134 to begin sampling. (只能输入一个字符，该功能通过getchar()实现，功能是从缓冲区读取一个字符，如果缓冲区空就等待用户输入字符。输入字符串会导致本次运行后缓冲区有字符存在，在程序下一次循环时不会再等待用户输入，而是直接读取一个字符)  
-After 程序中规定的 samples have been processed in program, 程序发送命令使KX134停止采样并将收集到的数据写入SD卡，第一次运行后会获得1x.txt 1y.txt 1z.txt三个文件，文件名中的数字随着运行次数递增. 在Terminal 再次出现"Press any key to start"message 后，在therminal中再次输入字符可以trigger another sampling.  
-View the generates text file written to the SD card.  
+## Use case 2 : Signal Generator
+
 Use Case 2: Signal Generator  
-Connect the ZC706 as shown in the diagram and insert an SD card containing the desired text file to use as the signal source.  
-Run the Vitis program.  
-In Cutecom or another terminal program, enter the filename of the text file to use as the signal source.  
-Press any key to put the Custom IP into operational mode.  
+1.Connect the ZC706 as shown in the diagram, insert an SD card with source file in it. In the file, 三个方向上的 acceleration data 以 X，Y，Z的顺序依次排列。一个数据占一行。
+
+2.In Vitis, select "run as-launch hardware" to download the compiled software and bitstream.
+3.In Cutecom or other serial terminal, enter the filename of the text file(without 后缀名)  which is  used as the signal source.  
+4.Enter any character to put the Custom IP into operational mode.  
 After 10,000 samples, the sampling run ends. Enter another filename to use a different signal source text file or terminate the program.  
-View the output text file written to the SD card.
+View the output text file written to the SD card.![[testpin.png]]
