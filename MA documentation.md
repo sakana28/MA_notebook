@@ -1,21 +1,9 @@
 
-ZC706的连接方式  
-本项目中使用JTAG配置FPGA ，SW4和SW11必须如图所示  
-usecase1. signal recorder  
-1.按照图片连接并将SD卡插入卡槽  
-2.vitis中运行程序  
-3.在cutecom或其他terminal中输入任意键以开启KX134的采样功能  
-4.采集10000个样本后本次采样结束，如果再次输入任意键会开启下一次采样  
-5.查看SD卡中获得的文本文件  
-usecase 2. signal generator  
-1.按照图片连接并将SD卡插入卡槽，SD卡中应该已经装有符合要求的文本文档  
-2.在vitis中运行程序  
-3.在cutecom或其他terminal中输入作为信号源的文件名  
-4.输入任意键使Custom IP进入工作模式  
-5.采集10000个样本后本次采样结束，再次输入作为信号源的文件名或结束  
-6.查看SD卡中获得的文本文件  
+1. Connect the Pmod GPIO to the pins of the KX134-EVAL as shown in the figure below. Insert the SD card into the slot.
+2. Open the serial port corresponding to USB-JTAG in a serial terminal program such as Cutecom. Configure with the default baud rate of 115200, 8 bits data, no parity and 1 stop bit. 
+3. In Vitis, select "run as-launch hardware" to download the compiled software and bitstream.
 
-1. Usecase: Signall Recorder
+1. Use case: Signall Recorder
 ZC706 Connection  
 This project utilizes the JTAG interface to configure the FPGA on the ZC706. Switches SW4 and SW11 must be set to the positions shown in the diagram JTAG. 通过microUSB-USB线连接 usb-JTAG用于下载比特流和elf文件，usb-uart线用于与host pc通信。  
 Use Case 1: Signal Recorder  
