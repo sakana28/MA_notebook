@@ -34,6 +34,8 @@ Standalone provides basic software modules to access processor-specific function
 Xilinx Standalone Library Documentation: BSP and Libraries Document Collection UG643
 
 
+### file structure
+
 ## AXI-I2C的使用
 XIic_Send XIic_Recv
 This function sends the data using polled I/O and blocks until the data has been sent. It only supports 7 bit addressing mode of operation. This function returns zero if bus is busy.  
@@ -184,5 +186,34 @@ red req生成在get_address_and_cmd状态，只高一个时钟周期
 data valid生成在读取最后一位的时钟周期，只高一个时钟周期 否则会多次激活读写operation。为保证数据的可靠性，应该在valid有效时寄存其值。
 
 
+## conversion
+如章节x所述，本工作中的acceleration data 的范围被设置为正负32g， 此处g的取值为9.81。而Python中生成的振动信号是与g无关的，以m/s^2为单位的加速度。因此，无论是采集真实加速度数据，还是模仿KX134，将Python生成的振动信号最终输出到I2C总线上，都必须完成原始加速度数据和16bit数据之间的相互转换：
+
+KX134中的16bits数据与原始加速度的关系在Range为32时是：
+
+在本程序中，定义了一个 acc_factor = (1.0f / 32767.0f) * 32.0f * 9.81f; 通过AXI-IIC读取到u8（8bit unsigned）类型的数据后，对其进行如下处理：
+XOUT = (DATAOUT[1 + 6 * j] << 8) + DATAOUT[0 + 6 * j];
+
+        YOUT = (DATAOUT[3 + 6 * j] << 8) + DATAOUT[2 + 6 * j];
+
+需要注意的是，XOUT,YOUT,ZOUT的类型是int16_t，即signed 16bits数据。而在将原始数据转化为两个8位的数据并装入与AXI-DMA线宽一致的32bit存储空间时，则要进行以下操作：          
 
 
+其中rounded是来自c语言标准library中的mathematical function，能将小数四舍五入为整数。而atof可将字符串转换为double类型的小数。通过移位和位逻辑运算，使两个buffer数组中两个相邻的元素的最低八位分别为数据的高八位和低八位。
+
+上文中介绍了在软件如何setups the interrupt system，正确配置interrupt并将其与对应的handler连接。接下来，系统中两个中断发生后，软件要在handler中如何处理它们会被介绍。
+The custom IP/KX134 handler performs several tasks upon receiving an interrupt. 首先，该中断会被暂时masked，避免多次触发中断处理程序。Then 它通过 AXI-IIC的驱动向从机地址0X1F写入0x63，在START REPEAT后再从该地址读出6 bytes*THRESHOLD个数据，然后it sets the Watermark\_flag to 1,以通知主程序有 new data avaliable for process,最后重新使能该中断。在前文所述的u8 to float conversion开始后，watermark_flag会在主程序内被回置为0。
+
+对 DMA engine interrupt handling的标准流程 is more complex due to the multiple potential causes of an interrupt. 在进行MM2S传输时，有DMA Internal Error，DMA Slave Error，DMA Decode Error和transfer Complete四种中断原因。通过读取MM2S_STATUS，可以确定导致中断发生的event，然后需要通过把对应的位数置为0以deassert该中断。在完成上述任务并确定导致中断的原因是transfer Complete后，程序会打印一条信息以通知用户. Otherwise 它打印一条信息以 reports an error. （PG021）
+
+### section{Data Processing and Software Control}
+在对PL端的模块和PS自身的硬件进行配置与控制的基础上，软件还要完成用户交互、复杂的控制和难以在FPGA上实现的运算。这些内容将在本section中被介绍。
+The previous section introduces how the software sets up the interrupt system, configures interrupts correctly, and connects them to the corresponding handlers. The following section focuses on the handling of these interrupts within the system, in particular the operations within the handlers.
+
+The IP/KX134 custom interrupt handler performs a number of tasks when an interrupt is received. First, it temporarily masks the interrupt to prevent multiple triggering of the interrupt handler. It then communicates with the slave address 0x1F through the AXI-IIC driver, writing 0x63 to the slave device as a register address and then reading 6 bytes * THRESHOLD data from this address after a START REPEAT signal. Then it sets the watermark flag to 1, notifying the main program that new data is available for processing. Finally, it re-enables the interrupt. During the u8 to float conversion described before, the watermark_flag is reset to 0 within the main program. 该handler中的Callbackref是用于接受从AXI-IIC中读到的 6 bytes * THRESHOLD个数据的buffer的地址。
+
+The standard procedure for handling DMA engine interrupt is more complicated due to the different possible causes of an interrupt. During MM2S transfers, there are four possible interrupt sources: DMA Internal Error, DMA Slave Error, DMA Decode Error, and Transfer Complete. By reading the MM2S_STATUS register, the event causing the interrupt can be identified and the corresponding bit must be cleared by writing the corresponding bit to 0 to de-assert the interrupt. Once these tasks are completed and it is determined that the cause of the interrupt is a Transfer Complete event, the program prints an informational message to notify the user. Otherwise, it prints an error message (PG021). 该handler中的Callbackref是主程序中AXI-DMA Instance结构体的指针。
+
+在zynq平台上，软件的标准输入输出会被映射到板上的UART控制器。将ZC706板上的USB-UART port用microusb-usb线与host PC连接，通过serial port therminal，正确设置Baud率后即可接收到软件中打印的信息，或者向软件输入信息。该程序中，输入输出除了打印调试信息外，还给用户runtime配置提供了可能。首先，用户会被要求输入作为信号源的文本文件的名字。在完成对KX134的配置后， getchar()。这个standard C function会从标准输入（stdin）中读取一个字符，当stdin buffer是空的时，该函数会等待直到用户输入任意字符。这使用户有能力控制KX134何时开始采样，或者signal generator何时开始生成数据，如\ref所述。
+
+软硬件联合设计中，软件的首要任务是对硬件进行初始化，并通过AXI-Lite端口读写硬件的寄存器，完成对硬件的控制。如上文所述，在Standalone OS中，vitis根据导入的硬件生成了一系列可供用户调用的API，使用户无需从寄存器层面确定对硬件进行配置的流程和信息。下文将介绍软件实现中针对硬件进行的操作：

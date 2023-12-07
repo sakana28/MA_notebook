@@ -18,6 +18,7 @@ The goal of this work is to implement and evaluate a  Zynq-based signal generato
 This work is organized as follows: Chapter 2 introduces the rolling bearing vibration signal model and provides basic insight into the Zynq architecture. Chapter 3 provides a brief overview of the functionality and operation of the evaluated KX134 accelerometer. This chapter also describes in detail the hardware components of the system developed to emulate the functionality of the KX134, including both IP cores provided by Xilinx and custom IP cores. Chapter 4 outlines the software development process for the system and explains its interaction with the hardware modules.In Chapter 5, a evaluation of the system is performed, taking into account factors such as power consumption, FPGA resource utilization, and overall performance. The final chapter provides the conclusion of this paper. 
 # Fundamentals
 This chapter presents an overview of cyclostationary signals and introduces a vibration signal model for rolling element bearings. The model is based on the concept of cyclostationary signals and serves as the foundation for subsequent work. Next, the Zynq SoC architecture and the ZC706 development board used in this thesis are also introduced.
+
 ## Vibration signal model
 [[about Model]]
 #writing #fundamental 
@@ -53,6 +54,23 @@ Based on these models, algorithms and Octave script code for numerical implement
 
 As proposed by Ho and Randall (ho2000), the vibration signal from a localized bearing fault can be modeled as a series of impulse responses of a single-degree-of-freedom (SDOF) system. The timing between impulses has a random component to simulate the slippery effect. This model was adopted in G. D'Elia's work.(stepbystep)
 
+该数值实现中，首先要定义Speed profile,即为 rotation angle of a bearing moving race theta(t)与轴承的shaft speed之间的关系。A generic speed profile can be constructed as: equation 4
+其中fc是carrier component，fd是Frequency deviation，fm是Modulation frequency。接下来如section x所述，通过表格x中的typical fault frequencies 可以如下式计算出the angle between two consecutive impulses。1/f_typical fr 2pi = theta imp 例如fault在inner race上时，theta imp = eqution 5
+求得的这个角度差值属于一种理想中的情况，在此所有impact在角位置上均匀分布。上文中已经介绍了，bearing element的slippery effect会导致该值有random contribution。因此，在此算法中，应该以此值为均值，结合用户输入指定的variance_factor，生成一个随机序列。即获得了更现实的impact之间的间隔角度。
+间隔角度除以shaft角速度，即为impact之间的间隔时间。得到了间隔时间，就是得到了 the beginning of each impulse response h(t iT ⌧i) in the time domain。之后在开发环境中生成一个vector，其长度为最后一次撞击出现的时间/fs。该vector每一个元素代表了时间轴上一点的撞击情况。只有在时间轴上有inpuls时，即一点的index是impuls发生的时间乘以fs时，一个元素的值才为1，其余值为0。实际情况中每一次撞击的幅度也不是一样的，因此，对该序列要进行amplitude modulation。对应了方程x中的q(iT)。以该vector为输入，求该序列在SDOF系统中引起的二阶response，即得到符合上述模型的时域的振动信号。
+
+该实现也包含了计算distributed fault vibration signal的算法。如equation x所述，vibration signal model is a mixture of two terms, one deterministic and one purely cyclostationary.
+其中deterministic part可作为theta的函数被如下描述：
+其中qrot and qstiff 是由用户定义的 amplitude value of the deterministic component related to the stiffness variation and to the the bearing rotation. tau_stiff是一个由轴承的几何参数决定的常数。
+
+在开发环境中将该theta的常数通过插值变换成t的函数，即获得了时域的 deterministic part of the vibration signal. 
+
+The purely cyclostationary component (B(t)) is a random modulated noise，in which the modulation frequency is the  typical fault frequencies. 该modulation function应如下计算：
+
+其中tau_fault是一个 geometrical parameter。它的值即为表格x中的typical frequencies 除以fr。将该方程通过差值也转换到时域，再乘以一个服从标准正态分布的noise序列，即求得The purely cyclostationary component。将两个部分相加，就是distributed fault 引起的vibration signals.
+
+qFault = amplitude modulation at the fault frequency
+
 The numerical implementation of the localized fault vibration signal model has the following user-defined parameters:
 - Speed profile
 - Bearing geometry parameters: bearing roller diameter , pitch circle diameter , contact angle, number of rolling elements 
@@ -63,6 +81,7 @@ The numerical implementation of the localized fault vibration signal model has t
 - Signal-to-noise ratio (SNR) of background noise
 - Amplitude modulation due to load
 
+
 ![[Pasted image 20231005065627.png]]
 The numerical implementation of the distributed fault vibration signal model requires the following additional parameters:
 - Amplitude modulation at the fault frequency
@@ -71,6 +90,10 @@ The numerical implementation of the distributed fault vibration signal model req
 
 ![[Pasted image 20231005065536.png]]
 The algorithm enables users to freely generate simulated vibration signals from rolling element bearings with different defects and under different operating conditions. Users are able to modify various features, such as bearing geometry, fault location, stage of the fault, cyclostationarity of the signal, and random contributions.
+
+### simulated vibration signal
+本section中展示了在python中实现上述算法后模拟产生的部分信号。上述参数的预设值如下表所示：
+在预设的基础上，对部分参数进行修改，得到了以下仿真结果：
 
 
 ## Zynq soc
@@ -499,3 +522,14 @@ The software components use libraries generated from the hardware design in Viti
 Simulation validates that the custom I2C slave IP responds correctly to master transactions. The registers are accessible according to the accelerometer protocol. Emulation of synthesized system successfully verify that the data path is complete and the software operation is correct. Text data from the SD card and outputs written to the SD card are identical, along with proper I2C master-slave communication captured on the logic analyzer.
 
 
+本论文介绍了使用Xilinx Zynq SoC平台设计和实现的滚动轴承振动信号生成器和记录系统。该系统旨在提供可定制的集成硬件数据集，以促进振动信号的处理和诊断，这将在未来预测性维护解决方案的开发中发挥重要作用。论文首先分析了建模滚动轴承振动的背景和数值实现，并评估了将该模型部署到Zynq上的可行性。
+
+首先，一个信号recorder系统被开发，该系统完全基于Xilinx提供的IP核。通过客制化并连接IP核，编写其嵌入式c软件，并将开发板与加速度计KX134连接，实现了采集并记录真实加速度数据的功能。在该系统的基础上，一个signal generator系统被实现。该系统的核心包括用于振动信号生成的Python脚本、用于配置和控制的嵌入式C软件以及用于硬件数据路径和逻辑实现的VHDL模块。系统中的VHDL模块模仿了KX134的行为，以SD卡内存储的文本文件作为信号源，将数据根据I2C协议发送给接收方。当接收方是本文中提出的signal recorder去除accelerometer的部分时，形成了一个回环，可以验证系统功能。
+
+这项工作的一个关键贡献是在Vivado中使用VHDL实现了自定义I2C从设备IP，用于信号生成系统以模仿加速度计的行为。自定义从设备IP可以从I2C主机进行配置和读取。其状态机紧密遵循I2C协议规范。通过时钟分频和采样缓冲，自定义核心可以生成类似于加速度计的用户可配置中断。
+
+软件组件使用从硬件设计在Vitis IDE中生成的库，包括独立操作系统、用于通用中断控制器、AXI-DMA控制器和其他外设的低级驱动程序，以及用于SD卡访问的FAT文件系统。
+
+仿真验证了自定义I2C从设备IP对主机事务的正确响应。寄存器可以根据加速度计协议进行访问。综合后的系统的仿真验证成功证明了数据路径的完整性和软件操作的正确性。通过逻辑分析仪，可以验证系统中的Xilinx AXI-IIC IP与custom IP进行了正确的I2C主从通信。
+
+基于Vivado 开发环境提供的project report，该系统功耗在优化后仅为1.755W，各种FPGA资源的使用率都在2.5%以下。且从SD卡读取的文本数据和写入SD卡的输出数据相同。证明了该implementation 在数据传输与处理准确的前提下低功耗，小规模。
