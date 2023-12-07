@@ -5,7 +5,7 @@ Tools:
 ## Use case 1 : Signal Recorder
 
 1. Connect the Pmod GPIO J58 on ZC706 to the pins of the KX134-1211-EVB110 as shown in the figure below. Insert the SD card into the slot.![[recorder_pin.png]]
-2. Open Vitis, use folder () as workspace. 
+2. Open Vitis, use folder software project/workspace_copy as workspace. 
 4. Open the serial port corresponding to USB-JTAG in a serial terminal program such as Cutecom. Configure with the default baud rate of 115200, 8 bits data, no parity and 1 stop bit. 
 5. right click project () in explorer , select "run as-launch hardware" to download the compiled software and bitstream.
 6. When the program is started, it prints messages about the configuration of specific registers for the KX134 via the I2C interface.  Within this message, the number indicates the number of bytes successfully transferred . This number should be 2.
