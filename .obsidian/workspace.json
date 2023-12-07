@@ -44,6 +44,16 @@
             }
           },
           {
+            "id": "d6c76880659f7287",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.4.16"
+              }
+            }
+          },
+          {
             "id": "122ce4701b2cd095",
             "type": "leaf",
             "state": {
@@ -80,7 +90,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -226,7 +236,7 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "150a8bfe2c863cdb",
+  "active": "d6c76880659f7287",
   "lastOpenFiles": [
     "MA documentation.pdf",
     "picture/Pasted image 20231130085907.png",
