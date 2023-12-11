@@ -6,7 +6,7 @@ In therminal : module load xilinx_vitis
 ## Use case 1 : Signal Recorder
 
 1. Connect the Pmod GPIO J58 on ZC706 to the pins of the KX134-1211-EVB110 as shown in the figure below. Insert the SD card into the slot.![[recorder_pin.png]]
-2. Connction JTAG-UART port, 
+2. Connction JTAG-USB port  
 3. Open Vitis, use folder software project/**workspace_copy** as workspace. 
 4. Open the serial port corresponding to USB-JTAG in a serial terminal program such as Cutecom. Configure with the default baud rate of 115200, 8 bits data, no parity and 1 stop bit. 
 5. right click application project **watermark_test** in explorer , select "run as-launch hardware" to download the compiled software and bitstream.
