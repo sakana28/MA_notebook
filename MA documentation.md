@@ -1,6 +1,7 @@
 Tools: 
-- Vivado v2021.1 (64-bit)
+- Vivado v2021.1 (64-bit) 
 - Vitis v2021.1 (64-bit)
+In therminal : module load xilinx_vitis
 
 ## Use case 1 : Signal Recorder
 
