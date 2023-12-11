@@ -37,19 +37,9 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MA documentation.md",
+                "file": "draft test.md",
                 "mode": "source",
                 "source": false
-              }
-            }
-          },
-          {
-            "id": "d6c76880659f7287",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.4.16"
               }
             }
           },
@@ -90,7 +80,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -165,7 +155,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "MA documentation.md",
+                "file": "draft test.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -182,7 +172,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "MA documentation.md",
+                "file": "draft test.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -205,7 +195,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "MA documentation.md"
+                "file": "draft test.md"
               }
             }
           },
@@ -236,8 +226,9 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "d6c76880659f7287",
+  "active": "150a8bfe2c863cdb",
   "lastOpenFiles": [
+    "MA documentation.md",
     "MA documentation.pdf",
     "picture/Pasted image 20231130085907.png",
     "picture/Pasted image 20231130085316.png",
@@ -245,7 +236,6 @@
     "picture/recorder_pin.png",
     "picture/testpin.png",
     "draft test.md",
-    "MA documentation.md",
     "Zybo vs Zedboard vs ZC706.md",
     "Test result.md",
     "software implementation.md",
@@ -282,7 +272,6 @@
     "doc/antoni2002.pdf",
     "doc/未确认 508424.crdownload",
     "doc/ho2000.pdf",
-    "doc/未确认 750425.crdownload",
-    "doc/Conley_Jordan_Thesis.pdf"
+    "doc/未确认 750425.crdownload"
   ]
 }
