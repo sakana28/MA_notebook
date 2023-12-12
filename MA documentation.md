@@ -16,7 +16,7 @@ In therminal : module load xilinx_vitis
 6. After the predefined number of samples have been processed in the program, the program sends a command to stop KX134 sampling and write the collected data to the SD card. The first run will generate three files named 1x.txt, 1y.txt, and 1z.txt, and so on.
 
 ## Use case 2 : Signal Generator
-
+### For test: 
 1. Connect the ZC706 as shown in the diagram. Insert an SD card containing the source file. In the file, acceleration data from three directions is arranged in order of X, Y, Z, with each data point occupying one line.
 ![[testpin.png]]
 ![[Pasted image 20231130085316.png]]
@@ -26,3 +26,6 @@ In therminal : module load xilinx_vitis
 5. Enter one character in Cutecom to enable the Custom IP to fill data into its internal buffer.
 6. After the predefined number of samples have been processed in the program, the program sends a command to disable the Custom IP. Then the collected data is written to the SD card. 
 7. The user can enter another filename to use a different signal source and start a new iteration.
+
+### For rebuild and synthesis the vivado project
+1. open project file
