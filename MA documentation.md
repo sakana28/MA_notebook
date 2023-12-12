@@ -14,6 +14,10 @@ In therminal : module load xilinx_vitis
 ![[Pasted image 20231130085907.png]]
 5. In the serial terminal program, enter any character to trigger the KX134 to begin sampling. (Only one character should be entered, because this functionality is implemented through getchar( ), which reads a single character from the standard input stream. When the input buffer is empty, it blocks the program and waits for user input. Sending a string will cause characters to remain in the buffer after this iteration, so on the next loop, the program will not wait for user input, and will continue directly)
 6. After the predefined number of samples have been processed in the program, the program sends a command to stop KX134 sampling and write the collected data to the SD card. The first run will generate three files named 1x.txt, 1y.txt, and 1z.txt, and so on.
+### For rebuild and synthesis the vivado project
+1. open project file signal_recorder.xpr in Vivado
+2. click generate bitstream in Flow Navigator
+3. click File / Export / Export hardware. The filename of the xsa file must be 
 
 ## Use case 2 : Signal Generator
 ### For test: 
@@ -28,4 +32,7 @@ In therminal : module load xilinx_vitis
 7. The user can enter another filename to use a different signal source and start a new iteration.
 
 ### For rebuild and synthesis the vivado project
-1. open project file
+1. open project file signal_recorder.xpr in Vivado
+2. click edit in the settings blank of project summary. Click IP/ Repository and add folder source code/ IP_repo as a IP repository. Applay the setting.
+3. click generate bitstream in Flow Navigator
+4. 
