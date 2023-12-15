@@ -19,4 +19,4 @@ Python-Implementierung基于此处提到的论文中提出的算法。该算法�
 
 本页展示了Zynq上开发系统的流程。它涉及了xilinx提供的开发环境vivado和vitis。接下来Emulationsplatform的系统也会按照先vivado中的硬件设计，再vitis中的软件设计的顺序被介绍。
 
-
+第一步首先连接了KX134与开发板，设计了一个可以采集真实加速度信号的signalrekorder. 该系统基于Xilinx官方的AXI-IIC IP核，对KX134进行配置，并读出数据。IIC接口与Interrupt被mapping到Zynq开发板ZC706的GPIO Header上。嵌入式程序读取AXI-IIC接受的数据，对其进行处理后写入SD卡中的文本文件。
