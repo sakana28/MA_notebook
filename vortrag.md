@@ -23,4 +23,7 @@ Python-Implementierung基于此处提到的论文中提出的算法。该算法�
 
 然后，模仿KX134功能的Emulator被开发。它可以和KX134一样，通过向特定地址的寄存器写入数据，配置采样率，buffer的阈值并生成interrupt。将存储了作为datenquelle的文本文件的SD卡插到开发板上，文本文件中的数据会被按照KX134的格式被发送到I2C总线上。
 
-最终，将R
+最终，将Rekorder和Emulator连接，获得了一个Loopback system。该system中axi-iic作为i2c master, 用VHDL开发的I2C-Slave schnittstelle作为 slave。两者的pin和interrupt信号被mapped到gpio header上。将对应的Pin用kabel连接，即可实现数据的传输。需要注意的是，master和slave这两个模块无法被直接连接。因为I2C的信号线是双向的。而双向数据传输只能在FPGA的pin与pin之间实现，而无法在FPGA内部实现。
+
+该系统的软件完成了以下任务：提供基础的用户交互功能，用户可以通过uart，控制采样的开始时间和signalquelle file。然后对硬件设计中设计的AXI-DMA，AXI-IIC等具有AXI接口的IP进行初始化，配置与控制。这一任务基于Xilinx提供的官方ip在standalone操作系统下的driver实现。对SD卡中signalquelle的读取和将abgetastete signale写入SD卡则基于Xilinx FAT File System Library实现。最后，需要通过数据处理，实现原始加速度数据和KX134的format的加速度数据之间的转换。如图所示
+
