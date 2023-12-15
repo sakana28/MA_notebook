@@ -2,5 +2,21 @@
 
 该emulationsplatform应当满足以下条件：其他硬件可以用和Beschleunigungssensor同样的方式操作它，并读出和sensor同样format的数据。它还应当输出真实或simulated的受损的Wälzlagern的Vibrationsanalysator。
 
-在接下来的，本文中实现的符合上述要求的emulationsplattform被按照以下顺序介绍。
-首先是项目中的任务：本项目中首先Python-Implementierung eines Algorithmus zur Generierung von Vibrationssignalen，然后Entwicklung eines Emulators auf Zynq SoC für die Übertragung von Signalen im Format des Beschleunigungssensors。 Zynq是一种结合了双核ARM prozessor和FPGA的结构，两部分。因此，Zynq上的Implementierung包含了FPGA上的硬件设计和ARM中的嵌入式C程序。
+接下来，本文中实现的符合上述要求的emulationsplattform被按照以下顺序介绍。
+首先是项目中的任务：本项目中首先Python-Implementierung eines Algorithmus zur Generierung von Vibrationssignalen，然后Entwicklung eines Emulators auf Zynq SoC für die Übertragung von Signalen im Format des Beschleunigungssensors。 Zynq是一种结合了双核ARM prozessor和FPGA的结构，两部分之间通过高性能AXI总线通信。因此，Zynq上的Implementierung包含了FPGA上的硬件设计和ARM中的嵌入式C程序。
+
+Python-Implementierung基于此处提到的论文中提出的算法。该算法可以分别仿真有lokale Punktdefekt和auf der Fläche verteilte Defekte的Wälzlagern的振动。它体现了walzkorper的滑动导致的撞击时间间隔的随机性和旋转时walzkorper的位置的随机性。图中所示的是生成的振动的visualisierung。用户可以添加自己需要的大小的白噪声。
+
+该仿真中有多种参数可以用户自定义，例如•Drehgeschwindigkeit und geometrische Parameter des Wälzlagers
+•Schadensstelle: Innenring, Außenring oder Wälzkörper
+•Schadentyp: Lokal oder verteilt
+•Varianz des zufälligen Teils
+•Stärke des Rauschens
+•Abtastrate des zeitdiskreten Vibrationssignals usw. 
+在开发Vibrationsanalysator时，开发者可以方便地获得大量Reproduzierbar的测试数据，还能根据需要anpassen参数。
+
+接下来介绍了本项目中需要被emuliert的 Beschleunigungssensor, KX134。用户可以通过I2C总线对它的control register进行配置，并从特定的register地址读出加速度数据。Emulator模仿了它在Watermark-interrupt modus的行为。数据被采集后不会立刻被host读出，而会被先储存在Sample buffer中。 当数据量高于Benutzerdefinierte Schwellenwerte时，sensor会产生interrupt信号以通知host读出数据。
+
+本页展示了Zynq上开发系统的流程。它涉及了xilinx提供的开发环境vivado和vitis。接下来Emulationsplatform的系统也会按照先vivado中的硬件设计，再vitis中的软件设计的顺序被介绍。
+
+
