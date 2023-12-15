@@ -66,9 +66,41 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "9d4d1829eded3dba",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "note on overleaf.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "098128f2417ba77a",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          },
+          {
+            "id": "c9bc35b23162d4d9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "vortrag.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 7
       }
     ],
     "direction": "vertical"
@@ -143,7 +175,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "MA documentation.md",
+                "file": "vortrag.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -160,7 +192,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "MA documentation.md",
+                "file": "vortrag.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -183,7 +215,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "MA documentation.md"
+                "file": "vortrag.md"
               }
             }
           },
@@ -204,38 +236,39 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
       "obsidian42-brat:BRAT": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "150a8bfe2c863cdb",
+  "active": "c9bc35b23162d4d9",
   "lastOpenFiles": [
-    "Implementation 插入部分.md",
-    "note on overleaf.md",
+    "vortrag.md",
+    "screenshot/textfile.png",
+    "screenshot/dmavsfifo.png",
     "MA documentation.md",
-    "draft test.md",
     "MA documentation.pdf",
     "picture/Pasted image 20231130085907.png",
     "picture/Pasted image 20231130085316.png",
     "picture/Pasted image 20231130084746.png",
     "picture/recorder_pin.png",
     "picture/testpin.png",
+    "draft test.md",
     "Zybo vs Zedboard vs ZC706.md",
     "Test result.md",
     "software implementation.md",
     "MA_Index.md",
+    "note on overleaf.md",
+    "Implementation 插入部分.md",
     "about SD card WR (FATFS).md",
     "screenshot/utilization_summray.png",
     "screenshot/resource.png",
     "screenshot/power.png",
-    "screenshot/Screenshot_2023-11-13_16-16-50.png",
-    "picture/sw_flowchart.png",
     "screenshot/~creenshot_2023-11-09_15-13-36.tmp",
     "screenshot/local",
     "screenshot/dist",
