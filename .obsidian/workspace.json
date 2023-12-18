@@ -98,9 +98,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "de01475145882460",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "vortrag DE.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 7
+        "currentTab": 8
       }
     ],
     "direction": "vertical"
@@ -175,7 +187,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "vortrag.md",
+                "file": "vortrag DE.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -192,7 +204,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "vortrag.md",
+                "file": "vortrag DE.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -215,7 +227,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "vortrag.md"
+                "file": "vortrag DE.md"
               }
             }
           },
@@ -246,9 +258,10 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "c9bc35b23162d4d9",
+  "active": "de01475145882460",
   "lastOpenFiles": [
     "vortrag.md",
+    "vortrag DE.md",
     "screenshot/textfile.png",
     "screenshot/dmavsfifo.png",
     "MA documentation.md",
@@ -287,7 +300,6 @@
     "未命名 8.md",
     "AXI-IIC IP Core.md",
     "custom I2C slave.md",
-    "previous chapter.md",
     "picture/Volltext (PDF).pdf",
     "doc/antoni2003 (1).pdf",
     "doc/antoni2002.pdf",
