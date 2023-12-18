@@ -1,4 +1,5 @@
 ich freue mich, Ihnen heute meine Masterarbeit zum Thema "Implementation and Optimization of an FPGA based Signal Generator for Fault Bearing in Non-Stationary Conditions" vorzustellen.
 
-Zuerst möchte ich auf die Motivation dieses Projekts eingehen, also warum braucht man so einen Signalgenerator. Bei der Entwicklung eines Echtzeit-Vibrationsanalysators zur Defekterkennung muss dessen Funktionen validiert werden
-Wälzlager sind eine wichtige mechanische Komponente. Durch die Analyse der Vibrationssignale von laufenden Wälzlagern kann man potenzielle Defekte frühzeitig erkennen
+Zuerst möchte ich auf die Motivation dieses Projekts eingehen, also warum braucht man so einen Signalgenerator. Wälzlager sind eine wichtige mechanische Komponente. Durch die Analyse der Vibrationssignale von laufenden Wälzlagern kann man potenzielle Defekte frühzeitig erkennen. Bei der Entwicklung eines Echtzeit-Vibrationsanalysators zur Defekterkennung muss dessen Funktionen validiert werden. Ein typischer Prüfaufbau dafür ist in der Folie dargestellt. Mit einer FPGA-basierten Emulationsplattform lässt sich der Entwicklungsprozess vereinfachen, da die Validierung einfacher am Schreibtisch und ohne Prüfaufbau möglich ist.
+
+Die Anforderungen an die Emulationsplattform sind folgende:  Analysator müssen mit ihr genauso interagieren können wie mit einem Beschleunigungssensor. Sie muss erfasste oder simulierte  Vibrationsdaten im gleichen Format wie Beschleunigungssensor ausgeben.
