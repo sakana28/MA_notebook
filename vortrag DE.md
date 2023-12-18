@@ -8,4 +8,8 @@ dieser Vortrag wird in folgender Reihenfolge ablaufen:
 
 Zunächst werde auf die gestellten Aufgaben eingehen. Danach möchte ich  die Simulation der Vibrationssignale vorstellen. Anschließend  erläutere ich die Hardware sowie software Implementierung der Plattform. Dannach zeige ich  die Evaluierung des Gesamtsystems anhand mehrere Experimente. Die Präsentation schließt mit einer Zusammenfassung des Projekts.
 
-Der erste Schritt war die Implementierung eines Algorithmus zur Erzeugung der Vibrationssignale in Python. Danach erfolgte die Entwicklung des Emulators auf einem Zynq System-on-Chip für die Signalübertragung im Format des Beschleunigungssensors.  Weil Zynq einen Dual-Core ARM-Prozessor mit  FPGA kombiniert, umfasst die Implementierung auf dem Zynq sowohl FPGA-basierte Hardware-Designs als auch eingebettet-C-Software auf dem ARM.
+Der erste Schritt war die Implementierung eines Algorithmus zur Erzeugung der Vibrationssignale in Python. Danach erfolgte die Entwicklung des Emulators auf einem Zynq System-on-Chip für die Signalübertragung im Format des Beschleunigungssensors.  Weil Zynq einen Dual-Core ARM-Prozessor mit  FPGA kombiniert, umfasst die Implementierung auf dem Zynq sowohl FPGA-basierte Hardware-Designs als auch eingebettet-C-Software auf dem ARM
+
+Die Python-Implementierung basiert auf dem Algorithmus aus dem hier zitierten Artikel. Sie besteht aus zwei Teilprogrammen, welche Vibrationssignale für Lager mit lokale Punktdefekt bzw. verteilten Defekt erzeugen.
+
+Die Abbildung zeigt ein Wälzlager mit einem Punktdefekt. Bei jeder Umdrehung des Lagers kommt es an der Stelle des Defekts zu einem Stoß. Die Zeitabstände zwischen aufeinanderfolgenden Stößen werden zufällig beeinflusst, aufgrund des Gleitens der Wälzkörper im Lager. 
