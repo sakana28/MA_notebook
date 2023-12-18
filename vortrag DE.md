@@ -12,4 +12,11 @@ Der erste Schritt war die Implementierung eines Algorithmus zur Erzeugung der Vi
 
 Die Python-Implementierung basiert auf dem Algorithmus aus dem hier zitierten Artikel. Sie besteht aus zwei Teilprogrammen, welche Vibrationssignale für Lager mit lokale Punktdefekt bzw. verteilten Defekt erzeugen.
 
-Die Abbildung zeigt ein Wälzlager mit einem Punktdefekt. Bei jeder Umdrehung des Lagers kommt es an der Stelle des Defekts zu einem Stoß. Die Zeitabstände zwischen aufeinanderfolgenden Stößen werden zufällig beeinflusst, aufgrund des Gleitens der Wälzkörper im Lager. 
+Die Abbildung zeigt ein Wälzlager mit einem Punktdefekt. Bei jeder Umdrehung des Lagers kommt es an der Stelle des Defekts zu einem Stoß. Die Zeitabstände zwischen aufeinanderfolgenden Stößen werden zufällig beeinflusst, aufgrund des Gleitens der Wälzkörper im Lager.  Ein wichtiger Teil des Algorithmus ist die Erzeugung einer Impulsfolge, die diesen Zufallsanteil berücksichtigt. Diese Impulsfolge dient dann als Eingangssignal für die Berechnung der Systemantwort. 
+
+Die dargestellte Abbildung zeigt ein Wälzlager mit auf der Lauffläche verteilten Defekten. Im Gegensatz zum Punktdefekt entsteht hier kein Stossimpuls. Vielmehr entsteht durch die zufälligen Positionen der Wälzkörper auf der geschädigten Oberfläche bei der Drehung ein moduliertes Zufallssignal.  Beide vorgestellten Teilprogramme  sind in der Lage, je nach Bedarf sowohl rauschfreie als auch rauschbehaftete Signale zu erzeugen.  
+
+
+Neben den bereits erwähnten Parametern Schadenstyp und Rauschstärke bietet die Implementierung weiterer Einstellmöglichkeit. Dadurch kann der Entwickler auf einfache Weise reproduzierbare Versuchsdaten erzeugen und die Parameter anpassen, ohne den Testaufbau jedes Mal neu einstellen zu müssen.
+
+
