@@ -34,5 +34,5 @@ Die Funktionalitaeten des Systems habe ich durch drei  Experimente verifiziert. 
 
 Beim ersten Test habe ich den KX134 während der Messung geschüttelt. Nach diesem Test wurde erfolgreich eine Textdatei mit den Beschleunigungsdaten auf der SD-Karte erstellt. Die Visualisierung zeigt die Pendelbewegung und die FFT weist einen Spitzenwert bei 5 Hz auf. -Dies stimmt mit der durch den Sensor ausgeführten Bewegung überein.  Bei diesem Test erhalte ich eine getestete Software, die im Loopback-System unverändert bleiben soll, wenn sie nicht mehr mit dem Sensor kommuniziert, sondern mit dem Emulator.  
 
-Wie bereits erwähnt, hat der Emulator in diesem zweite Test keinen AXI-Datenpfad. 
-Es ist zu beobachten, dass der Sample-Buffer, nachdem er genügend Daten gesammelt hat, einen Interrupt aktiviert. 
+Wie bereits erwähnt, hat der Emulator in diesem zweite Test keinen AXI-Datenpfad.  Die vom Emulator gesendeten Daten stammen von einem zusätzlichen Zähler auf dem FPGA. 
+Es ist zu beobachten, dass der Sample-Buffer, nachdem er genügend Daten gesammelt hat, einen Interrupt aktiviert.  Wenn der Host dann eine Leseanforderung an die Adresse 63 des Sample-Buffers sendet, werden die inkrementellen Testdaten auf den I2C-Bus übertragen.
